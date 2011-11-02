@@ -188,6 +188,10 @@ table tr:hover .action .view { color: #55a34a; }
 
 table tr:hover .action a:hover { text-decoration: underline; }
 
+form {
+	text-align:left;
+}
+
 fieldset {
 	border: 1px solid #ddd;
 	padding: 19px;

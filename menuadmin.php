@@ -86,7 +86,7 @@ function MM_swapImage() { //v3.0
 				<!-- h2 stays for breadcrumbs -->
 				<h2><a href="#">Dashboard</a> &raquo; <a href="#" class="active">Print resources</a></h2>
         <div id="main">
-					<iframe name="carga" src="inicio.html" width="705" height="716" scrolling="Yes" frameborder="0" class="Slide" id="carga"></iframe>
+					<iframe name="carga" src="inicio.html" width="705" height="716" scrolling="auto" frameborder="0" class="Slide" id="carga"></iframe>
         </div><!-- // #main -->
       <div class="clear"></div>
       </div><!-- // #container -->
