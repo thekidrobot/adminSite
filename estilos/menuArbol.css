@@ -1,0 +1,17 @@
+ul#menu_arbol, ul#menu_arbol ul {
+     list-style-type: none;
+     background: url(imagenes/linea_vertical.gif) repeat-y;
+}
+ul#menu_arbol li {
+     padding: 0 10px;
+}
+ul#menu_arbol ul {
+     margin-left: 5px;
+}
+ul#menu_arbol li {
+     padding: 0 10px;
+     background: url(imagenes/nodo.gif) no-repeat;
+}
+ul#menu_arbol li.cierre {
+     background: #FFF url(imagenes/cierre.gif) left top no-repeat;
+}

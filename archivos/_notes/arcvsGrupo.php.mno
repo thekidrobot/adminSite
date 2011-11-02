@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsArchVsGrupo" value="name:titulo;datatype:string,name:id_interno;datatype:int,name:id_archivo;datatype:int,name:id_grupo;datatype:int,name:TIPO_TRANSMISION;datatype:string,name:FECHA_HORA_TRANSMISION;datatype:timestamp,name:estado;datatype:int" />
+</info>

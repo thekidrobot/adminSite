@@ -1,0 +1,187 @@
+<?php require_once('../Connections/cnxRamp.php'); ?>
+<?php
+if (!isset($_SESSION)) {
+  session_start();
+}
+if($_SESSION["usuario"]=="")
+ {
+  ?>
+<script language="javascript">
+  document.location="../index.php";
+  </script>
+  <?
+ }
+ 
+?>
+<?php
+if (!function_exists("GetSQLValueString")) {
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+{
+  if (PHP_VERSION < 6) {
+    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+  }
+
+  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+  switch ($theType) {
+    case "text":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;    
+    case "long":
+    case "int":
+      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+      break;
+    case "double":
+      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+      break;
+    case "date":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;
+    case "defined":
+      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+      break;
+  }
+  return $theValue;
+}
+}
+
+$currentPage = $_SERVER["PHP_SELF"];
+
+$maxRows_rsArchivos = 15;
+$pageNum_rsArchivos = 0;
+if (isset($_GET['pageNum_rsArchivos'])) {
+  $pageNum_rsArchivos = $_GET['pageNum_rsArchivos'];
+}
+$startRow_rsArchivos = $pageNum_rsArchivos * $maxRows_rsArchivos;
+
+mysql_select_db($database_cnxRamp, $cnxRamp);
+$query_rsArchivos = "SELECT * FROM archivos ORDER BY id_archivo DESC";
+$query_limit_rsArchivos = sprintf("%s LIMIT %d, %d", $query_rsArchivos, $startRow_rsArchivos, $maxRows_rsArchivos);
+$rsArchivos = mysql_query($query_limit_rsArchivos, $cnxRamp) or die(mysql_error());
+$row_rsArchivos = mysql_fetch_assoc($rsArchivos);
+
+if (isset($_GET['totalRows_rsArchivos'])) {
+  $totalRows_rsArchivos = $_GET['totalRows_rsArchivos'];
+} else {
+  $all_rsArchivos = mysql_query($query_rsArchivos);
+  $totalRows_rsArchivos = mysql_num_rows($all_rsArchivos);
+}
+$totalPages_rsArchivos = ceil($totalRows_rsArchivos/$maxRows_rsArchivos)-1;$maxRows_rsArchivos = 10;
+$pageNum_rsArchivos = 0;
+if (isset($_GET['pageNum_rsArchivos'])) {
+  $pageNum_rsArchivos = $_GET['pageNum_rsArchivos'];
+}
+$startRow_rsArchivos = $pageNum_rsArchivos * $maxRows_rsArchivos;
+
+/*mysql_select_db($database_cnxRamp, $cnxRamp);
+$query_rsArchivos = "SELECT * FROM archivos ORDER BY nombre_fisico DESC";
+$query_limit_rsArchivos = sprintf("%s LIMIT %d, %d", $query_rsArchivos, $startRow_rsArchivos, $maxRows_rsArchivos);
+$rsArchivos = mysql_query($query_limit_rsArchivos, $cnxRamp) or die(mysql_error());
+$row_rsArchivos = mysql_fetch_assoc($rsArchivos);
+*/
+if (isset($_GET['totalRows_rsArchivos'])) {
+  $totalRows_rsArchivos = $_GET['totalRows_rsArchivos'];
+} else {
+  $all_rsArchivos = mysql_query($query_rsArchivos);
+  $totalRows_rsArchivos = mysql_num_rows($all_rsArchivos);
+}
+$totalPages_rsArchivos = ceil($totalRows_rsArchivos/$maxRows_rsArchivos)-1;
+
+$queryString_rsArchivos = "";
+if (!empty($_SERVER['QUERY_STRING'])) {
+  $params = explode("&", $_SERVER['QUERY_STRING']);
+  $newParams = array();
+  foreach ($params as $param) {
+    if (stristr($param, "pageNum_rsArchivos") == false && 
+        stristr($param, "totalRows_rsArchivos") == false) {
+      array_push($newParams, $param);
+    }
+  }
+  if (count($newParams) != 0) {
+    $queryString_rsArchivos = "&" . htmlentities(implode("&", $newParams));
+  }
+}
+$queryString_rsArchivos = sprintf("&totalRows_rsArchivos=%d%s", $totalRows_rsArchivos, $queryString_rsArchivos);
+?>
+<html>
+<?php include("../includes/head.php") ?>
+
+<body>
+    <h3>Ver Arquivos</h3>
+    <h3>Arquivos que est&atilde;o atualmente no sistema</h3>
+    <table cellpadding="0" cellspacing="0">
+      <tr>
+        <td><b>Editar</b></td>
+        <td><b>Nome do Arquivo</b></td>
+        <td><b>T&iacute;tulo</b></td>
+        <td><b>Descri&ccedil;&atilde;o</b></td>
+        <td><b>Professor</b></td>
+      </tr>
+      <?php
+        $counter = 0;
+        do
+        {
+          ?>
+        <tr <?php if($counter % 2) echo " class='odd'"?>>
+          <td class="action">
+            <a href="edicion.php?id_archivo=<?php echo $row_rsArchivos['id_archivo']; ?>">
+            <?php echo $row_rsArchivos['id_archivo']; ?>
+            </a>
+          </td>
+          <td><?php echo $row_rsArchivos['nombreArchivo']; ?></td>
+          <td><?php echo $row_rsArchivos['titulo']; ?></td>
+          <td><a href="editImagen.php?arch=<?php echo $row_rsArchivos['id_archivo']; ?>"></a> <?php echo $row_rsArchivos['texto']; ?></td>
+          <td><?php echo $row_rsArchivos['speaker']; ?></td>
+        </tr>
+        <?php
+          $counter++;
+        }
+        while ($row_rsArchivos = mysql_fetch_assoc($rsArchivos)); ?>
+        <tr>
+          <td colspan="5">
+            <?php echo ($startRow_rsArchivos + 1) ?> al <?php echo min($startRow_rsArchivos + $maxRows_rsArchivos, $totalRows_rsArchivos) ?> de <?php echo $totalRows_rsArchivos ?>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5" align="center">
+          <?php
+          if ($pageNum_rsArchivos > 0)
+          { // Show if not first page ?>
+            <a href="<?php printf("%s?pageNum_rsArchivos=%d%s", $currentPage, 0, $queryString_rsArchivos); ?>">
+            <img src="../imagenes/First.gif" border="0">
+            </a>
+            <?php
+          } // Show if not first page ?>        
+          
+          <?php
+          if ($pageNum_rsArchivos > 0)
+          { // Show if not first page ?>
+            <a href="<?php printf("%s?pageNum_rsArchivos=%d%s", $currentPage, max(0, $pageNum_rsArchivos - 1), $queryString_rsArchivos); ?>">
+            <img src="../imagenes/Previous.gif" border="0">
+            </a>
+            <?php
+          } // Show if not first page ?>
+          <?php
+          if ($pageNum_rsArchivos < $totalPages_rsArchivos)
+          { // Show if not last page ?>
+            <a href="<?php printf("%s?pageNum_rsArchivos=%d%s", $currentPage, min($totalPages_rsArchivos, $pageNum_rsArchivos + 1), $queryString_rsArchivos); ?>">
+            <img src="../imagenes/Next.gif" border="0">
+            </a>
+            <?php
+          } // Show if not last page ?>
+          <?php
+          if ($pageNum_rsArchivos < $totalPages_rsArchivos)
+          { // Show if not last page ?>
+            <a href="<?php printf("%s?pageNum_rsArchivos=%d%s", $currentPage, $totalPages_rsArchivos, $queryString_rsArchivos); ?>">
+            <img src="../imagenes/Last.gif" border="0">
+            </a>
+            <?php
+          } // Show if not last page ?>
+          </td>
+        </tr>
+    </table>
+</body>
+</html>
+<?php
+mysql_free_result($rsArchivos);
+?>

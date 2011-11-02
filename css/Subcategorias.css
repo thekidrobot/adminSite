@@ -1,0 +1,16 @@
+@charset "utf-8";
+.celda {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	color: #000;
+	background-color: #CCC;
+}
+#zonaCarga {
+	position:absolute;
+	left:76px;
+	top:64px;
+	width:790px;
+	height:367px;
+	z-index:1;
+	overflow:auto
+}

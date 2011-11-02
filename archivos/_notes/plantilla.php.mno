@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsArchivo" value="name:id_archivo;datatype:int,name:nombre_fisico;datatype:string,name:nombre_16;datatype:string,name:texto;datatype:blob,name:titulo;datatype:string,name:cant_descarga;datatype:real,name:imagen;datatype:blob,name:speaker;datatype:string,name:estado;datatype:int" />
+</info>

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsMensajesTexto" value="name:ID_MENSAJE;datatype:int,name:ID_USUARIO;datatype:int,name:MENSAJE;datatype:string,name:FECHA_CREACION;datatype:timestamp,name:FECHA_LECTURA;datatype:timestamp" />
+	<infoitem key="UD_rsMensajeIdMensaje" value="name:ID_MENSAJE;datatype:int,name:ID_USUARIO;datatype:int,name:MENSAJE;datatype:string,name:FECHA_CREACION;datatype:timestamp,name:FECHA_LECTURA;datatype:timestamp" />
+	<infoitem key="UD_rsMensaje" value="name:ID_MENSAJE;datatype:int,name:ID_USUARIO;datatype:int,name:MENSAJE;datatype:string,name:FECHA_CREACION;datatype:timestamp,name:FECHA_LECTURA;datatype:timestamp" />
+</info>

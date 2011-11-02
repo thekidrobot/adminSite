@@ -1,0 +1,209 @@
+.menu
+{
+	width: 10em;
+	position: relative;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: 1.3;
+	font-weight: normal;
+	font-variant: normal;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 5px;
+	padding-left: 0.75em;
+	text-align: left;
+	background-color: #EBEBEB;
+}
+
+/* icons for opening/closing all folders */
+.closeTree, .openTree, a.closeTree:hover, a.openTree:hover,
+a.closeTree:link, a.openTree:link, a.closeTree:active, a.openTree:active
+{
+	display: block;
+	position: absolute;
+	right: 13ex;
+	top: 0;
+	height: 24px;
+	width: 24px;
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: 3px 3px;
+}
+
+.openTree, a.openTree:hover, a.openTree:link, a.openTree:active
+{
+	right: 8.2ex;
+}
+
+
+/* clean up defaults */
+.menu ul, .menu li, .menu a
+{
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 1 solid #666666 !important;
+	list-style: none outside none;
+}
+.menu li
+{
+	background-color: #EBEBEB;
+
+
+}
+.menu ul
+{
+	margin-left: 1px !important;
+	position: relative;
+	background-color: #EBEBEB;
+}
+
+/* common <li> settings */
+.menu li
+{
+	position: relative !important;
+	border-left: 1px solid #bbbbbb !important;
+	padding-left: 12px !important;
+	background-color: #EBEBEB;
+	background-image: url(nornix-treemenu-line.png);
+	background-repeat: no-repeat;
+	background-position: 0 10px;
+}
+
+/* get the line right on the last item (when no class is set) */
+.menu ul li:last-child
+{
+	border-left: none !important;
+	padding-left: 13px !important;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	background-image: url(nornix-treemenu-corner.png);
+}
+
+/* same as above, but with a class set */
+.menu ul li.last
+{
+	border-left: none !important;
+	padding-left: 13px !important; /* compensate the 1px border */
+	background: url(nornix-treemenu-corner.png) 0 0 no-repeat !important;
+}
+
+/* hide content of folders */
+.menu li.folder > ul
+{
+	display: none !important;
+}
+
+/* show content of folder, when class "open" is set */
+.menu li.folder.open > ul
+{
+	display: block !important;
+}
+
+/* display toggle icon, default to closed state */
+.menu li.folder > span
+{
+	display: block !important;
+	position: absolute !important;
+	left: -8px !important;
+	top: 3px !important;
+	height: 15px !important;
+	width: 15px !important;
+	cursor: pointer !important;
+	background-image: url(nornix-plus-node.png);
+	background-repeat: no-repeat;
+	background-position: 3px 3px;
+}
+
+/* set toggle icon for open state */
+.menu li.open > span
+{
+	background-image: url(nornix-minus-node.png) !important;
+}
+
+/* position toggle icon on last element */
+.menu li.last > span
+{
+	left: -7px !important;
+}
+
+/* display marker on current item */
+.menu a.current span
+{
+	display: block !important;
+	position: absolute !important;
+	left: 22px !important;
+	top: 3px !important;
+	height: 13px !important;
+	width: 14px !important;
+	background-image: url();
+}
+
+/* set default values for <a> elements */
+.menu li a, .menu a.root, .menu li a.current
+{
+	display: block !important;
+	padding-left: 12px !important;
+	min-height: 18px !important;
+	border: none !important;
+	color: #000000 !important;
+	text-decoration: underline !important;
+	background-position: 2px 2px !important;
+	background-image: url(url());
+	background-repeat: no-repeat;
+}
+
+/* if the class is "closed", then it's a folder, too */
+.menu li.closed > a
+{
+	background-image: url() !important;
+	background-position: 0 2px !important;
+}
+
+/* menu folder in open state */
+.menu li.open > a
+{
+	background-image: url(url()) !important;
+	background-position: 0 2px !important;
+}
+
+/* change properties for <a> elements with the href attribute set
+-- the current page will not have a href value */
+.menu a:link, .menu a:visited, .menu a:active, .menu a:hover
+{
+	color: #000000 !important;
+	text-decoration: none !important;
+}
+
+/* change icon and some settings on the root element of the menu */
+body .menu a.root
+{
+	min-height: 24px !important;
+	width: 9ex !important;
+	margin-bottom: -4px !important;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+
+/* :hover styling on <a> elements */
+.menu a:hover, .menu li.folder a:hover, .menu ul li.open > a:hover
+{
+	text-decoration: underline !important;
+}
+
+.menu a:active, .menu a.root:active
+{
+	background-color: #e8e8e8 !important;
+}
+
+.menu a:focus, .menu a.root:focus
+{
+	background-color: #e8e8e8 !important;
+}
+.opcion {
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #CCCCCC;
+	border: 1px solid #333333;
+}

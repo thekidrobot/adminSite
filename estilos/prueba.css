@@ -1,0 +1,19 @@
+@charset "utf-8";
+a:link {
+	font-family: "Times New Roman", Times, serif;
+}
+#principal li {
+	display:inline;
+	float:left;
+	width:220px;
+	background-color:#f5f7f9;
+	padding:5px;
+	margin:10px;
+	text-align: center;
+	border-right-width: 2px;
+	border-bottom-width: 2px;
+	border-right-style: groove;
+	border-bottom-style: double;
+	border-right-color: #a5a7aa;
+	border-bottom-color: #a5a7aa;
+}

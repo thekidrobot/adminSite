@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsGrupos" value="name:IdGrupos;datatype:int,name:grupos;datatype:string,name:Presentacion;datatype:blob,name:CalificacionMinima;datatype:real,name:Calificacion;datatype:real,name:activo;datatype:int,name:NIVEL;datatype:string,name:PADRE;datatype:int" />
+</info>

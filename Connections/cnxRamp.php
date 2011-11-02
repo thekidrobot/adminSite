@@ -1,0 +1,16 @@
+<?php
+# FileName="Connection_php_mysql.htm"
+# Type="MYSQL"
+# HTTP="true"
+//$hostname_cnxRamp = "db2624.perfora.net";
+//$database_cnxRamp = "db341842064";
+//$username_cnxRamp = "dbo341842064";
+//$password_cnxRamp = "ramp123";
+
+$hostname_cnxRamp = "localhost";
+$database_cnxRamp = "lfg";
+$username_cnxRamp = "root";
+$password_cnxRamp = "root";
+
+$cnxRamp = mysql_pconnect($hostname_cnxRamp, $username_cnxRamp, $password_cnxRamp) or trigger_error(mysql_error(),E_USER_ERROR); 
+?>
