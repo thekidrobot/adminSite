@@ -1,13 +1,16 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <title>:: CUESTIONARIO ::</title>
-<script language="JavaScript" src="js.js" type="text/javascript">
-</script>
+<script language="JavaScript" src="js.js" type="text/javascript"></script>
 <link href="../INDEX.CSS" rel="stylesheet" type="text/css">
 <link href="../css/stilos.css" rel="stylesheet" type="text/css">
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../galeria/css/galeria.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="../ajax/core.js"></script>
+<style type="text/css">
+body{background-color:#ffffff;}
+</style>
 <script language="javascript">
 function alAbrir()
 {
@@ -56,15 +59,8 @@ function administraDescarga(usuario)
 	invocaGenericoPost('apDiv4','administraDescargas.php','usuario='+usuario,'Buscando espere.......')
 }
 </script>
-<link href="../galeria/css/galeria.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-<!--
-body {
-	background-color: #CCC;
-}
--->
-</style></head>
-<body leftmargin="0" topmargin="0" background="" onLoad="javascript:alAbrir();">
+</head>
+<body onLoad="javascript:alAbrir();">
 <table width="330" height="129%" align="left" cellpadding="0" cellspacing="0">
   <!-- banner superior -->
   <!-- menu superior -->

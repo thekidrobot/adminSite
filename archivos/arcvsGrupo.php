@@ -56,13 +56,7 @@ $totalRows_rsArchVsGrupo = mysql_num_rows($rsArchVsGrupo);
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../galeria/css/galeria.css" rel="stylesheet" type="text/css">
 <link href="../css/stilos.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-<!--
-body {
-	background-color: #CCC;
-}
--->
-</style></head>
+</head>
 
 <div id="archivosgrupo">
   <table width="330" border="0" align="left" cellpadding="0" cellspacing="0">

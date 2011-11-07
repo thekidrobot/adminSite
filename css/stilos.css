@@ -147,7 +147,9 @@ body {
 	text-transform: none;
 	color: #FFFFFF;
 	text-decoration: none;
-}label {
+}
+
+label {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	color: #333333;
@@ -167,7 +169,7 @@ body {
 	color: #000;
 	padding: 4px;
 	background-repeat: repeat-x;
-	background-color: #999;
+	background-color: #E5E5E5;
 }
 .textos {
 	font-family: Arial, Helvetica, sans-serif;

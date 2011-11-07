@@ -48,11 +48,6 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
 <link href="../css/stilos.css" rel="stylesheet" type="text/css">
 <link href="../galeria/css/galeria.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-<!--
-body {
-	background-color: #CCC;
-}
--->
 </style></head>
   
 <table width="370" border="0" cellpadding="0" cellspacing="0">
@@ -81,8 +76,8 @@ body {
     <?php do { ?>
         
     <tr>
-      <td width="8%" height="24" align="center" valign="middle" bgcolor="#CCCCCC" class="descripcion_borde_inferior"><span class="descripcion"><a href="#" class="descripcion" onclick="javascript:insertaItem(<?php echo $row_Recordset1['IdUsuario']; ?>)" style="color:#063" ><strong>&gt;&gt;</strong></a></span>&nbsp;&nbsp;</td>
-      <td width="92%" bgcolor="#CCCCCC" class="descripcion_borde_inferior"><?php echo $row_Recordset1['NombreCompleto']; ?></td>
+      <td width="8%" height="24" align="center" valign="middle" class="descripcion_borde_inferior"><span class="descripcion"><a href="#" class="descripcion" onclick="javascript:insertaItem(<?php echo $row_Recordset1['IdUsuario']; ?>)" style="color:#063" ><strong>&gt;&gt;</strong></a></span>&nbsp;&nbsp;</td>
+      <td width="92%" class="descripcion_borde_inferior"><?php echo $row_Recordset1['NombreCompleto']; ?></td>
     </tr>
       <?php } while ($row_Recordset1 = mysql_fetch_assoc($Recordset1)); ?>
 <tr>

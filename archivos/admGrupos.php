@@ -5,8 +5,6 @@ include ('../pear/tree_view/Tree.php');
 include("../conexion.php");
 include("../clases/clsusuario.php");
 
-
-
 session_start();
 
 //validar sesion
@@ -63,13 +61,6 @@ if($_GET["actualizar"]!="")
      }
  }
 
-
-
-
-
-
-
-
 $tree = &Tree::createFromMySQL(array('host'     => $hostname_cnxRamp,
                                      'user'     => $username_cnxRamp,
                                      'pass'     => $password_cnxRamp,
@@ -81,8 +72,8 @@ include ('../pear/tree_view/TreeMenu.php');
 $nodeOptions = array(
  'text'          => '',
  'link'          => 'usuariosgrupo.php',
- 'icon'          => 'folder.gif',
- 'expandedIcon'  => 'folder-expanded.gif',
+ 'icon'          => 'folder.png',
+ 'expandedIcon'  => 'folder-expanded.png',
  'class'         => '',
  'expanded'      => true,
  'linkTarget'    => 'frm1',
@@ -101,9 +92,6 @@ $menu = &HTML_TreeMenu::createFromStructure($options);
 $treeMenu = &new HTML_TreeMenu_DHTML($menu, array('images' => 'imagesAlt2', 'defaultClass' => 'treeMenuDefault'));
 //$treeMenu = &new HTML_TreeMenu_Listbox($menu, array('images' => 'imagesAlt2', 'defaultClass' => 'treeMenuDefault'));
 
-
-
-
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -111,48 +99,56 @@ $treeMenu = &new HTML_TreeMenu_DHTML($menu, array('images' => 'imagesAlt2', 'def
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Documento sin título</title>
 <style type="text/css">
-#apDiv1 {
-	position:absolute;
-	left:21px;
-	top:71px;
-	width:702px;
-	height:397px;
-	z-index:1;
-	border-top-style: none;
-	border-right-style: none;
-	border-bottom-style: none;
-	border-left-style: none;
+h3 {
+	color: #5494af;
+	font: 16px Arial, Helvetica, sans-serif;
+	font-weight:bold;	
+	text-align:center;
 }
 .treeMenuDefault {
-			font-style: italic;
-		}
+ font: 12px Arial, Helvetica, sans-serif;
+}
+.treeMenuDefault img{
+ padding-right:5px;
+}
+#apDiv4 {
+	position:absolute;
+	left:172px;
+	top:320px;
+	width:408px;
+	height:24px;
+	z-index:4;
+	padding:0;
+	margin:0;
+}
+#apDiv3 {
+	position:absolute;
+	left:381px;
+	top:74px;
+	width:337px;
+	height:635px;
+	z-index:3;
+	padding:0;
+	margin:0;
+}
 #apDiv2 {
 	position:absolute;
-	left:21px;
+	left:0px;
 	top:73px;
 	width:380px;
-	height:635px;
+	height:600px;
 	z-index:2;
-	border-top-style: none;
-	border-right-style: solid;
-	border-bottom-style: none;
-	border-left-style: none;
-	background-color: #CCCCCC;
 	visibility: ;
+	padding:0;
+	margin:0;
 }
 </style>
 <link rel="stylesheet" href="../css/suggest.css">
-
-<!--comienza un cambio se vinculan nuevos js para activar el ligth box-->
 <script language="javascript" src="../js.js"></script>
 <script type="text/javascript" src="../ajax/jquery1.4.2.js"></script>
-
-
-
 <script type="text/javascript">
-<!--comienza un cambio-->	
 
-	function lookup(inputString) {
+function lookup(inputString) {
 		if(inputString.length == 0) {
 			// Hide the suggestion box.
 			$('#suggestions').hide();
@@ -188,58 +184,22 @@ $treeMenu = &new HTML_TreeMenu_DHTML($menu, array('images' => 'imagesAlt2', 'def
 
 </script>
 <script src="../pear/tree_view/TreeMenu.js" language="JavaScript" type="text/javascript"></script>
-<style type="text/css">
-#apDiv3 {
-	position:absolute;
-	left:401px;
-	top:74px;
-	width:367px;
-	height:635px;
-	z-index:3;
-	border-top-style: none;
-	border-right-style: none;
-	border-bottom-style: none;
-	border-left-style: none;
-	background-color: #FFFFFF;
-}
-</style>
 <link href="js/light/css/lightbox.css" rel="stylesheet" type="text/css" />
 
-<style type="text/css">
-<!--
-body {
-	margin-left: 0px;
-	margin-top: 0px;
-	background-color: #CCC;
-}
--->
-</style>
 <link href="../css/stilos.css" rel="stylesheet" type="text/css" />
 <link href="../galeria/css/galeria.css" rel="stylesheet" type="text/css" />
-<style type="text/css">
-<!--
-#apDiv4 {
-	position:absolute;
-	left:172px;
-	top:320px;
-	width:408px;
-	height:24px;
-	z-index:4;
-}
--->
-</style>
 </head>
 
 <body onLoad="cargaAdmGrupos();">
 <div id="apDiv1">
-
+<h3>Criar Grupos</h3>
 <form id="form1" name="form1" method="post" action="admGrupos.php" onSubmit="return validaGrupoNuevo()">
-<table width="700" border="0">
+<table width="600" border="0">
   <tr>
-    <td class="encabezado"><strong>Criar novo grupo</strong></td>
+    <td class="encabezado"><b>Criar novo grupo</b></td>
   </tr>
   <tr>
-    <td width="89%" class="descripcion"><strong>Nome do novo grupo</strong></td>
+    <td width="89%"><b><label>Nome do novo grupo</label></b></td>
     </tr>
   <tr>
     <td><input type="text" name="valorTitulo" value="<?=$vTitulo?>" maxlength="100" size="30" class="tahoma_12"></td>
@@ -261,7 +221,7 @@ body {
 		  ?></td>
     </tr>
   <tr>
-    <td class="descripcion"><strong>Pertence &agrave;</strong></td>
+    <td><b><label>Pertence &agrave;</label></b></td>
     </tr>
   <tr>
     <td>
@@ -304,11 +264,11 @@ body {
 </table>
 
 </form>
-<table width="700" border="0" cellpadding="0" cellspacing="0" class="borde_alrededor">
+<table width="600" border="0" cellpadding="0" cellspacing="0" class="borde_alrededor">
   <tr>
-    <td width="10" class="encabezado">&nbsp;</td>
-    <td width="150" height="22" class="encabezado">&nbsp;Categorias existentes</td>
-    <td width="538" align="right" class="encabezado"><span class="letra_gris">Selecione una categoria existente para adicionar usu&agrave;rios e v&iacute;deo.</span></td>
+    <td class="encabezado">&nbsp;</td>
+    <td class="encabezado">&nbsp;Categorias existentes</td>
+    <td class="encabezado"><span class="letra_gris">Selecione una categoria existente para adicionar usu&agrave;rios e v&iacute;deo.</span></td>
   </tr>
   <tr>
     <td height="18" colspan="3">&nbsp;</td>
@@ -320,18 +280,15 @@ body {
 </table>
 <p>&nbsp;</p>
 </div>
-<div class="borde_alrededor" id="apDiv2">
-<iframe id="frm1" name="frm1" frameborder="0" style="width:100%;height:100%;border:none"></iframe>
+<div id="apDiv2">
+<iframe id="frm1" name="frm1" style="width:100%;height:100%; border:none"></iframe>
 </div>
-<div class="borde_alrededor" id="apDiv3">
-<iframe id="frm2" name="frm2" frameborder="0" style="width:100%;height:100%;border:none"></iframe>
+<div id="apDiv3">
+<iframe id="frm2" name="frm2" style="width:100%;height:100%; border:none"></iframe>
 </div>
-<table width="768" border="0" align="left" cellpadding="0" cellspacing="0">
+<table width="600" border="0" align="left" cellpadding="0" cellspacing="0">
   <tr>
-    <td><img src="../newImages/titulo_categorias.jpg" width="768" height="52" /></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
+    <td><h3>Gerenciar Categorias</h3></td>
   </tr>
 </table>
 </body>

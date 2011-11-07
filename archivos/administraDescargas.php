@@ -49,13 +49,7 @@ th {
 </style>
 <link href="../galeria/css/galeria.css" rel="stylesheet" type="text/css" />
 <link href="../css/stilos.css" rel="stylesheet" type="text/css" />
-<style type="text/css">
-<!--
-body {
-	background-color: #CCC;
-}
--->
-</style></head>
+</head>
 
 <body>
 <table width="340" border="0" cellpadding="0" cellspacing="0" class="borde_alrededor">

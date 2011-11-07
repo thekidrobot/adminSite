@@ -18,7 +18,7 @@ if($_SESSION["usuario"]=="")
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Transdmin Light</title>
+<title>Ben-vindo a RAMP</title>
 
 <!-- CSS -->
 <link href="style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
@@ -75,8 +75,8 @@ function MM_swapImage() { //v3.0
 			<div id="container">
 				<div id="sidebar">
 					<ul class="sideNav">
-						<li><a href="archivos/listarArchivos.php" target="carga">Ver Arquivos</a></li>
-						<li><a href="archivos/addArchivo.php" target="carga" class="active">Adicionar Arquivos</a></li>
+						<li><a href="archivos/listarArchivos.php" target="carga" class="active">Ver Arquivos</a></li>
+						<li><a href="archivos/addArchivo.php" target="carga" >Adicionar Arquivos</a></li>
 						<li><a href="archivos/buscarArchivos.php" target="carga">Buscar Arquivos</a></li>
 					</ul>
 					<!-- // .sideNav -->
@@ -84,9 +84,10 @@ function MM_swapImage() { //v3.0
 				<!-- // #sidebar -->
 
 				<!-- h2 stays for breadcrumbs -->
-				<h2><a href="#">Dashboard</a> &raquo; <a href="#" class="active">Print resources</a></h2>
+				<!--<h2><a href="#">Dashboard</a> &raquo; <a href="#" class="active">Print resources</a></h2>-->
+				<h2>&nbsp;</h2>
         <div id="main">
-					<iframe name="carga" src="inicio.html" width="705" height="716" scrolling="auto" frameborder="0" class="Slide" id="carga"></iframe>
+					<iframe name="carga" src="inicio.html" width="805" height="716" scrolling="auto" frameborder="0" class="Slide" id="carga"></iframe>
         </div><!-- // #main -->
       <div class="clear"></div>
       </div><!-- // #container -->

@@ -139,8 +139,8 @@ function actGrupoGuardar(){
 #apAdminUser {
 	position:absolute;
 	left:-1px;
-	top:29px;
-	width:340px;
+	top:250px;
+	width:300px;
 	height:173px;
 	z-index:4;
 }
@@ -149,45 +149,46 @@ function actGrupoGuardar(){
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: 12px;
 	color: #000;
-	background-color: #CCC;
 }
 #divEditarGrupo {
 	position:absolute;
 	left:-1px;
-	top:32px;
+	top:250px;
 	width:340px;
 	height:127px;
 	z-index:5;
-	background-color: #999;
 	visibility:;
 	visibility: default;
 }
 body {
-	background-color: #CCC;
+	margin:0;
+	padding:0;
+	width:250px !important;
 }
 </style>
 </head>
 <body leftmargin="0" topmargin="0" background="" onLoad="javascript:alAbrir();">
-<div id="divEditarGrupo"></div>
-<table width="340" height="129%" align="left" cellpadding="0" cellspacing="0">
+<!--<div id="divEditarGrupo"></div>-->
+<table width="300" height="129%" align="left" cellpadding="0" cellspacing="0">
   <!-- banner superior -->
   <!-- menu superior -->
   <!-- zona central -->
   <tr>
     <td height="189" valign="top" background="" class="body-text1"><div id="uno">
-      <table width="340" height="4%" border="0" cellpadding="0" cellspacing="0">
+      <table width="250" height="4%" border="0" cellpadding="0" cellspacing="0">
         
         <tr>
           <td  height="29" class="trebuchet"><img src="../imagenes/spacer.gif" alt="b" width="1" height="1">Categoria: <?php echo $_GET['nombreGrupo']; ?>
             <input name="grupo" type="hidden" id="grupo" value="<?php echo $_GET['nombreGrupo']; ?>"></td>
           </tr>
         <tr>
-          <td  height="10" align="right" class="trebuchet"><?php echo $estado; ?> <a href="#" class="descripcion" onClick="editarGrupo();">Cambiar nome Categoria</a></td>
+          <td height="10" align="right" class="trebuchet">
+					<?php echo $estado; ?> <a href="#" class="descripcion" onClick="editarGrupo();">Cambiar nome Categoria</a></td>
           </tr>
       </table>
   </div>
         <div id="archivos">
-          <table width="340" border="0" cellspacing="0" cellpadding="0">
+          <table width="300" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td colspan="3" class="descripcion">&nbsp;</td>
             </tr>
@@ -226,7 +227,7 @@ body {
     <td class="body-text1" height="20" align="center"></td>
   </tr>
 </table>
-<div id="apAdminUser"></div>
+<!--<div id="apAdminUser"></div>-->
 </body>
 </html>
 
