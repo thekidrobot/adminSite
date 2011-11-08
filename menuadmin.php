@@ -20,6 +20,25 @@ if($_SESSION["usuario"]=="")
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Ben-vindo a RAMP</title>
 
+<link rel="stylesheet" type="text/css" href="css/anylinkmenu.css" />
+<script type="text/javascript" src="js/menucontents.js"></script>
+<script type="text/javascript" src="js/anylinkmenu.js">
+
+/***********************************************
+* AnyLink JS Drop Down Menu v2.0- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Project Page at http://www.dynamicdrive.com/dynamicindex1/dropmenuindex.htm for full source code
+***********************************************/
+
+</script>
+
+<script type="text/javascript">
+
+//anylinkmenu.init("menu_anchors_class") //Pass in the CSS class of anchor links (that contain a sub menu)
+anylinkmenu.init("menuanchorclass")
+
+</script>
+
 <!-- CSS -->
 <link href="style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="style/css/ie6.css" /><![endif]-->
@@ -58,16 +77,14 @@ function MM_swapImage() { //v3.0
 	<div id="wrapper">
     	<!-- h1 tag stays for the logo, you can use the a tag for linking the index page -->
     	<h1><a href="inicio.html" target="carga"><span>Transdmin Light</span></a></h1>
-
-			<!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
 			<ul id="mainNav">
-				<li><a href="inicio.html" target="carga" class="active">Inicio</a></li> <!-- Use the "active" class for the active menu item  -->
-				<li><a href="archivos/listarArchivos.php" target="carga">Gerenciar Arquivos</a></li> <!-- Use the "active" class for the active menu item  -->
+				<li><a href="inicio.html" target="carga" class="active">Inicio</a></li>
+				<li><a href="archivos/listarArchivos.php" target="carga" class="menuanchorclass" rel="anylinkmenu1">Gerenciar Arquivos</a></li>
 				<li><a href="archivos/admGrupos.php" target="carga">Gerenciar Categorias</a></li>
 				<li><a href="admusuarios.php" target="carga">Gerenciar Usuarios</a></li>
 				<li><a href="reportes/index.php" target="carga">Gerar Relatorios</a></li>
 				<li><a href="admacceso.php" target="carga">Gerar Minha Conta</a></li>
-				<li class="logout"><a href="index.php">Sair</a></li>
+				<!--<li class="logout"><a href="index.php">Sair</a></li>-->
 			</ul>
 			<!-- // #end mainNav -->
 
@@ -75,9 +92,10 @@ function MM_swapImage() { //v3.0
 			<div id="container">
 				<div id="sidebar">
 					<ul class="sideNav">
-						<li><a href="archivos/listarArchivos.php" target="carga" class="active">Ver Arquivos</a></li>
-						<li><a href="archivos/addArchivo.php" target="carga" >Adicionar Arquivos</a></li>
-						<li><a href="archivos/buscarArchivos.php" target="carga">Buscar Arquivos</a></li>
+						<!--<li><a href="archivos/listarArchivos.php" target="carga" class="active">Ver Arquivos</a></li>-->
+						<!--<li><a href="archivos/addArchivo.php" target="carga" >Adicionar Arquivos</a></li>-->
+						<!--<li><a href="archivos/buscarArchivos.php" target="carga">Buscar Arquivos</a></li>-->
+						<li><a href="index.php">Sair</a></li>
 					</ul>
 					<!-- // .sideNav -->
 				</div>    

@@ -102,6 +102,31 @@ if (!empty($_SERVER['QUERY_STRING'])) {
   }
 }
 $queryString_rsArchivos = sprintf("&totalRows_rsArchivos=%d%s", $totalRows_rsArchivos, $queryString_rsArchivos);
+
+//Delete one
+if($_GET["del"]!="" and is_numeric($_GET["del"]))
+{
+  $sql = "DELETE FROM archivos where id_archivo=".$_GET["del"];
+  mysql_query($sql);
+  if (!headers_sent()) header('Location: '.$currentPage);
+  else echo '<meta http-equiv="refresh" content="0;url='.$currentPage.'" />';
+}
+
+//Delete multiple
+$arrArchivos = $_POST['archivos'];
+
+$U = count($arrArchivos);
+if($U > 0)
+{
+ foreach($arrArchivos as $id)
+ {
+    $sql = "DELETE FROM archivos where id_archivo=$id";
+    mysql_query($sql);
+    if (!headers_sent()) header('Location: '.$currentPage);
+  	else echo '<meta http-equiv="refresh" content="0;url='.$currentPage.'" />';
+ }
+} 
+
 ?>
 <html>
 <?php include("../includes/head.php") ?>
@@ -109,13 +134,16 @@ $queryString_rsArchivos = sprintf("&totalRows_rsArchivos=%d%s", $totalRows_rsArc
 <body>
     <h3>Ver Arquivos</h3>
     <h3>Arquivos que est&atilde;o atualmente no sistema</h3>
+    <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
     <table cellpadding="0" cellspacing="0">
-      <tr>
+      <tr valign="absmiddle">
+        <td><input type="submit" value="X" name="borrar" /></td>
         <td><b>Editar</b></td>
         <td><b>Nome do Arquivo</b></td>
         <td><b>T&iacute;tulo</b></td>
         <td><b>Descri&ccedil;&atilde;o</b></td>
         <td><b>Professor</b></td>
+        <td><b>Borrar</b></td>
       </tr>
       <?php
         $counter = 0;
@@ -123,32 +151,36 @@ $queryString_rsArchivos = sprintf("&totalRows_rsArchivos=%d%s", $totalRows_rsArc
         {
           ?>
         <tr <?php if($counter % 2) echo " class='odd'"?>>
+          <td>
+            <input name='archivos[]' type='checkbox' value="<?=$row_rsArchivos['id_archivo']?>">
+          </td>
           <td class="action">
             <a href="edicion.php?id_archivo=<?php echo $row_rsArchivos['id_archivo']; ?>">
-            <?php echo $row_rsArchivos['id_archivo']; ?>
+            <?=$row_rsArchivos['id_archivo']; ?>
             </a>
           </td>
-          <td><?php echo $row_rsArchivos['nombreArchivo']; ?></td>
-          <td><?php echo $row_rsArchivos['titulo']; ?></td>
-          <td><a href="editImagen.php?arch=<?php echo $row_rsArchivos['id_archivo']; ?>"></a> <?php echo $row_rsArchivos['texto']; ?></td>
-          <td><?php echo $row_rsArchivos['speaker']; ?></td>
+          <td><?=$row_rsArchivos['nombreArchivo']; ?></td>
+          <td><?=$row_rsArchivos['titulo']; ?></td>
+          <td><a href="editImagen.php?arch=<?=$row_rsArchivos['id_archivo']; ?>"></a> <?=$row_rsArchivos['texto']; ?></td>
+          <td><?=$row_rsArchivos['speaker']; ?></td>
+          <td class="action"><a href="<?=$_SERVER['PHP_SELF']; ?>?del=<?=$row_rsArchivos['id_archivo']?>" onclick="return confirm('Desea Borrar?')">Borrar</a></td>
         </tr>
         <?php
           $counter++;
         }
         while ($row_rsArchivos = mysql_fetch_assoc($rsArchivos)); ?>
         <tr>
-          <td colspan="5">
+          <td colspan="7">
             <?php echo ($startRow_rsArchivos + 1) ?> al <?php echo min($startRow_rsArchivos + $maxRows_rsArchivos, $totalRows_rsArchivos) ?> de <?php echo $totalRows_rsArchivos ?>
           </td>
         </tr>
         <tr>
-          <td colspan="5" align="center">
+          <td colspan="7" align="center">
           <?php
           if ($pageNum_rsArchivos > 0)
           { // Show if not first page ?>
             <a href="<?php printf("%s?pageNum_rsArchivos=%d%s", $currentPage, 0, $queryString_rsArchivos); ?>">
-            <img src="../imagenes/First.gif" border="0">
+            <img src="../imagenes/first.png">
             </a>
             <?php
           } // Show if not first page ?>        
@@ -157,7 +189,7 @@ $queryString_rsArchivos = sprintf("&totalRows_rsArchivos=%d%s", $totalRows_rsArc
           if ($pageNum_rsArchivos > 0)
           { // Show if not first page ?>
             <a href="<?php printf("%s?pageNum_rsArchivos=%d%s", $currentPage, max(0, $pageNum_rsArchivos - 1), $queryString_rsArchivos); ?>">
-            <img src="../imagenes/Previous.gif" border="0">
+            <img src="../imagenes/previous.png">
             </a>
             <?php
           } // Show if not first page ?>
@@ -165,7 +197,7 @@ $queryString_rsArchivos = sprintf("&totalRows_rsArchivos=%d%s", $totalRows_rsArc
           if ($pageNum_rsArchivos < $totalPages_rsArchivos)
           { // Show if not last page ?>
             <a href="<?php printf("%s?pageNum_rsArchivos=%d%s", $currentPage, min($totalPages_rsArchivos, $pageNum_rsArchivos + 1), $queryString_rsArchivos); ?>">
-            <img src="../imagenes/Next.gif" border="0">
+            <img src="../imagenes/next.png">
             </a>
             <?php
           } // Show if not last page ?>
@@ -173,13 +205,14 @@ $queryString_rsArchivos = sprintf("&totalRows_rsArchivos=%d%s", $totalRows_rsArc
           if ($pageNum_rsArchivos < $totalPages_rsArchivos)
           { // Show if not last page ?>
             <a href="<?php printf("%s?pageNum_rsArchivos=%d%s", $currentPage, $totalPages_rsArchivos, $queryString_rsArchivos); ?>">
-            <img src="../imagenes/Last.gif" border="0">
+            <img src="../imagenes/last.png">
             </a>
             <?php
           } // Show if not last page ?>
           </td>
         </tr>
     </table>
+  </form>
 </body>
 </html>
 <?php
