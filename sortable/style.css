@@ -1,0 +1,54 @@
+		#wrapper {
+			width: 990px;
+			margin: 0 auto;
+		}
+				
+		#sortlist, #sortlist2 {
+			width: 360px;
+			margin: 0 auto;
+			padding: 20px;
+			float: left;
+			margin-bottom: 20px;
+			border: 1px solid #a5a1a1;
+			text-align:center;
+		}
+		#sortlist img.sorting,  #sortlist2 img.sorting {
+				float: left; 
+				/*		display: -moz-inline-box;		/* old FireFox doesn't know inline-block 
+				display: inline-block;*/
+				margin: 4px;
+				padding: 4px;
+				border: 1px solid #ccc;
+		}
+		
+		#sortlist img.sorting:hover, #sortlist2 img.sorting:hover { 
+			float: left;
+			margin: 4px;
+			padding: 4px;
+			border: 1px solid #666; 
+			cursor: move;
+		}
+		#activityIndicator, #changeNotification {
+			text-align: center;
+			font: normal 1em georgia, arial, helvetica;
+		}
+		h1 {
+				font: normal 2em georgia, arial, helvetica;
+				margin: 0;
+				padding: 0;
+				color: #D35619;
+		}
+		#tagLine {		
+				color: #d39819;
+				margin: 0 0 15px 0;
+				font-style: italic;
+				font-size: 1.05em;
+				font-family: georgia, arial, helvetica;
+		}		
+		#credits {
+			font: normal 66% verdana, helvetica, arial; 
+			padding: 0.5em 0;
+			margin: 2em 0; 
+			border-top: 1px dotted #c0c0c0;
+			border-bottom: 1px dotted #c0c0c0;
+		}		
