@@ -80,10 +80,9 @@ function MM_swapImage() { //v3.0
 			<ul id="mainNav">
 				<li><a href="inicio.html" target="carga" class="active">Inicio</a></li>
 				<li><a href="archivos/listarArchivos.php" target="carga" class="menuanchorclass" rel="anylinkmenu1">Gerenciar Arquivos</a></li>
-				<li><a href="archivos/admGrupos.php" target="carga">Gerenciar Categorias</a></li>
+				<li><a href="archivos/admGrupos.php" target="carga" class="menuanchorclass" rel="anylinkmenu2">Gerenciar Categorias</a></li>
 				<li><a href="admusuarios.php" target="carga">Gerenciar Usuarios</a></li>
 				<li><a href="reportes/index.php" target="carga">Gerar Relatorios</a></li>
-				<li><a href="admacceso.php" target="carga">Gerar Minha Conta</a></li>
 				<!--<li class="logout"><a href="index.php">Sair</a></li>-->
 			</ul>
 			<!-- // #end mainNav -->
@@ -95,6 +94,7 @@ function MM_swapImage() { //v3.0
 						<!--<li><a href="archivos/listarArchivos.php" target="carga" class="active">Ver Arquivos</a></li>-->
 						<!--<li><a href="archivos/addArchivo.php" target="carga" >Adicionar Arquivos</a></li>-->
 						<!--<li><a href="archivos/buscarArchivos.php" target="carga">Buscar Arquivos</a></li>-->
+						<li><a href="admacceso.php" target="carga">Gerar Minha Conta</a></li>
 						<li><a href="index.php">Sair</a></li>
 					</ul>
 					<!-- // .sideNav -->

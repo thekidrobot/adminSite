@@ -1,10 +1,17 @@
 <?php
-include('../Connections/cnxRamp.php');
-//include('include/class.database.php');        
+include('Connections/cnxRamp.php');
 
-?>
+	session_start();
 
-<?php
+	//validar sesion
+	if($_SESSION["usuario"]=="")
+	{
+  ?>
+		<script language="javascript">
+		document.location="inicio.html";
+		</script>
+  <?
+	}
 
 	if (trim($_POST['nomGrupo']) != "") {
 		
@@ -64,19 +71,19 @@ include('../Connections/cnxRamp.php');
 	<title>RAMP</title>
 
 	<!-- CSS -->
-	<link href="../style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
-	<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="../style/css/ie6.css" /><![endif]-->
-	<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="../style/css/ie7.css" /><![endif]-->
+	<link href="style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
+	<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="style/css/ie6.css" /><![endif]-->
+	<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="style/css/ie7.css" /><![endif]-->
 	
 	<!-- JavaScripts-->
-	<script type="text/javascript" src="../style/js/jquery.js"></script>
-	<script type="text/javascript" src="../style/js/jNice.js"></script>
+	<script type="text/javascript" src="style/js/jquery.js"></script>
+	<script type="text/javascript" src="style/js/jNice.js"></script>
 		
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="pragma" content="no-cache" />
-  <script type="text/javascript" src="scriptaculous/lib/prototype.js"></script>
-  <script type="text/javascript" src="scriptaculous/src/scriptaculous.js"></script>
-	<link rel="stylesheet" type="text/css" href="dragdrop.css" />
+  <script type="text/javascript" src="js/scriptaculous/lib/prototype.js"></script>
+  <script type="text/javascript" src="js/scriptaculous/src/scriptaculous.js"></script>
+	<link rel="stylesheet" type="text/css" href="style/css/dragdrop.css" />
 
 	<script type="text/javascript"> 
 		//<![CDATA[
@@ -89,7 +96,7 @@ include('../Connections/cnxRamp.php');
 								changeEffect = new Effect.Highlight('changeNotification', {restoreColor:"transparent" });
 						},			
 						onUpdate: function(list) {
-								new Ajax.Request("addPerson.php?idGrupo=<?=$idGrupo?>", {
+								new Ajax.Request("includes/addPerson.php?idGrupo=<?=$idGrupo?>", {
 								method: "post",
 								onLoading: function(){$('activityIndicator').show()},
 								onLoaded: function(){$('activityIndicator').hide()},
@@ -105,7 +112,7 @@ include('../Connections/cnxRamp.php');
 						changeEffect = new Effect.Highlight('changeNotification', {restoreColor:"transparent" });
 				},			
 				onUpdate: function(list) {
-								new Ajax.Request("removePerson.php?idGrupo=<?=$idGrupo?>", {
+								new Ajax.Request("includes/removePerson.php?idGrupo=<?=$idGrupo?>", {
 								method: "post",
 								onLoading: function(){$('activityIndicator').show()},
 								onLoaded: function(){$('activityIndicator').hide()},
@@ -145,39 +152,39 @@ include('../Connections/cnxRamp.php');
 			</fieldset>
 		</form>
 		
-		<div>
-				<table>
-						<tr>
-								<td><b>Nombre</b></td>
-								<td class="action"><b>Editar</b></td>
-								<td class="action"><b>Borrar</b></td>
-								<td class="action"><b>Agregar Usuarios</b></td>
-						</tr>
-				<?php
-						$counter = 0;
-						$sql = mysql_query("SELECT * FROM gruposdeusuarios") or die(mysql_error($str));
-						while ($row = mysql_fetch_array($sql)) {  
-								$counter++;
-								?>
-								<tr <?php if($counter % 2) echo " class='odd'"?>>
-										<td><?=$row['nomGrupoDeUsuario']?></td>
-										<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?edit=<?=$row['idGrupoDeUsuario']?>">Editar</a></td>
-										<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idGrupoDeUsuario']?>">Borrar</td>
-										<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?add=<?=$row['idGrupoDeUsuario']?>">Agregar Usuarios</td>
-								</tr>
-								<?php;
-						}  
+		<table>
+			<tr>
+				<td><b>Nombre</b></td>
+				<td class="action"><b>Editar</b></td>
+				<td class="action"><b>Borrar</b></td>
+				<td class="action"><b>Agregar Usuarios</b></td>
+			</tr>
+			<?php
+				$counter = 0;
+				$sql = mysql_query("SELECT * FROM gruposdeusuarios") or die(mysql_error($sql));
+				while ($row = mysql_fetch_array($sql)) {  
+					$counter++;
+					?>
+					<tr <?php if($counter % 2) echo " class='odd'"?>>
+							<td><?=$row['nomGrupoDeUsuario']?></td>
+							<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?edit=<?=$row['idGrupoDeUsuario']?>">Editar</a></td>
+							<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idGrupoDeUsuario']?>" onclick="return confirm('Seguro que desea borrar?')">Borrar</td>
+							<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?add=<?=$row['idGrupoDeUsuario']?>">Agregar Usuarios</td>
+					</tr>
+					<?php;
+				}  
 				?>
 						
-				</table>
-		</div>
+		</table>
 		<?php
 			if($_GET['add'] != '')
 			{
 					?>
+					
 					<p id="changeNotification" style="margin-top:20px">
+						<p align="center"><h3>Arrastre para Modificar</h3></p>
 						<div id="activityIndicator" style="display:none; ">
-						<img src="images/loading_indicator.gif" /> Actualizando Datos...
+						<img src="imagenes/loading_indicator.gif" /> Actualizando Datos...
 						</div>
 					</p>
 					

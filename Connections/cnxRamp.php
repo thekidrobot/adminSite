@@ -12,5 +12,7 @@ $database_cnxRamp = "lfg";
 $username_cnxRamp = "root";
 $password_cnxRamp = "root";
 
-$cnxRamp = mysql_pconnect($hostname_cnxRamp, $username_cnxRamp, $password_cnxRamp) or trigger_error(mysql_error(),E_USER_ERROR); 
+$cnxRamp = mysql_pconnect($hostname_cnxRamp, $username_cnxRamp, $password_cnxRamp) or trigger_error(mysql_error(),E_USER_ERROR);
+mysql_select_db($database_cnxRamp, $cnxRamp);
+
 ?>

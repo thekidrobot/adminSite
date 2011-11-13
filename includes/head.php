@@ -1,6 +1,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Transdmin Light</title>
+<title>RAMP</title>
 
 <!-- CSS -->
 <link href="../style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />

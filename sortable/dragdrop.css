@@ -8,9 +8,9 @@
 			margin: 0 auto;
 			padding: 20px;
 			float: left;
-			margin-bottom: 20px;
+			margin:10px;
 			border: 1px solid #a5a1a1;
-			text-align:center;
+			text-align:left;
 		}
 		#sortlist img.sorting,  #sortlist2 img.sorting {
 				float: left; 
@@ -28,6 +28,23 @@
 			border: 1px solid #666; 
 			cursor: move;
 		}
+		
+		#sortlist li{
+			list-style:none;
+			padding:5px 0px 5px 10px;
+			border:1px solid #7A7A7A;
+			margin-bottom:5px;
+			background-color:#f0f0f0;
+		}
+
+		#sortlist2 li{
+			list-style:none;
+			padding:5px 0px 5px 10px;
+			border:1px solid #000000;
+			margin-bottom:5px;
+			background-color:#f0f0f0;
+		}
+		
 		#activityIndicator, #changeNotification {
 			text-align: center;
 			font: normal 1em georgia, arial, helvetica;
