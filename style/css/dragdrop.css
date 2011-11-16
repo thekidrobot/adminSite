@@ -8,7 +8,7 @@
 			padding:0;			
 		}
 				
-		#sortlist, #sortlist2 {
+		#sortlist, #sortlist2, #sortlist3, #sortlist4 {
 			width: 280px;
 			margin: 0;
 			padding: 20px;
@@ -17,7 +17,7 @@
 			border: 1px solid #a5a1a1;
 			text-align:left;
 		}
-		#sortlist img.sorting,  #sortlist2 img.sorting {
+		#sortlist li.sorting,  #sortlist2 li.sorting, #sortlist3 li.sorting, #sortlist4 li.sorting {
 				float: left; 
 				/*		display: -moz-inline-box;		/* old FireFox doesn't know inline-block 
 				display: inline-block;*/
@@ -26,7 +26,7 @@
 				border: 1px solid #ccc;
 		}
 		
-		#sortlist img.sorting:hover, #sortlist2 img.sorting:hover { 
+		#sortlist li.sorting:hover, #sortlist2 li.sorting:hover, #sortlist3 li.sorting:hover, #sortlist4 li.sorting:hover { 
 			float: left;
 			margin: 4px;
 			padding: 4px;
@@ -34,15 +34,7 @@
 			cursor: move;
 		}
 		
-		#sortlist li{
-			list-style:none;
-			padding:5px 0px 5px 10px;
-			border:1px solid #7A7A7A;
-			margin-bottom:5px;
-			background-color:#f0f0f0;
-		}
-
-		#sortlist2 li{
+		#sortlist li,#sortlist2 li, #sortlist3 li, #sortlist4 li {
 			list-style:none;
 			padding:5px 0px 5px 10px;
 			border:1px solid #7A7A7A;

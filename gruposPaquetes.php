@@ -29,8 +29,12 @@ include('Connections/cnxRamp.php');
 	
 	if(!empty($_GET))
 	{
-		if (trim($_GET['add']) != ""){
-			$str = "select * from paquetes where idPaquete =". $_GET['add'];
+		if (trim($_GET['add_cat']) != "" or trim($_GET['add_usr']) != ""){
+			
+			if (trim($_GET['add_cat']) != "")
+				$str = "select * from paquetes where idPaquete =". $_GET['add_cat'];
+			elseif (trim($_GET['add_usr']) != "")
+				$str = "select * from paquetes where idPaquete =". $_GET['add_usr'];
 		
 			$sql = mysql_query($str) or die(mysql_error($sql));
 			while ($row = mysql_fetch_array($sql)) {  
@@ -84,7 +88,11 @@ include('Connections/cnxRamp.php');
   <script type="text/javascript" src="js/scriptaculous/lib/prototype.js"></script>
   <script type="text/javascript" src="js/scriptaculous/src/scriptaculous.js"></script>
 	<link rel="stylesheet" type="text/css" href="style/css/dragdrop.css" />
-
+	<?php
+	if(trim($_GET['add_cat'] != "")){
+		
+	
+	?>
 	<script type="text/javascript"> 
 		//<![CDATA[
 		document.observe('dom:loaded', function() {
@@ -122,7 +130,53 @@ include('Connections/cnxRamp.php');
 				});	
 		});
 		//]]>
+		</script>
+	<?php
+	}
+	elseif(trim($_GET['add_usr'] != ""))
+	{
+		?>
+		<script type="text/javascript"> 
+		//<![CDATA[
+		document.observe('dom:loaded', function() {
+				var changeEffect;
+				Sortable.create("sortlist2", {containment: ['sortlist', 'sortlist2'], tag:'li', overlap:'horizontal', constraint:false, dropOnEmpty: true,
+						onChange: function(item) {
+								var list = Sortable.options(item).element;
+								if(changeEffect) changeEffect.cancel();
+								changeEffect = new Effect.Highlight('changeNotification', {restoreColor:"transparent" });
+						},			
+						onUpdate: function(list) {
+								new Ajax.Request("includes/addGrupoUsuarioPaquete.php?idPaquete=<?=$idPaquete?>", {
+								method: "post",
+								onLoading: function(){$('activityIndicator').show()},
+								onLoaded: function(){$('activityIndicator').hide()},
+								parameters: { data: Sortable.serialize(list), container: list.id }
+							});				
+						}
+				});			
+		
+				Sortable.create("sortlist", {containment: ['sortlist', 'sortlist2'], tag:'li', overlap:'horizontal', constraint:false, dropOnEmpty: true,
+					onChange: function(item) {
+						var list = Sortable.options(item).element;
+						if(changeEffect) changeEffect.cancel();
+						changeEffect = new Effect.Highlight('changeNotification', {restoreColor:"transparent" });
+				},			
+				onUpdate: function(list) {
+								new Ajax.Request("includes/removeGrupoUsuarioPaquete.php?idPaquete=<?=$idPaquete?>", {
+								method: "post",
+								onLoading: function(){$('activityIndicator').show()},
+								onLoaded: function(){$('activityIndicator').hide()},
+								parameters: { data: Sortable.serialize(list), container: list.id }
+						});
+				}
+				});	
+		});
+		//]]>
 		</script> 
+		<?php
+	}
+	?>
 	</head> 
 	<body> 
 
@@ -157,6 +211,7 @@ include('Connections/cnxRamp.php');
 				<td><b>Nombre</b></td>
 				<td class="action"><b>Editar</b></td>
 				<td class="action"><b>Borrar</b></td>
+				<td class="action"><b>Agregar Grupos de Usuarios</b></td>
 				<td class="action"><b>Agregar Categorias</b></td>
 			</tr>
 			<?php
@@ -169,7 +224,8 @@ include('Connections/cnxRamp.php');
 							<td><?=$row['nomPaquete']?></td>
 							<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?edit=<?=$row['idPaquete']?>">Editar</a></td>
 							<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idPaquete']?>" onclick="return confirm('Seguro que desea borrar?')">Borrar</td>
-							<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?add=<?=$row['idPaquete']?>">Agregar Categorias</td>
+							<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?add_usr=<?=$row['idPaquete']?>">Agregar Grupos de Usuarios</td>
+							<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?add_cat=<?=$row['idPaquete']?>">Agregar Categorias</td>
 					</tr>
 					<?php;
 				}  
@@ -177,7 +233,7 @@ include('Connections/cnxRamp.php');
 						
 		</table>
 		<?php
-			if($_GET['add'] != '')
+			if($_GET['add_cat'] != '')
 			{
 					?>
 					
@@ -217,6 +273,52 @@ include('Connections/cnxRamp.php');
 																	) 	ORDER BY idGrupos ");  
 							while ($row = mysql_fetch_array($sql)) {  
 									?><li id="itemid_<?=$row['idGrupos']?>"><?=$row['grupos']?></li><?php;
+							}  
+					?>
+					</ul>
+					<hr style="clear:both;visibility:hidden;" />            
+					<?php
+			}
+			if($_GET['add_usr'] != '')
+			{
+					?>
+					
+					<p id="changeNotification" style="margin-top:20px">
+						<p align="center"><h3>Arrastre para Modificar</h3></p>
+						<div id="activityIndicator" style="display:none; ">
+						<img src="imagenes/loading_indicator.gif" /> Actualizando Datos...
+						</div>
+					</p>
+					
+					<ul id="sortlist">
+					<h4>Categorias Disponibles</h4>
+					<br/>
+					<br/>
+					<?php  
+					$sql = mysql_query("SELECT * FROM gruposdeusuarios where idGrupoDeUsuario not in
+																	(
+																			select 	idGrupoDeUsuario from gruposusuariospaquetes
+																			where		idPaquete = $idPaquete
+																	) 	ORDER BY idGrupoDeUsuario ");  
+							while ($row = mysql_fetch_array($sql)) {  
+									?><li id="itemid_<?=$row['idGrupoDeUsuario']?>"><?=$row['nomGrupoDeUsuario']?></li><?php;  
+							}  
+					?>
+					</ul>
+			
+					
+					<ul id="sortlist2">
+					<h4>Categorias en <?=$nomPaquete?></h4>
+					<br/>
+					<br/>
+					<?php  
+							$sql = mysql_query("SELECT * FROM gruposdeusuarios where idGrupoDeUsuario in
+																	(
+																			select 	idGrupoDeUsuario from gruposusuariospaquetes
+																			where		idPaquete = $idPaquete
+																	) 	ORDER BY idGrupoDeUsuario ");  
+							while ($row = mysql_fetch_array($sql)) {  
+									?><li id="itemid_<?=$row['idGrupoDeUsuario']?>"><?=$row['nomGrupoDeUsuario']?></li><?php;
 							}  
 					?>
 					</ul>
