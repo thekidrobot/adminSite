@@ -29,12 +29,18 @@ include('Connections/cnxRamp.php');
 	
 	if(!empty($_GET))
 	{
-		if (trim($_GET['add_us']) != "" or trim($_GET['add_pq']) != ""){
-			
 			if(trim($_GET['add_us']) != "")
-			$str = "select * from gruposdeusuarios where idGrupoDeUsuario =". $_GET['add_us'];
+				$str = "select * from gruposdeusuarios where idGrupoDeUsuario =". $_GET['add_us'];
 			elseif (trim($_GET['add_pq']) != "")
-			$str = "select * from gruposdeusuarios where idGrupoDeUsuario =". $_GET['add_pq'];
+				$str = "select * from gruposdeusuarios where idGrupoDeUsuario =". $_GET['add_pq'];
+			elseif (trim($_GET['add_all_us'])!= "")
+				$str = "select * from gruposdeusuarios where idGrupoDeUsuario =". $_GET['add_all_us'];
+			elseif (trim($_GET['rem_all_us']) != "")
+				$str = "select * from gruposdeusuarios where idGrupoDeUsuario =". $_GET['rem_all_us'];
+			elseif (trim($_GET['add_all_pq'])!= "")
+				$str = "select * from gruposdeusuarios where idGrupoDeUsuario =". $_GET['add_all_pq'];
+			elseif (trim($_GET['rem_all_pq']) != "")
+				$str = "select * from gruposdeusuarios where idGrupoDeUsuario =". $_GET['rem_all_pq'];
 		
 			$sql = mysql_query($str) or die(mysql_error($sql));
 			while ($row = mysql_fetch_array($sql)) {  
@@ -42,8 +48,7 @@ include('Connections/cnxRamp.php');
 				$idGrupo = $row['idGrupoDeUsuario'];
 				$nomGrupo = $row['nomGrupoDeUsuario'];
 			}
-		}
-	
+		
 		if (trim($_GET['edit']) != ""){
 			$str = "select * from gruposdeusuarios where idGrupoDeUsuario =". $_GET['edit'];
 		
@@ -59,8 +64,54 @@ include('Connections/cnxRamp.php');
 	if (trim($_GET['delete']) != ""){
 		$str = "delete from gruposdeusuarios where idGrupoDeUsuario =". $_GET['delete'];
 		$sql = mysql_query($str) or die(mysql_error($sql));
-		
+		//Borra de tabla hija
 		$str = "delete from usuariosgruposusuarios where idGrupoDeUsuario =". $_GET['delete'];
+		$sql = mysql_query($str) or die(mysql_error($sql));
+	}
+
+	if (trim($_GET['add_all_us']) != ""){
+		
+		$idGrupo = $_GET['add_all_us'];
+		
+		$str = "SELECT * FROM usuarios where IdUsuario not in
+						(
+								select 	IdUsuario from usuariosgruposusuarios
+								where		idGrupoDeUsuario = $idGrupo
+						) 	ORDER BY IdUsuario";
+		$sql = mysql_query($str) or die(mysql_error($sql));
+		
+		while ($row = mysql_fetch_array($sql))
+		{
+			$str_add_alluser = "INSERT INTO usuariosgruposusuarios (idGrupoDeUsuario,IdUsuario) VALUES ($idGrupo,".$row['IdUsuario'].")";
+			$sql_add_alluser = mysql_query($str_add_alluser) or die(mysql_error($sql_add_alluser));
+		}	
+	}
+	
+	if (trim($_GET['rem_all_us']) != ""){
+		$str = "delete from usuariosgruposusuarios where idGrupoDeUsuario =". $_GET['rem_all_us'];
+		$sql = mysql_query($str) or die(mysql_error($sql));
+	}
+	
+	if (trim($_GET['add_all_pq']) != ""){
+	
+	$idGrupo = $_GET['add_all_pq'];
+	
+	$str = "SELECT * FROM paquetes where idPaquete not in
+					(
+							select 	idPaquete from paquetesgrupos
+							where		idGrupos = $idGrupo
+					) 	ORDER BY idPaquete";
+	$sql = mysql_query($str) or die(mysql_error($sql));
+	
+		while ($row = mysql_fetch_array($sql))
+		{
+			$str_add_allpaq = "INSERT INTO paquetesgrupos (idPaquete,idGrupos) VALUES (".$row['idPaquete'].",$idGrupo)";
+			$sql_add_allpaq = mysql_query($str_add_allpaq) or die(mysql_error($sql_add_allpaq));
+		}	
+	}
+	
+	if (trim($_GET['rem_all_pq']) != ""){
+		$str = "delete from paquetesgrupos where idGrupos =". $_GET['rem_all_pq'];
 		$sql = mysql_query($str) or die(mysql_error($sql));
 	}
 	
@@ -236,7 +287,7 @@ include('Connections/cnxRamp.php');
 						
 		</table>
 		<?php
-			if($_GET['add_us'] != '')
+			if($_GET['add_us'] != '' or $_GET['add_all_us'] != '' or $_GET['rem_all_us'] != '')
 			{
 					?>
 					
@@ -248,7 +299,7 @@ include('Connections/cnxRamp.php');
 					</p>
 					
 					<ul id="sortlist">
-					<h4>Usuarios Disponibles</h4>
+					<h4>Usuarios Disponibles &gt;&gt; <a href="<?=$_SERVER['PHP_SELF']?>?add_all_us=<?=$idGrupo?>">Agregar todos</a></h4>
 					<br/>
 					<br/>
 					<?php  
@@ -265,7 +316,7 @@ include('Connections/cnxRamp.php');
 			
 					
 					<ul id="sortlist2">
-					<h4>Usuarios en <?=$nomGrupo?></h4>
+					<h4>Usuarios en <?=$nomGrupo?> &gt;&gt; <a href="<?=$_SERVER['PHP_SELF']?>?rem_all_us=<?=$idGrupo?>">Remover todos</a></h4>
 					<br/>
 					<br/>
 					<?php  
@@ -282,7 +333,7 @@ include('Connections/cnxRamp.php');
 					<hr style="clear:both;visibility:hidden;" />            
 					<?php
 			}
-			elseif($_GET['add_pq'] != '')
+			elseif($_GET['add_pq'] != '' or $_GET['add_all_pq'] != '' or $_GET['rem_all_pq'] != '')
 			{
 					?>
 					
@@ -294,16 +345,17 @@ include('Connections/cnxRamp.php');
 					</p>
 					
 					<ul id="sortlist">
-					<h4>Paquetes Disponibles</h4>
+					<h4>Paquetes Disponibles &gt;&gt; <a href="<?=$_SERVER['PHP_SELF']?>?add_all_pq=<?=$idGrupo?>">Agregar Todos</a></h4>
 					<br/>
 					<br/>
 					<?php
+					$str = "SELECT * FROM paquetes where idPaquete not in
+									(
+											select 	idPaquete from paquetesgrupos
+											where		idGrupos = $idGrupo
+									) 	ORDER BY idPaquete ";
 					
-					$sql = mysql_query("SELECT * FROM paquetes where idPaquete not in
-																	(
-																			select 	idPaquete from paquetesgrupos
-																			where		idGrupos = $idGrupo
-																	) 	ORDER BY idPaquete ");  
+					$sql = mysql_query($str);  
 							while ($row = mysql_fetch_array($sql)) {  
 									?><li id="itemid_<?=$row['idPaquete']?>"><?=$row['nomPaquete']?></li><?php;  
 							}
@@ -313,15 +365,16 @@ include('Connections/cnxRamp.php');
 			
 					
 					<ul id="sortlist2">
-					<h4>Paquetes en <?=$nomGrupo?></h4>
+					<h4>Paquetes en <?=$nomGrupo?> &gt;&gt; <a href="<?=$_SERVER['PHP_SELF']?>?rem_all_pq=<?=$idGrupo?>">Remover Todos</a></h4>
 					<br/>
 					<br/>
-					<?php  
-					$sql = mysql_query("SELECT * FROM paquetes where idPaquete in
-																	(
-																			select 	idPaquete from paquetesgrupos
-																			where		idGrupos = $idGrupo
-																	) 	ORDER BY idPaquete ");  
+					<?php
+					$str = "SELECT * FROM paquetes where idPaquete in
+									(
+											select 	idPaquete from paquetesgrupos
+											where		idGrupos = $idGrupo
+									) 	ORDER BY idPaquete ";
+					$sql = mysql_query($str);
 							while ($row = mysql_fetch_array($sql)) {  
 									?><li id="itemid_<?=$row['idPaquete']?>"><?=$row['nomPaquete']?></li><?php;
 							}  

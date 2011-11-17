@@ -4,7 +4,7 @@
 				$idGrupo = $_GET['idGrupo'];
         parse_str($_POST['data']);
         for ($i = 0; $i < count($sortlist2); $i++) {
-								$str = "INSERT ignore INTO paquetesgrupos VALUES ($idGrupo,$sortlist2[$i])";
+								$str = "INSERT ignore INTO paquetesgrupos (idPaquete,idGrupos) VALUES ($sortlist2[$i],$idGrupo)";
 								$sql = mysql_query($str) or die(mysql_error($str));
         }
         sleep(1);
