@@ -29,12 +29,24 @@ include('Connections/cnxRamp.php');
 	
 	if(!empty($_GET))
 	{
-		if (trim($_GET['add_cat']) != "" or trim($_GET['add_usr']) != ""){
+		if (trim($_GET['add_cat']) != "" or trim($_GET['add_usr']) != ""
+				or trim($_GET['add_all_cat']) != "" or trim($_GET['rem_all_cat']) != ""
+				or trim($_GET['add_all_grp']) != "" or trim($_GET['rem_all_grp']) != ""){
 			
 			if (trim($_GET['add_cat']) != "")
 				$str = "select * from paquetes where idPaquete =". $_GET['add_cat'];
 			elseif (trim($_GET['add_usr']) != "")
 				$str = "select * from paquetes where idPaquete =". $_GET['add_usr'];
+
+			if (trim($_GET['add_all_cat']) != "")
+				$str = "select * from paquetes where idPaquete =". $_GET['add_all_cat'];
+			elseif (trim($_GET['rem_all_cat']) != "")
+				$str = "select * from paquetes where idPaquete =". $_GET['rem_all_cat'];
+
+			if (trim($_GET['add_all_grp']) != "")
+				$str = "select * from paquetes where idPaquete =". $_GET['add_all_grp'];
+			elseif (trim($_GET['rem_all_grp']) != "")
+				$str = "select * from paquetes where idPaquete =". $_GET['rem_all_grp'];
 		
 			$sql = mysql_query($str) or die(mysql_error($sql));
 			while ($row = mysql_fetch_array($sql)) {  
@@ -64,6 +76,53 @@ include('Connections/cnxRamp.php');
 		$sql = mysql_query($str) or die(mysql_error($sql));
 	}
 	
+	//Agregar todas las Categorias
+	if (trim($_GET['add_all_cat']) != ""){
+	
+		$idPaquete = $_GET['add_all_cat'];
+	
+		$str = "SELECT * FROM grupos where idGrupos not in
+						(
+								select 	idGrupos from paquetesgrupos
+								where		idPaquete = $idPaquete
+						) 	ORDER BY idGrupos ";
+		$sql = mysql_query($str) or die(mysql_error($sql));
+		
+		while ($row = mysql_fetch_array($sql)){
+			$str_add_allcat = "INSERT INTO paquetesgrupos(idPaquete,idGrupos) VALUES ($idPaquete,".$row['idGrupos'].")";
+			$sql_add_allcat = mysql_query($str_add_allcat) or die(mysql_error($sql_add_allcat));
+		}	
+	}
+	
+	//Remover todas las categorias
+	if (trim($_GET['rem_all_cat']) != ""){
+		$str = "delete from paquetesgrupos where idPaquete = ". $_GET['rem_all_cat'];
+		$sql = mysql_query($str) or die(mysql_error($sql));
+	}
+
+	//Agregar todos los grp. de usuario
+	if (trim($_GET['add_all_grp']) != ""){
+	
+		$idPaquete = $_GET['add_all_grp'];
+	
+		$str = "SELECT * FROM gruposdeusuarios where idGrupoDeUsuario not in
+						(
+								select 	idGrupoDeUsuario from gruposusuariospaquetes
+								where		idPaquete = $idPaquete
+						) 	ORDER BY idGrupoDeUsuario ";
+		$sql = mysql_query($str) or die(mysql_error($sql));
+		
+		while ($row = mysql_fetch_array($sql)){
+			$str_add_allcat = "INSERT INTO gruposusuariospaquetes (idPaquete,idGrupoDeUsuario) VALUES($idPaquete,".$row['idGrupoDeUsuario'].")";
+			$sql_add_allcat = mysql_query($str_add_allcat) or die(mysql_error($sql_add_allcat));
+		}	
+	}
+	//Remover todos los grp. de usuario
+	if (trim($_GET['rem_all_grp']) != ""){
+		$str = "delete from gruposusuariospaquetes where idPaquete = ". $_GET['rem_all_grp'];
+		$sql = mysql_query($str) or die(mysql_error($sql));
+	}
+	
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
@@ -89,7 +148,7 @@ include('Connections/cnxRamp.php');
   <script type="text/javascript" src="js/scriptaculous/src/scriptaculous.js"></script>
 	<link rel="stylesheet" type="text/css" href="style/css/dragdrop.css" />
 	<?php
-	if(trim($_GET['add_cat'] != "")){
+	if(trim($_GET['add_cat'] != "") or trim($_GET['add_all_cat']) != "" or trim($_GET['rem_all_cat']) != ""){
 		
 	
 	?>
@@ -133,7 +192,7 @@ include('Connections/cnxRamp.php');
 		</script>
 	<?php
 	}
-	elseif(trim($_GET['add_usr'] != ""))
+	elseif(trim($_GET['add_usr'] != "" or trim($_GET['add_all_grp']) != "" or trim($_GET['rem_all_grp']) != ""))
 	{
 		?>
 		<script type="text/javascript"> 
@@ -233,7 +292,7 @@ include('Connections/cnxRamp.php');
 						
 		</table>
 		<?php
-			if($_GET['add_cat'] != '')
+			if(trim($_GET['add_cat']) != '' or trim($_GET['add_all_cat']) != "" or trim($_GET['rem_all_cat']) != "")
 			{
 					?>
 					
@@ -245,7 +304,7 @@ include('Connections/cnxRamp.php');
 					</p>
 					
 					<ul id="sortlist">
-					<h4>Categorias Disponibles</h4>
+					<h4>Categorias Disponibles &gt;&gt; <a href="<?=$_SERVER['PHP_SELF']?>?add_all_cat=<?=$idPaquete?>">Agregar todas</a></h4>
 					<br/>
 					<br/>
 					<?php  
@@ -262,7 +321,7 @@ include('Connections/cnxRamp.php');
 			
 					
 					<ul id="sortlist2">
-					<h4>Categorias en <?=$nomPaquete?></h4>
+					<h4>Categorias en <?=$nomPaquete?> &gt;&gt; <a href="<?=$_SERVER['PHP_SELF']?>?rem_all_cat=<?=$idPaquete?>">Eliminar todas</a></h4>
 					<br/>
 					<br/>
 					<?php  
@@ -279,7 +338,7 @@ include('Connections/cnxRamp.php');
 					<hr style="clear:both;visibility:hidden;" />            
 					<?php
 			}
-			if($_GET['add_usr'] != '')
+			if(trim($_GET['add_usr']) != '' or trim($_GET['add_all_grp']) != "" or trim($_GET['rem_all_grp']) != "")
 			{
 					?>
 					
@@ -291,7 +350,7 @@ include('Connections/cnxRamp.php');
 					</p>
 					
 					<ul id="sortlist">
-					<h4>Categorias Disponibles</h4>
+					<h4>Grupos Disponibles &gt;&gt; <a href="<?=$_SERVER['PHP_SELF']?>?add_all_grp=<?=$idPaquete?>">Agregar todos</a></h4>
 					<br/>
 					<br/>
 					<?php  
@@ -308,7 +367,7 @@ include('Connections/cnxRamp.php');
 			
 					
 					<ul id="sortlist2">
-					<h4>Categorias en <?=$nomPaquete?></h4>
+					<h4>Grupos en <?=$nomPaquete?> &gt;&gt; <a href="<?=$_SERVER['PHP_SELF']?>?rem_all_grp=<?=$idPaquete?>">Eliminar todos</a></h4>
 					<br/>
 					<br/>
 					<?php  

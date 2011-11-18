@@ -141,7 +141,7 @@ include('Connections/cnxRamp.php');
 	<link rel="stylesheet" type="text/css" href="style/css/dragdrop.css" />
 
 	<?php
-	if(trim($_GET['add_us']) != ""){
+	if(trim($_GET['add_us']) != '' or trim($_GET['add_all_us']) != '' or trim($_GET['rem_all_us']) != ''){
 	?>	
 	<script type="text/javascript"> 
 		//<![CDATA[
@@ -185,7 +185,7 @@ include('Connections/cnxRamp.php');
 		</script>
 		<?php
 		}
-		elseif(trim($_GET['add_pq'])!="")
+		elseif(trim($_GET['add_pq']) != '' or trim($_GET['add_all_pq']) != '' or trim($_GET['rem_all_pq']) != '')
 		{
 		?>
 			<script type="text/javascript"> 

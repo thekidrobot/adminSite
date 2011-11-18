@@ -7,6 +7,12 @@
 			margin: 0;
 			padding:0;			
 		}
+		
+		#sortlist a, #sortlist2 a, #sortlist3 a, #sortlist4 a {
+			font-weight:bold;
+			text-decoration:none;
+			color:#7A7A7A;
+		}
 				
 		#sortlist, #sortlist2, #sortlist3, #sortlist4 {
 			width: 280px;
