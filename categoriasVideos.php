@@ -20,6 +20,16 @@ include("includes/pagination/ps_pagination.php");
 	if($N > 0)
 	{
 		$idGrupos = $_POST['idGrupos'];
+		
+		$str = "select * from grupos where idGrupos =".$idGrupos;
+		$sql = mysql_query($str) or die(mysql_error($sql));
+		while ($row = mysql_fetch_array($sql)) {  
+			$idGrupos = $row['idGrupos'];
+			$nomGrupo = $row['grupos'];
+			$padre = $row['padre'];
+			$categoria = $row['categoria'];
+		}
+		
 		for($i=0; $i < $N; $i++)
 		{
 			$str = "INSERT INTO archivos_grupo (id_grupo,id_archivo,fecha_inserta)
@@ -34,6 +44,15 @@ include("includes/pagination/ps_pagination.php");
 	if($N > 0)
 	{
 		$idGrupos = $_POST['idGrupos'];
+		$str = "select * from grupos where idGrupos =".$idGrupos;
+		$sql = mysql_query($str) or die(mysql_error($sql));
+		while ($row = mysql_fetch_array($sql)) {  
+			$idGrupos = $row['idGrupos'];
+			$nomGrupo = $row['grupos'];
+			$padre = $row['padre'];
+			$categoria = $row['categoria'];
+		}
+
 		for($i=0; $i < $N; $i++)
 		{
 			$str = "delete from archivos_grupo where id_archivo = ".$remItems[$i]." and id_grupo =".$idGrupos;
@@ -146,322 +165,21 @@ include("includes/pagination/ps_pagination.php");
 	
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 	<title>RAMP</title>
-
-	<style type="text/css">
-	body{
-		font-family: Trebuchet MS, Lucida Sans Unicode, Arial, sans-serif;
-	}
-	p{
-		margin-top:0px;
-	}
-	#dhtmlgoodies_scrolldiv{
-		/* The total width of the scrolling div including scrollbar */
-		width:700px;
-		height:400px;	/* The height of the scrolling div */
-	}
-	#scrolldiv_parentContainer{
-		width:700px;	/* Width of the scrolling text */
-		height:100%;
-		overflow:hidden;
-		border:1px solid #BC8FBD;
-		float:left;
-		position:relative;
-	}
-	
-	/*
-	CSS for the scrolling content 
-	*/
-	#scrolldiv_content{
-		padding: 5px;
-		position:relative;
-		font-family: Trebuchet MS, Lucida Sans Unicode, Arial, sans-serif;
-		font-size: 0.9em;
-		line-height:130%;
-		color: #333;
-	}
-	
-	/*
-	The scrollbar slider 
-	*/
-	#scrolldiv_slider{
-		width:15px;
-		margin-left:2px;
-		height:500px;
-		float:left;
-	}
-	
-	/*
-	The scrollbar (The bar between the up and down arrow )
-	*/
-	#scrolldiv_scrollbar{
-		width:15px;
-		height:460px;	/* Total height - 40 pixels */
-		border:1px solid #BC8FBD;
-		position:relative;
-		
-	}
-	/*
-	The scrollbar handle
-	*/
-	#scrolldiv_theScroll{
-		margin:1px;
-		width:13px;
-		height:13px;
-		background-color:#BC8FBD;
-		position:absolute;	
-		top:0px;
-		left:0px;
-		cursor:pointer;
-	}
-	/*
-	Scroll buttons(The up and down arrows)
-	*/
-	#scrolldiv_scrollUp,#scrolldiv_scrollDown{
-		width:15px;
-		height:16px;
-		border:1px solid #BC8FBD;
-		color: #BC8FBD;
-		text-align:center;
-		font-size:16px;
-		line-height:16px;
-		cursor:pointer;
-	}
-	#scrolldiv_scrollUp{
-		margin-bottom:2px;
-	}
-	#scrolldiv_scrollDown{
-		margin-top:2px;
-	}
-	#scrolldiv_scrollDown span,#scrolldiv_scrollUp span{
-		font-family: Symbol;
-	}
-
-	</style>
-	<script type="text/javascript">
-	/************************************************************************************************************
-	(C) www.dhtmlgoodies.com, September 2005
-	
-	This is a script from www.dhtmlgoodies.com. You will find this and a lot of other scripts at our website.	
-	
-	Terms of use:
-	You are free to use this script as long as the copyright message is kept intact. However, you may not
-	redistribute, sell or repost it without our permission.
-	
-	Thank you!
-	
-	www.dhtmlgoodies.com
-	Alf Magne Kalleland
-	
-	************************************************************************************************************/	
-	var contentHeight = 0; 	// The total height of the content
-	var visibleContentHeight = 0;	
-	var scrollActive = false;
-	
-	var scrollHandleObj = false; // reference to the scroll handle
-	var scrollHandleHeight = false;
-	var scrollbarTop = false;
-	var eventYPos = false;
-
-	var scrollbuttonActive = false;
-	var scrollbuttonDirection = false;
-	var scrollbuttonSpeed = 2; // How fast the content scrolls when you click the scroll buttons(Up and down arrows)
-	var scrollTimer = 10;	// Also how fast the content scrolls. By decreasing this value, the content will move faster	
-	
-	var scrollMoveToActive = false;
-	var scrollMoveToYPosition = false;
-	function scrollDiv_startScroll(e)
-	{
-		if(document.all)e = event;
-		scrollbarTop = document.getElementById('scrolldiv_theScroll').offsetTop;
-		eventYPos = e.clientY;
-		scrollActive = true;
-	}
-	
-	function scrollDiv_stopScroll()
-	{
-		scrollActive = false;
-		scrollbuttonActive = false;
-		scrollMoveToActive = false;
-	}
-	function scrollDiv_scroll(e)
-	{
-		if(!scrollActive)return;
-		if(document.all)e = event;
-		if(e.button!=1 && document.all)return;
-		var topPos = scrollbarTop + e.clientY - eventYPos; 
-		if(topPos<0)topPos=0;
-		if(topPos/1>visibleContentHeight-(scrollHandleHeight+4)/1)topPos = visibleContentHeight-(scrollHandleHeight+4);
-		document.getElementById('scrolldiv_theScroll').style.top = topPos + 'px';
-		document.getElementById('scrolldiv_content').style.top = 0 - Math.floor((contentHeight) * ((topPos)/(visibleContentHeight-scrollHandleHeight)))+'px' 
-	}
-	
-	/*
-	Click on the slider
-	Move the content to the this point
-	*/
-	function scrolldiv_scrollMoveToInit(e)
-	{		
-		if(document.all)e = event;
-		scrollMoveToActive = true;
-		scrollMoveToYPosition = e.clientY - document.getElementById('scrolldiv_scrollbar').offsetTop;
-		if(document.getElementById('scrolldiv_theScroll').offsetTop/1 > scrollMoveToYPosition) scrollbuttonDirection = scrollbuttonSpeed*-2; else  scrollbuttonDirection = scrollbuttonSpeed*2;
-		scrolldiv_scrollMoveTo();	
-	}
-	
-	function scrolldiv_scrollMoveTo()
-	{
-		if(!scrollMoveToActive || scrollActive)return;
-		var topPos = document.getElementById('scrolldiv_theScroll').style.top.replace('px','');
-		topPos = topPos/1 + scrollbuttonDirection;
-		if(topPos<0){
-			topPos=0;
-			scrollMoveToActive=false;
-		}
-		if(topPos/1>visibleContentHeight-(scrollHandleHeight+4)/1){
-			topPos = visibleContentHeight-(scrollHandleHeight+4);	
-			scrollMoveToActive=false;
-		}
-		if(scrollbuttonDirection<0 && topPos<scrollMoveToYPosition-scrollHandleHeight/2)return;	
-		if(scrollbuttonDirection>0 && topPos>scrollMoveToYPosition-scrollHandleHeight/2)return;			
-		document.getElementById('scrolldiv_theScroll').style.top = topPos + 'px';
-		document.getElementById('scrolldiv_content').style.top = 0 - Math.floor((contentHeight) * ((topPos)/(visibleContentHeight-scrollHandleHeight)))+'px' 		
-		setTimeout('scrolldiv_scrollMoveTo()',scrollTimer);		
-	}
-	
-	function cancelEvent()
-	{
-		return false;			
-	}
-
-	function scrolldiv_scrollButton()
-	{
-		if(this.id=='scrolldiv_scrollDown')scrollbuttonDirection = scrollbuttonSpeed; else scrollbuttonDirection = scrollbuttonSpeed*-1;
-		scrollbuttonActive=true;
-		scrolldiv_scrollButtonScroll();
-	}
-	function scrolldiv_scrollButtonScroll()
-	{
-		if(!scrollbuttonActive)return;
-		var topPos = document.getElementById('scrolldiv_theScroll').style.top.replace('px','');
-		topPos = topPos/1 + scrollbuttonDirection;
-		if(topPos<0){
-			topPos=0;
-			scrollbuttonActive=false;
-		}
-		if(topPos/1>visibleContentHeight-(scrollHandleHeight+4)/1){
-			topPos = visibleContentHeight-(scrollHandleHeight+4);	
-			scrollbuttonActive=false;
-		}	
-		document.getElementById('scrolldiv_theScroll').style.top = topPos + 'px';
-		document.getElementById('scrolldiv_content').style.top = 0 - Math.floor((contentHeight) * ((topPos)/(visibleContentHeight-scrollHandleHeight)))+'px' 			
-		setTimeout('scrolldiv_scrollButtonScroll()',scrollTimer);
-	}
-	function scrolldiv_scrollButtonStop()
-	{
-		scrollbuttonActive = false;
-	}
-	
-	
-	function scrolldiv_initScroll()
-	{
-		visibleContentHeight = document.getElementById('scrolldiv_scrollbar').offsetHeight ;
-		contentHeight = document.getElementById('scrolldiv_content').offsetHeight - visibleContentHeight;		
-		scrollHandleObj = document.getElementById('scrolldiv_theScroll');
-		scrollHandleHeight = scrollHandleObj.offsetHeight;
-		scrollbarTop = document.getElementById('scrolldiv_scrollbar').offsetTop;		
-		document.getElementById('scrolldiv_theScroll').onmousedown = scrollDiv_startScroll;
-		document.body.onmousemove = scrollDiv_scroll;
-		document.getElementById('scrolldiv_scrollbar').onselectstart = cancelEvent;
-		document.getElementById('scrolldiv_theScroll').onmouseup = scrollDiv_stopScroll;
-		if(document.all)document.body.onmouseup = scrollDiv_stopScroll; else document.documentElement.onmouseup = scrollDiv_stopScroll;
-		document.getElementById('scrolldiv_scrollDown').onmousedown = scrolldiv_scrollButton;
-		document.getElementById('scrolldiv_scrollUp').onmousedown = scrolldiv_scrollButton;
-		document.getElementById('scrolldiv_scrollDown').onmouseup = scrolldiv_scrollButtonStop;
-		document.getElementById('scrolldiv_scrollUp').onmouseup = scrolldiv_scrollButtonStop;
-		document.getElementById('scrolldiv_scrollUp').onselectstart = cancelEvent;
-		document.getElementById('scrolldiv_scrollDown').onselectstart = cancelEvent;
-		document.getElementById('scrolldiv_scrollbar').onmousedown = scrolldiv_scrollMoveToInit;
-	}
-	/*
-	Change from the default color
-	*/	
-	function scrolldiv_setColor(rgbColor)
-	{
-		document.getElementById('scrolldiv_scrollbar').style.borderColor = rgbColor;
-		document.getElementById('scrolldiv_theScroll').style.backgroundColor = rgbColor;
-		document.getElementById('scrolldiv_scrollUp').style.borderColor = rgbColor;
-		document.getElementById('scrolldiv_scrollDown').style.borderColor = rgbColor;
-		document.getElementById('scrolldiv_scrollUp').style.color = rgbColor;
-		document.getElementById('scrolldiv_scrollDown').style.color = rgbColor;
-		document.getElementById('scrolldiv_parentContainer').style.borderColor = rgbColor;
-	}
-	/*
-	Setting total width of scrolling div
-	*/
-	function scrolldiv_setWidth(newWidth)
-	{
-		document.getElementById('dhtmlgoodies_scrolldiv').style.width = newWidth + 'px';
-		document.getElementById('scrolldiv_parentContainer').style.width = newWidth-30 + 'px';		
-	}
-	
-	/*
-	Setting total height of scrolling div
-	*/
-	function scrolldiv_setHeight(newHeight)
-	{
-		document.getElementById('dhtmlgoodies_scrolldiv').style.height = newHeight + 'px';
-		document.getElementById('scrolldiv_parentContainer').style.height = newHeight + 'px';
-		document.getElementById('scrolldiv_slider').style.height = newHeight + 'px';
-		document.getElementById('scrolldiv_scrollbar').style.height = newHeight-40 + 'px';		
-	}
-	/*
-	Setting new background color to the slider 
-	*/
-	function setSliderBgColor(rgbColor)
-	{
-		document.getElementById('scrolldiv_scrollbar').style.backgroundColor = rgbColor;
-		document.getElementById('scrolldiv_scrollUp').style.backgroundColor = rgbColor;
-		document.getElementById('scrolldiv_scrollDown').style.backgroundColor = rgbColor;
-	}
-	/*
-	Setting new content background color
-	*/
-	function setContentBgColor(rgbColor)
-	{
-		document.getElementById('scrolldiv_parentContainer').style.backgroundColor = rgbColor;
-	}
-	
-	/*
-	Setting scroll button speed
-	*/
-	function setScrollButtonSpeed(newScrollButtonSpeed)
-	{
-		scrollbuttonSpeed = newScrollButtonSpeed;
-	}
-	/*
-	Setting interval of the scroll
-	*/
-	function setScrollTimer(newInterval)
-	{
-		scrollTimer = newInterval;
-	}
-	
-	</script>
-
-
 	<!-- CSS -->
+	<link href="style/css/scrollingContent.css" rel="stylesheet" type="text/css" media="screen" />
 	<link href="style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
 	<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="style/css/ie6.css" /><![endif]-->
 	<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="style/css/ie7.css" /><![endif]-->
 	
 	<!-- JavaScripts-->
+	<script type="text/javascript" src="style/js/toggleShowHide.js"></script>
+	<script type="text/javascript" src="style/js/scrollingContent.js"></script>
 	<script type="text/javascript" src="style/js/jquery.js"></script>
 	<script type="text/javascript" src="style/js/jNice.js"></script>
 		
@@ -514,7 +232,24 @@ include("includes/pagination/ps_pagination.php");
 	<body> 
 
 		<div id="wrapper">
-		<h3>Categorias</h3>
+		<div id="headerDiv">
+			<h3>Categorias &gt;&gt; <a id="myHeader" href="javascript:toggle('myContent','myHeader');" >Click para Agregar</a></h3>
+		</div>
+
+		<div id="contentDiv">
+			<?php
+				if($_GET['edit'] != ''){
+				?>
+				<div id="myContent" style="display: block;">
+				<?
+				}
+				else{
+					?>
+					<div id="myContent" style="display: none;">
+					<?
+				}
+			?>	
+			
 		<form action="<?=$_SERVER['PHP_SELF']?>" method="post" class="jNice">
 			<fieldset>
 				<p>
@@ -564,17 +299,19 @@ include("includes/pagination/ps_pagination.php");
 					<?	
 			}
 			?>
+				<a href="<?=$_SERVER['PHP_SELF']?>"><input type="button" value="Limpiar" class="button-submit" /></a>
 			</fieldset>
 		</form>
+			
+		</div></div>
 		
 		<form action="<?=$_SERVER['PHP_SELF']?>" method="post">		
 		<table>
 			<tr>
-				<td><input type="submit" value="X" name="borrar" onclick="return confirm('Desea Borrar?')" /></td>
+				<td align="center" style="padding:5px 0px 5px 0px"><input class="button-submit" type="submit" value="Borrar Seleccion" name="borrar" onclick="return confirm('Desea borrar los elementos seleccionados?')" /></label></td>
 				<td><b>Nombre</b></td>
-				<td class="action"><b>Editar</b></td>
+				<td><b>Señal</b></td>
 				<td class="action"><b>Borrar</b></td>
-				<td><b>Senal</b></td>
 				<td class="action"><b>Agregar Videos</b></td>
 			</tr>
 			<?php
@@ -589,11 +326,10 @@ include("includes/pagination/ps_pagination.php");
 					?>
 					<!--	ToDo: Validar Borrado de categorias con hijos				-->
 					<tr <?php if($counter % 2) echo " class='odd'"?>>
-							<td><input name='archivos[]' type='checkbox' value="<?=$row['idGrupos']?>"></td>
-							<td><?=ucfirst(strtolower($row['grupos']))?></td>
-							<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?edit=<?=$row['idGrupos']?>">Editar</a></td>
-							<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idGrupos']?>" onclick="return confirm('Seguro que desea borrar?')">Borrar</td>
+							<td align="center"><input name='archivos[]' type='checkbox' value="<?=$row['idGrupos']?>"></td>
+							<td><a href="<?=$_SERVER['PHP_SELF']?>?edit=<?=$row['idGrupos']?>" ><?=ucfirst(strtolower($row['grupos']))?></a></td>
 							<td align="left"><?=$row['categoria']?></td>
+							<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idGrupos']?>" onclick="return confirm('Seguro que desea borrar?')">Borrar</td>
 							<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?add_us=<?=$row['idGrupos']?>">Agregar Videos</td>
 					</tr>
 					<?php;
@@ -608,99 +344,81 @@ include("includes/pagination/ps_pagination.php");
 		</form>
 		<br />
 		<br />
-		
 		<?php
-			if($_GET['add_us'] != '' or $_GET['add_all_us'] != '' or $_GET['rem_all_us'] != '')
-			{
-					?>
+		if($_GET['add_us'] != '' or $_GET['add_all_us'] != '' or $_GET['rem_all_us'] != '' or $_POST['idGrupos'] != '')
+		{
+			?>
+			<div id="dhtmlgoodies_scrolldiv">
+				<div id="scrolldiv_parentContainer">
+					<div id="scrolldiv_content">
 
-				<div id="dhtmlgoodies_scrolldiv">
-					<div id="scrolldiv_parentContainer">
-						<div id="scrolldiv_content">
+						<p id="changeNotification" style="margin-top:20px">
+							<p align="center"><h3>Arrastre para Modificar</h3></p>
+							<div id="activityIndicator" style="display:none; ">
+								<img src="imagenes/loading_indicator.gif" /> Actualizando Datos...
+							</div>
+						</p>
 					
-					<p id="changeNotification" style="margin-top:20px">
-						<p align="center"><h3>Arrastre para Modificar</h3></p>
-						<div id="activityIndicator" style="display:none; ">
-						<img src="imagenes/loading_indicator.gif" /> Actualizando Datos...
-						</div>
-					</p>
-					
-					<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-					<ul id="sortlist">
-					<h4>Videos Disponibles &gt;&gt; <a href="<?=$_SERVER['PHP_SELF']?>?add_all_us=<?=$idGrupos?>">Agregar todos</a></h4>
-					<br />
-					<input type="submit" name="a_selected" value="add selected" />
-					<input type="hidden" value="<?=$idGrupos?>" name="idGrupos" />
-					<br/>
-					<br/>
-					<?php
-					
-						$sql = mysql_query("SELECT * FROM archivos where id_archivo not in
-										(
-												select 	id_archivo from archivos_grupo
-												where		id_grupo = $idGrupos
-										) 	ORDER BY id_archivo ");
-									
-							while ($row = mysql_fetch_array($sql)) {  
-									?><li id="itemid_<?=$row['id_archivo']?>"><input type="checkbox" name="addItems[]" value="<?=$row['id_archivo']?>" /><?=$row['nombreArchivo']?></li><?php;  
-							}
-
-					?>
-					</ul>
-					</form>
-					
-					<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-					<ul id="sortlist2">
-					<h4>Videos en <?=$nomGrupo?> &gt;&gt; <a href="<?=$_SERVER['PHP_SELF']?>?rem_all_us=<?=$idGrupos?>">Remover todos</a></h4>
-					<br/>
-					<input type="submit" name="r_selected" value="remove selected" />
-					<input type="hidden" value="<?=$idGrupos?>" name="idGrupos" />
-					<br/>
-					<br/>
-					<?php
-							$sql = mysql_query("SELECT * FROM archivos where id_archivo in
+						<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+							<ul id="sortlist">
+								<h4>Videos Disponibles</h4>
+								<br />
+								<a href="<?=$_SERVER['PHP_SELF']?>?add_all_us=<?=$idGrupos?>"><input type="button" class="button-submit" value="Agregar Todos" /></a>
+								<input type="submit" name="a_selected" value="Agregar Marcados" class="button-submit" style="margin-left:10px;" />
+								<input type="hidden" value="<?=$idGrupos?>" name="idGrupos" />
+								<br/>
+								<br/>
+								<?php
+								$sql = mysql_query("SELECT * FROM archivos where id_archivo not in
+																		(
+																				select 	id_archivo from archivos_grupo
+																				where		id_grupo = $idGrupos
+																		) 	ORDER BY id_archivo ");
+								while ($row = mysql_fetch_array($sql)) {  
+								?>
+								<li id="itemid_<?=$row['id_archivo']?>"><input type="checkbox" name="addItems[]" value="<?=$row['id_archivo']?>" /><?=$row['nombreArchivo']?></li><?php;  
+								}
+							?>
+							</ul>
+						</form>
+						
+						<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+							<ul id="sortlist2">
+								<h4>Videos en <?=$nomGrupo?></h4>
+								<br/>
+								<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_us=<?=$idGrupos?>"><input type="button" class="button-submit" value="Quitar Todos" /></a>
+								<input type="submit" name="r_selected" value="Quitar Marcados" class="button-submit" style="margin-left:10px;" />
+								<input type="hidden" value="<?=$idGrupos?>" name="idGrupos" />
+								<br/>
+								<br/>
+								<?php
+								$sql = mysql_query("SELECT * FROM archivos where id_archivo in
 																	(
 																			select 	id_archivo from archivos_grupo
 																			where		id_grupo = $idGrupos
 																	) 	ORDER BY id_archivo");
 																	
-							while ($row = mysql_fetch_array($sql)) {  
+								while ($row = mysql_fetch_array($sql)) {  
 									?><li id="itemid_<?=$row['id_archivo']?>"><input type="checkbox" name="remItems[]" value="<?=$row['id_archivo']?>" /><?=$row['nombreArchivo']?></li><?php;
-							}
-							  
-					?>
-					
-					</ul>
-					</form>
-					<hr style="clear:both;visibility:hidden;" />            
-		</div>
-		
+								}
+							  ?>
+							</ul>
+						</form>
+						<hr style="clear:both;visibility:hidden;" />            
+					</div>
+				</div>
+				<div id="scrolldiv_slider">
+					<div id="scrolldiv_scrollUp"><img src="images/arrow_up.gif"></div>
+					<div id="scrolldiv_scrollbar">
+						<div id="scrolldiv_theScroll"><span></span></div>
+					</div>
+					<div id="scrolldiv_scrollDown"><img src="images/arrow_down.gif"></div>
+				</div>
 			</div>
-	<div id="scrolldiv_slider">
-		<div id="scrolldiv_scrollUp"><img src="images/arrow_up.gif"></div>
-		<div id="scrolldiv_scrollbar">
-			<div id="scrolldiv_theScroll"><span></span></div>
-		</div>
-		<div id="scrolldiv_scrollDown"><img src="images/arrow_down.gif"></div>
-	</div>
-</div>
-<script type="text/javascript">
-scrolldiv_setColor('#317082');	// Setting border color of the scrolling content
-setSliderBgColor('#E2EBED');	// Setting color of the slider div
-setContentBgColor('#FFFFFF');	// Setting color of the scrolling content
-setScrollButtonSpeed(1);	// Setting speed of scrolling when someone clicks on the arrow or the slider
-setScrollTimer(5);	// speed of 1 and timer of 5 is the same as speed of 2 and timer on 10 - what's the difference? 1 and 5 will make the scroll move a little smoother.
-scrolldiv_setWidth(750);	// Setting total width of scrolling div
-scrolldiv_setHeight(400);	// Setting total height of scrolling div
-scrolldiv_initScroll();	// Initialize javascript functions
-</script>
-
-					<?php
-			}
-			?>
-			
-
-		
+			<script type="text/javascript" src="style/js/scrollingInit.js"></script>
+			<?php
+		}
+		?>
 	</body>
 </html>
 		

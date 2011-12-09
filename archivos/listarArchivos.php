@@ -47,7 +47,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 $currentPage = $_SERVER["PHP_SELF"];
 
-$maxRows_rsArchivos = 15;
+$maxRows_rsArchivos = 5;
 $pageNum_rsArchivos = 0;
 if (isset($_GET['pageNum_rsArchivos'])) {
   $pageNum_rsArchivos = $_GET['pageNum_rsArchivos'];
@@ -137,9 +137,8 @@ if($U > 0)
     <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
     <table cellpadding="0" cellspacing="0">
       <tr valign="absmiddle">
-        <td><input type="submit" value="X" name="borrar" onclick="return confirm('Desea Borrar?')" /></td>
+        <td align="center" style="padding:5px 0px 5px 0px"><input class="button-submit" type="submit" value="Borrar Marcados" name="borrar" onclick="return confirm('Desea borrar los elementos seleccionados?')" /></td>
         <td><b>Editar</b></td>
-        <td><b>Nome do Arquivo</b></td>
         <td><b>T&iacute;tulo</b></td>
         <td><b>Descri&ccedil;&atilde;o</b></td>
         <td><b>Professor</b></td>
@@ -151,15 +150,14 @@ if($U > 0)
         {
           ?>
         <tr <?php if($counter % 2) echo " class='odd'"?>>
-          <td>
+          <td align="center">
             <input name='archivos[]' type='checkbox' value="<?=$row_rsArchivos['id_archivo']?>">
           </td>
-          <td class="action">
+          <td>
             <a href="edicion.php?id_archivo=<?php echo $row_rsArchivos['id_archivo']; ?>">
-            <?=$row_rsArchivos['id_archivo']; ?>
+            <?=$row_rsArchivos['nombreArchivo']; ?>
             </a>
           </td>
-          <td><?=$row_rsArchivos['nombreArchivo']; ?></td>
           <td><?=$row_rsArchivos['titulo']; ?></td>
           <td><a href="editImagen.php?arch=<?=$row_rsArchivos['id_archivo']; ?>"></a> <?=$row_rsArchivos['texto']; ?></td>
           <td><?=$row_rsArchivos['speaker']; ?></td>

@@ -81,27 +81,27 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 <?php include("../includes/head.php") ?>
 <body>
   <h3>Adicionar arquivo de video ao cat&aacute;logo</h3>
-	<form method="post" name="form1" action="<?php echo $editFormAction; ?>">
+	<form method="post" name="form1" action="<?php echo $editFormAction; ?>" class="jNice">
 	<fieldset>
 		<p>
 			<label>Pasta: </label>
-			<input name="carpeta" type="text" id="carpeta" value="" maxlength="150">
+			<input name="carpeta" type="text" id="carpeta" value="" maxlength="150" class="text-long">
 		</p>
     <p>
 			<label>Nome do Arquivo: </label>
-			<input name="nombreArchivo" type="text" id="titulo2" maxlength="200">
+			<input name="nombreArchivo" type="text" id="titulo2" maxlength="200" class="text-long">
 		</p>
     <p>
 			<label>T&iacute;tulo</label>
-			<input name="titulo" type="text" class="descripcion" id="titulo3" maxlength="200">
+			<input name="titulo" type="text" id="titulo3" maxlength="200" class="text-long">
 		</p>
 		<p>
-			Descri&ccedil;&atilde;o
-			<label><textarea name="texto" cols="100" class="descripcion" id="texto"></textarea></label>
+			<label>Descri&ccedil;&atilde;o</label>
+			<label><textarea name="texto" cols="100" id="texto"></textarea></label>
 		</p>
 		<p>
 			<label>Professor</label>
-			<input name="speaker" type="text" class="descripcion" value="">
+			<input name="speaker" type="text" value="" class="text-long">
 		</p>
 		<p>
 			<label>Situa&ccedil;&atilde;o:</label>

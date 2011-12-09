@@ -15,12 +15,11 @@ if($_SESSION["usuario"]=="")
 ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
-{
-  if (PHP_VERSION < 6) {
-    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
-  }
-
+	function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = ""){
+	if (PHP_VERSION < 6) {
+		$theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+	}
+	
   $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
 
   switch ($theType) {
@@ -42,39 +41,40 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
       break;
   }
   return $theValue;
-}
+	}
 }
 
 $currentPage = $_SERVER["PHP_SELF"];
+$strBusca = $_POST['strBusca'];
+$condicion = $_POST['condicion'];
 $whereCondicion="";
-$micondicion="";
-$micondicion2="";
 
-if($_POST['nombreArchivo']!= "" || $_GET['nombreArchivo']!='')
+if($_POST['strBusca']!= "")
+{
+	switch ($condicion)
 	{
-		if($_POST['nombreArchivo']!="")
-			$micondicion2=$_POST['nombreArchivo'];
-		elseif($_GET['nombreArchivo']!="")
-			$micondicion2=$_GET['nombreArchivo'];
+		case "nombreArchivo":
 		
-		if($whereCondicion != "")
-			$whereCondicion = " and ";
-		$whereCondicion .= " archivos.nombreArchivo LIKE '%" . $micondicion2 . "%' ";
+			if($whereCondicion != "") $whereCondicion = " and ";
+			$whereCondicion .= " archivos.nombreArchivo LIKE '%" . $strBusca . "%' ";
+			break;
+		
+		case "tituloArchivo":
+			if($whereCondicion != "") $whereCondicion .= " and ";
+			$whereCondicion .= " archivos.titulo LIKE '%" . $strBusca . "%' ";
+			break;
+		
+		case "temaArchivo":
+
+			break;
+		
+		case "fechaArchivo":
+
+			break;	
 	}
-if($_POST['tituloArchivo']!="" || $_GET['tituloArchivo']!='') 
-	{
-		if($_POST['tituloArchivo']!="")
-			$micondicion=$_POST['tituloArchivo'];
-		elseif($_GET['tituloArchivo']!="")
-			$micondicion=$_GET['tituloArchivo'];
-			
-		if($whereCondicion != "")
-			$whereCondicion .= " and ";
-		$whereCondicion .= " archivos.titulo LIKE '%" . $micondicion . "%' ";
-	}
-if($whereCondicion != "")		  
-	$whereCondicion = " where " . $whereCondicion;
-	
+}
+
+if($whereCondicion != "")	$whereCondicion = " where " . $whereCondicion;	
 
 $maxRows_rsConsulta1 = 10;
 $pageNum_rsConsulta1 = 0;
@@ -118,18 +118,19 @@ $queryString_rsConsulta1 = sprintf("&totalRows_rsConsulta1=%d%s", $totalRows_rsC
 <?php include("../includes/head.php") ?>
 <body>
   <h3>Buscar Arquivos</h3>
-  <h3> Selecione um critério de busca</h3>
-	<form name="form1" method="post" action="buscarArchivos.php">
+	<form method="post" action="<?=$currentPage?>" class="jNice">
 		<fieldset>
 		<p>
-			<label>Buscar nome do arquivo:</label>
-			<input name="nombreArchivo" type="text" id="nombreArchivo" value="<?php echo $micondicion2; ?>" />
+			<label>Selecione um crit&eacute;rio de busca :</label>
+			<input type="text" name="strBusca" value="<?=$strBusca ?>" class="text-long">
+			<select name="condicion">
+				<option value="nombreArchivo" <?php if ($condicion == "nombreArchivo") echo "selected='selected'" ?>>Nome do arquivo</option>
+				<option value="tituloArchivo" <?php if ($condicion == "tituloArchivo") echo "selected='selected'" ?>>Titulo do arquivo</option>
+				<option value="temaArchivo" <?php if ($condicion == "temaArchivo") echo "selected='selected'" ?>>Tema do arquivo</option>
+				<option value="fechaArchivo" <?php if ($condicion == "fechaArchivo") echo "selected='selected'" ?>>Fecha do arquivo</option>
+			</select>
 		</p>
-		<p>
-			<label>Buscar por T&iacute;tulo</label>
-			<input name="tituloArchivo" type="text" id="tituloArchivo" value="<?php echo $micondicion; ?>" />
-		</p>
-		<input name="buscar" type="submit" class="encabezado" id="buscar" value="Buscar" />
+		<input name="buscar" type="submit" value="Buscar" />
     </fieldset>
 	</form>
 	
@@ -160,25 +161,25 @@ $queryString_rsConsulta1 = sprintf("&totalRows_rsConsulta1=%d%s", $totalRows_rsC
 		<td colspan="3" align="center">
 			<?php if ($pageNum_rsConsulta1 > 0) { // Show if not first page ?>
       <a href="<?php printf("%s?pageNum_rsConsulta1=%d%s", $currentPage, 0, $queryString_rsConsulta1 . '&tituloArchivo=' . $micondicion . '&nombreArchivo=' . $micondicion2); ?>">
-				<img src="../imagenes/First.gif" border="0">
+				<img src="../imagenes/first.png" border="0">
 			</a>
       <?php } // Show if not first page ?>
 				
 			<?php if ($pageNum_rsConsulta1 > 0) { // Show if not first page ?>
         <a href="<?php printf("%s?pageNum_rsConsulta1=%d%s", $currentPage, max(0, $pageNum_rsConsulta1 - 1), $queryString_rsConsulta1 . '&tituloArchivo=' . $micondicion . '&nombreArchivo=' . $micondicion2); ?>">
-					<img src="../imagenes/Previous.gif" border="0">
+					<img src="../imagenes/previous.png" border="0">
 				</a>
       <?php } // Show if not first page ?>
 				
       <?php if ($pageNum_rsConsulta1 < $totalPages_rsConsulta1) { // Show if not last page ?>
         <a href="<?php printf("%s?pageNum_rsConsulta1=%d%s", $currentPage, min($totalPages_rsConsulta1, $pageNum_rsConsulta1 + 1), $queryString_rsConsulta1 . '&tituloArchivo=' . $micondicion . '&nombreArchivo=' . $micondicion2); ?>">
-					<img src="../imagenes/Next.gif" border="0">
+					<img src="../imagenes/next.png" border="0">
 				</a>
 			<?php } // Show if not last page ?>
 				
 			<?php if ($pageNum_rsConsulta1 < $totalPages_rsConsulta1) { // Show if not last page ?>
           <a href="<?php printf("%s?pageNum_rsConsulta1=%d%s", $currentPage, $totalPages_rsConsulta1, $queryString_rsConsulta1 . '&tituloArchivo=' . $micondicion . '&nombreArchivo=' . $micondicion2); ?>">
-						<img src="../imagenes/Last.gif" border="0">
+						<img src="../imagenes/last.png" border="0">
 					</a>
           <?php } // Show if not last page ?>
 		</td>

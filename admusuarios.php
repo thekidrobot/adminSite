@@ -76,8 +76,8 @@ if($_GET["actualizar"]!="")
 ?>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Transdmin Light</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ramp</title>
 
 <!-- CSS -->
 <link href="style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
@@ -90,11 +90,10 @@ if($_GET["actualizar"]!="")
 </head><body>
  <h3>Gerenciar Usuarios</h3>
   
-	<form name="formProceso" action="admusuarios.php" method="post" onSubmit="return validarNuevoUsuario()">
+	<form name="formProceso" action="<?=$_SERVER['PHP_SELF']?>" method="post" onSubmit="return validarNuevoUsuario()" class="jNice" >
 	 <fieldset>
 	 <? 
-	 if($_GET["actualizar"]!="")
-	 {
+	 if($_GET["actualizar"]!=""){
 		?>
 		<input type="hidden" name="actualizar" value="<?=$_GET["actualizar"]?>">
 		<? 
@@ -108,26 +107,28 @@ if($_GET["actualizar"]!="")
 	 ?>
 	 <p>
 		<label>Nome</label>
-    <input type="text" name="valorNombre" value="<?=$vNombreCompleto?>" maxlength="255" />
+    <input type="text" name="valorNombre" value="<?=$vNombreCompleto?>" maxlength="255" class="text-long" />
 	 </p>
    <p>
 		<label>Login</label>
-		<input type="text" name="valorLogin" value="<?=$vUsuario?>" maxlength="100" />
+		<input type="text" name="valorLogin" value="<?=$vUsuario?>" maxlength="100" class="text-long" />
 	 </p>
 	 <p>
 	  <label>Senha</label>
-    <input type="password" name="valorClave" value="<?=$vPassword?>" maxlength="15" />
+    <input type="password" name="valorClave" value="<?=$vPassword?>" maxlength="15" class="text-long" />
    </p>
 	 <p>
 	  <label>Ativar
-		<input <?php if (!(strcmp($activoUser,1))) {echo "checked=\"checked\"";} ?> name="activo" type="checkbox" id="activo" value="1" />
+		<input type="checkbox" <?php if (!(strcmp($activoUser,1))) {echo "checked=\"checked\"";} ?> name="activo"  id="activo" value="1" />
 		</label>
 	 </p>
    <p>
 	  <label>Computer ID </label>
-		<input name="licencia" type="text" id="licencia" value="<?php echo $llave; ?>" />
-		<input type="button" name="btnCambiar" id="btnCambiar" value="New Key" onClick="fngenerakey();" />
-    <input name="txtKeyramp" type="text" id="txtKeyramp" value="<?php echo $pckey; ?>" readonly="readonly" />
+		<input name="licencia" type="text" id="licencia" value="<?php echo $llave; ?>" class="text-long" />
+	 </p>
+	 <p>
+		<input name="txtKeyramp" type="text" id="txtKeyramp" value="<?php echo $pckey; ?>" readonly="readonly" class="text-long" />
+		<input type="button" name="btnCambiar" id="btnCambiar" value="New Key" onClick="fngenerakey();" class="button-submit" />
    </p>
 	 <p>
 		<label><?=$msg?></label>
@@ -138,11 +139,11 @@ if($_GET["actualizar"]!="")
   </form>
 
 	<h3>Procurar usu&aacute;rios</h3>
-	<form name="frmbusca" action="admusuarios.php" method="post">
+	<form name="frmbusca" action="<?=$_SERVER['PHP_SELF']?>" method="post" class="jNice">
    <fieldset>
 		<p>
 		 <label>Nome</label>
-		 <input type="text" name="parteNombre" id="parteNombre" value="<?php echo $_POST['parteNombre']; ?>" maxlength="255" />
+		 <input type="text" name="parteNombre" id="parteNombre" value="<?php echo $_POST['parteNombre']; ?>" maxlength="255" class="text-long" />
 		</p>
 		<input type="image" src="imagenes/buscar.jpg">
 	 </fieldset>
@@ -171,7 +172,7 @@ if($_GET["actualizar"]!="")
 		}
 		//cantidad de resultados por p&aacute;gina (opcional, por defecto 20) 
 		//Incluimos el script de paginaci&oacute;n. &Eacute;ste ya ejecuta la consulta autom&aacute;ticamente 
-		include("paginator.inc.php"); 
+		@include("paginator.inc.php"); 
 		$counter = 0;
 		while ($row = mysql_fetch_array($_pagi_result))
 		{
@@ -183,7 +184,7 @@ if($_GET["actualizar"]!="")
 		 ?>
 		 <tr onMouseOver="sobre(this)" onMouseOut="fuera(this)" <?php if($counter % 2) echo " class='odd'"?>>
 			<td>
-			 <a href="admusuarios.php?actualizar=<?=$IdUsuario?>" style="color:#003366 "><?=$NombreCompleto?> <?=$apellidos?></a>
+			 <a href="admusuarios.php?actualizar=<?=$IdUsuario?>"><?=$NombreCompleto." ".$apellidos?></a>
 			</td>
 			<td>
 			 <input type="checkbox" name="act" id="act" disabled <?php if (!(strcmp($activo,1))) {echo "checked=\"checked\"";} ?>>
