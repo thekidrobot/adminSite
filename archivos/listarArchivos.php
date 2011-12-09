@@ -137,7 +137,7 @@ if($U > 0)
     <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
     <table cellpadding="0" cellspacing="0">
       <tr valign="absmiddle">
-        <td><input type="submit" value="X" name="borrar" /></td>
+        <td><input type="submit" value="X" name="borrar" onclick="return confirm('Desea Borrar?')" /></td>
         <td><b>Editar</b></td>
         <td><b>Nome do Arquivo</b></td>
         <td><b>T&iacute;tulo</b></td>

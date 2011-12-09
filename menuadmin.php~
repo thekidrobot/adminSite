@@ -83,7 +83,7 @@ function MM_swapImage() { //v3.0
 				<li><a href="categoriasVideos.php" target="carga" class="menuanchorclass" rel="anylinkmenu2">Gerenciar Categorias</a></li>
 				<li><a href="admusuarios.php" target="carga">Gerenciar Usuarios</a></li>
 				<li><a href="reportes/index.php" target="carga">Gerar Relatorios</a></li>
-			        <li><a href="admacceso.php" target="carga">Gerar Minha Conta</a></li>
+			        <li><a> href="admacceso.php" target="carga">Gerar Minha Conta</a></li>
 				<li class="logout"><a href="index.php">Sair</a></li>
 			</ul>
 			<!-- // #end mainNav -->

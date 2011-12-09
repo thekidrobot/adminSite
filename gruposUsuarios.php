@@ -13,6 +13,26 @@ include('Connections/cnxRamp.php');
   <?
 	}
 
+	//Delete multiple
+	$arrArchivos = $_POST['archivos'];
+	
+	$U = count($arrArchivos);
+	if($U > 0)
+	{
+	 foreach($arrArchivos as $id)
+	 {
+			$str = "delete from gruposdeusuarios where idGrupoDeUsuario = $id";
+			$sql = mysql_query($str) or die(mysql_error($sql));
+			//Borra de tabla hija
+			$str = "delete from usuariosgruposusuarios where idGrupoDeUsuario = $id";
+			$sql = mysql_query($str) or die(mysql_error($sql));
+			
+			if (!headers_sent()) header('Location: '.$currentPage);
+			else echo '<meta http-equiv="refresh" content="0;url='.$currentPage.'" />';
+	 }
+	} 
+
+
 	if (trim($_POST['nomGrupo']) != "") {
 		
 		if($_POST['flgEditar'] == 1){
@@ -29,6 +49,9 @@ include('Connections/cnxRamp.php');
 	
 	if(!empty($_GET))
 	{
+		if(trim($_GET['add_us']) != "" or trim($_GET['add_pq']) != "" or trim($_GET['add_all_us'])!= ""
+			 or trim($_GET['rem_all_us']) != "" or trim($_GET['add_all_pq'])!= "" or trim($_GET['rem_all_pq']))
+		{
 			if(trim($_GET['add_us']) != "")
 				$str = "select * from gruposdeusuarios where idGrupoDeUsuario =". $_GET['add_us'];
 			elseif (trim($_GET['add_pq']) != "")
@@ -48,6 +71,7 @@ include('Connections/cnxRamp.php');
 				$idGrupo = $row['idGrupoDeUsuario'];
 				$nomGrupo = $row['nomGrupoDeUsuario'];
 			}
+		}
 		
 		if (trim($_GET['edit']) != ""){
 			$str = "select * from gruposdeusuarios where idGrupoDeUsuario =". $_GET['edit'];
@@ -260,8 +284,10 @@ include('Connections/cnxRamp.php');
 			</fieldset>
 		</form>
 		
+		<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 		<table>
 			<tr>
+				<td><input type="submit" value="X" name="borrar" onclick="return confirm('Desea Borrar?')" /></td>
 				<td><b>Nombre</b></td>
 				<td class="action"><b>Editar</b></td>
 				<td class="action"><b>Borrar</b></td>
@@ -275,6 +301,7 @@ include('Connections/cnxRamp.php');
 					$counter++;
 					?>
 					<tr <?php if($counter % 2) echo " class='odd'"?>>
+							<td><input name='archivos[]' type='checkbox' value="<?=$row['idGrupoDeUsuario']?>"></td>
 							<td><?=$row['nomGrupoDeUsuario']?></td>
 							<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?edit=<?=$row['idGrupoDeUsuario']?>">Editar</a></td>
 							<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idGrupoDeUsuario']?>" onclick="return confirm('Seguro que desea borrar?')">Borrar</td>
@@ -284,8 +311,8 @@ include('Connections/cnxRamp.php');
 					<?php;
 				}  
 				?>
-						
 		</table>
+		</form>
 		<?php
 			if($_GET['add_us'] != '' or $_GET['add_all_us'] != '' or $_GET['rem_all_us'] != '')
 			{

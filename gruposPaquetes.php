@@ -13,6 +13,27 @@ include('Connections/cnxRamp.php');
   <?
 	}
 
+	//Delete multiple
+	$arrPaquetes = $_POST['paquetes'];
+	
+	$U = count($arrPaquetes);
+	if($U > 0)
+	{
+	 foreach($arrPaquetes as $id)
+	 {
+			echo $str;
+		
+			$str = "delete from paquetes where idPaquete = $id";
+			$sql = mysql_query($str) or die(mysql_error($sql));
+			//Borra de tabla hija
+			$str = "delete from paquetesgrupos where idPaquete = $id";
+			$sql = mysql_query($str) or die(mysql_error($sql));
+			
+			if (!headers_sent()) header('Location: '.$_SERVER['PHP_SELF']);
+			else echo '<meta http-equiv="refresh" content="0;url='.$_SERVER['PHP_SELF'].'" />';
+	 }
+	} 
+
 	if (trim($_POST['nomPaquete']) != "") {
 		
 		if($_POST['flgEditar'] == 1){
@@ -265,8 +286,10 @@ include('Connections/cnxRamp.php');
 			</fieldset>
 		</form>
 		
+		<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 		<table>
 			<tr>
+				<td><input type="submit" value="X" name="borrar" onclick="return confirm('Desea Borrar?')" /></td>
 				<td><b>Nombre</b></td>
 				<td class="action"><b>Editar</b></td>
 				<td class="action"><b>Borrar</b></td>
@@ -280,6 +303,9 @@ include('Connections/cnxRamp.php');
 					$counter++;
 					?>
 					<tr <?php if($counter % 2) echo " class='odd'"?>>
+							<td>
+								<input name='paquetes[]' type='checkbox' value="<?=$row['idPaquete']?>">
+							</td>
 							<td><?=$row['nomPaquete']?></td>
 							<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?edit=<?=$row['idPaquete']?>">Editar</a></td>
 							<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idPaquete']?>" onclick="return confirm('Seguro que desea borrar?')">Borrar</td>
@@ -289,8 +315,8 @@ include('Connections/cnxRamp.php');
 					<?php;
 				}  
 				?>
-						
 		</table>
+		</form>
 		<?php
 			if(trim($_GET['add_cat']) != '' or trim($_GET['add_all_cat']) != "" or trim($_GET['rem_all_cat']) != "")
 			{

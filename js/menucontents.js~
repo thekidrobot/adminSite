@@ -8,7 +8,7 @@ anylinkmenu1.items=[
 
 var anylinkmenu2={divclass:'anylinkmenu', inlinestyle:'', linktarget:'carga'} //First menu variable. Make sure "anylinkmenu1" is a unique name!
 anylinkmenu2.items=[
-	["Crear Categorias", "categoriasVideos.php"],
+	["Grupos de Categorias", "categoriasVideos.php"],
 	["Grupos de Usuarios", "gruposUsuarios.php"],
 	["Grupos de Paquetes", "gruposPaquetes.php"]
   //no comma following last entry!
