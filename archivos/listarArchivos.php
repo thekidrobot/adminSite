@@ -139,7 +139,6 @@ if($U > 0)
       <tr valign="absmiddle">
         <td align="center" style="padding:5px 0px 5px 0px"><input class="button-submit" type="submit" value="Borrar Marcados" name="borrar" onclick="return confirm('Desea borrar los elementos seleccionados?')" /></td>
         <td><b>Editar</b></td>
-        <td><b>T&iacute;tulo</b></td>
         <td><b>Descri&ccedil;&atilde;o</b></td>
         <td><b>Professor</b></td>
         <td><b>Borrar</b></td>
@@ -155,10 +154,9 @@ if($U > 0)
           </td>
           <td>
             <a href="edicion.php?id_archivo=<?php echo $row_rsArchivos['id_archivo']; ?>">
-            <?=$row_rsArchivos['nombreArchivo']; ?>
+            <?=$row_rsArchivos['titulo']; ?>
             </a>
           </td>
-          <td><?=$row_rsArchivos['titulo']; ?></td>
           <td><a href="editImagen.php?arch=<?=$row_rsArchivos['id_archivo']; ?>"></a> <?=$row_rsArchivos['texto']; ?></td>
           <td><?=$row_rsArchivos['speaker']; ?></td>
           <td class="action"><a href="<?=$_SERVER['PHP_SELF']; ?>?del=<?=$row_rsArchivos['id_archivo']?>" onclick="return confirm('Desea Borrar?')">Borrar</a></td>

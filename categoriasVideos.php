@@ -16,8 +16,8 @@ include("includes/pagination/ps_pagination.php");
 
 	//Add selected multiple
 	$addItems = $_POST['addItems'];
-	$N = count($addItems);
-	if($N > 0)
+	
+	if($_POST['idGrupos'] != '')
 	{
 		$idGrupos = $_POST['idGrupos'];
 		
@@ -28,8 +28,12 @@ include("includes/pagination/ps_pagination.php");
 			$nomGrupo = $row['grupos'];
 			$padre = $row['padre'];
 			$categoria = $row['categoria'];
-		}
-		
+		}	
+	}
+	
+	$N = count($addItems);
+	if($N > 0)
+	{		
 		for($i=0; $i < $N; $i++)
 		{
 			$str = "INSERT INTO archivos_grupo (id_grupo,id_archivo,fecha_inserta)
@@ -44,15 +48,6 @@ include("includes/pagination/ps_pagination.php");
 	if($N > 0)
 	{
 		$idGrupos = $_POST['idGrupos'];
-		$str = "select * from grupos where idGrupos =".$idGrupos;
-		$sql = mysql_query($str) or die(mysql_error($sql));
-		while ($row = mysql_fetch_array($sql)) {  
-			$idGrupos = $row['idGrupos'];
-			$nomGrupo = $row['grupos'];
-			$padre = $row['padre'];
-			$categoria = $row['categoria'];
-		}
-
 		for($i=0; $i < $N; $i++)
 		{
 			$str = "delete from archivos_grupo where id_archivo = ".$remItems[$i]." and id_grupo =".$idGrupos;
@@ -136,7 +131,7 @@ include("includes/pagination/ps_pagination.php");
 		$str = "delete from grupos where idGrupos =". $_GET['delete'];
 		$sql = mysql_query($str) or die(mysql_error($sql));
 		//Borra de tabla hija
-		$str = "delete from archivos_grupo	 where id_grupo =". $_GET['delete'];
+		$str = "delete from archivos_grupo where id_grupo =". $_GET['delete'];
 		$sql = mysql_query($str) or die(mysql_error($sql));
 	}
 
@@ -311,8 +306,8 @@ include("includes/pagination/ps_pagination.php");
 				<td align="center" style="padding:5px 0px 5px 0px"><input class="button-submit" type="submit" value="Borrar Seleccion" name="borrar" onclick="return confirm('Desea borrar los elementos seleccionados?')" /></label></td>
 				<td><b>Nombre</b></td>
 				<td><b>Señal</b></td>
-				<td class="action"><b>Borrar</b></td>
 				<td class="action"><b>Agregar Videos</b></td>
+				<td class="action"><b>Borrar</b></td>
 			</tr>
 			<?php
 				$counter = 0;
@@ -326,11 +321,11 @@ include("includes/pagination/ps_pagination.php");
 					?>
 					<!--	ToDo: Validar Borrado de categorias con hijos				-->
 					<tr <?php if($counter % 2) echo " class='odd'"?>>
-							<td align="center"><input name='archivos[]' type='checkbox' value="<?=$row['idGrupos']?>"></td>
-							<td><a href="<?=$_SERVER['PHP_SELF']?>?edit=<?=$row['idGrupos']?>" ><?=ucfirst(strtolower($row['grupos']))?></a></td>
-							<td align="left"><?=$row['categoria']?></td>
-							<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idGrupos']?>" onclick="return confirm('Seguro que desea borrar?')">Borrar</td>
-							<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?add_us=<?=$row['idGrupos']?>">Agregar Videos</td>
+						<td align="center"><input name='archivos[]' type='checkbox' value="<?=$row['idGrupos']?>"></td>
+						<td><a href="<?=$_SERVER['PHP_SELF']?>?edit=<?=$row['idGrupos']?>" ><?=ucfirst(strtolower($row['grupos']))?></a></td>
+						<td align="left"><?=$row['categoria']?></td>
+						<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?add_us=<?=$row['idGrupos']?>">Agregar Videos</td>
+						<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idGrupos']?>" onclick="return confirm('Seguro que desea borrar?')">Borrar</td>
 					</tr>
 					<?php;
 				}  
@@ -376,7 +371,7 @@ include("includes/pagination/ps_pagination.php");
 																		) 	ORDER BY id_archivo ");
 								while ($row = mysql_fetch_array($sql)) {  
 								?>
-								<li id="itemid_<?=$row['id_archivo']?>"><input type="checkbox" name="addItems[]" value="<?=$row['id_archivo']?>" /><?=$row['nombreArchivo']?></li><?php;  
+								<li id="itemid_<?=$row['id_archivo']?>"><input type="checkbox" name="addItems[]" value="<?=$row['id_archivo']?>" /><?=$row['titulo']?></li><?php;  
 								}
 							?>
 							</ul>
@@ -399,7 +394,7 @@ include("includes/pagination/ps_pagination.php");
 																	) 	ORDER BY id_archivo");
 																	
 								while ($row = mysql_fetch_array($sql)) {  
-									?><li id="itemid_<?=$row['id_archivo']?>"><input type="checkbox" name="remItems[]" value="<?=$row['id_archivo']?>" /><?=$row['nombreArchivo']?></li><?php;
+									?><li id="itemid_<?=$row['id_archivo']?>"><input type="checkbox" name="remItems[]" value="<?=$row['id_archivo']?>" /><?=$row['titulo']?></li><?php;
 								}
 							  ?>
 							</ul>

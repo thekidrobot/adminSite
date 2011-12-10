@@ -8,6 +8,8 @@ mysql_select_db($_SESSION["basededatos"],$con) or die (mysql_error());
 
 session_start();
 
+$currentPage = $_SERVER['PHP_SELF'];
+
 //validar sesion
 if($_SESSION["usuario"]=="")
  {
@@ -39,6 +41,44 @@ if($_POST["ingresar"]!="")
 	 }
  }
 
+if (trim($_GET['delete']) != ""){ 
+ $str = "delete from grupos_usuario where IdUsuario =". $_GET['delete'];
+ $sql = mysql_query($str) or die(mysql_error($sql));
+ 
+ $str = "delete from usuariosgruposusuarios where IdUsuario =". $_GET['delete'];
+ $sql = mysql_query($str) or die(mysql_error($sql));
+	
+ $str = "delete from usvsgrupovsvideo where UGD_USUARIO =". $_GET['delete'];
+ $sql = mysql_query($str) or die(mysql_error($sql));
+ 
+ $str = "delete from usuarios where IdUsuario =". $_GET['delete'];
+ $sql = mysql_query($str) or die(mysql_error($sql));
+}
+
+//Delete multiple
+$arrUsuarios = $_POST['usuarios'];
+
+$U = count($arrUsuarios);
+if($U > 0)
+{
+ foreach($arrUsuarios as $id)
+ {
+	$str = "delete from grupos_usuario where IdUsuario =". $id;
+	$sql = mysql_query($str) or die(mysql_error($sql));
+	
+	$str = "delete from usuariosgruposusuarios where IdUsuario =". $id;
+	$sql = mysql_query($str) or die(mysql_error($sql));
+	 
+	$str = "delete from usvsgrupovsvideo where UGD_USUARIO =". $id;
+	$sql = mysql_query($str) or die(mysql_error($sql));
+	
+	$str = "delete from usuarios where IdUsuario =". $id;
+	$sql = mysql_query($str) or die(mysql_error($sql));
+	
+	if (!headers_sent()) header('Location: '.$currentPage);
+	else echo '<meta http-equiv="refresh" content="0;url='.$currentPage.'" />';
+ }
+}
 
 ///actualizar
 if($_POST["actualizar"]!="")
@@ -85,10 +125,28 @@ if($_GET["actualizar"]!="")
 <!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="style/css/ie7.css" /><![endif]-->
 
 <!-- JavaScripts-->
+<script type="text/javascript" src="style/js/toggleShowHide.js"></script>
 <script type="text/javascript" src="style/js/jquery.js"></script>
 <script type="text/javascript" src="style/js/jNice.js"></script>
 </head><body>
- <h3>Gerenciar Usuarios</h3>
+
+ <div id="headerDiv">
+	 <h3>Gerenciar Usuarios <a id="myHeader" href="javascript:toggle('myContent','myHeader');" >Clique para Agregar</a></h3>
+ </div>
+ 
+ <div id="contentDiv">
+	 <?php
+		 if($_GET['actualizar'] != ''){
+		 ?>
+		 <div id="myContent" style="display: block;">
+		 <?
+		 }
+		 else{
+			 ?>
+			 <div id="myContent" style="display: none;">
+			 <?
+		 }
+	 ?>	
   
 	<form name="formProceso" action="<?=$_SERVER['PHP_SELF']?>" method="post" onSubmit="return validarNuevoUsuario()" class="jNice" >
 	 <fieldset>
@@ -137,24 +195,28 @@ if($_GET["actualizar"]!="")
 	 </fieldset>
 	 </table>
   </form>
+ </div>
+</div>
 
 	<h3>Procurar usu&aacute;rios</h3>
-	<form name="frmbusca" action="<?=$_SERVER['PHP_SELF']?>" method="post" class="jNice">
+	<form name="frmbusca" action="<?=$currentPage?>" method="post" class="jNice">
    <fieldset>
 		<p>
 		 <label>Nome</label>
 		 <input type="text" name="parteNombre" id="parteNombre" value="<?php echo $_POST['parteNombre']; ?>" maxlength="255" class="text-long" />
+		 <input type="image" src="imagenes/buscar.jpg">
 		</p>
-		<input type="image" src="imagenes/buscar.jpg">
 	 </fieldset>
   </form>
 	
-	<h3>Mostrando os 50 registros</h3>
+	<form action="<?=$currentPage?>" method="post">
   <table>
     <tr>
+		 <td align="center" style="padding:5px 0px 5px 0px"><input class="button-submit" type="submit" value="Borrar Seleccion" name="borrar" onclick="return confirm('Desea borrar los elementos seleccionados?')" /></label></td>
 		 <td><b>Nome</b></td>
 		 <td><b>Ativo</b></td>
 		 <td><b>Login</b></td>
+		 <td><b>Borrar</b></td>
     <tr>
     <?php
 		//Sentencia sql (sin limit) 
@@ -183,6 +245,7 @@ if($_GET["actualizar"]!="")
 		 $activo=$row["activo"];
 		 ?>
 		 <tr onMouseOver="sobre(this)" onMouseOut="fuera(this)" <?php if($counter % 2) echo " class='odd'"?>>
+			<td align="center"><input name='usuarios[]' type='checkbox' value="<?=$row['IdUsuario']?>"></td>
 			<td>
 			 <a href="admusuarios.php?actualizar=<?=$IdUsuario?>"><?=$NombreCompleto." ".$apellidos?></a>
 			</td>
@@ -191,13 +254,15 @@ if($_GET["actualizar"]!="")
 			</td>
 			<!--<td  align="left" valign="top" bgcolor="white" class="tahoma_12"><a href="mensajes/insertarMensaje.php?codUser=<?php echo $IdUsuario; ?>&nomUser=<?php echo $NombreCompleto; ?>">Enviar</a></td>-->
 			<td><?=$Usuario?></td>
+			<td><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['IdUsuario']?>" onclick="return confirm('Seguro que desea borrar?')">Borrar</td>
 		 <tr>
 		 <?
 		}
 		?>
 		<tr>
-		 <td colspan="3" align="center"><? echo"<p>".$_pagi_navegacion."</p>"; ?></td>
+		 <td colspan="5" align="center"><? echo"<p>".$_pagi_navegacion."</p>"; ?></td>
 		</tr>
    </table>
+	 </form>
  </body>
 </html>
