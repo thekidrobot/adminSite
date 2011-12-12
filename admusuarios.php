@@ -32,7 +32,9 @@ if($_POST["ingresar"]!="")
 	
 	if($resp=="1")
 	 {
-	  $objUsuario->ingresarUsuario($_POST["valorLogin"],$_POST["valorClave"],$_POST["valorNombre"],$_POST['activo'],$_POST['licencia'],$_POST['txtKeyramp']);
+	  $objUsuario->ingresarUsuario($_POST["valorLogin"],$_POST["valorClave"],$_POST["valorNombre"],
+																 $_POST['activo'],$_POST['licencia'],$_POST['txtKeyramp'],
+																 $_POST['valorMac'],$_POST['valorSerial']);
 	  $msg="Registroe enviado";
 	 }
 	else
@@ -89,7 +91,9 @@ if($_POST["actualizar"]!="")
 		$activo=1;
 
 
-	$objUsuario->actualizarUsuario($_POST["actualizar"],$_POST["valorLogin"],$_POST["valorClave"],$_POST["valorNombre"],$activo,$_POST['licencia'],$_POST['txtKeyramp']);
+	$objUsuario->actualizarUsuario($_POST["actualizar"],$_POST["valorLogin"],$_POST["valorClave"],
+																 $_POST["valorNombre"],$activo,$_POST['licencia'],$_POST['txtKeyramp'],
+																 $_POST['valorMac'],$_POST['valorSerial']);
 	
     $msg="Registro atualizado";
  }
@@ -108,16 +112,45 @@ if($_GET["actualizar"]!="")
 	  $activoUser=$row["activo"]; 
 	  $llave=$row["ID_PLUGIN"];
 	  $pckey=$row["pcrampkey"];
-	  //$vMacId=$row["MAC_ID"];
+	  $vMacId=$row["MAC_ID"];
+	  $vSerial=$row["serial"];
 	  //$vDirLocal=$row["DIRECCION_LOCAL"];	  
      }
  }
 
 ?>
+<!DOCTYPE HTML PUBLIC "-// W3C// DTD HTML 4.0 Transitional// EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Ramp</title>
+
+	<style type="text/css">
+	img{
+		border:0px;
+	}	
+	</style>
+	<script type="text/javascript" src="js/ajax-dynamic-content.js"></script>
+	<script type="text/javascript" src="js/ajax.js"></script>
+	<script type="text/javascript" src="js/ajax-tooltip.js">
+	/************************************************************************************************************
+	(C) www.dhtmlgoodies.com, June 2006
+	
+	This is a script from www.dhtmlgoodies.com. You will find this and a lot of other scripts at our website.	
+	
+	Terms of use:
+	You are free to use this script as long as the copyright message is kept intact. However, you may not
+	redistribute, sell or repost it without our permission.
+	
+	Thank you!
+	
+	www.dhtmlgoodies.com
+	Alf Magne Kalleland
+	
+	************************************************************************************************************/	
+	</script>	
+	<link rel="stylesheet" href="css/ajax-tooltip.css" media="screen" type="text/css">
+	<link rel="stylesheet" href="css/ajax-tooltip-demo.css" media="screen" type="text/css">
 
 <!-- CSS -->
 <link href="style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
@@ -163,6 +196,15 @@ if($_GET["actualizar"]!="")
 		<? 
 	 }
 	 ?>
+	 <?php
+	 if($_GET["actualizar"]!=""){
+	 ?>
+	 <p>
+		<h4><a href="#" onmouseover="ajax_showTooltip(window.event,'muestraGrupos.php?id=<?=$_GET["actualizar"]?>',this);return false" onmouseout="ajax_hideTooltip()">Clique para ver grupos</a></h4>
+	 </p>
+	 <?php
+	 }
+	 ?>
 	 <p>
 		<label>Nome</label>
     <input type="text" name="valorNombre" value="<?=$vNombreCompleto?>" maxlength="255" class="text-long" />
@@ -176,9 +218,18 @@ if($_GET["actualizar"]!="")
     <input type="password" name="valorClave" value="<?=$vPassword?>" maxlength="15" class="text-long" />
    </p>
 	 <p>
+		<label>Mac</label>
+		<input type="text" name="valorMac" value="<?=$vMacId?>" maxlength="100" class="text-long" />
+	 </p>
+	 <p>
+		<label>Serial</label>
+		<input type="text" name="valorSerial" value="<?=$vSerial?>" maxlength="100" class="text-long" />
+	 </p> 
+	 <p>
 	  <label>Ativar
 		<input type="checkbox" <?php if (!(strcmp($activoUser,1))) {echo "checked=\"checked\"";} ?> name="activo"  id="activo" value="1" />
 		</label>
+	 </p>	 
 	 </p>
    <p>
 	  <label>Computer ID </label>
@@ -193,8 +244,7 @@ if($_GET["actualizar"]!="")
 	 <input type="image" src="imagenes/crear.jpg">
    </p> 
 	 </fieldset>
-	 </table>
-  </form>
+	</form>
  </div>
 </div>
 

@@ -112,19 +112,22 @@ $result = mysql_query($sql, $link);
 return $result;
 }
 /////////////////////////////////////////////////////////////////////////////////////////////
-function ingresarUsuario($Usuario,$Password,$NombreCompleto,$activo,$licencia,$rampkey)
+function ingresarUsuario($Usuario,$Password,$NombreCompleto,$activo,$licencia,$rampkey,$mac,$serial)
 {
 $link = mysql_connect($_SESSION["servidor"], $_SESSION["root"],$_SESSION["claveBD"]);
 mysql_select_db($_SESSION["basededatos"], $link); 
-$sql="insert into usuarios (Usuario,Password,activo,NombreCompleto,ID_PLUGIN,pcrampkey) values ('".$Usuario."','".$Password."','".$activo."','".$NombreCompleto."','" . $licencia . "','" . $rampkey . "') ";
+$sql="insert into usuarios (Usuario,Password,activo,NombreCompleto,ID_PLUGIN,pcrampkey,MAC_ID,serial)
+			values ('$Usuario','$Password','$activo','$NombreCompleto','$licencia','$rampkey','$mac','$serial')";
 $result = mysql_query($sql);
 }
 /////////////////////////////////////////////////////////////////////////////////////////////
-function actualizarUsuario($IdUsuario,$Usuario,$Password,$NombreCompleto,$activo,$licencia,$rampkey)
+function actualizarUsuario($IdUsuario,$Usuario,$Password,$NombreCompleto,$activo,$licencia,$rampkey,$mac,$serial)
 {
 $link = mysql_connect($_SESSION["servidor"], $_SESSION["root"],$_SESSION["claveBD"]);
 mysql_select_db($_SESSION["basededatos"], $link); 
-$sql="update usuarios set NombreCompleto='".$NombreCompleto."',apellidos='".$apellidos."',Password='".$Password."',activo=".$activo.",Usuario='" . $Usuario. "',ID_PLUGIN='" . $licencia . "',pcrampkey='" . $rampkey . "' where IdUsuario=".$IdUsuario;
+$sql="update usuarios set NombreCompleto='".$NombreCompleto."',apellidos='".$apellidos."',
+			Password='".$Password."',activo=".$activo.",Usuario='" . $Usuario. "',ID_PLUGIN='" . $licencia . "',
+			pcrampkey='" . $rampkey . "', MAC_ID = '$mac',serial = '$serial' where IdUsuario=".$IdUsuario;		
 $result = mysql_query($sql);
 }
 /////////////////////////////////////////////////////////////////////////////////////////////

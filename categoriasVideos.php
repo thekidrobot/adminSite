@@ -166,6 +166,34 @@ include("includes/pagination/ps_pagination.php");
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 	<title>RAMP</title>
+	
+	<style type="text/css">
+	img{
+		border:0px;
+	}	
+	</style>
+	<script type="text/javascript" src="js/ajax-dynamic-content.js"></script>
+	<script type="text/javascript" src="js/ajax.js"></script>
+	<script type="text/javascript" src="js/ajax-tooltip.js">
+	/************************************************************************************************************
+	(C) www.dhtmlgoodies.com, June 2006
+	
+	This is a script from www.dhtmlgoodies.com. You will find this and a lot of other scripts at our website.	
+	
+	Terms of use:
+	You are free to use this script as long as the copyright message is kept intact. However, you may not
+	redistribute, sell or repost it without our permission.
+	
+	Thank you!
+	
+	www.dhtmlgoodies.com
+	Alf Magne Kalleland
+	
+	************************************************************************************************************/	
+	</script>	
+	<link rel="stylesheet" href="css/ajax-tooltip.css" media="screen" type="text/css">
+	<link rel="stylesheet" href="css/ajax-tooltip-demo.css" media="screen" type="text/css">
+	
 	<!-- CSS -->
 	<link href="style/css/scrollingContent.css" rel="stylesheet" type="text/css" media="screen" />
 	<link href="style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
@@ -348,7 +376,8 @@ include("includes/pagination/ps_pagination.php");
 					<div id="scrolldiv_content">
 
 						<p id="changeNotification" style="margin-top:20px">
-							<p align="center"><h3>Arrastre para Modificar</h3></p>
+							<p align="center"><h3>Arrastre para Modificar &gt;&gt; <a href="#" onmouseover="ajax_showTooltip(window.event,'muestraInfoCategorias.php?id=<?=$idGrupos?>',this);return false" onmouseout="ajax_hideTooltip()">Clique para mais info</a></h3></p>
+							
 							<div id="activityIndicator" style="display:none; ">
 								<img src="imagenes/loading_indicator.gif" /> Actualizando Datos...
 							</div>
