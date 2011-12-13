@@ -25,7 +25,7 @@ var EW_REPORT_IMAGES_FOLDER = "phprptimages";
 </script>
 <script src="phprptjs/x.js" type="text/javascript"></script>
 <div class="ewLayout">
-	<h3>Gerar Relatorios</h3>
+	<h3><?=_("Manage Reports")?></h3>
 <!--<span class=""><img src="titulo_reportes.jpg" alt="" border="0" /></span>-->
 	<!-- header (begin) --><!-- *** Note: Only licensed users are allowed to change the logo *** -->
 	<!-- header (end) -->

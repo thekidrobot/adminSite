@@ -275,11 +275,11 @@ ewrpt_CreatePopup("RelatF3rio_de_visualizaE7E3o_grupo", [<?php echo $jsdata ?>])
 <!-- top slot -->
 <a name="top"></a>
 <?php } ?>
-Relatório De Visualização
+<?=_("Visualizations report")?>
 <?php if (@$sExport == "") { ?>
-&nbsp;&nbsp;<a href="RelatF3rio_de_visualizaE7E3osmry.php?export=excel">Export to Excel</a>
+&nbsp;&nbsp;<a href="RelatF3rio_de_visualizaE7E3osmry.php?export=excel"><?=_("Export to Excel")?></a>
 <?php if ($bFilterApplied) { ?>
-&nbsp;&nbsp;<a href="RelatF3rio_de_visualizaE7E3osmry.php?cmd=reset">Reset All Filters</a>
+&nbsp;&nbsp;<a href="RelatF3rio_de_visualizaE7E3osmry.php?cmd=reset"><?=_("Reset All Filters")?></a>
 <?php } ?>
 <?php } ?>
 <br /><br />
@@ -314,8 +314,8 @@ if (EW_REPORT_FILTER_PANEL_OPTION == 2 || (EW_REPORT_FILTER_PANEL_OPTION == 3 &&
 <form name="fRelatF3rio_de_visualizaE7E3osummaryfilter" id="fRelatF3rio_de_visualizaE7E3osummaryfilter" action="RelatF3rio_de_visualizaE7E3osmry.php" class="ewForm" onSubmit="return ewrpt_ValidateExtFilter(this);">
 <table class="ewRptExtFilter">
 	<tr>
-		<td><span class="phpreportmaker">Fecha Descarga</span></td>
-		<td><span class="ewRptSearchOpr">between<input type="hidden" name="so1_fecha_descarga" id="so1_fecha_descarga" value="BETWEEN"></span></td>
+		<td><span class="phpreportmaker"><?=_("Download date")?></span></td>
+		<td><span class="ewRptSearchOpr"><?=_("between")?><input type="hidden" name="so1_fecha_descarga" id="so1_fecha_descarga" value="BETWEEN"></span></td>
 		<td>
 			<table cellspacing="0" class="ewItemTable"><tr>
 				<td><span class="phpreportmaker">
@@ -559,7 +559,7 @@ while (($rs && !$rs->EOF) || $bShowFirstHeader) {
 	<?php } else { ?>
 	<td><img src="phprptimages/lastdisab.gif" alt="Last" width="16" height="16" border="0"></td>
 	<?php } ?>
-	<td><span class="phpreportmaker">&nbsp;of <?php echo $Pager->PageCount ?></span></td>
+	<td><span class="phpreportmaker">&nbsp;<?=_("of") ?> <?php echo $Pager->PageCount ?></span></td>
 	</tr></table>
 	</td>	
 	<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>

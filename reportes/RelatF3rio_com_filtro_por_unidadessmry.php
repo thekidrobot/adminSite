@@ -236,7 +236,7 @@ var EW_REPORT_POPUP_NO_VALUE = "No value selected!";
 <!-- top slot -->
 <a name="top"></a>
 <?php } ?>
-Relatório Com Filtro Por Unidades
+<?=_("Report with filter by units")?>
 <?php if (@$sExport == "") { ?>
 &nbsp;&nbsp;<a href="RelatF3rio_com_filtro_por_unidadessmry.php?export=excel">Export to Excel</a>
 <?php if ($bFilterApplied) { ?>
@@ -275,8 +275,8 @@ if (EW_REPORT_FILTER_PANEL_OPTION == 2 || (EW_REPORT_FILTER_PANEL_OPTION == 3 &&
 <form name="fRelatF3rio_com_filtro_por_unidadessummaryfilter" id="fRelatF3rio_com_filtro_por_unidadessummaryfilter" action="RelatF3rio_com_filtro_por_unidadessmry.php" class="ewForm" onSubmit="return ewrpt_ValidateExtFilter(this);">
 <table class="ewRptExtFilter">
 	<tr>
-		<td><span class="phpreportmaker">Nombre Completo</span></td>
-		<td><span class="ewRptSearchOpr">contains<input type="hidden" name="so1_User" id="so1_User" value="LIKE"></span></td>
+		<td><span class="phpreportmaker"><?=_("Full name")?></span></td>
+		<td><span class="ewRptSearchOpr"><?=_("contains")?><input type="hidden" name="so1_User" id="so1_User" value="LIKE"></span></td>
 		<td>
 			<table cellspacing="0" class="ewItemTable"><tr>
 				<td><span class="phpreportmaker">

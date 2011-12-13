@@ -1,18 +1,7 @@
 <?
 include("conexion.php");
 include("clases/clsusuario.php");
-
-session_start();
-
-//validar sesion
-if($_SESSION["usuario"]=="")
- {
-  ?>
-  <script language="javascript">
-  document.location="inicio.html";
-  </script>
-  <?
- }
+include("session.php");
 
 ///objetos
 $objUsuario=new clsusuario();
@@ -23,13 +12,13 @@ if($_POST["ingresar"]!="")
  {
     $clave=$_POST["valorClave"];
     $objUsuario->actualizarClave($_SESSION["usuario"],$clave);
-    $msg="Password atualizado";
+    $msg=_("Password updated");
  }
 ?>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Transdmin Light</title>
+<title>RAMP</title>
 
 <!-- CSS -->
 <link href="style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
@@ -41,19 +30,18 @@ if($_POST["ingresar"]!="")
 <script type="text/javascript" src="style/js/jNice.js"></script>
 </head>
 <body>
- <h3>Gerenciar minha conta</h3>
- <h3>Trocar password </h3>
- <form name="formProceso" action="admacceso.php" method="post" onSubmit="return validaCambioClave()">
+ <h3><?=_("Change password")?></h3>
+ <form name="formProceso" action="admacceso.php" method="post" onSubmit="return validaCambioClave()" class="jNice">
 	<fieldset>
 	 <input type="hidden" name="ingresar" value="1">
    <p>
-		<label>Digite seu novo password:</label>
-		<input name="valorClave" type="password">
+		<label><?=_("Type your new password ") ?>:</label>
+		<input name="valorClave" type="password" class="text-long">
+		 <input type="image" src="imagenes/crear.jpg">
 	 </p>
 	 <p>
 		<label><?=$msg?></label>
-		<input type="image" src="imagenes/crear.jpg">
-   </p>
+	 </p>
 	</fieldset>
  </form>
 </body>

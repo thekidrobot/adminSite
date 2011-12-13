@@ -1,24 +1,11 @@
 <?
-include("conexion.php");
+include('Connections/cnxRamp.php');
+include("session.php");
+
 include("clases/clstaller.php");
 include("clases/clsusuario.php");
 
-$con = mysql_connect($_SESSION["servidor"],$_SESSION["root"],$_SESSION["claveBD"]) or die (mysql_error()); 
-mysql_select_db($_SESSION["basededatos"],$con) or die (mysql_error()); 
-
-session_start();
-
 $currentPage = $_SERVER['PHP_SELF'];
-
-//validar sesion
-if($_SESSION["usuario"]=="")
- {
-  ?>
-  <script language="javascript">
-  document.location="index.php";
-  </script>
-  <?
- }
 
 ///objetos
 $objTaller=new clstaller();
@@ -85,17 +72,14 @@ if($U > 0)
 ///actualizar
 if($_POST["actualizar"]!="")
  {
-	 if($_POST['activo']!='1')
-		 $activo=0;
-	else
-		$activo=1;
-
-
+	if($_POST['activo']!='1') $activo=0;
+	else $activo=1;
+	
 	$objUsuario->actualizarUsuario($_POST["actualizar"],$_POST["valorLogin"],$_POST["valorClave"],
 																 $_POST["valorNombre"],$activo,$_POST['licencia'],$_POST['txtKeyramp'],
 																 $_POST['valorMac'],$_POST['valorSerial']);
 	
-    $msg="Registro atualizado";
+  $msg="Registro atualizado";
  }
 
 
@@ -161,27 +145,39 @@ if($_GET["actualizar"]!="")
 <script type="text/javascript" src="style/js/toggleShowHide.js"></script>
 <script type="text/javascript" src="style/js/jquery.js"></script>
 <script type="text/javascript" src="style/js/jNice.js"></script>
-</head><body>
+</head>
+<body>
 
+<form name="frmbusca" action="<?=$currentPage?>" method="post" class="jNice">
+ <h3><?=_("Find users")?></h3>
+ <fieldset>
+	<p>
+	 <label><?=_("Name")?></label>
+	 <input type="text" name="parteNombre" id="parteNombre" value="<?php echo $_POST['parteNombre']; ?>" maxlength="255" class="text-long" />
+	 <input type="image" src="imagenes/buscar.jpg">
+	</p>
+ </fieldset>
+</form>
+
+<form name="formProceso" action="<?=$_SERVER['PHP_SELF']?>" method="post" onSubmit="return validarNuevoUsuario()" class="jNice" >
  <div id="headerDiv">
-	 <h3>Gerenciar Usuarios <a id="myHeader" href="javascript:toggle('myContent','myHeader');" >Clique para Agregar</a></h3>
+	 <h3><?=_("Manage users")?> &gt;&gt; <a id="myHeader" href="javascript:toggle('myContent','myHeader');" ><?=_("Click to add")?></a></h3>
  </div>
- 
  <div id="contentDiv">
-	 <?php
-		 if($_GET['actualizar'] != ''){
-		 ?>
-		 <div id="myContent" style="display: block;">
-		 <?
-		 }
-		 else{
-			 ?>
-			 <div id="myContent" style="display: none;">
-			 <?
-		 }
-	 ?>	
+ <?php
+	if($_GET['actualizar'] != ''){
+	 ?>
+	 <div id="myContent" style="display: block;">
+	 <?
+	}
+	else{
+	 ?>
+	 <div id="myContent" style="display: none;">
+	 <?
+	}
+	?>	
   
-	<form name="formProceso" action="<?=$_SERVER['PHP_SELF']?>" method="post" onSubmit="return validarNuevoUsuario()" class="jNice" >
+	
 	 <fieldset>
 	 <? 
 	 if($_GET["actualizar"]!=""){
@@ -200,39 +196,39 @@ if($_GET["actualizar"]!="")
 	 if($_GET["actualizar"]!=""){
 	 ?>
 	 <p>
-		<h4><a href="#" onmouseover="ajax_showTooltip(window.event,'muestraGrupos.php?id=<?=$_GET["actualizar"]?>',this);return false" onmouseout="ajax_hideTooltip()">Clique para ver grupos</a></h4>
+		<h4><a href="#" onmouseover="ajax_showTooltip(window.event,'muestraGrupos.php?id=<?=$_GET["actualizar"]?>',this);return false" onmouseout="ajax_hideTooltip()"><?=_("Hover to see user groups")?></a></h4>
 	 </p>
 	 <?php
 	 }
 	 ?>
 	 <p>
-		<label>Nome</label>
+		<label><?=_("Name")?></label>
     <input type="text" name="valorNombre" value="<?=$vNombreCompleto?>" maxlength="255" class="text-long" />
 	 </p>
    <p>
-		<label>Login</label>
+		<label><?=_("Username")?></label>
 		<input type="text" name="valorLogin" value="<?=$vUsuario?>" maxlength="100" class="text-long" />
 	 </p>
 	 <p>
-	  <label>Senha</label>
+	  <label><?=_("Password")?></label>
     <input type="password" name="valorClave" value="<?=$vPassword?>" maxlength="15" class="text-long" />
    </p>
 	 <p>
-		<label>Mac</label>
+		<label><?=_("Mac Address")?></label>
 		<input type="text" name="valorMac" value="<?=$vMacId?>" maxlength="100" class="text-long" />
 	 </p>
 	 <p>
-		<label>Serial</label>
+		<label><?=_("Machine serial number")?></label>
 		<input type="text" name="valorSerial" value="<?=$vSerial?>" maxlength="100" class="text-long" />
 	 </p> 
 	 <p>
-	  <label>Ativar
+	  <label><?=_("Enable")?>
 		<input type="checkbox" <?php if (!(strcmp($activoUser,1))) {echo "checked=\"checked\"";} ?> name="activo"  id="activo" value="1" />
 		</label>
 	 </p>	 
 	 </p>
    <p>
-	  <label>Computer ID </label>
+	  <label><?=_("Computer ID")?></label>
 		<input name="licencia" type="text" id="licencia" value="<?php echo $llave; ?>" class="text-long" />
 	 </p>
 	 <p>
@@ -248,26 +244,17 @@ if($_GET["actualizar"]!="")
  </div>
 </div>
 
-	<h3>Procurar usu&aacute;rios</h3>
-	<form name="frmbusca" action="<?=$currentPage?>" method="post" class="jNice">
-   <fieldset>
-		<p>
-		 <label>Nome</label>
-		 <input type="text" name="parteNombre" id="parteNombre" value="<?php echo $_POST['parteNombre']; ?>" maxlength="255" class="text-long" />
-		 <input type="image" src="imagenes/buscar.jpg">
-		</p>
-	 </fieldset>
-  </form>
-	
-	<form action="<?=$currentPage?>" method="post">
-  <table>
-    <tr>
-		 <td align="center" style="padding:5px 0px 5px 0px"><input class="button-submit" type="submit" value="Borrar Seleccion" name="borrar" onclick="return confirm('Desea borrar los elementos seleccionados?')" /></label></td>
-		 <td><b>Nome</b></td>
-		 <td><b>Ativo</b></td>
-		 <td><b>Login</b></td>
-		 <td><b>Borrar</b></td>
-    <tr>
+<form action="<?=$currentPage?>" method="post">
+ <table>
+	<tr>
+	 <td align="center" style="padding:5px 0px 5px 0px">
+		 <input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
+	 </td>
+	 <td><b><?=_("Name")?></b></td>
+	 <td><b><?=_("Active")?></b></td>
+	 <td><b><?=_("Username")?></b></td>
+	 <td><b><?=_("Delete")?></b></td>
+	<tr>
     <?php
 		//Sentencia sql (sin limit) 
 		if($_POST['parteNombre']!="")
@@ -304,7 +291,7 @@ if($_GET["actualizar"]!="")
 			</td>
 			<!--<td  align="left" valign="top" bgcolor="white" class="tahoma_12"><a href="mensajes/insertarMensaje.php?codUser=<?php echo $IdUsuario; ?>&nomUser=<?php echo $NombreCompleto; ?>">Enviar</a></td>-->
 			<td><?=$Usuario?></td>
-			<td><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['IdUsuario']?>" onclick="return confirm('Seguro que desea borrar?')">Borrar</td>
+			<td><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['IdUsuario']?>" onclick="return confirm('Are you sure do you want to delete?')"><?=_("Delete")?></td>
 		 <tr>
 		 <?
 		}

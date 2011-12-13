@@ -138,8 +138,8 @@ function MenuItem_Adding(&$Item) {
 // Generate all menu items
 $RootMenu = new cMenu("RootMenu");
 $RootMenu->IsRoot = TRUE;
-$RootMenu->AddMenuItem(17, "Relatório De Visualização", "RelatF3rio_de_visualizaE7E3osmry.php", -1, TRUE);
-$RootMenu->AddMenuItem(19, "Relatório Com Filtro Por Unidades", "RelatF3rio_com_filtro_por_unidadessmry.php", -1, TRUE);
+$RootMenu->AddMenuItem(17, "Visualization report", "RelatF3rio_de_visualizaE7E3osmry.php", -1, TRUE);
+$RootMenu->AddMenuItem(19, "Report with filter by units", "RelatF3rio_com_filtro_por_unidadessmry.php", -1, TRUE);
 $RootMenu->Render();
 ?>
 </div>
