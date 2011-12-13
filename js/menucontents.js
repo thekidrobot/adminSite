@@ -1,19 +1,18 @@
 var anylinkmenu1={divclass:'anylinkmenu', inlinestyle:'', linktarget:'carga'} //First menu variable. Make sure "anylinkmenu1" is a unique name!
 anylinkmenu1.items=[
-	["Ver Arquivos", "archivos/listarArchivos.php"],
-	["Adicionar Arquivos", "archivos/addArchivo.php"],
-	["Buscar Arquivos", "archivos/buscarArchivos.php"]
+	["View Files", "archivos/listarArchivos.php"],
+	["Add Files", "archivos/addArchivo.php"],
+	["Find Files", "archivos/buscarArchivos.php"]
   //no comma following last entry!
 ]
 
 var anylinkmenu2={divclass:'anylinkmenu', inlinestyle:'', linktarget:'carga'} //First menu variable. Make sure "anylinkmenu1" is a unique name!
 anylinkmenu2.items=[
-	["Crear Categorias", "categoriasVideos.php"],
-	["Grupos de Usuarios", "gruposUsuarios.php"],
-	["Grupos de Paquetes", "gruposPaquetes.php"]
+	["Create Categories", "categoriasVideos.php"],
+	["Group Users", "gruposUsuarios.php"],
+	["Group Packages", "gruposPaquetes.php"]
   //no comma following last entry!
 ]
-
 
 /*var anylinkmenu2={divclass:'anylinkmenu', inlinestyle:'width:150px; background:#FDD271', linktarget:'_new'} //Second menu variable. Same precaution.
 anylinkmenu2.items=[

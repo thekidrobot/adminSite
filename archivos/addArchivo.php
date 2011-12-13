@@ -1,19 +1,6 @@
 <?php require_once('../Connections/cnxRamp.php'); ?>
-<?php
-if (!isset($_SESSION)) {
-  session_start();
-}
-if($_SESSION["usuario"]=="")
- {
-  ?>
-<script language="javascript">
-  document.location="../index.php";
-  </script>
-  <?
- }
- 
-?>
-<?php
+<?php include("../session.php");
+
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
@@ -80,39 +67,39 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 <html>
 <?php include("../includes/head.php") ?>
 <body>
-  <h3>Adicionar arquivo de video ao cat&aacute;logo</h3>
+  <h3><?=_("Add video file to the catalog")?></h3>
 	<form method="post" name="form1" action="<?php echo $editFormAction; ?>" class="jNice">
 	<fieldset>
 		<p>
-			<label>Pasta: </label>
+			<label><?=_("Folder")?> : </label>
 			<input name="carpeta" type="text" id="carpeta" value="" maxlength="150" class="text-long">
 		</p>
     <p>
-			<label>Nome do Arquivo: </label>
+			<label><?=_("Filename")?> : </label>
 			<input name="nombreArchivo" type="text" id="titulo2" maxlength="200" class="text-long">
 		</p>
     <p>
-			<label>T&iacute;tulo</label>
+			<label><?=_("Title")?> : </label>
 			<input name="titulo" type="text" id="titulo3" maxlength="200" class="text-long">
 		</p>
 		<p>
-			<label>Descri&ccedil;&atilde;o</label>
+			<label><?=_("Description")?> : </label>
 			<label><textarea name="texto" cols="100" id="texto"></textarea></label>
 		</p>
 		<p>
-			<label>Professor</label>
+			<label><?=_("Trainer")?> : </label>
 			<input name="speaker" type="text" value="" class="text-long">
 		</p>
 		<p>
-			<label>Situa&ccedil;&atilde;o:</label>
+			<label><?=_("Status")?> : </label>
 			<select name="estado" class="descripcion" id="estado">
-				<option value="1">ativo</option>
-				<option value="2">inativo</option>
+				<option value="1"><?=_("Active")?></option>
+				<option value="2"><?=_("Inactive")?></option>
 			</select>
 		</p>
 		<input type="hidden" name="cant" id="cant">      
 		<input type="hidden" name="MM_insert" value="form1">
-		<input type="submit" onClick="MM_validateForm('texto','','R');return document.MM_returnValue" value="Adicionar Video">
+		<input type="submit" onClick="MM_validateForm('texto','','R');return document.MM_returnValue" value="<?=_("Add Video")?>">
 		</fieldset>
   </form>
 </body>

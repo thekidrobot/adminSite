@@ -1,17 +1,6 @@
 <?php
 include('Connections/cnxRamp.php');
-
-	session_start();
-
-	//validar sesion
-	if($_SESSION["usuario"]=="")
-	{
-  ?>
-		<script language="javascript">
-		document.location="inicio.html";
-		</script>
-  <?
-	}
+include("session.php");
 
 	//Add selected multiple
 	$addItems = $_POST['addItems'];
@@ -334,7 +323,7 @@ include('Connections/cnxRamp.php');
 
 		<div id="wrapper">
 		<div id="headerDiv">
-			<h3>Grupos de Usuarios &gt;&gt; <a id="myHeader" href="javascript:toggle('myContent','myHeader');" >Click para Agregar</a></h3>
+			<h3><?=_("Groups of users") ?> &gt;&gt; <a id="myHeader" href="javascript:toggle('myContent','myHeader');" ><?=_("Click to add")?></a></h3>
 		</div>
 		
 		<div id="contentDiv">
@@ -354,24 +343,24 @@ include('Connections/cnxRamp.php');
 			<form action="<?=$_SERVER['PHP_SELF']?>" method="post" class="jNice">
 				<fieldset>
 					<p>
-					<label>Nombre</label>
+					<label><?=_("Name")?></label>
 					<input type="text" name="nomGrupo" value="<?=$nomGrupo?>" class="text-long" maxlenght="150" />
 					<input type="hidden" name="idGrupo" value="<?=$idGrupo?>" />				
 					</p>
 					<? if (trim($nomGrupo) !=""){
 						?>
 						<input type="hidden" name="flgEditar" value=1 />				
-						<input type="submit" value="Editar" name="Editar" />
+						<input type="submit" value="<?=_("Edit")?>" name="Editar" />
 						<?
 					}
 					else{
 						?>
 						<input type="hidden" name="flgAgregar" value=1 />				
-						<input type="submit" value="Agregar" name="Agregar" />
+						<input type="submit" value="<?=_("Add")?>" name="Agregar" />
 						<?	
 				}
 				?>
-					<a href="<?=$_SERVER['PHP_SELF']?>"><input type="button" value="Limpiar" class="button-submit" /></a>
+					<a href="<?=$_SERVER['PHP_SELF']?>"><input type="button" value="<?=_("Reset")?>" class="button-submit" /></a>
 				</fieldset>
 			</form>
 			</div>
@@ -380,11 +369,13 @@ include('Connections/cnxRamp.php');
 		<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 		<table>
 			<tr>
-				<td align="center" style="padding:5px 0px 5px 0px"><input class="button-submit" type="submit" value="Borrar Seleccion" name="borrar" onclick="return confirm('Desea borrar los elementos seleccionados?')" /></label></td>
-				<td><b>Nombre</b></td>
-				<td><b>Agregar Paquetes</b></td>
-				<td><b>Agregar Usuarios</b></td>
-				<td><b>Borrar</b></td>
+				<td align="center" style="padding:5px 0px 5px 0px">
+          <input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
+        </td>
+				<td><b><?=_("Name")?></b></td>
+				<td><b><?=_("Add Packages")?></b></td>
+				<td><b><?=_("Add Users")?></b></td>
+				<td><b><?=_("Delete")?></b></td>
 			</tr>
 			<?php
 				$counter = 0;
@@ -395,9 +386,9 @@ include('Connections/cnxRamp.php');
 					<tr <?php if($counter % 2) echo " class='odd'"?>>
 						<td align="center"><input name='archivos[]' type='checkbox' value="<?=$row['idGrupoDeUsuario']?>"></td>
 						<td><a href="<?=$_SERVER['PHP_SELF']?>?edit=<?=$row['idGrupoDeUsuario']?>"><?=$row['nomGrupoDeUsuario']?></a></td>
-						<td><a href="<?=$_SERVER['PHP_SELF']?>?add_pq=<?=$row['idGrupoDeUsuario']?>">Agregar Paquetes</td>
-						<td><a href="<?=$_SERVER['PHP_SELF']?>?add_us=<?=$row['idGrupoDeUsuario']?>">Agregar Usuarios</td>
-						<td><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idGrupoDeUsuario']?>" onclick="return confirm('Seguro que desea borrar?')">Borrar</td>
+						<td><a href="<?=$_SERVER['PHP_SELF']?>?add_pq=<?=$row['idGrupoDeUsuario']?>"><?=_("Add Packages")?></td>
+						<td><a href="<?=$_SERVER['PHP_SELF']?>?add_us=<?=$row['idGrupoDeUsuario']?>"><?=_("Add Users")?></td>
+						<td><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idGrupoDeUsuario']?>" onclick="return confirm('Are you sure do you want to delete?')"><?=_("Delete")?></td>
 					</tr>
 					<?php;
 				}  
@@ -415,19 +406,19 @@ include('Connections/cnxRamp.php');
 					<div id="scrolldiv_content">
 
 					<p id="changeNotification" style="margin-top:20px">
-						<p align="center"><h3>Arrastre para Modificar</h3></p>
+						<p align="center"><h3><?=_("Drag and drop to modify") ?></h3></p>
 						<div id="activityIndicator" style="display:none; ">
-						<img src="imagenes/loading_indicator.gif" /> Actualizando Datos...
+						<img src="imagenes/loading_indicator.gif" /> <?=_("Updating data, please wait")?>...
 						</div>
 					</p>
 					
 					<form action="<?=$_SERVER['PHP_SELF']?>" method="post">	
 					
 					<ul id="sortlist">
-					<h4>Usuarios Disponibles</h4>
+					<h4><?=_("Available Users")?></h4>
 					<br/>
-					<a href="<?=$_SERVER['PHP_SELF']?>?add_all_us=<?=$idGrupo?>"><input type="button" class="button-submit" value="Agregar Todos" /></a>
-					<input type="submit" name="a_selected" value="Agregar Marcados" class="button-submit" style="margin-left:10px;" />
+					<a href="<?=$_SERVER['PHP_SELF']?>?add_all_us=<?=$idGrupo?>"><input type="button" class="button-submit" value="<?=_("Add all")?>" /></a>
+					<input type="submit" name="a_selected" value="<?=_("Add Selected")?>" class="button-submit" style="margin-left:10px;" />
 					<input type="hidden" value="<?=$idGrupo?>" name="idGrupo_usr" />
 					<br/>
 					<br/>
@@ -446,10 +437,10 @@ include('Connections/cnxRamp.php');
 					
 					<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 					<ul id="sortlist2">
-					<h4>Usuarios en <?=$nomGrupo?></h4>
+					<h4><?=_("Users in ")?> <?=$nomGrupo?></h4>
 					<br/>
-						<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_us=<?=$idGrupo?>"><input type="button" class="button-submit" value="Quitar Todos" /></a>
-						<input type="submit" name="r_selected" value="Quitar Marcados" class="button-submit" style="margin-left:10px;" />
+						<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_us=<?=$idGrupo?>"><input type="button" class="button-submit" value="<?=_("Remove all")?>" /></a>
+						<input type="submit" name="r_selected" value="<?=_("Remove selected")?>" class="button-submit" style="margin-left:10px;" />
 						<input type="hidden" value="<?=$idGrupo?>" name="idGrupo_usr" />
 					<br/>
 					<br/>
@@ -488,19 +479,19 @@ include('Connections/cnxRamp.php');
 					<div id="scrolldiv_content">
 						
 					<p id="changeNotification" style="margin-top:20px">
-						<p align="center"><h3>Arrastre para Modificar</h3></p>
+						<p align="center"><h3><?=_("Drag and drop to modify") ?></h3></p>
 						<div id="activityIndicator" style="display:none; ">
-						<img src="imagenes/loading_indicator.gif" /> Actualizando Datos...
+						<img src="imagenes/loading_indicator.gif" /> <?=_("Updating data, please wait")?>...
 						</div>
 					</p>
 
 					<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 
 					<ul id="sortlist">
-					<h4>Paquetes Disponibles</h4>
+					<h4><?=_("Available Packages")?></h4>
 					<br/>
-					<a href="<?=$_SERVER['PHP_SELF']?>?add_all_pq=<?=$idGrupo?>"><input type="button" class="button-submit" value="Agregar Todos" /></a>
-					<input type="submit" name="a_selected" value="Agregar Marcados" class="button-submit" style="margin-left:10px;" />
+					<a href="<?=$_SERVER['PHP_SELF']?>?add_all_pq=<?=$idGrupo?>"><input type="button" class="button-submit" value="<?=_("Add all")?>" /></a>
+					<input type="submit" name="a_selected" value="<?=_("Add Selected")?>" class="button-submit" style="margin-left:10px;" />
 					<input type="hidden" value="<?=$idGrupo?>" name="idGrupo_paq" />
 					<br/>
 					<br/>
@@ -522,10 +513,10 @@ include('Connections/cnxRamp.php');
 			
 					<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 					<ul id="sortlist2">
-					<h4>Paquetes en <?=$nomGrupo?></h4>
+					<h4><?=_("Packages in ")?> <?=$nomGrupo?></h4>
 					<br/>
-						<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_pq=<?=$idGrupo?>"><input type="button" class="button-submit" value="Quitar Todos" /></a>
-						<input type="submit" name="r_selected" value="Quitar Marcados" class="button-submit" style="margin-left:10px;" />
+						<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_pq=<?=$idGrupo?>"><input type="button" class="button-submit" value="<?=_("Remove all")?>" /></a>
+						<input type="submit" name="r_selected" value="<?=_("Remove Selected")?>" class="button-submit" style="margin-left:10px;" />
 						<input type="hidden" value="<?=$idGrupo?>" name="idGrupo_paq" />
 					<br/>
 					<br/>
@@ -561,4 +552,3 @@ include('Connections/cnxRamp.php');
 		</div>
 	</body>
 </html>
-		

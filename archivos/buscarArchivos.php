@@ -1,19 +1,6 @@
 <?php require_once('../Connections/cnxRamp.php'); ?>
-<?php
-if (!isset($_SESSION)) {
-  session_start();
-}
-if($_SESSION["usuario"]=="")
- {
-  ?>
-<script language="javascript">
-  document.location="../index.php";
-  </script>
-  <?
- }
- 
-?>
-<?php
+<?php include("../session.php");
+
 if (!function_exists("GetSQLValueString")) {
 	function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = ""){
 	if (PHP_VERSION < 6) {
@@ -117,17 +104,17 @@ $queryString_rsConsulta1 = sprintf("&totalRows_rsConsulta1=%d%s", $totalRows_rsC
 <html>
 <?php include("../includes/head.php") ?>
 <body>
-  <h3>Buscar Arquivos</h3>
+  <h3><?=_("Find files")?></h3>
 	<form method="post" action="<?=$currentPage?>" class="jNice">
 		<fieldset>
 		<p>
-			<label>Selecione um crit&eacute;rio de busca :</label>
+			<label><?=_("Select a search criteria")?></label>
 			<input type="text" name="strBusca" value="<?=$strBusca ?>" class="text-long">
 			<select name="condicion">
-				<option value="nombreArchivo" <?php if ($condicion == "nombreArchivo") echo "selected='selected'" ?>>Nome do arquivo</option>
-				<option value="tituloArchivo" <?php if ($condicion == "tituloArchivo") echo "selected='selected'" ?>>Titulo do arquivo</option>
-				<option value="temaArchivo" <?php if ($condicion == "temaArchivo") echo "selected='selected'" ?>>Tema do arquivo</option>
-				<option value="fechaArchivo" <?php if ($condicion == "fechaArchivo") echo "selected='selected'" ?>>Fecha do arquivo</option>
+				<option value="nombreArchivo" <?php if ($condicion == "nombreArchivo") echo "selected='selected'" ?>><?=_("Filename")?></option>
+				<option value="tituloArchivo" <?php if ($condicion == "tituloArchivo") echo "selected='selected'" ?>><?=_("Title")?></option>
+				<option value="temaArchivo" <?php if ($condicion == "temaArchivo") echo "selected='selected'" ?>><?=_("Subject")?></option>
+				<option value="fechaArchivo" <?php if ($condicion == "fechaArchivo") echo "selected='selected'" ?>><?=_("Release date")?></option>
 			</select>
 		</p>
 		<input name="buscar" type="submit" value="Buscar" />
@@ -136,9 +123,8 @@ $queryString_rsConsulta1 = sprintf("&totalRows_rsConsulta1=%d%s", $totalRows_rsC
 	
 	<table>
 		<tr>
-			<td class="action"><b>Editar</b></td>
-			<td><b>T&iacute;tulo-Nome</b></td>
-			<td><b>Professor</b></td>
+			<td><b><?=_("Title / Name")?></b></td>
+			<td><b><?=_("Trainer")?></b></td>
 		</tr>
     <?php
 		$counter = 0;
@@ -146,11 +132,10 @@ $queryString_rsConsulta1 = sprintf("&totalRows_rsConsulta1=%d%s", $totalRows_rsC
 		{
 			?>
 			<tr <?php if($counter % 2) echo " class='odd'"?>>
-				<td class="action">
+				<td>
 					<a href="edicion.php?id_archivo=<?php echo $row_rsConsulta1['id_archivo']; ?>">
-					<?php echo $row_rsConsulta1['id_archivo']; ?></a>
+					<?php echo $row_rsConsulta1['titulo']; ?></a>
         </td>
-				<td><?php echo $row_rsConsulta1['titulo']; ?></td>
 				<td><?php echo $row_rsConsulta1['speaker']; ?></td>
 			</tr>
 			<?php

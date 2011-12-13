@@ -81,7 +81,7 @@ $totalRows_rsArchivo = mysql_num_rows($rsArchivo);
 <body leftmargin="0" topmargin="0" background="" >
     <h3>Editar Informa&ccedil;ao</h3>
 		<form method="POST" name="form1" action="<?php echo $editFormAction; ?>" class="jNice">
-    <h3>Id_arquivo:<?php echo $row_rsArchivo['id_archivo']; ?></h3>
+    <!--<h3>Id_arquivo:<?php echo $row_rsArchivo['id_archivo']; ?></h3>-->
 		<fieldset>
 			<p>
 				<label>Pasta:</label>

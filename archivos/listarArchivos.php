@@ -1,19 +1,6 @@
 <?php require_once('../Connections/cnxRamp.php'); ?>
-<?php
-if (!isset($_SESSION)) {
-  session_start();
-}
-if($_SESSION["usuario"]=="")
- {
-  ?>
-<script language="javascript">
-  document.location="../index.php";
-  </script>
-  <?
- }
- 
-?>
-<?php
+<?php include("../session.php"); 
+
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
@@ -130,24 +117,26 @@ if($U > 0)
 ?>
 <html>
 <?php include("../includes/head.php") ?>
-
 <body>
-    <h3>Ver Arquivos</h3>
-    <h3>Arquivos que est&atilde;o atualmente no sistema</h3>
+    <h3><?=_("View Files")?></h3>
     <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
     <table cellpadding="0" cellspacing="0">
       <tr valign="absmiddle">
-        <td align="center" style="padding:5px 0px 5px 0px"><input class="button-submit" type="submit" value="Borrar Marcados" name="borrar" onclick="return confirm('Desea borrar los elementos seleccionados?')" /></td>
-        <td><b>Editar</b></td>
-        <td><b>Descri&ccedil;&atilde;o</b></td>
-        <td><b>Professor</b></td>
-        <td><b>Borrar</b></td>
+        <td align="center" style="padding:5px 0px 5px 0px">
+          <input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
+        </td>
+        <td><b><?=_("Edit")?></b></td>
+        <td><b><?=_("Description")?></b></td>
+        <td><b><?=_("Trainer")?></b></td>
+        <td><b><?=_("Subject")?></b></td>
+        <td><b><?=_("Release date")?></b></td>
+        <td><b><?=_("Delete")?></b></td>
       </tr>
       <?php
         $counter = 0;
         do
         {
-          ?>
+        ?>
         <tr <?php if($counter % 2) echo " class='odd'"?>>
           <td align="center">
             <input name='archivos[]' type='checkbox' value="<?=$row_rsArchivos['id_archivo']?>">
@@ -159,7 +148,9 @@ if($U > 0)
           </td>
           <td><a href="editImagen.php?arch=<?=$row_rsArchivos['id_archivo']; ?>"></a> <?=$row_rsArchivos['texto']; ?></td>
           <td><?=$row_rsArchivos['speaker']; ?></td>
-          <td class="action"><a href="<?=$_SERVER['PHP_SELF']; ?>?del=<?=$row_rsArchivos['id_archivo']?>" onclick="return confirm('Desea Borrar?')">Borrar</a></td>
+          <td><?=$row_rsArchivos['tema']; ?></td>
+          <td><?=$row_rsArchivos['fechaLanzamiento']; ?></td>
+          <td class="action"><a href="<?=$_SERVER['PHP_SELF']; ?>?del=<?=$row_rsArchivos['id_archivo']?>" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')">Borrar</a></td>
         </tr>
         <?php
           $counter++;
@@ -167,7 +158,9 @@ if($U > 0)
         while ($row_rsArchivos = mysql_fetch_assoc($rsArchivos)); ?>
         <tr>
           <td colspan="7">
-            <?php echo ($startRow_rsArchivos + 1) ?> al <?php echo min($startRow_rsArchivos + $maxRows_rsArchivos, $totalRows_rsArchivos) ?> de <?php echo $totalRows_rsArchivos ?>
+            <?php
+              gettext(printf("Files %d to %d of %d",($startRow_rsArchivos + 1),min($startRow_rsArchivos + $maxRows_rsArchivos, $totalRows_rsArchivos),$totalRows_rsArchivos))
+            ?>
           </td>
         </tr>
         <tr>

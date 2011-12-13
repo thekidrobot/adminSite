@@ -1,18 +1,6 @@
 <?
 include("conexion.php");
-
-session_start();
-
-//validar sesion
-if($_SESSION["usuario"]=="")
- {
-  ?>
-  <script language="javascript">
-  document.location="index.php";
-  </script>
-  <?
- }
-
+include("session.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -76,15 +64,15 @@ function MM_swapImage() { //v3.0
 <body>
 	<div id="wrapper">
     	<!-- h1 tag stays for the logo, you can use the a tag for linking the index page -->
-    	<h1><a href="inicio.html" target="carga"><span>Transdmin Light</span></a></h1>
+    	<h1><a href="inicio.html" target="carga"><span>:::::RAMP:::::::</span></a></h1>
 			<ul id="mainNav">
-				<li><a href="inicio.html" target="carga" class="active">Inicio</a></li>
-				<li><a href="archivos/listarArchivos.php" target="carga" class="menuanchorclass" rel="anylinkmenu1">Gerenciar Arquivos</a></li>
-				<li><a href="categoriasVideos.php" target="carga" class="menuanchorclass" rel="anylinkmenu2">Gerenciar Categorias</a></li>
-				<li><a href="admusuarios.php" target="carga">Gerenciar Usuarios</a></li>
-				<li><a href="reportes/index.php" target="carga">Gerar Relatorios</a></li>
-			        <li><a href="admacceso.php" target="carga">Gerar Minha Conta</a></li>
-				<li class="logout"><a href="index.php">Sair</a></li>
+				<li><a href="inicio.html" target="carga" class="active"><?=_("Start")?></a></li>
+				<li><a href="archivos/listarArchivos.php" target="carga" class="menuanchorclass" rel="anylinkmenu1"><?=_("Manage Files")?></a></li>
+				<li><a href="categoriasVideos.php" target="carga" class="menuanchorclass" rel="anylinkmenu2"><?=_("Manage Categories")?></a></li>
+				<li><a href="admusuarios.php" target="carga"><?=_("Manage Users")?></a></li>
+				<li><a href="reportes/index.php" target="carga"><?=_("Manage Reports")?></a></li>
+			        <li><a href="admacceso.php" target="carga"><?=_("Manage my account") ?></a></li>
+				<li class="logout"><a href="index.php"><?=_("Logout")?></a></li>
 			</ul>
 			<!-- // #end mainNav -->
 
@@ -95,8 +83,8 @@ function MM_swapImage() { //v3.0
 						<!--<li><a href="archivos/listarArchivos.php" target="carga" class="active">Ver Arquivos</a></li>-->
 						<!--<li><a href="archivos/addArchivo.php" target="carga" >Adicionar Arquivos</a></li>-->
 						<!--<li><a href="archivos/buscarArchivos.php" target="carga">Buscar Arquivos</a></li>-->
-						<li><a href="#" target="carga">FAQ</a></li>
-						<li><a href="#" target="carga">Soporte</a></li>
+						<li><a href="#" target="carga"><?=_("FAQ")?></a></li>
+						<li><a href="#" target="carga"><?=_("Support")?></a></li>
 					</ul>
 					<!-- // .sideNav -->
 				</div>    
@@ -104,7 +92,7 @@ function MM_swapImage() { //v3.0
 
 				<!-- h2 stays for breadcrumbs -->
 				<!--<h2><a href="#">Dashboard</a> &raquo; <a href="#" class="active">Print resources</a></h2>-->
-				<h2>&nbsp;</h2>
+				<!--<h2>&nbsp;</h2>-->
         <div id="main">
 					<iframe name="carga" src="inicio.html" width="805" height="716" scrolling="auto" frameborder="0" class="Slide" id="carga"></iframe>
         </div><!-- // #main -->

@@ -1,18 +1,7 @@
 <?php
 include('Connections/cnxRamp.php');
 include("includes/pagination/ps_pagination.php");
-
-	session_start();
-
-	//validar sesion
-	if($_SESSION["usuario"]=="")
-	{
-  ?>
-		<script language="javascript">
-		document.location="inicio.html";
-		</script>
-  <?
-	}
+include("session.php");
 
 	//Add selected multiple
 	$addItems = $_POST['addItems'];
@@ -256,7 +245,7 @@ include("includes/pagination/ps_pagination.php");
 
 		<div id="wrapper">
 		<div id="headerDiv">
-			<h3>Categorias &gt;&gt; <a id="myHeader" href="javascript:toggle('myContent','myHeader');" >Click para Agregar</a></h3>
+			<h3><?=_("Categories")?> &gt;&gt; <a id="myHeader" href="javascript:toggle('myContent','myHeader');" ><?=_("Click to add")?></a></h3>
 		</div>
 
 		<div id="contentDiv">
@@ -276,14 +265,14 @@ include("includes/pagination/ps_pagination.php");
 		<form action="<?=$_SERVER['PHP_SELF']?>" method="post" class="jNice">
 			<fieldset>
 				<p>
-				<label>Nombre : </label>
+				<label><?=_("Name")?> : </label>
 				<input type="text" name="grupos" value="<?=$nomGrupo?>" class="text-long" maxlenght="150" />
 				</p>
 				
 				<p>
-					<label>Pertenece a:</label>
+					<label><?=_("Parent category")?> : </label>
 					<select name="padre">
-						<option value=0 <?php if($idGrupos == $row['idGrupos']) echo "selected='selected'" ?>>Sin Padre</option>
+						<option value=0 <?php if($idGrupos == $row['idGrupos']) echo "selected='selected'" ?>><?=_("No Parent")?></option>
 						<?php
 						//First level menus
 						$result = mysql_query('SELECT * FROM grupos WHERE padre = 0 order by idGrupos');
@@ -301,7 +290,7 @@ include("includes/pagination/ps_pagination.php");
 					</select>
 				</p>
 				<p>
-					<label>Tipo de Broadcast:</label>
+					<label><?=_("Broadcast Type")?>:</label>
 					<select name="categorias">
 						<option value="Live" <?php if ($categoria =="Live") echo "selected='selected'" ?>>Live</option>
 						<option value="OnDemand" <?php if ($categoria =="OnDemand") echo "selected='selected'" ?>>OnDemand</option>
@@ -312,17 +301,17 @@ include("includes/pagination/ps_pagination.php");
 				<? if (trim($nomGrupo) !=""){
 					?>
 					<input type="hidden" name="flgEditar" value=1 />				
-					<input type="submit" value="Editar" name="Editar" />
+					<input type="submit" value="<?=_("Edit")?>" name="Editar" />
 					<?
 				}
 				else{
 					?>
 					<input type="hidden" name="flgAgregar" value=1 />				
-					<input type="submit" value="Agregar" name="Agregar" />
+					<input type="submit" value="<?=_("Add")?>" name="Agregar" />
 					<?	
 			}
 			?>
-				<a href="<?=$_SERVER['PHP_SELF']?>"><input type="button" value="Limpiar" class="button-submit" /></a>
+				<a href="<?=$_SERVER['PHP_SELF']?>"><input type="button" value="<?=_("Reset")?>" class="button-submit" /></a>
 			</fieldset>
 		</form>
 			
@@ -331,11 +320,13 @@ include("includes/pagination/ps_pagination.php");
 		<form action="<?=$_SERVER['PHP_SELF']?>" method="post">		
 		<table>
 			<tr>
-				<td align="center" style="padding:5px 0px 5px 0px"><input class="button-submit" type="submit" value="Borrar Seleccion" name="borrar" onclick="return confirm('Desea borrar los elementos seleccionados?')" /></label></td>
-				<td><b>Nombre</b></td>
-				<td><b>Señal</b></td>
-				<td class="action"><b>Agregar Videos</b></td>
-				<td class="action"><b>Borrar</b></td>
+				<td align="center" style="padding:5px 0px 5px 0px">
+          <input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
+        </td>
+				<td><b><?=_("Name")?></b></td>
+				<td><b><?=_("Signal")?></b></td>
+				<td class="action"><b><?=_("Add Videos")?></b></td>
+				<td class="action"><b><?=_("Delete")?></b></td>
 			</tr>
 			<?php
 				$counter = 0;
@@ -352,8 +343,8 @@ include("includes/pagination/ps_pagination.php");
 						<td align="center"><input name='archivos[]' type='checkbox' value="<?=$row['idGrupos']?>"></td>
 						<td><a href="<?=$_SERVER['PHP_SELF']?>?edit=<?=$row['idGrupos']?>" ><?=ucfirst(strtolower($row['grupos']))?></a></td>
 						<td align="left"><?=$row['categoria']?></td>
-						<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?add_us=<?=$row['idGrupos']?>">Agregar Videos</td>
-						<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idGrupos']?>" onclick="return confirm('Seguro que desea borrar?')">Borrar</td>
+						<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?add_us=<?=$row['idGrupos']?>"><?=_("Add Videos")?></td>
+						<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idGrupos']?>" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')">Borrar</td>
 					</tr>
 					<?php;
 				}  
@@ -376,19 +367,19 @@ include("includes/pagination/ps_pagination.php");
 					<div id="scrolldiv_content">
 
 						<p id="changeNotification" style="margin-top:20px">
-							<p align="center"><h3>Arrastre para Modificar &gt;&gt; <a href="#" onmouseover="ajax_showTooltip(window.event,'muestraInfoCategorias.php?id=<?=$idGrupos?>',this);return false" onmouseout="ajax_hideTooltip()">Clique para mais info</a></h3></p>
+							<p align="center"><h3><?=_("Drag and drop to modify") ?> &gt;&gt; <a href="#" onmouseover="ajax_showTooltip(window.event,'muestraInfoCategorias.php?id=<?=$idGrupos?>',this);return false" onmouseout="ajax_hideTooltip()"><?=_("Mouseover for more info")?></a></h3></p>
 							
 							<div id="activityIndicator" style="display:none; ">
-								<img src="imagenes/loading_indicator.gif" /> Actualizando Datos...
+								<img src="imagenes/loading_indicator.gif" /><?=_("Updating data, please wait")?>...
 							</div>
 						</p>
 					
 						<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 							<ul id="sortlist">
-								<h4>Videos Disponibles</h4>
+								<h4><?=_("Available videos")?></h4>
 								<br />
-								<a href="<?=$_SERVER['PHP_SELF']?>?add_all_us=<?=$idGrupos?>"><input type="button" class="button-submit" value="Agregar Todos" /></a>
-								<input type="submit" name="a_selected" value="Agregar Marcados" class="button-submit" style="margin-left:10px;" />
+								<a href="<?=$_SERVER['PHP_SELF']?>?add_all_us=<?=$idGrupos?>"><input type="button" class="button-submit" value="<?=_("Add All")?>" /></a>
+								<input type="submit" name="a_selected" value="<?=_("Add Selected")?>" class="button-submit" style="margin-left:10px;" />
 								<input type="hidden" value="<?=$idGrupos?>" name="idGrupos" />
 								<br/>
 								<br/>
@@ -408,10 +399,10 @@ include("includes/pagination/ps_pagination.php");
 						
 						<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 							<ul id="sortlist2">
-								<h4>Videos en <?=$nomGrupo?></h4>
+								<h4><?=_("Videos in category") ?> <?=ucfirst(strtolower($nomGrupo))?></h4>
 								<br/>
-								<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_us=<?=$idGrupos?>"><input type="button" class="button-submit" value="Quitar Todos" /></a>
-								<input type="submit" name="r_selected" value="Quitar Marcados" class="button-submit" style="margin-left:10px;" />
+								<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_us=<?=$idGrupos?>"><input type="button" class="button-submit" value="<?=_("Remove all")?>" /></a>
+								<input type="submit" name="r_selected" value="<?=_("Remove Selected")?>" class="button-submit" style="margin-left:10px;" />
 								<input type="hidden" value="<?=$idGrupos?>" name="idGrupos" />
 								<br/>
 								<br/>
