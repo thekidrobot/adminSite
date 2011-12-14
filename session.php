@@ -1,11 +1,13 @@
 <?php
 
 //Translation Libraries
-$language=(isset($_REQUEST['language']))?trim(strip_tags($_REQUEST['language'])):"en_GB";
+//$language=(isset($_REQUEST['language']))?trim(strip_tags($_REQUEST['language'])):"es_CO.utf8";
+$language=(isset($_REQUEST['language']))?trim(strip_tags($_REQUEST['language'])):"en_GB.utf8";
 putenv("LC_ALL=$language");
 setlocale(LC_ALL, $language);
 bindtextdomain("messages", "./locale");
 textdomain("messages");
+
 
 //print "<p><a href=\"".$_SERVER['PHP_SELF']."?language=en_GB\">English</a> -
 //  <a href=\"".$_SERVER['PHP_SELF']."?language=es_ES\">Español</a></p>\n";

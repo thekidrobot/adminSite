@@ -1,0 +1,410 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: adminSite\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-12-13 22:05+0530\n"
+"PO-Revision-Date: 2011-12-13 22:28+0530\n"
+"Last-Translator: Andres Gonzalez <andres.gonzalez.vargas@gmail.com>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: /var/www/adminSite\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: COLOMBIA\n"
+"X-Poedit-SearchPath-0: /var/www/adminSite\n"
+
+#: /var/www/adminSite/gruposPaquetes.php:331
+msgid "Group of categories - Packages"
+msgstr "Grupos de Categorías - Paquetes"
+
+#: /var/www/adminSite/gruposPaquetes.php:331
+#: /var/www/adminSite/admusuarios.php:164
+msgid "Click to add"
+msgstr "Click para añadir"
+
+#: /var/www/adminSite/gruposPaquetes.php:349
+#: /var/www/adminSite/gruposPaquetes.php:377
+#: /var/www/adminSite/admusuarios.php:155
+#: /var/www/adminSite/admusuarios.php:205
+#: /var/www/adminSite/admusuarios.php:253
+msgid "Name"
+msgstr "Nombre"
+
+#: /var/www/adminSite/gruposPaquetes.php:356
+msgid "Edit"
+msgstr "Editar"
+
+#: /var/www/adminSite/gruposPaquetes.php:362
+msgid "Add"
+msgstr "Añadir"
+
+#: /var/www/adminSite/gruposPaquetes.php:375
+#: /var/www/adminSite/admusuarios.php:251
+msgid "Delete Selected"
+msgstr "Borrar Marcados"
+
+#: /var/www/adminSite/gruposPaquetes.php:375
+#: /var/www/adminSite/admusuarios.php:251
+msgid "Are you sure do you want to delete?"
+msgstr "Está seguro que desea borrar?"
+
+#: /var/www/adminSite/gruposPaquetes.php:378
+#: /var/www/adminSite/gruposPaquetes.php:391
+msgid "Add group of users"
+msgstr "Añadir grupo de usuarios"
+
+#: /var/www/adminSite/gruposPaquetes.php:379
+#: /var/www/adminSite/gruposPaquetes.php:392
+msgid "Add categories"
+msgstr "Añadir categorías"
+
+#: /var/www/adminSite/gruposPaquetes.php:380
+#: /var/www/adminSite/gruposPaquetes.php:393
+#: /var/www/adminSite/admusuarios.php:256
+#: /var/www/adminSite/admusuarios.php:294
+msgid "Delete"
+msgstr "Borrar"
+
+#: /var/www/adminSite/gruposPaquetes.php:411
+#: /var/www/adminSite/gruposPaquetes.php:485
+msgid "Drag and drop to modify"
+msgstr "Arrastre para modificar"
+
+#: /var/www/adminSite/gruposPaquetes.php:413
+#: /var/www/adminSite/gruposPaquetes.php:487
+msgid "Updating data, please wait"
+msgstr "Actualizando datos, por favor espere"
+
+#: /var/www/adminSite/gruposPaquetes.php:420
+msgid "Available categories"
+msgstr "Categorías disponibles"
+
+#: /var/www/adminSite/gruposPaquetes.php:422
+#: /var/www/adminSite/gruposPaquetes.php:495
+msgid "Add all"
+msgstr "Añadir todos"
+
+#: /var/www/adminSite/gruposPaquetes.php:423
+#: /var/www/adminSite/gruposPaquetes.php:496
+msgid "Add selected"
+msgstr "Añadir seleccionados"
+
+#: /var/www/adminSite/gruposPaquetes.php:443
+msgid "Categories in "
+msgstr "Categorías en"
+
+#: /var/www/adminSite/gruposPaquetes.php:445
+#: /var/www/adminSite/gruposPaquetes.php:517
+msgid "Remove all"
+msgstr "Remover todos"
+
+#: /var/www/adminSite/gruposPaquetes.php:446
+#: /var/www/adminSite/gruposPaquetes.php:518
+msgid "Remove selected"
+msgstr "Remover seleccionados"
+
+#: /var/www/adminSite/gruposPaquetes.php:493
+msgid "Available groups"
+msgstr "Grupos disponibles"
+
+#: /var/www/adminSite/gruposPaquetes.php:515
+msgid "Groups in"
+msgstr "Grupos en"
+
+#: /var/www/adminSite/admusuarios.php:152
+msgid "Find users"
+msgstr "Buscar usuarios"
+
+#: /var/www/adminSite/admusuarios.php:164
+msgid "Manage users"
+msgstr "Administrar usuarios"
+
+#: /var/www/adminSite/admusuarios.php:199
+msgid "Hover to see user groups"
+msgstr "Click para ver grupos"
+
+#: /var/www/adminSite/admusuarios.php:209
+#: /var/www/adminSite/admusuarios.php:255
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: /var/www/adminSite/admusuarios.php:213
+msgid "Password"
+msgstr "Contraseña"
+
+#: /var/www/adminSite/admusuarios.php:217
+msgid "Mac Address"
+msgstr "Dirección MAC"
+
+#: /var/www/adminSite/admusuarios.php:221
+msgid "Machine serial number"
+msgstr "Serial"
+
+#: /var/www/adminSite/admusuarios.php:225
+msgid "Enable"
+msgstr "Activar"
+
+#: /var/www/adminSite/admusuarios.php:231
+msgid "Computer ID"
+msgstr "ID del Computador"
+
+#: /var/www/adminSite/admusuarios.php:254
+msgid "Active"
+msgstr "Activo"
+
+#: /var/www/adminSite/admacceso.php:15
+msgid "Password updated"
+msgstr "Clave actualizada"
+
+#: /var/www/adminSite/admacceso.php:33
+msgid "Change password"
+msgstr "Cambiar Contraseña"
+
+#: /var/www/adminSite/admacceso.php:38
+msgid "Type your new password "
+msgstr "Escriba su nueva contraseña"
+
+#: /var/www/adminSite/muestraInfoCategorias.php:17
+msgid "Si"
+msgstr "Si"
+
+#: /var/www/adminSite/muestraInfoCategorias.php:19
+msgid "Root Category"
+msgstr "Categoría raíz"
+
+#: /var/www/adminSite/muestraInfoCategorias.php:22
+msgid "Dependant Categories"
+msgstr "Categorías dependientes"
+
+#: /var/www/adminSite/muestraInfoCategorias.php:34
+msgid "No"
+msgstr "No"
+
+#: /var/www/adminSite/muestraInfoCategorias.php:35
+msgid "No Dependant Categories Available"
+msgstr "No hay categorías dependientes"
+
+#: /var/www/adminSite/menuadmin.php:69
+msgid "Start"
+msgstr "Inicio"
+
+#: /var/www/adminSite/menuadmin.php:70
+msgid "Manage Files"
+msgstr "Administrar Archivos"
+
+#: /var/www/adminSite/menuadmin.php:71
+msgid "Manage Categories"
+msgstr "Administrar Categorías"
+
+#: /var/www/adminSite/menuadmin.php:72
+msgid "Manage Users"
+msgstr "Administrar Usuarios"
+
+#: /var/www/adminSite/menuadmin.php:73
+msgid "Manage Reports"
+msgstr "Administrar Reportes"
+
+#: /var/www/adminSite/menuadmin.php:74
+msgid "Manage my account"
+msgstr "Administrar mi cuenta"
+
+#: /var/www/adminSite/menuadmin.php:75
+msgid "Logout"
+msgstr "Salir"
+
+#: /var/www/adminSite/menuadmin.php:86
+msgid "FAQ"
+msgstr "FAQ"
+
+#: /var/www/adminSite/menuadmin.php:87
+msgid "Support"
+msgstr "Soporte"
+
+#: /var/www/adminSite/gruposUsuarios.php:326
+msgid "Groups of users"
+msgstr "Grupos de usuarios"
+
+#: /var/www/adminSite/gruposUsuarios.php:363
+#: /var/www/adminSite/categoriasVideos.php:314
+msgid "Reset"
+msgstr "Limpiar"
+
+#: /var/www/adminSite/gruposUsuarios.php:376
+#: /var/www/adminSite/gruposUsuarios.php:389
+msgid "Add Packages"
+msgstr "Añadir paquetes"
+
+#: /var/www/adminSite/gruposUsuarios.php:377
+#: /var/www/adminSite/gruposUsuarios.php:390
+msgid "Add Users"
+msgstr "Añadir usuarios"
+
+#: /var/www/adminSite/gruposUsuarios.php:418
+msgid "Available Users"
+msgstr "Usuarios disponibles"
+
+#: /var/www/adminSite/gruposUsuarios.php:421
+#: /var/www/adminSite/gruposUsuarios.php:494
+#: /var/www/adminSite/categoriasVideos.php:382
+msgid "Add Selected"
+msgstr "Añadir marcados"
+
+#: /var/www/adminSite/gruposUsuarios.php:440
+msgid "Users in "
+msgstr "Usuarios en"
+
+#: /var/www/adminSite/gruposUsuarios.php:491
+msgid "Available Packages"
+msgstr "Paquetes disponibles"
+
+#: /var/www/adminSite/gruposUsuarios.php:516
+msgid "Packages in "
+msgstr "Paquetes en"
+
+#: /var/www/adminSite/gruposUsuarios.php:519
+#: /var/www/adminSite/categoriasVideos.php:405
+msgid "Remove Selected"
+msgstr "Quitar marcados"
+
+#: /var/www/adminSite/categoriasVideos.php:248
+msgid "Categories"
+msgstr "Categorías"
+
+#: /var/www/adminSite/categoriasVideos.php:273
+msgid "Parent category"
+msgstr "Categoría padre"
+
+#: /var/www/adminSite/categoriasVideos.php:275
+msgid "No Parent"
+msgstr "Sin padre"
+
+#: /var/www/adminSite/categoriasVideos.php:293
+msgid "Broadcast Type"
+msgstr "Tipo de Broadcast"
+
+#: /var/www/adminSite/categoriasVideos.php:327
+msgid "Signal"
+msgstr "Señal"
+
+#: /var/www/adminSite/categoriasVideos.php:328
+#: /var/www/adminSite/categoriasVideos.php:346
+msgid "Add Videos"
+msgstr "Añadir videos"
+
+#: /var/www/adminSite/categoriasVideos.php:370
+msgid "Mouseover for more info"
+msgstr "Click para mas información"
+
+#: /var/www/adminSite/categoriasVideos.php:379
+msgid "Available videos"
+msgstr "Videos disponibles"
+
+#: /var/www/adminSite/categoriasVideos.php:381
+msgid "Add All"
+msgstr "Añadir todos"
+
+#: /var/www/adminSite/categoriasVideos.php:402
+msgid "Videos in category"
+msgstr "Videos en categoría"
+
+#: /var/www/adminSite/reportes/RelatF3rio_de_visualizaE7E3osmry.php:278
+msgid "Visualizations report"
+msgstr "Reporte de visualizaciones"
+
+#: /var/www/adminSite/reportes/RelatF3rio_de_visualizaE7E3osmry.php:280
+msgid "Export to Excel"
+msgstr "Exportar a excel"
+
+#: /var/www/adminSite/reportes/RelatF3rio_de_visualizaE7E3osmry.php:282
+msgid "Reset All Filters"
+msgstr "Quitar todos los filtros"
+
+#: /var/www/adminSite/reportes/RelatF3rio_de_visualizaE7E3osmry.php:317
+msgid "Download date"
+msgstr "Fecha de descarga"
+
+#: /var/www/adminSite/reportes/RelatF3rio_de_visualizaE7E3osmry.php:318
+msgid "between"
+msgstr "Entre"
+
+#: /var/www/adminSite/reportes/RelatF3rio_de_visualizaE7E3osmry.php:562
+msgid "of"
+msgstr "de"
+
+#: /var/www/adminSite/reportes/RelatF3rio_com_filtro_por_unidadessmry.php:239
+msgid "Report with filter by units"
+msgstr "Reporte con filtro de unidades"
+
+#: /var/www/adminSite/reportes/RelatF3rio_com_filtro_por_unidadessmry.php:278
+msgid "Full name"
+msgstr "Nombre completo"
+
+#: /var/www/adminSite/reportes/RelatF3rio_com_filtro_por_unidadessmry.php:279
+msgid "contains"
+msgstr "Contiene"
+
+#: /var/www/adminSite/archivos/addArchivo.php:70
+msgid "Add video file to the catalog"
+msgstr "Añadir video al catalogo"
+
+#: /var/www/adminSite/archivos/addArchivo.php:74
+msgid "Folder"
+msgstr "Folder"
+
+#: /var/www/adminSite/archivos/addArchivo.php:78
+msgid "Filename"
+msgstr "Nombre de archivo"
+
+#: /var/www/adminSite/archivos/addArchivo.php:82
+msgid "Title"
+msgstr "Título"
+
+#: /var/www/adminSite/archivos/addArchivo.php:86
+msgid "Description"
+msgstr "Descripción"
+
+#: /var/www/adminSite/archivos/addArchivo.php:90
+msgid "Trainer"
+msgstr "Trainer"
+
+#: /var/www/adminSite/archivos/addArchivo.php:94
+msgid "Status"
+msgstr "Status"
+
+#: /var/www/adminSite/archivos/addArchivo.php:97
+msgid "Inactive"
+msgstr "Inactivo"
+
+#: /var/www/adminSite/archivos/addArchivo.php:102
+msgid "Add Video"
+msgstr "Añadir video"
+
+#: /var/www/adminSite/archivos/listarArchivos.php:121
+msgid "View Files"
+msgstr "ver archivos"
+
+#: /var/www/adminSite/archivos/listarArchivos.php:131
+#: /var/www/adminSite/archivos/buscarArchivos.php:116
+msgid "Subject"
+msgstr "Tema"
+
+#: /var/www/adminSite/archivos/listarArchivos.php:132
+#: /var/www/adminSite/archivos/buscarArchivos.php:117
+msgid "Release date"
+msgstr "Fecha de lanzamiento"
+
+#: /var/www/adminSite/archivos/buscarArchivos.php:107
+msgid "Find files"
+msgstr "Buscar archivos"
+
+#: /var/www/adminSite/archivos/buscarArchivos.php:111
+msgid "Select a search criteria"
+msgstr "Seleccione un criterio de búsqueda"
+
+#: /var/www/adminSite/archivos/buscarArchivos.php:126
+msgid "Title / Name"
+msgstr "Nombre / Título"
+

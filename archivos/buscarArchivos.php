@@ -52,11 +52,13 @@ if($_POST['strBusca']!= "")
 			break;
 		
 		case "temaArchivo":
-
+			if($whereCondicion != "") $whereCondicion .= " and ";
+			$whereCondicion .= " archivos.tema LIKE '%" . $strBusca . "%' ";
 			break;
 		
 		case "fechaArchivo":
-
+			if($whereCondicion != "") $whereCondicion .= " and ";
+			$whereCondicion .= " archivos.fechaLanzamiento LIKE '%" . $strBusca . "%' ";
 			break;	
 	}
 }
@@ -125,6 +127,8 @@ $queryString_rsConsulta1 = sprintf("&totalRows_rsConsulta1=%d%s", $totalRows_rsC
 		<tr>
 			<td><b><?=_("Title / Name")?></b></td>
 			<td><b><?=_("Trainer")?></b></td>
+			<td><b><?=_("Subject")?></b></td>
+			<td><b><?=_("Release Date")?></b></td>
 		</tr>
     <?php
 		$counter = 0;
@@ -137,13 +141,15 @@ $queryString_rsConsulta1 = sprintf("&totalRows_rsConsulta1=%d%s", $totalRows_rsC
 					<?php echo $row_rsConsulta1['titulo']; ?></a>
         </td>
 				<td><?php echo $row_rsConsulta1['speaker']; ?></td>
+				<td><?php echo $row_rsConsulta1['tema']; ?></td>
+				<td><?php echo $row_rsConsulta1['fechaLanzamiento']; ?></td>
 			</tr>
 			<?php
 			$counter++;
 		}
 		while ($row_rsConsulta1 = mysql_fetch_assoc($rsConsulta1)); ?>
   
-		<td colspan="3" align="center">
+		<td colspan="4" align="center">
 			<?php if ($pageNum_rsConsulta1 > 0) { // Show if not first page ?>
       <a href="<?php printf("%s?pageNum_rsConsulta1=%d%s", $currentPage, 0, $queryString_rsConsulta1 . '&tituloArchivo=' . $micondicion . '&nombreArchivo=' . $micondicion2); ?>">
 				<img src="../imagenes/first.png" border="0">
