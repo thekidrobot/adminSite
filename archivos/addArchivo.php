@@ -40,8 +40,8 @@ $editFormAction = $_SERVER['PHP_SELF'];
 $large_image_location = "../data/images/";
 $error = '';
 
-if (isset($_POST["image"]))
-{		
+for($i=0;$i<count($_FILES['image']['name']);$i++)
+{
 	$userfile_name = $_FILES['image']['name'][$i];
 	$userfile_tmp = $_FILES['image']['tmp_name'][$i];
 	$userfile_size = $_FILES['image']['size'][$i];
@@ -206,7 +206,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1"))
 		</p>
 		<p>
 			<label><?=_("Upload an image") ?></label>
-			<input type="file" name="image" size="23" />
+			<input type="file" name="image[]" size="23" />
 		</p>	
 		<input type="hidden" name="cant" id="cant">      
 		<input type="hidden" name="MM_insert" value="form1">
