@@ -148,7 +148,15 @@ $queryString_rsConsulta1 = sprintf("&totalRows_rsConsulta1=%d%s", $totalRows_rsC
 			$counter++;
 		}
 		while ($row_rsConsulta1 = mysql_fetch_assoc($rsConsulta1)); ?>
-  
+		<?
+			if(mysql_num_rows($rsConsulta1) == 0){
+			?>
+			<tr align="center">
+				<td colspan="4"><?=_("No records found")?></td>
+			</tr>
+			<?
+		}
+		?>
 		<td colspan="4" align="center">
 			<?php if ($pageNum_rsConsulta1 > 0) { // Show if not first page ?>
       <a href="<?php printf("%s?pageNum_rsConsulta1=%d%s", $currentPage, 0, $queryString_rsConsulta1 . '&tituloArchivo=' . $micondicion . '&nombreArchivo=' . $micondicion2); ?>">

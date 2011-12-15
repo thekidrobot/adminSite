@@ -116,8 +116,6 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1"))
 											 GetSQLValueString($_POST['subject'], "text"),
 											 GetSQLValueString($_POST['fechaRelease'], "text"));
 	
-	echo $insertSQL;
-	
 	$Result1 = mysql_query($insertSQL) or die(mysql_error());
 
 	$insertGoTo = "listarArchivos.php";
@@ -125,7 +123,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1"))
 		$insertGoTo .= (strpos($insertGoTo, '?')) ? "&" : "?";
 		$insertGoTo .= $_SERVER['QUERY_STRING'];
 	}
-	header(sprintf("Location: %s", $insertGoTo));
+	if (!headers_sent()) header('Location: listarArchivos.php');
+	else echo '<meta http-equiv="refresh" content="0;url="listarArchivos.php" />';
 }
 
 ?>

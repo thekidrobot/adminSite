@@ -112,8 +112,8 @@ if($_GET["del"]!="" and is_numeric($_GET["del"]))
   
   $actual_filename_thumb = $filename_strip.".".$file_ext;
 
-  unlink($gallery_upload_path.$actual_filename);
-  unlink($gallery_upload_path.$actual_filename_thumb);
+  @unlink($gallery_upload_path.$actual_filename);
+  @unlink($gallery_upload_path.$actual_filename_thumb);
   
   
   $sql = "DELETE FROM archivos where id_archivo=".$_GET["del"];
@@ -149,8 +149,8 @@ if($U > 0)
   
   $actual_filename_thumb = $filename_strip.".".$file_ext;
 
-  unlink($gallery_upload_path.$actual_filename);
-  unlink($gallery_upload_path.$actual_filename_thumb);
+  @unlink($gallery_upload_path.$actual_filename);
+  @unlink($gallery_upload_path.$actual_filename_thumb);
   
   $sql = "DELETE FROM archivos where id_archivo=$id";
   mysql_query($sql);

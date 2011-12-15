@@ -149,9 +149,10 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1"))
                        GetSQLValueString($_POST['id_archivo'], "int"));
 	
   $Result1 = mysql_query($updateSQL) or die(mysql_error());
+	if (!headers_sent()) header('Location: listarArchivos.php');
+	else echo '<meta http-equiv="refresh" content="0;url="listarArchivos.php" />';
+
 }
-if (!headers_sent()) header('Location: listarArchivos.php');
-else echo "<meta http-equiv="refresh" content="0;url='listarArchivos.php'" />";
 
 ?>
 
@@ -177,6 +178,27 @@ else echo "<meta http-equiv="refresh" content="0;url='listarArchivos.php'" />";
     <h3><?=_("Edit Information")?></h3>
 		<form method="POST" name="form1" enctype="multipart/form-data" action="<?php echo $editFormAction; ?>" class="jNice">
 		<fieldset>
+			<p>
+				<label><?=_("Image")?> : </label>
+				<?php
+				
+					//Borrar archivos existentes
+					$actual_filename = $row_rsArchivo['imagen'];
+					
+					$file_ext = substr($actual_filename, strrpos($actual_filename, '.') + 1);	
+					//remove the ext
+					$filename_strip= substr($actual_filename,0,strrpos($actual_filename, '.'));	
+					//remove the _big
+					$filename_strip= substr($actual_filename,0,strrpos($actual_filename, '_big'));
+					//add the _small
+					$filename_strip= $filename_strip."_small";	
+					
+					
+					$actual_filename_thumb = $filename_strip.".".$file_ext;
+				
+				?>
+				<img src="<?="../data/images/".$actual_filename_thumb?>">
+			</p>
 			<p>
 				<label><?=_("Folder")?> : </label>
 				<input name="carpeta" type="text" id="carpeta" value="<?php echo htmlentities($row_rsArchivo['carpeta']); ?>" class="text-long" />				

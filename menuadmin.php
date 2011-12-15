@@ -70,7 +70,7 @@ function MM_swapImage() { //v3.0
 				<li><a href="archivos/listarArchivos.php" target="carga" class="menuanchorclass" rel="anylinkmenu1"><?=_("Manage Files")?></a></li>
 				<li><a href="categoriasVideos.php" target="carga" class="menuanchorclass" rel="anylinkmenu2"><?=_("Manage Categories")?></a></li>
 				<li><a href="admusuarios.php" target="carga"><?=_("Manage Users")?></a></li>
-				<li><a href="reportes/index.php" target="carga"><?=_("Manage Reports")?></a></li>
+				<!--<li><a href="reportes/index.php" target="carga"><?=_("Manage Reports")?></a></li>-->
 			        <li><a href="admacceso.php" target="carga"><?=_("Manage my account") ?></a></li>
 				<li class="logout"><a href="index.php"><?=_("Logout")?></a></li>
 			</ul>
