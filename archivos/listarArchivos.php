@@ -93,6 +93,29 @@ $queryString_rsArchivos = sprintf("&totalRows_rsArchivos=%d%s", $totalRows_rsArc
 //Delete one
 if($_GET["del"]!="" and is_numeric($_GET["del"]))
 {
+  $query_rsArchivo = "SELECT * FROM archivos WHERE id_archivo = ".$_GET["del"];
+  $rsArchivo = mysql_query($query_rsArchivo) or die(mysql_error());
+  $row_rsArchivo = mysql_fetch_assoc($rsArchivo);
+  $totalRows_rsArchivo = mysql_num_rows($rsArchivo);
+  
+  //Borrar archivos existentes
+  $gallery_upload_path = "../data/images/";
+  
+  $actual_filename = $row_rsArchivo['imagen'];
+  $file_ext = substr($actual_filename, strrpos($actual_filename, '.') + 1);	
+  //remove the ext
+  $filename_strip= substr($actual_filename,0,strrpos($actual_filename, '.'));	
+  //remove the _big
+  $filename_strip= substr($actual_filename,0,strrpos($actual_filename, '_big'));
+  //add the _small
+  $filename_strip= $filename_strip."_small";	
+  
+  $actual_filename_thumb = $filename_strip.".".$file_ext;
+
+  unlink($gallery_upload_path.$actual_filename);
+  unlink($gallery_upload_path.$actual_filename_thumb);
+  
+  
   $sql = "DELETE FROM archivos where id_archivo=".$_GET["del"];
   mysql_query($sql);
   if (!headers_sent()) header('Location: '.$currentPage);
@@ -107,10 +130,32 @@ if($U > 0)
 {
  foreach($arrArchivos as $id)
  {
-    $sql = "DELETE FROM archivos where id_archivo=$id";
-    mysql_query($sql);
-    if (!headers_sent()) header('Location: '.$currentPage);
-  	else echo '<meta http-equiv="refresh" content="0;url='.$currentPage.'" />';
+  $query_rsArchivo = "SELECT * FROM archivos WHERE id_archivo = $id";
+  $rsArchivo = mysql_query($query_rsArchivo) or die(mysql_error());
+  $row_rsArchivo = mysql_fetch_assoc($rsArchivo);
+  $totalRows_rsArchivo = mysql_num_rows($rsArchivo);
+  
+  //Borrar archivos existentes
+  $gallery_upload_path = "../data/images/";
+  
+  $actual_filename = $row_rsArchivo['imagen'];
+  $file_ext = substr($actual_filename, strrpos($actual_filename, '.') + 1);	
+  //remove the ext
+  $filename_strip= substr($actual_filename,0,strrpos($actual_filename, '.'));	
+  //remove the _big
+  $filename_strip= substr($actual_filename,0,strrpos($actual_filename, '_big'));
+  //add the _small
+  $filename_strip= $filename_strip."_small";	
+  
+  $actual_filename_thumb = $filename_strip.".".$file_ext;
+
+  unlink($gallery_upload_path.$actual_filename);
+  unlink($gallery_upload_path.$actual_filename_thumb);
+  
+  $sql = "DELETE FROM archivos where id_archivo=$id";
+  mysql_query($sql);
+  if (!headers_sent()) header('Location: '.$currentPage);
+  else echo '<meta http-equiv="refresh" content="0;url='.$currentPage.'" />';
  }
 } 
 
@@ -150,7 +195,7 @@ if($U > 0)
           <td><?=$row_rsArchivos['speaker']; ?></td>
           <td><?=$row_rsArchivos['tema']; ?></td>
           <td><?=$row_rsArchivos['fechaLanzamiento']; ?></td>
-          <td class="action"><a href="<?=$_SERVER['PHP_SELF']; ?>?del=<?=$row_rsArchivos['id_archivo']?>" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')">Borrar</a></td>
+          <td class="action"><a href="<?=$_SERVER['PHP_SELF']; ?>?del=<?=$row_rsArchivos['id_archivo']?>" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')"><?=_("Delete")?></a></td>
         </tr>
         <?php
           $counter++;

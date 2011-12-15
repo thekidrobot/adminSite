@@ -1,9 +1,9 @@
 <?
 
 //You do not need to alter these functions
-function resizeImage($image,$width,$height,$scale) {
-	$newImageWidth = ceil($width * $scale);
-	$newImageHeight = ceil($height * $scale);
+function resizeImage($image,$width,$height) {
+	$newImageWidth = $width;
+	$newImageHeight = $height;
 	$newImage = imagecreatetruecolor($newImageWidth,$newImageHeight);
 	$source = imagecreatefromjpeg($image);
 	imagecopyresampled($newImage,$source,0,0,0,0,$newImageWidth,$newImageHeight,$width,$height);
@@ -54,7 +54,6 @@ function getWidth($image) {
 
 	function createThumbnail($filename) {
 
-		
 		if(preg_match('/[.](jpg)$/', $filename)) {
 			$im = imagecreatefromjpeg('../data/images/' . $filename);
 		} else if (preg_match('/[.](gif)$/', $filename)) {
@@ -66,17 +65,27 @@ function getWidth($image) {
 		$ox = imagesx($im);
 		$oy = imagesy($im);
 		
-		$nx = 176;
-		$ny = floor($oy * (176 / $ox));
+		$nx = 99;
+		$ny = 140;
 		
 		$nm = imagecreatetruecolor($nx, $ny);
 		
 		imagecopyresized($nm, $im, 0,0,0,0,$nx,$ny,$ox,$oy);
 	
-		if(imagejpeg($nm, '../data/images/' . $filename,100)){
+		$file_ext = substr($filename, strrpos($filename, '.') + 1);	
+		//remove the ext
+		$filename_strip= substr($filename,0,strrpos($filename, '.'));	
+		//remove the _big
+		$filename_strip= substr($filename,0,strrpos($filename, '_big'));
+		//add the _small
+		$filename_strip= $filename_strip."_small";	
+		
+		$filename_thumb = $filename_strip.".".$file_ext;
+		
+		if(imagejpeg($nm, '../data/images/' . $filename_thumb,100)){
 			return true;	
 		}else{
-			echo 'Fail';
+			die('Error creating thumbnail');
 		}
 	}
 ?>

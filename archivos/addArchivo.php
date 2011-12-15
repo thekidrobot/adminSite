@@ -38,41 +38,43 @@ if (!function_exists("GetSQLValueString")) {
 
 $editFormAction = $_SERVER['PHP_SELF'];
 $large_image_location = "../data/images/";
+$gallery_upload_path = "../data/images/";
+$max_width = 300;
+$max_height = 410;
 $error = '';
 
-for($i=0;$i<count($_FILES['image']['name']);$i++)
-{
-	$userfile_name = $_FILES['image']['name'][$i];
-	$userfile_tmp = $_FILES['image']['tmp_name'][$i];
-	$userfile_size = $_FILES['image']['size'][$i];
-	$filename = basename($_FILES['image']['name'][$i]);
-		
-	$file_ext = substr($filename, strrpos($filename, '.') + 1);	
-	//remove the ext
-	$filename_strip= substr($filename,0,strrpos($filename, '.'));	
-	//Only process if the file is a JPG and below the allowed limit
-	if((!empty($_FILES["image"]['name'][$i])) && ($_FILES['image']['error'][$i] == 0))
+$userfile_name = $_FILES['image']['name'];
+$userfile_tmp = $_FILES['image']['tmp_name'];
+$userfile_size = $_FILES['image']['size'];
+$filename = basename($userfile_name);
+
+$file_ext = substr($filename, strrpos($filename, '.') + 1);	
+//remove the ext
+$filename_strip= substr($filename,0,strrpos($filename, '.'));	
+//Only process if the file is a JPG and below the allowed limit
+	if((!empty($_FILES["image"]['name'])) && ($_FILES['image']['error'] == 0))
 	{
-		if (($file_ext!="jpg") or ($userfile_size > $max_file))
+		if (($file_ext!="jpg"))
 		{
-			$error= _("Only JPG images up to 1mb are accepted for uploading");
+			$error= _("Only JPG images are accepted for uploading");
 		}
 	
 		//Everything is ok, so we can upload the image.
 		if (strlen($error)==0)
 		{
-			if (isset($_FILES['image']['name'][$i]))
+			if (isset($_FILES['image']['name']))
 			{
-				//check if image exists
-				if(is_file($gallery_upload_path.$userfile_name))
+				$filename =$filename_strip."_big".".".$file_ext;
+
+				if(is_file($gallery_upload_path.$filename))
 				{
-					while (file_exists($gallery_upload_path .$filename_strip.".".$file_ext))
+					while (file_exists($gallery_upload_path.$filename))
 					{
-						$filename_strip .= rand(10, 99);
+						$filename_strip .= rand(100, 999);
+						$filename =$filename_strip."_big".".".$file_ext;
 					}
 				}
-					
-				$filename =$filename_strip_big.".".$file_ext;
+
 				$large_image_location = $gallery_upload_path .$filename;
 				move_uploaded_file($userfile_tmp, $large_image_location);
 				chmod($large_image_location, 0777);
@@ -81,26 +83,15 @@ for($i=0;$i<count($_FILES['image']['name']);$i++)
 				$height = getHeight($large_image_location);
 				
 				//Scale the image if it is greater than the width set above
-				if ($width > $max_width)
+				if (($width > $max_width) or ($height > $max_height))
 				{
-					$scale = $max_width/$width;
-					$uploaded = resizeImage($large_image_location,$width,$height,$scale);
+					$uploaded = resizeImage($large_image_location,$max_width,$max_height);
 				}
-				else
-				{
-					$scale = 1;
-					$uploaded = resizeImage($large_image_location,$width,$height,$scale);
-				}
-					
-				//	$thumb_width = getWidth($thumbs_upload_path.$userfile_name);
-				//	$thumb_height = getHeight($thumbs_upload_path.$userfile_name);
-		
-				//Scale the image if it is greater than the width set above
+				
 				createThumbnail($filename);
 			}
 		}
 	}
-}
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1"))
 {
@@ -144,16 +135,16 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1"))
 <title>RAMP</title>
 
 <!-- CSS -->
-<link href="../style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
+<!-- Horrible workaround for the calendar-->
+<link href="../style/css/transdmin-tableless.css" rel="stylesheet" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="../style/css/ie6.css" /><![endif]-->
 <!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="../style/css/ie7.css" /><![endif]-->
-
 <link rel="stylesheet" type="text/css" media="all" href="jscalendar/calendar-blue.css" />
+
 <script type="text/javascript" src="jscalendar/calendar.js"></script>
 <script type="text/javascript" src="jscalendar/lang/calendar-en.js"></script>
 <script type="text/javascript" src="jscalendar/calendar-setup.js"></script>
 
-<script type="text/javascript" src="../style/js/jNice.js"></script>
 </head>
 
 <body>
@@ -185,8 +176,19 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1"))
 			<input name="subject" type="text" value="" class="text-long">
 		</p>
 		<p>
+			<label><?=_("Status")?> : </label>
+			<select name="estado">
+				<option value="1"><?=_("Active")?></option>
+				<option value="2"><?=_("Inactive")?></option>
+			</select>
+		</p>
+		<p>
+			<label><?=_("Upload an image") ?></label>
+			<input type="file" name="image" size="23" />
+		</p>
+		<p>
 			<label><?=_("Release Date")?> : </label>
-			<input type="text" name="fechaRelease" id="fechaRelease" class="text-long" />
+			<input type="text" name="fechaRelease" id="fechaRelease" class="text-medium" />
 			<img src="images/calendar.png" id="csv1_fecha_descarga" alt="" style="cursor:pointer;cursor:hand;" />
 			<script type="text/javascript">
 			Calendar.setup({
@@ -196,17 +198,6 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1"))
 				button : "csv1_fecha_descarga" // ID of the button
 			})
 			</script>
-		</p>
-		<p>
-			<label><?=_("Status")?> : </label>
-			<select name="estado" id="estado">
-				<option value="1"><?=_("Active")?></option>
-				<option value="2"><?=_("Inactive")?></option>
-			</select>
-		</p>
-		<p>
-			<label><?=_("Upload an image") ?></label>
-			<input type="file" name="image[]" size="23" />
 		</p>	
 		<input type="hidden" name="cant" id="cant">      
 		<input type="hidden" name="MM_insert" value="form1">
