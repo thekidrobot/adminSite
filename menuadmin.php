@@ -66,7 +66,7 @@ function MM_swapImage() { //v3.0
     	<!-- h1 tag stays for the logo, you can use the a tag for linking the index page -->
     	<h1><a href="inicio.html" target="carga"><span>:::::RAMP:::::::</span></a></h1>
 			<ul id="mainNav">
-				<li><a href="inicio.html" target="carga" class="active"><?=_("Start")?></a></li>
+				<li><a href="inicio.html" target="carga" class="active"><?=_("Home")?></a></li>
 				<li><a href="archivos/listarArchivos.php" target="carga" class="menuanchorclass" rel="anylinkmenu1"><?=_("Manage Files")?></a></li>
 				<li><a href="categoriasVideos.php" target="carga" class="menuanchorclass" rel="anylinkmenu2"><?=_("Manage Categories")?></a></li>
 				<li><a href="admusuarios.php" target="carga"><?=_("Manage Users")?></a></li>

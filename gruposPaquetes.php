@@ -323,6 +323,15 @@ include("session.php");
 		<?php
 	}
 	?>
+	<!--[if IE]>
+	<style type="text/css">
+		ul.fdtablePaginater {display:inline-block;}
+		ul.fdtablePaginater {display:inline;}
+		ul.fdtablePaginater li {float:left;}
+		ul.fdtablePaginater {text-align:center;}
+		table { border-bottom:1px solid #C1DAD7; }
+	</style>
+	<![endif]-->
 	</head> 
 	<body> 
 
@@ -369,16 +378,19 @@ include("session.php");
 		</div>
 		
 		<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-		<table>
+		<table class="no-arrow rowstyle-alt colstyle-alt paginate-5 max-pages-5">
+		<thead>
 			<tr>
-				<td align="center" style="padding:5px 0px 5px 0px">
+				<th class="sortable-keep fd-column-0"><b><?=_("Name")?></b></th>
+				<th><b><?=_("Add group of users")?></b></th>
+				<th class="action"><b><?=_("Add categories")?></b></th>
+				<!--<td class="action"><b><?=_("Delete")?></b></td>-->
+				<th style="text-align:center">
           <input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
-        </td>
-				<td><b><?=_("Name")?></b></td>
-				<td class="action"><b><?=_("Add group of users")?></b></td>
-				<td class="action"><b><?=_("Add categories")?></b></td>
-				<td class="action"><b><?=_("Delete")?></b></td>
+        </th>
 			</tr>
+		</thead>
+		<tbody>
 			<?php
 				$counter = 0;
 				$sql = mysql_query("SELECT * FROM paquetes") or die(mysql_error($sql));
@@ -386,15 +398,16 @@ include("session.php");
 					$counter++;
 					?>
 					<tr <?php if($counter % 2) echo " class='odd'"?>>
-						<td align="center"><input name='paquetes[]' type='checkbox' value="<?=$row['idPaquete']?>"></td>
 						<td><a href="<?=$_SERVER['PHP_SELF']?>?edit=<?=$row['idPaquete']?>"><?=$row['nomPaquete']?></a></td>
 						<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?add_usr=<?=$row['idPaquete']?>"><?=_("Add group of users")?></td>
 						<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?add_cat=<?=$row['idPaquete']?>"><?=_("Add categories")?></td>
-						<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idPaquete']?>" onclick="return confirm('Are you sure do you want to delete?')"><?=_("Delete")?></td>
+						<!--<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idPaquete']?>" onclick="return confirm('Are you sure do you want to delete?')"><?=_("Delete")?></td>-->
+						<td align="center"><input name='paquetes[]' type='checkbox' value="<?=$row['idPaquete']?>"></td>
 					</tr>
 					<?php
 				}  
 				?>
+		</tbody>
 		</table>
 		</form>
 		<br />
@@ -546,6 +559,11 @@ include("session.php");
 				<?php
 			}
 			?>
+			<br />
+			<br />
+			<br />
+			<script type="text/javascript" src="js/tablesort.js"></script>
+			<script type="text/javascript" src="js/pagination.js"></script>
 		</div>
 	</body>
 </html>

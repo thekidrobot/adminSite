@@ -154,7 +154,7 @@ h3 {
 	font-size: 16px;
 	line-height: 18px;
 	font-weight: bold;
-	color: #E8272D;
+	color: #880f12;
 	padding: 0 0 0 10px;
 	margin: 20px 0 10px;
 	text-align:left;
@@ -165,11 +165,16 @@ h3 a{
 	font-size: 16px;
 	line-height: 18px;
 	font-weight: bold;
-	color: #284D93;
+	color: #808080;
 	padding: 0 0 0 10px;
 	margin: 20px 0 10px;
 	text-align:left;
 	font-family:"Trebuchet MS";
+}
+
+h3 a:hover{
+	color:#a84444;
+	border-bottom:1px dotted #a80000;
 }
 
 form {

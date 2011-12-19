@@ -145,6 +145,17 @@ if($_GET["actualizar"]!="")
 <script type="text/javascript" src="style/js/toggleShowHide.js"></script>
 <script type="text/javascript" src="style/js/jquery.js"></script>
 <script type="text/javascript" src="style/js/jNice.js"></script>
+
+<!--[if IE]>
+<style type="text/css">
+ ul.fdtablePaginater {display:inline-block;}
+ ul.fdtablePaginater {display:inline;}
+ ul.fdtablePaginater li {float:left;}
+ ul.fdtablePaginater {text-align:center;}
+ table { border-bottom:1px solid #C1DAD7; }
+</style>
+<![endif]-->
+
 </head>
 <body>
 
@@ -154,8 +165,8 @@ if($_GET["actualizar"]!="")
 	<p>
 	 <label><?=_("Name")?></label>
 	 <input type="text" name="parteNombre" id="parteNombre" value="<?php echo $_POST['parteNombre']; ?>" maxlength="255" class="text-long" />
-	 <input type="image" src="imagenes/buscar.jpg">
 	</p>
+	<input type="submit" value="<?=_("Find")?>" name="Buscar" />
  </fieldset>
 </form>
 
@@ -245,16 +256,19 @@ if($_GET["actualizar"]!="")
 </div>
 
 <form action="<?=$currentPage?>" method="post">
- <table>
+ <table class="no-arrow rowstyle-alt colstyle-alt paginate-10 max-pages-5">
+	<thead>
+	 <tr>
+	 <th class="sortable-keep fd-column-0"><b><?=_("Name")?></b></th>
+	 <th><b><?=_("Active")?></b></th>
+	 <th class="sortable-keep fd-column-0"><b><?=_("Username")?></b></th>
+	 <!--<td><b><?=_("Delete")?></b></td>-->
+	 <th style="text-align:center">
+		<input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
+	 </th>
 	<tr>
-	 <td align="center" style="padding:5px 0px 5px 0px">
-		 <input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
-	 </td>
-	 <td><b><?=_("Name")?></b></td>
-	 <td><b><?=_("Active")?></b></td>
-	 <td><b><?=_("Username")?></b></td>
-	 <td><b><?=_("Delete")?></b></td>
-	<tr>
+	</thead>
+	<tbody>
     <?php
 		//Sentencia sql (sin limit) 
 		if($_POST['parteNombre']!="")
@@ -282,7 +296,6 @@ if($_GET["actualizar"]!="")
 		 $activo=$row["activo"];
 		 ?>
 		 <tr onMouseOver="sobre(this)" onMouseOut="fuera(this)" <?php if($counter % 2) echo " class='odd'"?>>
-			<td align="center"><input name='usuarios[]' type='checkbox' value="<?=$row['IdUsuario']?>"></td>
 			<td>
 			 <a href="admusuarios.php?actualizar=<?=$IdUsuario?>"><?=$NombreCompleto." ".$apellidos?></a>
 			</td>
@@ -291,15 +304,16 @@ if($_GET["actualizar"]!="")
 			</td>
 			<!--<td  align="left" valign="top" bgcolor="white" class="tahoma_12"><a href="mensajes/insertarMensaje.php?codUser=<?php echo $IdUsuario; ?>&nomUser=<?php echo $NombreCompleto; ?>">Enviar</a></td>-->
 			<td><?=$Usuario?></td>
-			<td><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['IdUsuario']?>" onclick="return confirm('Are you sure do you want to delete?')"><?=_("Delete")?></td>
+			<td align="center"><input name='usuarios[]' type='checkbox' value="<?=$row['IdUsuario']?>"></td>
+			<!--<td><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['IdUsuario']?>" onclick="return confirm('Are you sure do you want to delete?')"><?=_("Delete")?></td>-->
 		 <tr>
 		 <?
 		}
 		?>
-		<tr>
-		 <td colspan="5" align="center"><? echo"<p>".$_pagi_navegacion."</p>"; ?></td>
-		</tr>
+		</tbody>
    </table>
 	 </form>
+	 <script type="text/javascript" src="js/tablesort.js"></script>
+	 <script type="text/javascript" src="js/pagination.js"></script>
  </body>
 </html>

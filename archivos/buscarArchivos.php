@@ -123,13 +123,16 @@ $queryString_rsConsulta1 = sprintf("&totalRows_rsConsulta1=%d%s", $totalRows_rsC
     </fieldset>
 	</form>
 	
-	<table>
-		<tr>
-			<td><b><?=_("Title / Name")?></b></td>
-			<td><b><?=_("Trainer")?></b></td>
-			<td><b><?=_("Subject")?></b></td>
-			<td><b><?=_("Release Date")?></b></td>
-		</tr>
+	<table class="no-arrow rowstyle-alt colstyle-alt paginate-15 max-pages-5" >
+		<thead>
+			<tr>
+			<th class="sortable-keep fd-column-0"><b><?=_("Title / Name")?></b></th>
+			<th class="sortable-keep fd-column-1"><b><?=_("Trainer")?></b></th>
+			<th class="sortable-keep fd-column-2"><b><?=_("Subject")?></b></th>
+			<th class="sortable-keep fd-column-3"><b><?=_("Release Date")?></b></th>
+			</tr>
+		</thead>
+    <tbody>
     <?php
 		$counter = 0;
 		do
@@ -157,33 +160,11 @@ $queryString_rsConsulta1 = sprintf("&totalRows_rsConsulta1=%d%s", $totalRows_rsC
 			<?
 		}
 		?>
-		<td colspan="4" align="center">
-			<?php if ($pageNum_rsConsulta1 > 0) { // Show if not first page ?>
-      <a href="<?php printf("%s?pageNum_rsConsulta1=%d%s", $currentPage, 0, $queryString_rsConsulta1 . '&tituloArchivo=' . $micondicion . '&nombreArchivo=' . $micondicion2); ?>">
-				<img src="../imagenes/first.png" border="0">
-			</a>
-      <?php } // Show if not first page ?>
-				
-			<?php if ($pageNum_rsConsulta1 > 0) { // Show if not first page ?>
-        <a href="<?php printf("%s?pageNum_rsConsulta1=%d%s", $currentPage, max(0, $pageNum_rsConsulta1 - 1), $queryString_rsConsulta1 . '&tituloArchivo=' . $micondicion . '&nombreArchivo=' . $micondicion2); ?>">
-					<img src="../imagenes/previous.png" border="0">
-				</a>
-      <?php } // Show if not first page ?>
-				
-      <?php if ($pageNum_rsConsulta1 < $totalPages_rsConsulta1) { // Show if not last page ?>
-        <a href="<?php printf("%s?pageNum_rsConsulta1=%d%s", $currentPage, min($totalPages_rsConsulta1, $pageNum_rsConsulta1 + 1), $queryString_rsConsulta1 . '&tituloArchivo=' . $micondicion . '&nombreArchivo=' . $micondicion2); ?>">
-					<img src="../imagenes/next.png" border="0">
-				</a>
-			<?php } // Show if not last page ?>
-				
-			<?php if ($pageNum_rsConsulta1 < $totalPages_rsConsulta1) { // Show if not last page ?>
-          <a href="<?php printf("%s?pageNum_rsConsulta1=%d%s", $currentPage, $totalPages_rsConsulta1, $queryString_rsConsulta1 . '&tituloArchivo=' . $micondicion . '&nombreArchivo=' . $micondicion2); ?>">
-						<img src="../imagenes/last.png" border="0">
-					</a>
-          <?php } // Show if not last page ?>
-		</td>
+		</tbody>
   </table>
 </body>
+  <script type="text/javascript" src="../js/tablesort.js"></script>
+  <script type="text/javascript" src="../js/pagination.js"></script>
 </html>
 <?php
 mysql_free_result($rsConsulta1);

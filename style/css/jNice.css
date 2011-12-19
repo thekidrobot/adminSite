@@ -5,6 +5,7 @@
 button {
 	margin: 0px;
 	padding: 0px 0px;
+	margin-right:10px;
 	border: none;
 	background-color: transparent;
 	cursor: pointer;
@@ -13,19 +14,20 @@ button {
 	display: block;
 	float: left;
 	overflow: visible;
+	border: 1px solid #408080;
 }
 
 *:first-child+html button[type]{width: 1;} /* IE7 */
 
 button span {
-	background: transparent url(../img/btn_left.gif) no-repeat scroll right top;
+	/*background: transparent url(../img/btn_left.gif) no-repeat scroll right top;*/
 	display: block;
 	padding: 0px 10px 0px 0px; /* sliding doors padding */
 	margin: 0px;
 }
 
 button span span {
-	background: transparent url(../img/btn_right.gif) no-repeat left top;
+	/*background: transparent url(../img/btn_right.gif) no-repeat left top;*/
 	color: #646464;
 	margin: 0;
 	padding: 0 0 0 10px;

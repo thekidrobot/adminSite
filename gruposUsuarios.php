@@ -318,6 +318,17 @@ include("session.php");
 		<?php
 		}
 		?>
+		
+		<!--[if IE]>
+		<style type="text/css">
+			ul.fdtablePaginater {display:inline-block;}
+			ul.fdtablePaginater {display:inline;}
+			ul.fdtablePaginater li {float:left;}
+			ul.fdtablePaginater {text-align:center;}
+			table { border-bottom:1px solid #C1DAD7; }
+		</style>
+		<![endif]-->
+		
 	</head> 
 	<body> 
 
@@ -367,16 +378,19 @@ include("session.php");
 		</div>	
 		
 		<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-		<table>
+		<table class="no-arrow rowstyle-alt colstyle-alt paginate-5 max-pages-5">
+		<thead>
 			<tr>
-				<td align="center" style="padding:5px 0px 5px 0px">
+				<th class="sortable-keep fd-column-0"><b><?=_("Name")?></b></th>
+				<th><b><?=_("Add Packages")?></b></th>
+				<th><b><?=_("Add Users")?></b></th>
+				<th style="text-align:center">
           <input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
-        </td>
-				<td><b><?=_("Name")?></b></td>
-				<td><b><?=_("Add Packages")?></b></td>
-				<td><b><?=_("Add Users")?></b></td>
-				<td><b><?=_("Delete")?></b></td>
+        </th>
+				<!--<td><b><?=_("Delete")?></b></td>-->
 			</tr>
+		</thead>
+		<tbody>
 			<?php
 				$counter = 0;
 				$sql = mysql_query("SELECT * FROM gruposdeusuarios") or die(mysql_error($sql));
@@ -384,15 +398,16 @@ include("session.php");
 					$counter++;
 					?>
 					<tr <?php if($counter % 2) echo " class='odd'"?>>
-						<td align="center"><input name='archivos[]' type='checkbox' value="<?=$row['idGrupoDeUsuario']?>"></td>
 						<td><a href="<?=$_SERVER['PHP_SELF']?>?edit=<?=$row['idGrupoDeUsuario']?>"><?=$row['nomGrupoDeUsuario']?></a></td>
 						<td><a href="<?=$_SERVER['PHP_SELF']?>?add_pq=<?=$row['idGrupoDeUsuario']?>"><?=_("Add Packages")?></td>
 						<td><a href="<?=$_SERVER['PHP_SELF']?>?add_us=<?=$row['idGrupoDeUsuario']?>"><?=_("Add Users")?></td>
-						<td><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idGrupoDeUsuario']?>" onclick="return confirm('Are you sure do you want to delete?')"><?=_("Delete")?></td>
+						<!--<td><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idGrupoDeUsuario']?>" onclick="return confirm('Are you sure do you want to delete?')"><?=_("Delete")?></td>-->
+						<td align="center"><input name='archivos[]' type='checkbox' value="<?=$row['idGrupoDeUsuario']?>"></td>
 					</tr>
 					<?php;
 				}  
 				?>
+		</tbody>
 		</table>
 		</form>
 		<br />
@@ -550,5 +565,10 @@ include("session.php");
 			}
 			?>
 		</div>
+		<br />
+		<br />
+		<br />
+		<script type="text/javascript" src="js/tablesort.js"></script>
+		<script type="text/javascript" src="js/pagination.js"></script>
 	</body>
 </html>

@@ -1,6 +1,5 @@
 <?php
 include('Connections/cnxRamp.php');
-include("includes/pagination/ps_pagination.php");
 include("session.php");
 
 	//Add selected multiple
@@ -240,6 +239,17 @@ include("session.php");
 		});
 		//]]>
 		</script>
+	
+		<!--[if IE]>
+		<style type="text/css">
+			ul.fdtablePaginater {display:inline-block;}
+			ul.fdtablePaginater {display:inline;}
+			ul.fdtablePaginater li {float:left;}
+			ul.fdtablePaginater {text-align:center;}
+			table { border-bottom:1px solid #C1DAD7; }
+		</style>
+		<![endif]-->
+	
 	</head> 
 	<body> 
 
@@ -318,42 +328,38 @@ include("session.php");
 		</div></div>
 		
 		<form action="<?=$_SERVER['PHP_SELF']?>" method="post">		
-		<table>
+		<table class="no-arrow rowstyle-alt colstyle-alt paginate-5 max-pages-5">
+		<thead>
 			<tr>
-				<td align="center" style="padding:5px 0px 5px 0px">
+				<th class="sortable-keep fd-column-0"><b><?=_("Name")?></b></th>
+				<th class="sortable-keep fd-column-1"><b><?=_("Signal")?></b></th>
+				<th><b><?=_("Add Videos")?></b></th>
+				<th style="text-align:center">
           <input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
-        </td>
-				<td><b><?=_("Name")?></b></td>
-				<td><b><?=_("Signal")?></b></td>
-				<td class="action"><b><?=_("Add Videos")?></b></td>
-				<td class="action"><b><?=_("Delete")?></b></td>
+        </th>
+				<!--<td class="action"><b><?=_("Delete")?></b></td>-->
 			</tr>
+		</thead>
+    <tbody>	
 			<?php
 				$counter = 0;
-				$sql = "SELECT * FROM grupos order by padre asc";
+				$sql = mysql_query("SELECT * FROM grupos order by padre asc");
 				
-				$pager = new PS_Pagination($cnxRamp, $sql, 5, 5);
-				$rs = $pager->paginate();
-				
-				while ($row = mysql_fetch_array($rs)) {  
+				while ($row = mysql_fetch_array($sql)) {  
 					$counter++;	
 					?>
 					<!--	ToDo: Validar Borrado de categorias con hijos				-->
-					<tr <?php if($counter % 2) echo " class='odd'"?>>
-						<td align="center"><input name='archivos[]' type='checkbox' value="<?=$row['idGrupos']?>"></td>
+					<tr <?php if($counter % 2) echo " class='alt'"?>>
 						<td><a href="<?=$_SERVER['PHP_SELF']?>?edit=<?=$row['idGrupos']?>" ><?=ucfirst(strtolower($row['grupos']))?></a></td>
 						<td align="left"><?=$row['categoria']?></td>
 						<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?add_us=<?=$row['idGrupos']?>"><?=_("Add Videos")?></td>
-						<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idGrupos']?>" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')">Borrar</td>
+						<td align="center"><input name='archivos[]' type='checkbox' value="<?=$row['idGrupos']?>"></td>
+						<!--<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idGrupos']?>" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')">Borrar</td>-->
 					</tr>
 					<?php;
 				}  
 				?>
-				<tr>
-					<td colspan="6" align="center">
-						<?php echo $pager->renderFullNav(); ?>
-					</td>
-				</tr>
+		</tbody>
 		</table>
 		</form>
 		<br />
@@ -430,10 +436,15 @@ include("session.php");
 					<div id="scrolldiv_scrollDown"><img src="images/arrow_down.gif"></div>
 				</div>
 			</div>
+			<br/>
+			<br/>
+			<br/>
 			<script type="text/javascript" src="style/js/scrollingInit.js"></script>
 			<?php
 		}
 		?>
+		<script type="text/javascript" src="js/tablesort.js"></script>
+		<script type="text/javascript" src="js/pagination.js"></script>
 	</body>
 </html>
 		

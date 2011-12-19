@@ -10,4 +10,15 @@
 <!-- JavaScripts-->
 <script type="text/javascript" src="../style/js/jquery.js"></script>
 <script type="text/javascript" src="../style/js/jNice.js"></script>
+
+<!--[if IE]>
+<style type="text/css">
+ul.fdtablePaginater {display:inline-block;}
+ul.fdtablePaginater {display:inline;}
+ul.fdtablePaginater li {float:left;}
+ul.fdtablePaginater {text-align:center;}
+table { border-bottom:1px solid #C1DAD7; }
+</style>
+<![endif]-->
+
 </head>

@@ -37,8 +37,8 @@ if($_POST["ingresar"]!="")
    <p>
 		<label><?=_("Type your new password ") ?>:</label>
 		<input name="valorClave" type="password" class="text-long">
-		 <input type="image" src="imagenes/crear.jpg">
 	 </p>
+	 <input type="submit" value="<?=_("Change")?>" name="Change" />
 	 <p>
 		<label><?=$msg?></label>
 	 </p>
