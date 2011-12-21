@@ -7,6 +7,11 @@
 			margin: 0;
 			padding:0;			
 		}
+
+		#wrapper h4{
+			color: #954a4a;
+			font-size:14px;
+		}
 		
 		#sortlist a, #sortlist2 a, #sortlist3 a, #sortlist4 a {
 			font-weight:bold;
@@ -15,11 +20,11 @@
 		}
 				
 		#sortlist, #sortlist2, #sortlist3, #sortlist4 {
-			width: 280px;
+			width: 270px;
 			margin: 0;
 			padding: 20px;
 			float: left;
-			margin:10px;
+			margin:5px 0px 5px 15px;
 			border: 1px solid #a5a1a1;
 			text-align:left;
 		}

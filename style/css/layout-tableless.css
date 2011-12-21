@@ -122,15 +122,17 @@ h1 span { display: none; }
 /* Breadcrumb ---------------------------------------- */
 
 h2 {
-	width: 818px;
-	float: right;
-	color: #646464;
+	width: 785px;
+	/*float: right;*/
+	color: #804040;
 	font-size: 16px;
 	line-height: 16px;
 	font-weight: bold;
 	margin: 20px 0 0 0;
 	padding: 0 0 10px 0;
+	margin-bottom:25px;
 	border-bottom: 1px solid #ddd;
+	text-align:left !important;
 }
 
 h2 a {
@@ -179,6 +181,7 @@ h3 a:hover{
 
 form {
 	text-align:left;
+	max-width:785px;
 }
 
 fieldset {
@@ -188,7 +191,7 @@ fieldset {
 	background: #fbfbfb;
 }
 
-fieldset p { margin: 0 0 14px 0; float: left; width: 100%;  }
+fieldset p { margin: 0 0 10px 0; float: left; width: 100%;  }
 
 fieldset label {
 	display: block;

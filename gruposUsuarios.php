@@ -334,7 +334,7 @@ include("session.php");
 
 		<div id="wrapper">
 		<div id="headerDiv">
-			<h3><?=_("Groups of users") ?> &gt;&gt; <a id="myHeader" href="javascript:toggle('myContent','myHeader');" ><?=_("Click to add")?></a></h3>
+			<h2><?=_("Groups of users") ?> &gt;&gt; <a id="myHeader" href="javascript:toggle('myContent','myHeader');" ><?=_("Click to add a new group")?></a></h2>
 		</div>
 		
 		<div id="contentDiv">
@@ -382,8 +382,8 @@ include("session.php");
 		<thead>
 			<tr>
 				<th class="sortable-keep fd-column-0"><b><?=_("Name")?></b></th>
-				<th><b><?=_("Add Packages")?></b></th>
 				<th><b><?=_("Add Users")?></b></th>
+				<th><b><?=_("Add Packages")?></b></th>
 				<th style="text-align:center">
           <input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
         </th>
@@ -399,8 +399,8 @@ include("session.php");
 					?>
 					<tr <?php if($counter % 2) echo " class='odd'"?>>
 						<td><a href="<?=$_SERVER['PHP_SELF']?>?edit=<?=$row['idGrupoDeUsuario']?>"><?=$row['nomGrupoDeUsuario']?></a></td>
-						<td><a href="<?=$_SERVER['PHP_SELF']?>?add_pq=<?=$row['idGrupoDeUsuario']?>"><?=_("Add Packages")?></td>
 						<td><a href="<?=$_SERVER['PHP_SELF']?>?add_us=<?=$row['idGrupoDeUsuario']?>"><?=_("Add Users")?></td>
+						<td><a href="<?=$_SERVER['PHP_SELF']?>?add_pq=<?=$row['idGrupoDeUsuario']?>"><?=_("Add Packages")?></td>
 						<!--<td><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idGrupoDeUsuario']?>" onclick="return confirm('Are you sure do you want to delete?')"><?=_("Delete")?></td>-->
 						<td align="center"><input name='archivos[]' type='checkbox' value="<?=$row['idGrupoDeUsuario']?>"></td>
 					</tr>
@@ -447,6 +447,9 @@ include("session.php");
 									?><li id="itemid_<?=$row['IdUsuario']?>"><input type="checkbox" name="addItems[]" value="<?=$row['IdUsuario']?>" /><?=$row['Usuario']?></li><?php;  
 							}  
 					?>
+					<br />
+					<a href="<?=$_SERVER['PHP_SELF']?>?add_all_us=<?=$idGrupo?>"><input type="button" class="button-submit" value="<?=_("Add all")?>" /></a>
+					<input type="submit" name="a_selected" value="<?=_("Add Selected")?>" class="button-submit" style="margin-left:10px;" />
 					</ul>
 					</form>
 					
@@ -469,6 +472,9 @@ include("session.php");
 									?><li id="itemid_<?=$row['IdUsuario']?>"><input type="checkbox" name="remItems[]" value="<?=$row['IdUsuario']?>" /><?=$row['Usuario']?></li><?php;
 							}  
 					?>
+					<br/>
+					<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_us=<?=$idGrupo?>"><input type="button" class="button-submit" value="<?=_("Remove all")?>" /></a>
+					<input type="submit" name="r_selected" value="<?=_("Remove selected")?>" class="button-submit" style="margin-left:10px;" />
 					</ul>
 					</form>
 					
@@ -523,6 +529,9 @@ include("session.php");
 							}
 							
 					?>
+					<br/>
+					<a href="<?=$_SERVER['PHP_SELF']?>?add_all_pq=<?=$idGrupo?>"><input type="button" class="button-submit" value="<?=_("Add all")?>" /></a>
+					<input type="submit" name="a_selected" value="<?=_("Add Selected")?>" class="button-submit" style="margin-left:10px;" />
 					</ul>
 					</form>
 			
@@ -546,6 +555,9 @@ include("session.php");
 									?><li id="itemid_<?=$row['idPaquete']?>"><input type="checkbox" name="remItems[]" value="<?=$row['idPaquete']?>" /><?=$row['nomPaquete']?></li><?php;
 							}  
 					?>
+					<br/>
+					<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_pq=<?=$idGrupo?>"><input type="button" class="button-submit" value="<?=_("Remove all")?>" /></a>
+					<input type="submit" name="r_selected" value="<?=_("Remove Selected")?>" class="button-submit" style="margin-left:10px;" />					
 					</ul>
 					</form>
 					

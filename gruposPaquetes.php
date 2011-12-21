@@ -337,7 +337,7 @@ include("session.php");
 
 		<div id="wrapper">
 			<div id="headerDiv">
-				<h3><?=_("Group of categories - Packages") ?> &gt;&gt; <a id="myHeader" href="javascript:toggle('myContent','myHeader');" ><?=_("Click to add") ?></a></h3>
+				<h2><?=_("Group of categories - Packages") ?> &gt;&gt; <a id="myHeader" href="javascript:toggle('myContent','myHeader');" ><?=_("Click to add a new package") ?></a></h2>
 			</div>
 			<div id="contentDiv">
 			<?php
@@ -382,8 +382,8 @@ include("session.php");
 		<thead>
 			<tr>
 				<th class="sortable-keep fd-column-0"><b><?=_("Name")?></b></th>
-				<th><b><?=_("Add group of users")?></b></th>
 				<th class="action"><b><?=_("Add categories")?></b></th>
+				<th><b><?=_("Add group of users")?></b></th>
 				<!--<td class="action"><b><?=_("Delete")?></b></td>-->
 				<th style="text-align:center">
           <input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
@@ -399,8 +399,8 @@ include("session.php");
 					?>
 					<tr <?php if($counter % 2) echo " class='odd'"?>>
 						<td><a href="<?=$_SERVER['PHP_SELF']?>?edit=<?=$row['idPaquete']?>"><?=$row['nomPaquete']?></a></td>
-						<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?add_usr=<?=$row['idPaquete']?>"><?=_("Add group of users")?></td>
 						<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?add_cat=<?=$row['idPaquete']?>"><?=_("Add categories")?></td>
+						<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?add_usr=<?=$row['idPaquete']?>"><?=_("Add group of users")?></td>
 						<!--<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idPaquete']?>" onclick="return confirm('Are you sure do you want to delete?')"><?=_("Delete")?></td>-->
 						<td align="center"><input name='paquetes[]' type='checkbox' value="<?=$row['idPaquete']?>"></td>
 					</tr>
@@ -448,6 +448,9 @@ include("session.php");
 									?><li id="itemid_<?=$row['idGrupos']?>"><input type="checkbox" name="addItems[]" value="<?=$row['idGrupos']?>" /><?=$row['grupos']?></li><?php;  
 							}  
 					?>
+					<br />
+					<a href="<?=$_SERVER['PHP_SELF']?>?add_all_cat=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_("Add all")?>" /></a>
+					<input type="submit" name="a_selected" value="<?=_("Add selected")?>" class="button-submit" style="margin-left:10px;" />
 					</ul>
 					</form>
 					
@@ -470,6 +473,9 @@ include("session.php");
 									?><li id="itemid_<?=$row['idGrupos']?>"><input type="checkbox" name="remItems[]" value="<?=$row['idGrupos']?>" /><?=$row['grupos']?></li><?php;
 							}  
 					?>
+					<br/>
+					<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_cat=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_("Remove all")?>" /></a>
+					<input type="submit" name="r_selected" value="<?=_("Remove selected")?>" class="button-submit" style="margin-left:10px;" />					
 					</ul>
 					</form>
 					
@@ -520,6 +526,9 @@ include("session.php");
 									?><li id="itemid_<?=$row['idGrupoDeUsuario']?>"><input type="checkbox" name="addItems[]" value="<?=$row['idGrupoDeUsuario']?>" /><?=$row['nomGrupoDeUsuario']?></li><?php;  
 							}  
 					?>
+					<br/>
+					<a href="<?=$_SERVER['PHP_SELF']?>?add_all_grp=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_("Add all")?>" /></a>
+					<input type="submit" name="a_selected" value="<?=_("Add selected")?>" class="button-submit" style="margin-left:10px;" />					
 					</ul>
 					</form>			
 					
@@ -542,6 +551,9 @@ include("session.php");
 									?><li id="itemid_<?=$row['idGrupoDeUsuario']?>"><input type="checkbox" name="remItems[]" value="<?=$row['idGrupoDeUsuario']?>" /><?=$row['nomGrupoDeUsuario']?></li><?php;
 							}  
 					?>
+					<br/>
+					<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_grp=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_("Remove all")?>" /></a>
+					<input type="submit" name="r_selected" value="<?=_("Remove selected")?>" class="button-submit" style="margin-left:10px;" />					
 					</ul>
 					</form>
 					<hr style="clear:both;visibility:hidden;" />

@@ -80,7 +80,7 @@ if($U > 0)
 <html>
 <?php include("../includes/head.php") ?>
 <body>
-  <h3><?=_("View Files")?></h3>
+  <h2><?=_("View Files")?></h2>
   <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
     <table class="no-arrow rowstyle-alt colstyle-alt paginate-10 max-pages-5" >
       <thead>

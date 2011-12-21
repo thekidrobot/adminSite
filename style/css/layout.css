@@ -122,15 +122,17 @@ h1 span { display: none; }
 /* Breadcrumb ---------------------------------------- */
 
 h2 {
-	width: 818px;
-	float: right;
-	color: #646464;
+	width: 785px;
+	/*float: right;*/
+	color: #804040;
 	font-size: 16px;
 	line-height: 16px;
 	font-weight: bold;
 	margin: 20px 0 0 0;
 	padding: 0 0 10px 0;
+	margin-bottom:25px;
 	border-bottom: 1px solid #ddd;
+	text-align:left !important;
 }
 
 h2 a {
@@ -175,6 +177,11 @@ h3 a{
 h3 a:hover{
 	color:#a84444;
 	border-bottom:1px dotted #a80000;
+}
+
+h4 a{
+	color: #954a4a;
+	font-size:14px;
 }
 
 /*table {*/
@@ -226,7 +233,8 @@ table
         width: auto;
         padding: 0;
         margin: 0 auto 1.5em auto;
-        border-left: 1px solid #C1DAD7;
+        /*border-left: 1px solid #C1DAD7;*/
+        border: 1px solid #c4c4c4;
         border-collapse:collapse;
         }
 .cs1
@@ -239,6 +247,10 @@ table
         }
 .cs1 td,
 .cs2 td,
+
+table .button-submit {
+	border:none;
+}
 
 #scientificNotation
         {
@@ -255,22 +267,25 @@ caption
 th
         {
         font: bold 10px/22px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-        color: #97b0b7;
-        border-right: 1px solid #C1DAD7;
-        border-bottom: 1px solid #C1DAD7;
-        border-top: 1px solid #C1DAD7;
+        color: #808080;
+				border: 1px solid #c4c4c4;
+        /*border-right: 1px solid #C1DAD7;*/
+        /*border-bottom: 1px solid #C1DAD7;*/
+        /*border-top: 1px solid #C1DAD7;*/
         letter-spacing: 1px;
         text-transform: uppercase;
         text-align: left;
         padding: 8px 12px 4px 12px;
-        background: #CAE8EA url(../../css/images/bg_header.jpg) no-repeat;
+        /*background: #c0c0c0 url(../../css/images/bg_header.jpg) no-repeat;*/
+        background: #f0f0f0;
         vertical-align:middle;
         }
 td.total
         {
         border-top: 0;
         border-left: 0;
-        border-right: 1px solid #C1DAD7;
+        /*border-right: 1px solid #C1DAD7;*/
+        border: 1px solid #f0f0f0;
         background: none;
         text-align:right;
         font-weight:bold;
@@ -295,16 +310,16 @@ th.sortable-sortEnglishDateTime
 
         {
         cursor:pointer;
-        background: #CAE8EA url(../../css/images/bg_header_sortable.jpg) no-repeat;
+        background: #f0f0f0 url(../../css/images/bg_header_sortable.png) no-repeat;
         padding: 8px 12px 4px 16px;
         }
 th.forwardSort
         {
-        background:#CAE8EA url(../../css/images/bg_header_down.jpg) no-repeat 0 0;
+        background:#f0f0f0 url(../../css/images/bg_header_down.png) no-repeat 0 0;
         }
 th.reverseSort
         {
-        background:#CAE8EA url(../../css/images/bg_header_up.jpg) no-repeat 0 0;
+        background:#f0f0f0 url(../../css/images/bg_header_up.png) no-repeat 0 0;
         }
 table thead th.forwardSort a,
 table thead th.reverseSort a
@@ -316,7 +331,7 @@ table thead th.reverseSort a
 These styles should be added when very long tables are expected
 th.sort-active
         {
-        background:#CAE8EA url(../../css/images/bg_header_sorting.jpg) no-repeat 0 0;
+        /*background:#CAE8EA url(../../css/images/bg_header_sorting.jpg) no-repeat 0 0;*/
         cursor:wait;
         }
 th.sort-active a
@@ -328,7 +343,7 @@ th.sort-active a
 th a
         {
         text-decoration:none;
-        color: #4f6b72;
+        color: #804040;
         background:transparent;
         }
 td a
@@ -350,11 +365,13 @@ td a:hover
         }
 td
         {
-        font: normal 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-        border-right: 1px solid #C1DAD7;
-        border-bottom: 1px solid #C1DAD7;
+				font-size:11px;
+        /*font: normal 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;*/
+        /*border-right: 1px solid #C1DAD7;*/
+        /*border-bottom: 1px solid #C1DAD7;*/
+        border: 1px solid #c4c4c4;
         padding: 6px 12px 6px 12px;
-        color: #4f6b72;
+        color: #7a7a7a;
         }
 td.lft
         {
@@ -371,22 +388,26 @@ tr.alt
    will produce 1000 http requests for the image in question) */
 tr[class="alt"] td
         {
-        background: #F5FAFA url(../../css/images/td_alt.jpg) no-repeat;
+        /*background: #F5FAFA url(../../css/images/td_alt.jpg) no-repeat;*/
+        background-color: #fbfbfb;
         }
 td[class~="alt"]
         {
-        background: #edf3f3 url(../../css/images/col_alt.jpg) no-repeat !important;
+        /*background: #edf3f3 url(../../css/images/col_alt.jpg) no-repeat !important;*/
+        background-color: #fbfbfb;
         }
 /* Poor old Internet Explorer won't see the next two rules either as it doesn't get :first-child */
 tbody tr.alt td:first-child
         {
         background: #F5FAFA url(../../css/images/bullet2.gif) no-repeat;
-        font-weight:bold;
+        background-color: #fbfbfb;
+        /*font-weight:bold;*/
         }
 tbody tr td:first-child
         {
         background: #fff url(../../css/images/bullet1.gif) no-repeat;
-        font-weight:bold;
+        background-color: #fff;
+        /*font-weight:bold;*/
         }
 /* Image free rules for Internet Explorer < 7 */
 * html tr.alt td
@@ -396,7 +417,7 @@ tbody tr td:first-child
 * html tr td.alt,
 * html tr.alt td.alt
         {
-        background-color:#edf3f3;
+        background-color:#F5FAFA;
         }
         
 /* Pagination list styles */
@@ -436,14 +457,14 @@ ul.fdtablePaginater li div
         {
         display:block;
         width:2em;
-        font-size:1em;
+        font-size:8pt;
         color:#666;
         padding:0;
         margin:0;
         text-decoration:none;
         outline:none;
         border:1px solid #ccc;
-        font-family:georgia, serif;
+        /*font-family:georgia, serif;*/
         }
 ul.fdtablePaginater li div
         {
@@ -531,6 +552,7 @@ p.paginationText
 form {
 	text-align:left;
 	padding:0px 15px 0px 0px;
+	max-width:785px;
 }
 
 fieldset {
@@ -540,7 +562,7 @@ fieldset {
 	background: #fbfbfb;
 }
 
-fieldset p { margin: 0 0 14px 0; float: left; width: 100%;  }
+fieldset p { margin: 0 0 10px 0; float: left; width: 100%;  }
 
 fieldset label {
 	display: block;

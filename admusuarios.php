@@ -160,7 +160,7 @@ if($_GET["actualizar"]!="")
 <body>
 
 <form name="frmbusca" action="<?=$currentPage?>" method="post" class="jNice">
- <h3><?=_("Find users")?></h3>
+ <h2><?=_("Find users")?></h2>
  <fieldset>
 	<p>
 	 <label><?=_("Name")?></label>
@@ -172,7 +172,7 @@ if($_GET["actualizar"]!="")
 
 <form name="formProceso" action="<?=$_SERVER['PHP_SELF']?>" method="post" onSubmit="return validarNuevoUsuario()" class="jNice" >
  <div id="headerDiv">
-	 <h3><?=_("Manage users")?> &gt;&gt; <a id="myHeader" href="javascript:toggle('myContent','myHeader');" ><?=_("Click to add")?></a></h3>
+	 <h2><?=_("Manage users")?> &gt;&gt; <a id="myHeader" href="javascript:toggle('myContent','myHeader');" ><?=_("Click to add a new user")?></a></h2>
  </div>
  <div id="contentDiv">
  <?php
@@ -188,7 +188,6 @@ if($_GET["actualizar"]!="")
 	}
 	?>	
   
-	
 	 <fieldset>
 	 <? 
 	 if($_GET["actualizar"]!=""){
@@ -207,7 +206,9 @@ if($_GET["actualizar"]!="")
 	 if($_GET["actualizar"]!=""){
 	 ?>
 	 <p>
-		<h4><a href="#" onmouseover="ajax_showTooltip(window.event,'muestraGrupos.php?id=<?=$_GET["actualizar"]?>',this);return false" onmouseout="ajax_hideTooltip()"><?=_("Hover to see user groups")?></a></h4>
+		<h4>
+		 <a href="#" onmouseover="ajax_showTooltip(window.event,'muestraGrupos.php?id=<?=$_GET["actualizar"]?>',this);return false" onmouseout="ajax_hideTooltip()"><?=_("Hover to see groups of the user $vUsuario")?></a>
+		</h4>
 	 </p>
 	 <?php
 	 }
@@ -256,13 +257,13 @@ if($_GET["actualizar"]!="")
 </div>
 
 <form action="<?=$currentPage?>" method="post">
- <table class="no-arrow rowstyle-alt colstyle-alt paginate-10 max-pages-5">
+ <table class="no-arrow paginate-20 max-pages-5">
 	<thead>
 	 <tr>
-	 <th class="sortable-keep fd-column-0"><b><?=_("Name")?></b></th>
-	 <th><b><?=_("Active")?></b></th>
-	 <th class="sortable-keep fd-column-0"><b><?=_("Username")?></b></th>
+	 <th class="sortable"><b><?=_("Name")?></b></th>
+	 <th class="sortable"><b><?=_("Username")?></b></th>
 	 <!--<td><b><?=_("Delete")?></b></td>-->
+	 <th><b><?=_("Active")?></b></th>
 	 <th style="text-align:center">
 		<input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
 	 </th>
@@ -275,17 +276,15 @@ if($_GET["actualizar"]!="")
 		{
 		 $RSresultado=$objUsuario->consultarUsuario($_POST['parteNombre']);
 		 $_pagi_sql = "SELECT * FROM  usuarios where NombreCompleto like '%" . $_POST['parteNombre'] . "%' order by NombreCompleto ";
-		 $_pagi_cuantos = 5000; 
 		}
 		else
 		{
 		 $RSresultado=$objUsuario->consultarUsuarios();
 		 $_pagi_sql = "SELECT * FROM usuarios ORDER BY NombreCompleto"; 
-		 $_pagi_cuantos = 50; 
 		}
-		//cantidad de resultados por p&aacute;gina (opcional, por defecto 20) 
-		//Incluimos el script de paginaci&oacute;n. &Eacute;ste ya ejecuta la consulta autom&aacute;ticamente 
-		@include("paginator.inc.php"); 
+		
+		$_pagi_result = mysql_query($_pagi_sql) or die("Error: ".mysql_error($_pagi_result));
+		
 		$counter = 0;
 		while ($row = mysql_fetch_array($_pagi_result))
 		{
@@ -295,21 +294,30 @@ if($_GET["actualizar"]!="")
 		 $Usuario=$row["Usuario"]; 
 		 $activo=$row["activo"];
 		 ?>
-		 <tr onMouseOver="sobre(this)" onMouseOut="fuera(this)" <?php if($counter % 2) echo " class='odd'"?>>
+		 <tr <?php if($counter % 2) echo " class='alt'"?>>
 			<td>
 			 <a href="admusuarios.php?actualizar=<?=$IdUsuario?>"><?=$NombreCompleto." ".$apellidos?></a>
 			</td>
+			<!--<td  align="left" valign="top" bgcolor="white" class="tahoma_12"><a href="mensajes/insertarMensaje.php?codUser=<?php echo $IdUsuario; ?>&nomUser=<?php echo $NombreCompleto; ?>">Enviar</a></td>-->
+			<td><?=$Usuario?></td>
 			<td>
 			 <input type="checkbox" name="act" id="act" disabled <?php if (!(strcmp($activo,1))) {echo "checked=\"checked\"";} ?>>
 			</td>
-			<!--<td  align="left" valign="top" bgcolor="white" class="tahoma_12"><a href="mensajes/insertarMensaje.php?codUser=<?php echo $IdUsuario; ?>&nomUser=<?php echo $NombreCompleto; ?>">Enviar</a></td>-->
-			<td><?=$Usuario?></td>
 			<td align="center"><input name='usuarios[]' type='checkbox' value="<?=$row['IdUsuario']?>"></td>
 			<!--<td><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['IdUsuario']?>" onclick="return confirm('Are you sure do you want to delete?')"><?=_("Delete")?></td>-->
 		 <tr>
 		 <?
 		}
+		if($counter == 0 and $_POST['parteNombre']!="")
+		{
+		 ?>
+		 <tr>
+			<td  colspan="4" align="center"><?=_("No data found.")?></td>
+		 </tr>
+		 <?
+		}
 		?>
+		
 		</tbody>
    </table>
 	 </form>

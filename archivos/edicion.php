@@ -175,7 +175,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1"))
 
 </head>
 <body leftmargin="0" topmargin="0" background="" >
-    <h3><?=_("Edit Information")?></h3>
+    <h2><?=_("Edit Information")?></h2>
 		<form method="POST" name="form1" enctype="multipart/form-data" action="<?php echo $editFormAction; ?>" class="jNice">
 		<fieldset>
 			<p>

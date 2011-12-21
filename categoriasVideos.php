@@ -255,7 +255,7 @@ include("session.php");
 
 		<div id="wrapper">
 		<div id="headerDiv">
-			<h3><?=_("Categories")?> &gt;&gt; <a id="myHeader" href="javascript:toggle('myContent','myHeader');" ><?=_("Click to add")?></a></h3>
+			<h2><?=_("Categories")?> &gt;&gt; <a id="myHeader" href="javascript:toggle('myContent','myHeader');" ><?=_("Click to add a new category")?></a></h2>
 		</div>
 
 		<div id="contentDiv">
@@ -328,11 +328,11 @@ include("session.php");
 		</div></div>
 		
 		<form action="<?=$_SERVER['PHP_SELF']?>" method="post">		
-		<table class="no-arrow rowstyle-alt colstyle-alt paginate-5 max-pages-5">
+		<table class="no-arrow rowstyle-alt colstyle-alt paginate-10 max-pages-5">
 		<thead>
 			<tr>
-				<th class="sortable-keep fd-column-0"><b><?=_("Name")?></b></th>
-				<th class="sortable-keep fd-column-1"><b><?=_("Signal")?></b></th>
+				<th class="sortable"><b><?=_("Name")?></b></th>
+				<th class="sortable"><b><?=_("Signal")?></b></th>
 				<th><b><?=_("Add Videos")?></b></th>
 				<th style="text-align:center">
           <input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
@@ -347,8 +347,8 @@ include("session.php");
 				
 				while ($row = mysql_fetch_array($sql)) {  
 					$counter++;	
+					//ToDo: Validar Borrado de categorias con hijos
 					?>
-					<!--	ToDo: Validar Borrado de categorias con hijos				-->
 					<tr <?php if($counter % 2) echo " class='alt'"?>>
 						<td><a href="<?=$_SERVER['PHP_SELF']?>?edit=<?=$row['idGrupos']?>" ><?=ucfirst(strtolower($row['grupos']))?></a></td>
 						<td align="left"><?=$row['categoria']?></td>
@@ -400,6 +400,9 @@ include("session.php");
 								<li id="itemid_<?=$row['id_archivo']?>"><input type="checkbox" name="addItems[]" value="<?=$row['id_archivo']?>" /><?=$row['titulo']?></li><?php;  
 								}
 							?>
+							<br/>
+							<a href="<?=$_SERVER['PHP_SELF']?>?add_all_us=<?=$idGrupos?>"><input type="button" class="button-submit" value="<?=_("Add All")?>" /></a>
+							<input type="submit" name="a_selected" value="<?=_("Add Selected")?>" class="button-submit" style="margin-left:10px;" />
 							</ul>
 						</form>
 						
@@ -423,6 +426,9 @@ include("session.php");
 									?><li id="itemid_<?=$row['id_archivo']?>"><input type="checkbox" name="remItems[]" value="<?=$row['id_archivo']?>" /><?=$row['titulo']?></li><?php;
 								}
 							  ?>
+								<br/>
+								<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_us=<?=$idGrupos?>"><input type="button" class="button-submit" value="<?=_("Remove all")?>" /></a>
+								<input type="submit" name="r_selected" value="<?=_("Remove Selected")?>" class="button-submit" style="margin-left:10px;" />
 							</ul>
 						</form>
 						<hr style="clear:both;visibility:hidden;" />            

@@ -147,7 +147,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1"))
 </head>
 
 <body>
-  <h3><?=_("Add video file to the catalog")?></h3>
+  <h2><?=_("Add video file to the catalog")?></h2>
 	<form method="post" name="form1" enctype="multipart/form-data" action="<?php echo $editFormAction; ?>" class="jNice">
 	<fieldset>
 		<p>

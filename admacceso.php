@@ -30,7 +30,7 @@ if($_POST["ingresar"]!="")
 <script type="text/javascript" src="style/js/jNice.js"></script>
 </head>
 <body>
- <h3><?=_("Change password")?></h3>
+ <h2><?=_("Change password")?></h2>
  <form name="formProceso" action="admacceso.php" method="post" onSubmit="return validaCambioClave()" class="jNice">
 	<fieldset>
 	 <input type="hidden" name="ingresar" value="1">

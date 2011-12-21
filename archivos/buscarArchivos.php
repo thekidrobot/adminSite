@@ -106,7 +106,7 @@ $queryString_rsConsulta1 = sprintf("&totalRows_rsConsulta1=%d%s", $totalRows_rsC
 <html>
 <?php include("../includes/head.php") ?>
 <body>
-  <h3><?=_("Find files")?></h3>
+  <h2><?=_("Find files")?></h2>
 	<form method="post" action="<?=$currentPage?>" class="jNice">
 		<fieldset>
 		<p>
@@ -119,7 +119,7 @@ $queryString_rsConsulta1 = sprintf("&totalRows_rsConsulta1=%d%s", $totalRows_rsC
 				<option value="fechaArchivo" <?php if ($condicion == "fechaArchivo") echo "selected='selected'" ?>><?=_("Release date")?></option>
 			</select>
 		</p>
-		<input name="buscar" type="submit" value="Buscar" />
+		<input name="buscar" type="submit" value="<?=_("Find")?>" />
     </fieldset>
 	</form>
 	
