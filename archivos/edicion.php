@@ -247,7 +247,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1"))
 			<input type="hidden" name="MM_update" value="form1">
 			<input type="hidden" name="id_archivo" value="<?php echo $row_rsArchivo['id_archivo']; ?>">
 			<input type="hidden" name="args" id="args" value="<?php echo $_GET['args']; ?>">
-			<input type="submit" value="Salvar">
+			<input type="submit" value="<?=_("Save")?>">
     </form>
 		</fieldset>
 	</body>
