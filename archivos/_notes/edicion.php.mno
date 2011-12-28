@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_rsActualizar" value="name:id_archivo;datatype:int,name:nombre_fisico;datatype:string,name:nombre_16;datatype:string,name:texto;datatype:blob,name:titulo;datatype:string,name:cant_descarga;datatype:real,name:imagen;datatype:blob,name:speaker;datatype:string,name:estado;datatype:int" />
-	<infoitem key="UD_rsMenus" value="name:ID_MENU;datatype:int,name:L1;datatype:string,name:L2;datatype:string,name:L3;datatype:string,name:FECHA;datatype:timestamp,name:ESTADO;datatype:int" />
-	<infoitem key="UD_rsArchVsMenus" value="name:ID_ARCHIVO;datatype:int,name:ID_MENU;datatype:int,name:L1;datatype:string,name:L2;datatype:string,name:L3;datatype:string" />
-	<infoitem key="UD_rsArchivos" value="name:id_archivo;datatype:int,name:nombre_fisico;datatype:string,name:nombre_16;datatype:string,name:texto;datatype:blob,name:titulo;datatype:string,name:cant_descarga;datatype:real,name:imagen;datatype:blob,name:speaker;datatype:string,name:estado;datatype:int" />
-	<infoitem key="UD_rsArchivo" value="name:id_archivo;datatype:int,name:carpeta;datatype:string,name:nombreArchivo;datatype:string,name:texto;datatype:string,name:titulo;datatype:string,name:cant_descarga;datatype:real,name:imagen;datatype:string,name:speaker;datatype:string,name:estado;datatype:int,name:archivo1;datatype:string,name:archivo2;datatype:string,name:archivo3;datatype:string,name:TIPO_TRANSMISION;datatype:string,name:FECHA_HORA_TRANSMISION;datatype:timestamp" />
-</info>

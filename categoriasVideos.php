@@ -2,6 +2,8 @@
 include('Connections/cnxRamp.php');
 include("session.php");
 
+$_SESSION['currentPage'] = getCurrentPage();
+
 	//Add selected multiple
 	$addItems = $_POST['addItems'];
 	

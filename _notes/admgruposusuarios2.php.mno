@@ -1,4 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_rsEdit" value="name:IdGruposUsuario;datatype:int,name:IdUsuario;datatype:int,name:IdGrupos;datatype:int,name:ramp_cant_descargas;datatype:int" />
-</info>

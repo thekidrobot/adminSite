@@ -60,11 +60,7 @@ if($_POST["ingresar"]!="")
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <title>:::::RAMP:::::</title>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="stylesheet" href="INDEX.CSS">
-<script language="javascript" src="js.js"></script>
-<script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
-<link href="css/stilos.css" rel="stylesheet" type="text/css">
-<link href="galeria/css/galeria.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="css/index.css">
 
 <style type="text/css">
 <!--
