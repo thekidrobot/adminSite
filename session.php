@@ -21,4 +21,12 @@ if($_SESSION["usuario"]=="")
  else echo '<meta http-equiv="refresh" content="0;url="index.php" />';
  }
  
+//Pagina actual, para los menus
+function getCurrentPage(){
+	$file = $_SERVER["PHP_SELF"];
+	$break = Explode('/', $file);
+	$currentPage = $break[count($break) - 1];
+  return $currentPage;
+}
+
 ?>

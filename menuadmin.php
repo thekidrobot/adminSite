@@ -2,6 +2,7 @@
 include("conexion.php");
 include("session.php");
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -65,28 +66,22 @@ function MM_swapImage() { //v3.0
 	<div id="wrapper">
     	<!-- h1 tag stays for the logo, you can use the a tag for linking the index page -->
     	<h1><a href="inicio.html" target="carga"><span>:::::RAMP:::::::</span></a></h1>
-			<ul id="mainNav">
-				<li><a href="inicio.html" target="carga" class="active"><?=_("Home")?></a></li>
-				<li><a href="archivos/listarArchivos.php" target="carga" class="menuanchorclass" rel="anylinkmenu1"><?=_("Manage Files")?></a></li>
-				<li><a href="categoriasVideos.php" target="carga" class="menuanchorclass" rel="anylinkmenu2"><?=_("Manage Categories")?></a></li>
-				<li><a href="admusuarios.php" target="carga"><?=_("Manage Users")?></a></li>
-				<!--<li><a href="reportes/index.php" target="carga"><?=_("Manage Reports")?></a></li>-->
-			        <li><a href="admacceso.php" target="carga"><?=_("Manage my account") ?></a></li>
-				<li class="logout"><a href="index.php"><?=_("Logout")?></a></li>
-			</ul>
+			<!--<ul id="mainNav">-->
+			<!--	<li><a href="inicio.html" target="carga" class="active"><?=_("Home")?></a></li>-->
+			<!--	<li><a href="archivos/listarArchivos.php" target="carga" class="menuanchorclass" rel="anylinkmenu1"><?=_("Manage Files")?></a></li>-->
+			<!--	<li><a href="categoriasVideos.php" target="carga" class="menuanchorclass" rel="anylinkmenu2"><?=_("Manage Categories")?></a></li>-->
+			<!--	<li><a href="admusuarios.php" target="carga"><?=_("Manage Users")?></a></li>-->
+			<!--	<!--<li><a href="reportes/index.php" target="carga"><?=_("Manage Reports")?></a></li>-->
+			<!--  <li><a href="admacceso.php" target="carga"><?=_("Manage my account") ?></a></li>-->
+			<!--	<li class="logout"><a href="index.php"><?=_("Logout")?></a></li>-->
+			<!--</ul>-->
+			<?php include("includes/mainnav.php") ?>
 			<!-- // #end mainNav -->
 
       <div id="containerHolder">
 			<div id="container">
 				<div id="sidebar">
-					<ul class="sideNav">
-						<!--<li><a href="archivos/listarArchivos.php" target="carga" class="active">Ver Arquivos</a></li>-->
-						<!--<li><a href="archivos/addArchivo.php" target="carga" >Adicionar Arquivos</a></li>-->
-						<!--<li><a href="archivos/buscarArchivos.php" target="carga">Buscar Arquivos</a></li>-->
-						<li><a href="#" target="carga"><?=_("FAQ")?></a></li>
-						<li><a href="#" target="carga"><?=_("Support")?></a></li>
-					</ul>
-					<!-- // .sideNav -->
+					<?php include("includes/sidenav.php") ?>
 				</div>    
 				<!-- // #sidebar -->
 
@@ -103,4 +98,3 @@ function MM_swapImage() { //v3.0
   </div><!-- // #wrapper -->
 </body>
 </html>
-
