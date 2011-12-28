@@ -1,40 +1,6 @@
-<?php
-
-require_once('../Connections/cnxRamp.php');
-include("../session.php");
-include("../includes/general_functions.php");
-
-if (!function_exists("GetSQLValueString")) {
-	function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
-	{
-		if (PHP_VERSION < 6) {
-			$theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
-		}
-	
-		$theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
-	
-		switch ($theType) {
-			case "text":
-				$theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-				break;    
-			case "long":
-			case "int":
-				$theValue = ($theValue != "") ? intval($theValue) : "NULL";
-				break;
-			case "double":
-				$theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
-				break;
-			case "date":
-				$theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-				break;
-			case "defined":
-				$theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
-				break;
-		}
-		return $theValue;
-	}
-}
-
+<?
+include("Connections/cnxRamp.php");
+include("session.php");
 
 $editFormAction = $_SERVER['PHP_SELF'];
 $large_image_location = "../data/images/";
@@ -126,28 +92,29 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1"))
 	if (!headers_sent()) header('Location: listarArchivos.php');
 	else echo '<meta http-equiv="refresh" content="0;url="listarArchivos.php" />';
 }
-
 ?>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>RAMP</title>
 
-<!-- CSS -->
-<!-- Horrible workaround for the calendar-->
-<link href="../style/css/transdmin-tableless.css" rel="stylesheet" type="text/css" media="screen" />
-<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="../style/css/ie6.css" /><![endif]-->
-<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="../style/css/ie7.css" /><![endif]-->
-<link rel="stylesheet" type="text/css" media="all" href="jscalendar/calendar-blue.css" />
-
-<script type="text/javascript" src="jscalendar/calendar.js"></script>
-<script type="text/javascript" src="jscalendar/lang/calendar-en.js"></script>
-<script type="text/javascript" src="jscalendar/calendar-setup.js"></script>
-
-</head>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<?php include ("includes/head.php") ?>
 <body>
-  <h2><?=_("Add video file to the catalog")?></h2>
+ <div id="wrapper">
+  <h1><a href="menuadmin.php"></a></h1>
+	<?php include("includes/mainnav.php") ?>
+	<!-- // #end mainNav -->
+	<div id="containerHolder">
+	 <div id="container">
+		<div id="sidebar">
+		 <?php include("includes/sidenav.php") ?>
+		</div>    
+		<!-- // #sidebar -->
+		<!-- h2 stays for breadcrumbs -->
+		<!--<h2><a href="#">Dashboard</a> &raquo; <a href="#" class="active">Print resources</a></h2>
+		<h2>&nbsp;</h2>-->
+    
+		<div id="main">
+		 <div id="wrapper">
+			<h2><?=_("Add video file to the catalog")?></h2>
 	<form method="post" name="form1" enctype="multipart/form-data" action="<?php echo $editFormAction; ?>" class="jNice">
 	<fieldset>
 		<p>
@@ -202,6 +169,14 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1"))
 		<input type="hidden" name="MM_insert" value="form1">
 		<input type="submit" onClick="MM_validateForm('texto','','R');return document.MM_returnValue" value="<?=_("Add Video")?>">
 		</fieldset>
-  </form>
+  </form>	
+		</div>
+		 
+			 </div><!-- // #main -->
+      <div class="clear"></div>
+      </div><!-- // #container -->
+    </div><!-- // #containerHolder -->
+    <p id="footer"></p>
+  </div><!-- // #wrapper -->
 </body>
 </html>

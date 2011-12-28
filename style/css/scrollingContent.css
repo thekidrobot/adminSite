@@ -1,7 +1,9 @@
 	#dhtmlgoodies_scrolldiv{
 		/* The total width of the scrolling div including scrollbar */
 		width:700px;
-		height:400px;	/* The height of the scrolling div */
+		height:400px;
+		margin-left:36px;
+		/* The height of the scrolling div */
 	}
 	#scrolldiv_parentContainer{
 		width:700px;	/* Width of the scrolling text */
@@ -28,7 +30,7 @@
 	The scrollbar slider 
 	*/
 	#scrolldiv_slider{
-		width:15px;
+		width:25px;
 		margin-left:2px;
 		height:500px;
 		float:left;
@@ -38,7 +40,7 @@
 	The scrollbar (The bar between the up and down arrow )
 	*/
 	#scrolldiv_scrollbar{
-		width:15px;
+		width:25px;
 		height:460px;	/* Total height - 40 pixels */
 		border:1px solid #c0c0c0;
 		position:relative;
@@ -49,8 +51,8 @@
 	*/
 	#scrolldiv_theScroll{
 		margin:1px;
-		width:13px;
-		height:13px;
+		width:23px;
+		height:10px;
 		background-color:#808080;
 		position:absolute;	
 		top:0px;
@@ -61,7 +63,7 @@
 	Scroll buttons(The up and down arrows)
 	*/
 	#scrolldiv_scrollUp,#scrolldiv_scrollDown{
-		width:15px;
+		width:25px;
 		height:16px;
 		border:1px solid #808080;
 		color: #c0c0c0;
