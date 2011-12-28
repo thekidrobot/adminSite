@@ -96,7 +96,6 @@ if($U > 0)
 		<h2>&nbsp;</h2>-->
     
 		<div id="main">
-		 <div id="wrapper">
 	
 				<h2><?=_("View Files")?></h2>
 				<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
@@ -145,7 +144,6 @@ if($U > 0)
 				<script type="text/javascript" src="js/tablesort.js"></script>
 				<script type="text/javascript" src="js/pagination.js"></script>
 	
-				</div>
 			 </div><!-- // #main -->
       <div class="clear"></div>
       </div><!-- // #container -->

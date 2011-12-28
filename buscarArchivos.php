@@ -91,9 +91,8 @@ $queryString_rsConsulta1 = sprintf("&totalRows_rsConsulta1=%d%s", $totalRows_rsC
 		<h2>&nbsp;</h2>-->
     
 		<div id="main">
-		 <div id="wrapper">
 	
-				<h2><?=_("Find files")?></h2>
+			<h2><?=_("Find files")?></h2>
 				<form method="post" action="<?=$currentPage?>" class="jNice">
 					<fieldset>
 					<p>
@@ -113,10 +112,10 @@ $queryString_rsConsulta1 = sprintf("&totalRows_rsConsulta1=%d%s", $totalRows_rsC
 				<table class="no-arrow rowstyle-alt colstyle-alt paginate-15 max-pages-5" >
 					<thead>
 						<tr>
-						<th class="sortable-keep fd-column-0"><b><?=_("Title / Name")?></b></th>
-						<th class="sortable-keep fd-column-1"><b><?=_("Trainer")?></b></th>
-						<th class="sortable-keep fd-column-2"><b><?=_("Subject")?></b></th>
-						<th class="sortable-keep fd-column-3"><b><?=_("Release Date")?></b></th>
+						<th class="sortable"><b><?=_("Title / Name")?></b></th>
+						<th class="sortable"><b><?=_("Trainer")?></b></th>
+						<th class="sortable"><b><?=_("Subject")?></b></th>
+						<th class="sortable"><b><?=_("Release Date")?></b></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -152,7 +151,6 @@ $queryString_rsConsulta1 = sprintf("&totalRows_rsConsulta1=%d%s", $totalRows_rsC
 				<script type="text/javascript" src="js/tablesort.js"></script>
 				<script type="text/javascript" src="js/pagination.js"></script>
 
-				</div>
 			 </div><!-- // #main -->
       <div class="clear"></div>
       </div><!-- // #container -->

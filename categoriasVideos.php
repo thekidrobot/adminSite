@@ -1,8 +1,6 @@
-<?php
-include('Connections/cnxRamp.php');
+<?
+include("Connections/cnxRamp.php");
 include("session.php");
-
-$_SESSION['currentPage'] = getCurrentPage();
 
 	//Add selected multiple
 	$addItems = $_POST['addItems'];
@@ -152,201 +150,120 @@ $_SESSION['currentPage'] = getCurrentPage();
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<?php include ("includes/head.php") ?>
+<body>
+ <div id="wrapper">
+  <h1><a href="menuadmin.php"></a></h1>
+	<?php include("includes/mainnav.php") ?>
+	<!-- // #end mainNav -->
+	<div id="containerHolder">
+	 <div id="container">
+		<div id="sidebar">
+		 <?php include("includes/sidenav.php") ?>
+		</div>    
+		<!-- // #sidebar -->
+		<!-- h2 stays for breadcrumbs -->
+		<!--<h2><a href="#">Dashboard</a> &raquo; <a href="#" class="active">Print resources</a></h2>
+		<h2>&nbsp;</h2>-->
+    
+		<div id="main">
 
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-	<title>RAMP</title>
-	
-	<style type="text/css">
-	img{
-		border:0px;
-	}	
-	</style>
-	<script type="text/javascript" src="js/ajax-dynamic-content.js"></script>
-	<script type="text/javascript" src="js/ajax.js"></script>
-	<script type="text/javascript" src="js/ajax-tooltip.js">
-	/************************************************************************************************************
-	(C) www.dhtmlgoodies.com, June 2006
-	
-	This is a script from www.dhtmlgoodies.com. You will find this and a lot of other scripts at our website.	
-	
-	Terms of use:
-	You are free to use this script as long as the copyright message is kept intact. However, you may not
-	redistribute, sell or repost it without our permission.
-	
-	Thank you!
-	
-	www.dhtmlgoodies.com
-	Alf Magne Kalleland
-	
-	************************************************************************************************************/	
-	</script>	
-	<link rel="stylesheet" href="css/ajax-tooltip.css" media="screen" type="text/css">
-	<link rel="stylesheet" href="css/ajax-tooltip-demo.css" media="screen" type="text/css">
-	
-	<!-- CSS -->
-	<link href="style/css/scrollingContent.css" rel="stylesheet" type="text/css" media="screen" />
-	<link href="style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
-	<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="style/css/ie6.css" /><![endif]-->
-	<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="style/css/ie7.css" /><![endif]-->
-	
-	<!-- JavaScripts-->
-	<script type="text/javascript" src="style/js/toggleShowHide.js"></script>
-	<script type="text/javascript" src="style/js/scrollingContent.js"></script>
-	<script type="text/javascript" src="style/js/jquery.js"></script>
-	<script type="text/javascript" src="style/js/jNice.js"></script>
-		
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta http-equiv="pragma" content="no-cache" />
-  <script type="text/javascript" src="js/scriptaculous/lib/prototype.js"></script>
-  <script type="text/javascript" src="js/scriptaculous/src/scriptaculous.js"></script>
-	<link rel="stylesheet" type="text/css" href="style/css/dragdrop.css" />
-	<script type="text/javascript"> 
-		//<![CDATA[
-		document.observe('dom:loaded', function() {
-				var changeEffect;
-				
-				Sortable.create("sortlist2", {containment: ['sortlist', 'sortlist2'], tag:'li', overlap:'horizontal', constraint:false, dropOnEmpty: true,
-						onChange: function(item) {
-								var list = Sortable.options(item).element;
-								if(changeEffect) changeEffect.cancel();
-								changeEffect = new Effect.Highlight('changeNotification', {restoreColor:"transparent" });
-						},			
-						onUpdate: function(list) {
-								new Ajax.Request("includes/addVideo.php?idGrupos=<?=$idGrupos?>", {
-								method: "post",
-								onLoading: function(){$('activityIndicator').show()},
-								onLoaded: function(){$('activityIndicator').hide()},
-								parameters: { data: Sortable.serialize(list), container: list.id }
-							});				
-						}
-				});			
-		
-				Sortable.create("sortlist", {containment: ['sortlist', 'sortlist2'], tag:'li', overlap:'horizontal', constraint:false, dropOnEmpty: true,
-					onChange: function(item) {
-						var list = Sortable.options(item).element;
-						if(changeEffect) changeEffect.cancel();
-						changeEffect = new Effect.Highlight('changeNotification', {restoreColor:"transparent" });
-				},			
-				onUpdate: function(list) {
-								new Ajax.Request("includes/removeVideo.php?idGrupos=<?=$idGrupos?>", {
-								method: "post",
-								onLoading: function(){$('activityIndicator').show()},
-								onLoaded: function(){$('activityIndicator').hide()},
-								parameters: { data: Sortable.serialize(list), container: list.id }
-						});
+			<div id="headerDiv">
+				<h2>
+				<?=_("Categories")?> &gt;&gt;
+				<a id="myHeader" href="javascript:toggle('myContent','myHeader');" >
+				<?=_("Click to add a new category")?></a>
+				</h2>
+			</div>
+
+			<div id="contentDiv">
+				<?php
+				if($_GET['edit'] != '')
+				{
+					?>
+					<div id="myContent" style="display: block;">
+					<?
 				}
-				});
-				
-		});
-		//]]>
-		</script>
-	
-		<!--[if IE]>
-		<style type="text/css">
-			ul.fdtablePaginater {display:inline-block;}
-			ul.fdtablePaginater {display:inline;}
-			ul.fdtablePaginater li {float:left;}
-			ul.fdtablePaginater {text-align:center;}
-			table { border-bottom:1px solid #C1DAD7; }
-		</style>
-		<![endif]-->
-	
-	</head> 
-	<body> 
-
-		<div id="wrapper">
-		<div id="headerDiv">
-			<h2><?=_("Categories")?> &gt;&gt; <a id="myHeader" href="javascript:toggle('myContent','myHeader');" ><?=_("Click to add a new category")?></a></h2>
-		</div>
-
-		<div id="contentDiv">
-			<?php
-				if($_GET['edit'] != ''){
-				?>
-				<div id="myContent" style="display: block;">
-				<?
-				}
-				else{
+				else
+				{
 					?>
 					<div id="myContent" style="display: none;">
 					<?
 				}
-			?>	
-			
-		<form action="<?=$_SERVER['PHP_SELF']?>" method="post" class="jNice">
-			<fieldset>
-				<p>
-				<label><?=_("Name")?> : </label>
-				<input type="text" name="grupos" value="<?=$nomGrupo?>" class="text-long" maxlenght="150" />
-				</p>
-				
-				<p>
-					<label><?=_("Parent category")?> : </label>
-					<select name="padre">
-						<option value=0 <?php if($idGrupos == $row['idGrupos']) echo "selected='selected'" ?>><?=_("No Parent")?></option>
-						<?php
-						//First level menus
-						$result = mysql_query('SELECT * FROM grupos WHERE padre = 0 order by idGrupos');
-						while ($row = mysql_fetch_array($result))
-						{
+				?>	
+						<form action="<?=$_SERVER['PHP_SELF']?>" method="post" class="jNice">
+							<fieldset>
+							<p>
+								<label><?=_("Name")?> : </label>
+								<input type="text" name="grupos" value="<?=$nomGrupo?>" class="text-long" maxlenght="150" />
+							</p>
+							<p>
+								<label><?=_("Parent category")?> : </label>
+								<select name="padre">
+									<option value=0 <?php if($idGrupos == $row['idGrupos']) echo "selected='selected'" ?>><?=_("No Parent")?></option>
+									<?php
+									//First level menus
+									$result = mysql_query('SELECT * FROM grupos WHERE padre = 0 order by idGrupos');
+									while ($row = mysql_fetch_array($result))
+									{
+										?>
+										<option value="<?=$row['idGrupos'] ?>" <?php if($padre ==  $row['idGrupos']) echo "selected='selected'" ?>><?=ucfirst(strtolower($row['grupos'])) ?></option>
+										<?php
+										$dad=$row['grupos'];
+										//Second+ level menus
+										//Sorry for the mess, Padre needs to be sent as a comparison value.
+										make_kids($row['idGrupos'],$dad,$padre);
+									}
+									?>
+								</select>
+							</p>
+							<p>
+								<label><?=_("Broadcast Type")?>:</label>
+								<select name="categorias">
+								<option value="Live" <?php if ($categoria =="Live") echo "selected='selected'" ?>>Live</option>
+								<option value="OnDemand" <?php if ($categoria =="OnDemand") echo "selected='selected'" ?>>OnDemand</option>
+								</select>
+							</p>
+							<input type="hidden" name="idGrupos" value="<?=$idGrupos?>" />				
+							<? if (trim($nomGrupo) !="")
+							{
+								?>
+								<input type="hidden" name="flgEditar" value=1 />				
+								<input type="submit" value="<?=_("Edit")?>" name="Editar" />
+								<?
+							}
+							else
+							{
+								?>
+								<input type="hidden" name="flgAgregar" value=1 />				
+								<input type="submit" value="<?=_("Add")?>" name="Agregar" />
+								<?	
+							}
 							?>
-							<option value="<?=$row['idGrupos'] ?>" <?php if($padre ==  $row['idGrupos']) echo "selected='selected'" ?>><?=ucfirst(strtolower($row['grupos'])) ?></option>
-							<?php
-							$dad=$row['grupos'];
-							//Second+ level menus
-							//Sorry for the mess, Padre needs to be sent as a comparison value.
-							make_kids($row['idGrupos'],$dad,$padre);
-						}
-						?>
-					</select>
-				</p>
-				<p>
-					<label><?=_("Broadcast Type")?>:</label>
-					<select name="categorias">
-						<option value="Live" <?php if ($categoria =="Live") echo "selected='selected'" ?>>Live</option>
-						<option value="OnDemand" <?php if ($categoria =="OnDemand") echo "selected='selected'" ?>>OnDemand</option>
-					</select>
-				</p>
-				
-				<input type="hidden" name="idGrupos" value="<?=$idGrupos?>" />				
-				<? if (trim($nomGrupo) !=""){
-					?>
-					<input type="hidden" name="flgEditar" value=1 />				
-					<input type="submit" value="<?=_("Edit")?>" name="Editar" />
-					<?
-				}
-				else{
-					?>
-					<input type="hidden" name="flgAgregar" value=1 />				
-					<input type="submit" value="<?=_("Add")?>" name="Agregar" />
-					<?	
-			}
-			?>
-				<a href="<?=$_SERVER['PHP_SELF']?>"><input type="button" value="<?=_("Reset")?>" class="button-submit" /></a>
-			</fieldset>
-		</form>
+							<a href="<?=$_SERVER['PHP_SELF']?>"><input type="button" value="<?=_("Reset")?>" class="button-submit" /></a>
+						</fieldset>
+					</form>
+				</div>
+			</div>
 			
-		</div></div>
-		
-		<form action="<?=$_SERVER['PHP_SELF']?>" method="post">		
-		<table class="no-arrow rowstyle-alt colstyle-alt paginate-10 max-pages-5">
-		<thead>
-			<tr>
-				<th class="sortable"><b><?=_("Name")?></b></th>
-				<th class="sortable"><b><?=_("Signal")?></b></th>
-				<th><b><?=_("Add Videos")?></b></th>
-				<th style="text-align:center">
-          <input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
-        </th>
-				<!--<td class="action"><b><?=_("Delete")?></b></td>-->
-			</tr>
-		</thead>
-    <tbody>	
-			<?php
+			<form action="<?=$_SERVER['PHP_SELF']?>" method="post">		
+				<table class="no-arrow rowstyle-alt colstyle-alt paginate-10 max-pages-5">
+				<thead>
+				<tr>
+					<th class="sortable"><b><?=_("Name")?></b></th>
+					<th class="sortable"><b><?=_("Signal")?></b></th>
+					<th><b><?=_("Add Videos")?></b></th>
+					<th style="text-align:center">
+						<input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
+					</th>
+					<!--<td class="action"><b><?=_("Delete")?></b></td>-->
+				</tr>
+			</thead>
+			<tbody>	
+				<?php
 				$counter = 0;
 				$sql = mysql_query("SELECT * FROM grupos order by padre asc");
-				
+					
 				while ($row = mysql_fetch_array($sql)) {  
 					$counter++;	
 					//ToDo: Validar Borrado de categorias con hijos
@@ -361,8 +278,8 @@ $_SESSION['currentPage'] = getCurrentPage();
 					<?php;
 				}  
 				?>
-		</tbody>
-		</table>
+				</tbody>
+			</table>
 		</form>
 		<br />
 		<br />
@@ -443,19 +360,25 @@ $_SESSION['currentPage'] = getCurrentPage();
 					</div>
 					<div id="scrolldiv_scrollDown"><img src="images/arrow_down.gif"></div>
 				</div>
-			</div>
-			<br/>
-			<br/>
-			<br/>
 			<script type="text/javascript" src="style/js/scrollingInit.js"></script>
+			</div>
+			<br />
+			<br />
 			<?php
 		}
 		?>
-		<script type="text/javascript" src="js/tablesort.js"></script>
-		<script type="text/javascript" src="js/pagination.js"></script>
-	</body>
+	 	
+		</div><!-- // #main -->
+    <div class="clear"></div>
+    </div><!-- // #container -->
+		</div><!-- // #containerHolder -->
+    <p id="footer"></p>
+  </div><!-- // #wrapper -->
+	<script type="text/javascript" src="js/tablesort.js"></script>
+	<script type="text/javascript" src="js/pagination.js"></script>	
+</body>
 </html>
-		
+
 <?php
 
 //Constructs the top menu

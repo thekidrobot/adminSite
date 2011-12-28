@@ -142,7 +142,6 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1"))
 		<h2>&nbsp;</h2>-->
     
 		<div id="main">
-		 <div id="wrapper">
 	
 			<h2><?=_("Edit Information")?></h2>
 			<form method="POST" name="form1" enctype="multipart/form-data" action="<?php echo $editFormAction; ?>" class="jNice">
@@ -219,8 +218,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1"))
 				<input type="submit" value="<?=_("Save")?>">
 			</form>
 			</fieldset>
-	
-				</div>
+
 			 </div><!-- // #main -->
       <div class="clear"></div>
       </div><!-- // #container -->

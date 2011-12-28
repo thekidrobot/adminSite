@@ -169,7 +169,7 @@ $currentPage = getCurrentPage();
 		<h2>&nbsp;</h2>-->
     
 		<div id="main">
-		 <div id="wrapper">
+
 			<div id="headerDiv">
 			 <h2><?=_("Categories")?> &gt;&gt; <a id="myHeader" href="javascript:toggle('myContent','myHeader');" ><?=_("Click to add a new category")?></a></h2>
 			</div>
@@ -378,7 +378,6 @@ $currentPage = getCurrentPage();
 					}
 				}	
 				?>
-			 </div>
 			
 			 </div><!-- // #main -->
       <div class="clear"></div>

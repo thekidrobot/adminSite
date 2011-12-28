@@ -2,75 +2,106 @@
 include("Connections/cnxRamp.php");
 include("session.php");
 
-$currentPage = $_SERVER["PHP_SELF"];
-$strBusca = $_POST['strBusca'];
-$condicion = $_POST['condicion'];
-$whereCondicion="";
+include("clases/clstaller.php");
+include("clases/clsusuario.php");
 
-if($_POST['strBusca']!= "")
+$currentPage = $_SERVER['PHP_SELF'];
+
+///objetos
+$objTaller=new clstaller();
+$objUsuario=new clsusuario();
+$msg="";
+
+///ingresar   
+if($_POST["ingresar"]!="")
+ {
+    $resp=$objUsuario->validacionLoginUsuario($_POST["valorLogin"]);
+	
+	if($resp=="1")
+	 {
+	  $objUsuario->ingresarUsuario($_POST["valorLogin"],$_POST["valorClave"],$_POST["valorNombre"],
+																 $_POST['activo'],$_POST['licencia'],$_POST['txtKeyramp'],
+																 $_POST['valorMac'],$_POST['valorSerial']);
+	  $msg="Registroe enviado";
+	 }
+	else
+	 {
+	  $msg="O login já existe, por favor crie outro";
+	 }
+ }
+
+if (trim($_GET['delete']) != ""){ 
+ $str = "delete from grupos_usuario where IdUsuario =". $_GET['delete'];
+ $sql = mysql_query($str) or die(mysql_error($sql));
+ 
+ $str = "delete from usuariosgruposusuarios where IdUsuario =". $_GET['delete'];
+ $sql = mysql_query($str) or die(mysql_error($sql));
+	
+ $str = "delete from usvsgrupovsvideo where UGD_USUARIO =". $_GET['delete'];
+ $sql = mysql_query($str) or die(mysql_error($sql));
+ 
+ $str = "delete from usuarios where IdUsuario =". $_GET['delete'];
+ $sql = mysql_query($str) or die(mysql_error($sql));
+}
+
+//Delete multiple
+$arrUsuarios = $_POST['usuarios'];
+
+$U = count($arrUsuarios);
+if($U > 0)
 {
-	switch ($condicion)
-	{
-		case "nombreArchivo":
-		
-			if($whereCondicion != "") $whereCondicion = " and ";
-			$whereCondicion .= " archivos.nombreArchivo LIKE '%" . $strBusca . "%' ";
-			break;
-		
-		case "tituloArchivo":
-			if($whereCondicion != "") $whereCondicion .= " and ";
-			$whereCondicion .= " archivos.titulo LIKE '%" . $strBusca . "%' ";
-			break;
-		
-		case "temaArchivo":
-			if($whereCondicion != "") $whereCondicion .= " and ";
-			$whereCondicion .= " archivos.tema LIKE '%" . $strBusca . "%' ";
-			break;
-		
-		case "fechaArchivo":
-			if($whereCondicion != "") $whereCondicion .= " and ";
-			$whereCondicion .= " archivos.fechaLanzamiento LIKE '%" . $strBusca . "%' ";
-			break;	
-	}
+ foreach($arrUsuarios as $id)
+ {
+	$str = "delete from grupos_usuario where IdUsuario =". $id;
+	$sql = mysql_query($str) or die(mysql_error($sql));
+	
+	$str = "delete from usuariosgruposusuarios where IdUsuario =". $id;
+	$sql = mysql_query($str) or die(mysql_error($sql));
+	 
+	$str = "delete from usvsgrupovsvideo where UGD_USUARIO =". $id;
+	$sql = mysql_query($str) or die(mysql_error($sql));
+	
+	$str = "delete from usuarios where IdUsuario =". $id;
+	$sql = mysql_query($str) or die(mysql_error($sql));
+	
+	if (!headers_sent()) header('Location: '.$currentPage);
+	else echo '<meta http-equiv="refresh" content="0;url='.$currentPage.'" />';
+ }
 }
 
-if($whereCondicion != "")	$whereCondicion = " where " . $whereCondicion;	
+///actualizar
+if($_POST["actualizar"]!="")
+ {
+	if($_POST['activo']!='1') $activo=0;
+	else $activo=1;
+	
+	$objUsuario->actualizarUsuario($_POST["actualizar"],$_POST["valorLogin"],$_POST["valorClave"],
+																 $_POST["valorNombre"],$activo,$_POST['licencia'],$_POST['txtKeyramp'],
+																 $_POST['valorMac'],$_POST['valorSerial']);
+	
+  $msg="Registro atualizado";
+ }
 
-$maxRows_rsConsulta1 = 10;
-$pageNum_rsConsulta1 = 0;
-if (isset($_GET['pageNum_rsConsulta1'])) {
-  $pageNum_rsConsulta1 = $_GET['pageNum_rsConsulta1'];
-}
-$startRow_rsConsulta1 = $pageNum_rsConsulta1 * $maxRows_rsConsulta1;
 
-$query_rsConsulta1 = "SELECT * FROM archivos "  . $whereCondicion;
-$query_limit_rsConsulta1 = sprintf("%s LIMIT %d, %d", $query_rsConsulta1, $startRow_rsConsulta1, $maxRows_rsConsulta1);
-$rsConsulta1 = mysql_query($query_limit_rsConsulta1, $cnxRamp) or die(mysql_error());
-$row_rsConsulta1 = mysql_fetch_assoc($rsConsulta1);
+//informacion registro seleccionado
+if($_GET["actualizar"]!="")
+ {
+   $RSresultado=$objUsuario->consultarDetalleUsuarios($_GET["actualizar"]);
+   while ($row = mysql_fetch_array($RSresultado))
+	 {
+	  $vUsuario=$row["Usuario"]; 
+	  $vPassword=$row["Password"]; 
+	  $vNombreCompleto=$row["NombreCompleto"]; 
+	  $vapellidos=$row["apellidos"];
+	  $activoUser=$row["activo"]; 
+	  $llave=$row["ID_PLUGIN"];
+	  $pckey=$row["pcrampkey"];
+	  $vMacId=$row["MAC_ID"];
+	  $vSerial=$row["serial"];
+	  //$vDirLocal=$row["DIRECCION_LOCAL"];	  
+     }
+ }
 
-if (isset($_GET['totalRows_rsConsulta1'])) {
-  $totalRows_rsConsulta1 = $_GET['totalRows_rsConsulta1'];
-} else {
-  $all_rsConsulta1 = mysql_query($query_rsConsulta1);
-  $totalRows_rsConsulta1 = mysql_num_rows($all_rsConsulta1);
-}
-$totalPages_rsConsulta1 = ceil($totalRows_rsConsulta1/$maxRows_rsConsulta1)-1;
-
-$queryString_rsConsulta1 = "";
-if (!empty($_SERVER['QUERY_STRING'])) {
-  $params = explode("&", $_SERVER['QUERY_STRING']);
-  $newParams = array();
-  foreach ($params as $param) {
-    if (stristr($param, "pageNum_rsConsulta1") == false && 
-        stristr($param, "totalRows_rsConsulta1") == false) {
-      array_push($newParams, $param);
-    }
-  }
-  if (count($newParams) != 0) {
-    $queryString_rsConsulta1 = "&" . htmlentities(implode("&", $newParams));
-  }
-}
-$queryString_rsConsulta1 = sprintf("&totalRows_rsConsulta1=%d%s", $totalRows_rsConsulta1, $queryString_rsConsulta1);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -92,72 +123,176 @@ $queryString_rsConsulta1 = sprintf("&totalRows_rsConsulta1=%d%s", $totalRows_rsC
 		<h2>&nbsp;</h2>-->
     
 		<div id="main">
-		 <div id="wrapper">
-	
-				<h2><?=_("Find files")?></h2>
-				<form method="post" action="<?=$currentPage?>" class="jNice">
-					<fieldset>
-					<p>
-						<label><?=_("Select a search criteria")?></label>
-						<input type="text" name="strBusca" value="<?=$strBusca ?>" class="text-long">
-						<select name="condicion">
-							<option value="nombreArchivo" <?php if ($condicion == "nombreArchivo") echo "selected='selected'" ?>><?=_("Filename")?></option>
-							<option value="tituloArchivo" <?php if ($condicion == "tituloArchivo") echo "selected='selected'" ?>><?=_("Title")?></option>
-							<option value="temaArchivo" <?php if ($condicion == "temaArchivo") echo "selected='selected'" ?>><?=_("Subject")?></option>
-							<option value="fechaArchivo" <?php if ($condicion == "fechaArchivo") echo "selected='selected'" ?>><?=_("Release date")?></option>
-						</select>
-					</p>
-					<input name="buscar" type="submit" value="<?=_("Find")?>" />
-					</fieldset>
-				</form>
+		
+			<form name="frmbusca" action="<?=$currentPage?>" method="post" class="jNice">
+		 <h2><?=_("Find users")?></h2>
+		 <fieldset>
+			<p>
+			 <label><?=_("Name")?></label>
+			 <input type="text" name="parteNombre" id="parteNombre" value="<?php echo $_POST['parteNombre']; ?>" maxlength="255" class="text-long" />
+			</p>
+			<input type="submit" value="<?=_("Find")?>" name="Buscar" />
+		 </fieldset>
+		</form>
+		
+		<form name="formProceso" action="<?=$_SERVER['PHP_SELF']?>" method="post" onSubmit="return validarNuevoUsuario()" class="jNice" >
+		 <div id="headerDiv">
+			 <h2><?=_("Manage users")?> &gt;&gt; <a id="myHeader" href="javascript:toggle('myContent','myHeader');" ><?=_("Click to add a new user")?></a></h2>
+		 </div>
+		 <div id="contentDiv">
+		 <?php
+			if($_GET['actualizar'] != ''){
+			 ?>
+			 <div id="myContent" style="display: block;">
+			 <?
+			}
+			else{
+			 ?>
+			 <div id="myContent" style="display: none;">
+			 <?
+			}
+			?>	
+			
+			 <fieldset>
+			 <? 
+			 if($_GET["actualizar"]!=""){
+				?>
+				<input type="hidden" name="actualizar" value="<?=$_GET["actualizar"]?>">
+				<? 
+			 }
+			 else
+			 {
+				?>
+				<input type="hidden" name="ingresar" value="1">
+				<? 
+			 }
+			 ?>
+			 <?php
+			 if($_GET["actualizar"]!=""){
+			 ?>
+			 <p>
+				<h4>
+				 <a href="#" onmouseover="ajax_showTooltip(window.event,'muestraGrupos.php?id=<?=$_GET["actualizar"]?>',this);return false" onmouseout="ajax_hideTooltip()"><?=_("Hover to see groups of the user $vUsuario")?></a>
+				</h4>
+			 </p>
+			 <?php
+			 }
+			 ?>
+			 <p>
+				<label><?=_("Name")?></label>
+				<input type="text" name="valorNombre" value="<?=$vNombreCompleto?>" maxlength="255" class="text-long" />
+			 </p>
+			 <p>
+				<label><?=_("Username")?></label>
+				<input type="text" name="valorLogin" value="<?=$vUsuario?>" maxlength="100" class="text-long" />
+			 </p>
+			 <p>
+				<label><?=_("Password")?></label>
+				<input type="password" name="valorClave" value="<?=$vPassword?>" maxlength="15" class="text-long" />
+			 </p>
+			 <p>
+				<label><?=_("Mac Address")?></label>
+				<input type="text" name="valorMac" value="<?=$vMacId?>" maxlength="100" class="text-long" />
+			 </p>
+			 <p>
+				<label><?=_("Machine serial number")?></label>
+				<input type="text" name="valorSerial" value="<?=$vSerial?>" maxlength="100" class="text-long" />
+			 </p> 
+			 <p>
+				<label><?=_("Enable")?>
+				<input type="checkbox" <?php if (!(strcmp($activoUser,1))) {echo "checked=\"checked\"";} ?> name="activo"  id="activo" value="1" />
+				</label>
+			 </p>	 
+			 </p>
+			 <p>
+				<label><?=_("Computer ID")?></label>
+				<input name="licencia" type="text" id="licencia" value="<?php echo $llave; ?>" class="text-long" />
+			 </p>
+			 <p>
+				<input name="txtKeyramp" type="text" id="txtKeyramp" value="<?php echo $pckey; ?>" readonly="readonly" class="text-long" />
+				<input type="button" name="btnCambiar" id="btnCambiar" value="New Key" onClick="fngenerakey();" class="button-submit" />
+			 </p>
+			 <p>
+				<label><?=$msg?></label>
+			 <input type="image" src="imagenes/crear.jpg">
+			 </p> 
+			 </fieldset>
+			</form>
+		 </div>
+		</div>
+		
+		<form action="<?=$currentPage?>" method="post">
+		 <table class="no-arrow paginate-20 max-pages-5">
+			<thead>
+			 <tr>
+			 <th class="sortable"><b><?=_("Name")?></b></th>
+			 <th class="sortable"><b><?=_("Username")?></b></th>
+			 <!--<td><b><?=_("Delete")?></b></td>-->
+			 <th><b><?=_("Active")?></b></th>
+			 <th style="text-align:center">
+				<input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
+			 </th>
+			<tr>
+			</thead>
+			<tbody>
+				<?php
+				//Sentencia sql (sin limit) 
+				if($_POST['parteNombre']!="")
+				{
+				 $RSresultado=$objUsuario->consultarUsuario($_POST['parteNombre']);
+				 $_pagi_sql = "SELECT * FROM  usuarios where NombreCompleto like '%" . $_POST['parteNombre'] . "%' order by NombreCompleto ";
+				}
+				else
+				{
+				 $RSresultado=$objUsuario->consultarUsuarios();
+				 $_pagi_sql = "SELECT * FROM usuarios ORDER BY NombreCompleto"; 
+				}
 				
-				<table class="no-arrow rowstyle-alt colstyle-alt paginate-15 max-pages-5" >
-					<thead>
-						<tr>
-						<th class="sortable-keep fd-column-0"><b><?=_("Title / Name")?></b></th>
-						<th class="sortable-keep fd-column-1"><b><?=_("Trainer")?></b></th>
-						<th class="sortable-keep fd-column-2"><b><?=_("Subject")?></b></th>
-						<th class="sortable-keep fd-column-3"><b><?=_("Release Date")?></b></th>
-						</tr>
-					</thead>
-					<tbody>
-					<?php
-					$counter = 0;
-					do
-					{
-						?>
-						<tr <?php if($counter % 2) echo " class='odd'"?>>
-							<td>
-								<a href="edicion.php?id_archivo=<?php echo $row_rsConsulta1['id_archivo']; ?>">
-								<?php echo $row_rsConsulta1['titulo']; ?></a>
-							</td>
-							<td><?php echo $row_rsConsulta1['speaker']; ?></td>
-							<td><?php echo $row_rsConsulta1['tema']; ?></td>
-							<td><?php echo $row_rsConsulta1['fechaLanzamiento']; ?></td>
-						</tr>
-						<?php
-						$counter++;
-					}
-					while ($row_rsConsulta1 = mysql_fetch_assoc($rsConsulta1)); ?>
-					<?
-						if(mysql_num_rows($rsConsulta1) == 0){
-						?>
-						<tr align="center">
-							<td colspan="4"><?=_("No records found")?></td>
-						</tr>
-						<?
-					}
-					?>
-					</tbody>
-				</table>
-				<script type="text/javascript" src="js/tablesort.js"></script>
-				<script type="text/javascript" src="js/pagination.js"></script>
-
-				</div>
-			 </div><!-- // #main -->
-      <div class="clear"></div>
-      </div><!-- // #container -->
-    </div><!-- // #containerHolder -->
+				$_pagi_result = mysql_query($_pagi_sql) or die("Error: ".mysql_error($_pagi_result));
+				
+				$counter = 0;
+				while ($row = mysql_fetch_array($_pagi_result))
+				{
+				 $IdUsuario=$row["IdUsuario"]; 
+				 $NombreCompleto=$row["NombreCompleto"]; 
+				 $apellidos=$row["apellidos"]; 
+				 $Usuario=$row["Usuario"]; 
+				 $activo=$row["activo"];
+				 ?>
+				 <tr <?php if($counter % 2) echo " class='alt'"?>>
+					<td>
+					 <a href="admusuarios.php?actualizar=<?=$IdUsuario?>"><?=$NombreCompleto." ".$apellidos?></a>
+					</td>
+					<!--<td  align="left" valign="top" bgcolor="white" class="tahoma_12"><a href="mensajes/insertarMensaje.php?codUser=<?php echo $IdUsuario; ?>&nomUser=<?php echo $NombreCompleto; ?>">Enviar</a></td>-->
+					<td><?=$Usuario?></td>
+					<td>
+					 <input type="checkbox" name="act" id="act" disabled <?php if (!(strcmp($activo,1))) {echo "checked=\"checked\"";} ?>>
+					</td>
+					<td align="center"><input name='usuarios[]' type='checkbox' value="<?=$row['IdUsuario']?>"></td>
+					<!--<td><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['IdUsuario']?>" onclick="return confirm('Are you sure do you want to delete?')"><?=_("Delete")?></td>-->
+				 <tr>
+				 <?
+				}
+				if($counter == 0 and $_POST['parteNombre']!="")
+				{
+				 ?>
+				 <tr>
+					<td  colspan="4" align="center"><?=_("No data found.")?></td>
+				 </tr>
+				 <?
+				}
+				?>
+				
+				</tbody>
+			 </table>
+			 </form>
+			 <script type="text/javascript" src="js/tablesort.js"></script>
+			 <script type="text/javascript" src="js/pagination.js"></script>
+		
+		</div><!-- // #main -->
+    <div class="clear"></div>
+    </div><!-- // #container -->
+		</div><!-- // #containerHolder -->
     <p id="footer"></p>
   </div><!-- // #wrapper -->
 </body>

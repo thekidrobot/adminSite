@@ -1,5 +1,5 @@
-<?php
-include('Connections/cnxRamp.php');
+<?
+include("Connections/cnxRamp.php");
 include("session.php");
 
 	//Add selected multiple
@@ -201,138 +201,26 @@ include("session.php");
 	
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<?php include ("includes/head.php") ?>
+<body>
+ <div id="wrapper">
+  <h1><a href="menuadmin.php"></a></h1>
+	<?php include("includes/mainnav.php") ?>
+	<!-- // #end mainNav -->
+	<div id="containerHolder">
+	 <div id="container">
+		<div id="sidebar">
+		 <?php include("includes/sidenav.php") ?>
+		</div>    
+		<!-- // #sidebar -->
+		<!-- h2 stays for breadcrumbs -->
+		<!--<h2><a href="#">Dashboard</a> &raquo; <a href="#" class="active">Print resources</a></h2>
+		<h2>&nbsp;</h2>-->
+    
+		<div id="main">
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>RAMP</title>
-
-	<!-- CSS -->
-	<link href="style/css/scrollingContent.css" rel="stylesheet" type="text/css" media="screen" />
-	<link href="style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
-	<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="style/css/ie6.css" /><![endif]-->
-	<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="style/css/ie7.css" /><![endif]-->
-	
-	<!-- JavaScripts-->
-	<script type="text/javascript" src="style/js/toggleShowHide.js"></script>
-	<script type="text/javascript" src="style/js/scrollingContent.js"></script>
-	<script type="text/javascript" src="style/js/jquery.js"></script>
-	<script type="text/javascript" src="style/js/jNice.js"></script>
-		
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta http-equiv="pragma" content="no-cache" />
-  <script type="text/javascript" src="js/scriptaculous/lib/prototype.js"></script>
-  <script type="text/javascript" src="js/scriptaculous/src/scriptaculous.js"></script>
-	<link rel="stylesheet" type="text/css" href="style/css/dragdrop.css" />
-
-	<?php
-	if(trim($_GET['add_us']) != '' or trim($_GET['add_all_us']) != '' or trim($_GET['rem_all_us']) != '' or trim($_POST['idGrupo_usr']) != ''){
-	?>	
-	<script type="text/javascript"> 
-		//<![CDATA[
-		document.observe('dom:loaded', function() {
-				var changeEffect;
-				
-				Sortable.create("sortlist2", {containment: ['sortlist', 'sortlist2'], tag:'li', overlap:'horizontal', constraint:false, dropOnEmpty: true,
-						onChange: function(item) {
-								var list = Sortable.options(item).element;
-								if(changeEffect) changeEffect.cancel();
-								changeEffect = new Effect.Highlight('changeNotification', {restoreColor:"transparent" });
-						},			
-						onUpdate: function(list) {
-								new Ajax.Request("includes/addPerson.php?idGrupo=<?=$idGrupo?>", {
-								method: "post",
-								onLoading: function(){$('activityIndicator').show()},
-								onLoaded: function(){$('activityIndicator').hide()},
-								parameters: { data: Sortable.serialize(list), container: list.id }
-							});				
-						}
-				});			
-		
-				Sortable.create("sortlist", {containment: ['sortlist', 'sortlist2'], tag:'li', overlap:'horizontal', constraint:false, dropOnEmpty: true,
-					onChange: function(item) {
-						var list = Sortable.options(item).element;
-						if(changeEffect) changeEffect.cancel();
-						changeEffect = new Effect.Highlight('changeNotification', {restoreColor:"transparent" });
-				},			
-				onUpdate: function(list) {
-								new Ajax.Request("includes/removePerson.php?idGrupo=<?=$idGrupo?>", {
-								method: "post",
-								onLoading: function(){$('activityIndicator').show()},
-								onLoaded: function(){$('activityIndicator').hide()},
-								parameters: { data: Sortable.serialize(list), container: list.id }
-						});
-				}
-				});
-				
-		});
-		//]]>
-		</script>
-		<?php
-		}
-		elseif(trim($_GET['add_pq']) != '' or trim($_GET['add_all_pq']) != '' or trim($_GET['rem_all_pq']) != '' or trim($_POST['idGrupo_paq']) != '')
-		{
-		?>
-			<script type="text/javascript"> 
-		//<![CDATA[
-		document.observe('dom:loaded', function() {
-				var changeEffect;
-				
-				Sortable.create("sortlist2", {containment: ['sortlist', 'sortlist2'], tag:'li', overlap:'horizontal', constraint:false, dropOnEmpty: true,
-						onChange: function(item) {
-								var list = Sortable.options(item).element;
-								if(changeEffect) changeEffect.cancel();
-								changeEffect = new Effect.Highlight('changeNotification', {restoreColor:"transparent" });
-						},			
-						onUpdate: function(list) {
-								new Ajax.Request("includes/addPaqueteGrupo.php?idGrupo=<?=$idGrupo?>", {
-								method: "post",
-								onLoading: function(){$('activityIndicator').show()},
-								onLoaded: function(){$('activityIndicator').hide()},
-								parameters: { data: Sortable.serialize(list), container: list.id }
-							});				
-						}
-				});				
-
-				Sortable.create("sortlist", {containment: ['sortlist', 'sortlist2'], tag:'li', overlap:'horizontal', constraint:false, dropOnEmpty: true,
-						onChange: function(item) {
-								var list = Sortable.options(item).element;
-								if(changeEffect) changeEffect.cancel();
-								changeEffect = new Effect.Highlight('changeNotification', {restoreColor:"transparent" });
-						},			
-						onUpdate: function(list) {
-								new Ajax.Request("includes/removePaqueteGrupo.php?idGrupo=<?=$idGrupo?>", {
-								method: "post",
-								onLoading: function(){$('activityIndicator').show()},
-								onLoaded: function(){$('activityIndicator').hide()},
-								parameters: { data: Sortable.serialize(list), container: list.id }
-							});				
-						}
-				});
-				
-		});
-		//]]>
-		</script>
-		<?php
-		}
-		?>
-		
-		<!--[if IE]>
-		<style type="text/css">
-			ul.fdtablePaginater {display:inline-block;}
-			ul.fdtablePaginater {display:inline;}
-			ul.fdtablePaginater li {float:left;}
-			ul.fdtablePaginater {text-align:center;}
-			table { border-bottom:1px solid #C1DAD7; }
-		</style>
-		<![endif]-->
-		
-	</head> 
-	<body> 
-
-		<div id="wrapper">
 		<div id="headerDiv">
 			<h2><?=_("Groups of users") ?> &gt;&gt; <a id="myHeader" href="javascript:toggle('myContent','myHeader');" ><?=_("Click to add a new group")?></a></h2>
 		</div>
@@ -576,11 +464,43 @@ include("session.php");
 					<?php
 			}
 			?>
-		</div>
-		<br />
-		<br />
-		<br />
+
 		<script type="text/javascript" src="js/tablesort.js"></script>
 		<script type="text/javascript" src="js/pagination.js"></script>
-	</body>
+	 	
+		<br/>
+		<br/>
+		
+		</div><!-- // #main -->
+    <div class="clear"></div>
+    </div><!-- // #container -->
+		</div><!-- // #containerHolder -->
+    <p id="footer"></p>
+  </div><!-- // #wrapper -->
+	<script type="text/javascript" src="js/tablesort.js"></script>
+	<script type="text/javascript" src="js/pagination.js"></script>	
+</body>
 </html>
+
+<?php
+
+//Constructs the top menu
+function make_kids($row_id,$dad_name,$padre)
+{
+	$result = mysql_query("SELECT * FROM grupos WHERE padre = $row_id");
+	if (mysql_num_rows($result) > 0)
+	{
+		while ($row = mysql_fetch_array($result))
+		{
+			$selected = '';
+				if($padre == $row['idGrupos']) $selected = "selected='selected'";
+			?>
+				<option value="<?=$row['idGrupos'] ?>" <?=$selected ?>><?=ucfirst(strtolower($dad_name))." - ".ucfirst(strtolower($row['grupos']))?></option>
+			<?php
+			//Welcome Mr. Cobb
+			make_kids($row['idGrupos'],$dad_name." - ".$row['grupos'],$row['padre']);
+		}
+	}
+}	
+
+?>
