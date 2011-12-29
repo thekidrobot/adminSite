@@ -1,7 +1,3 @@
-		table{
-			width:700px;
-		}
-
 		#wrapper h4{
 			color: #954a4a;
 			font-size:14px;
@@ -14,14 +10,23 @@
 		}
 				
 		#sortlist, #sortlist2, #sortlist3, #sortlist4 {
-			width: 270px;
+			width: 220px;
 			margin: 0;
 			padding: 20px;
-			float: left;
 			margin:5px 0px 5px 15px;
-			border: 1px solid #a5a1a1;
+			border: 1px dotted #a5a1a1;
 			text-align:left;
+			z-index:2;
 		}
+
+		#sortlist, #sortlist3{
+			float:left;
+		}
+
+		#sortlist2, #sortlist4{
+			float:right;
+		}
+
 		#sortlist li.sorting,  #sortlist2 li.sorting, #sortlist3 li.sorting, #sortlist4 li.sorting {
 				float: left;
 				/*		display: -moz-inline-box;		/* old FireFox doesn't know inline-block 
@@ -49,14 +54,9 @@
 		
 		#activityIndicator, #changeNotification {
 			text-align: center;
-			font: normal 1em georgia, arial, helvetica;
+			/*font: normal 1em georgia, arial, helvetica;*/
 		}
-		h1 {
-				font: normal 2em georgia, arial, helvetica;
-				margin: 0;
-				padding: 0;
-				color: #D35619;
-		}
+
 		#tagLine {		
 				color: #d39819;
 				margin: 0 0 15px 0;

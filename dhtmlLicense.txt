@@ -1,0 +1,16 @@
+/************************************************************************************************************
+	(C) www.dhtmlgoodies.com, June 2006
+	
+	This is a script from www.dhtmlgoodies.com. You will find this and a lot of other scripts at our website.	
+	
+	Terms of use:
+	You are free to use this script as long as the copyright message is kept intact. However, you may not
+	redistribute, sell or repost it without our permission.
+	
+	Thank you!
+	
+	www.dhtmlgoodies.com
+	Alf Magne Kalleland
+	
+	************************************************************************************************************/	
+	

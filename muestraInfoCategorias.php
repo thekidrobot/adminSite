@@ -34,8 +34,6 @@
 	 $tag = _("No");
 	 print "<li><b>". _("No Dependant Categories Available")." : </b></li>";
 	}
-	
-	
  }
  ?>
  </ul>

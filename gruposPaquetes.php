@@ -327,8 +327,8 @@ include("session.php");
 					<ul id="sortlist">
 					<h4><?=_("Available categories")?></h4>
 					<br/>
-					<a href="<?=$_SERVER['PHP_SELF']?>?add_all_cat=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_("Add all")?>" /></a>
-					<input type="submit" name="a_selected" value="<?=_("Add selected")?>" class="button-submit" style="margin-left:10px;" />
+					<a href="<?=$_SERVER['PHP_SELF']?>?add_all_cat=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_(">>")?>" /></a>
+					<input type="submit" name="a_selected" value="<?=_(">")?>" class="button-submit" style="margin-left:10px;" />
 					<input type="hidden" value="<?=$idPaquete?>" name="idPaquete_cat" />
 					<br/>
 					<br/>
@@ -344,8 +344,8 @@ include("session.php");
 							}  
 					?>
 					<br />
-					<a href="<?=$_SERVER['PHP_SELF']?>?add_all_cat=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_("Add all")?>" /></a>
-					<input type="submit" name="a_selected" value="<?=_("Add selected")?>" class="button-submit" style="margin-left:10px;" />
+					<a href="<?=$_SERVER['PHP_SELF']?>?add_all_cat=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_(">>")?>" /></a>
+					<input type="submit" name="a_selected" value="<?=_(">")?>" class="button-submit" style="margin-left:10px;" />
 					</ul>
 					</form>
 					
@@ -353,8 +353,8 @@ include("session.php");
 					<ul id="sortlist2">
 					<h4><?=_("Categories in ")?> <?=$nomPaquete?></h4>
 					<br/>
-						<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_cat=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_("Remove all")?>" /></a>
-						<input type="submit" name="r_selected" value="<?=_("Remove selected")?>" class="button-submit" style="margin-left:10px;" />
+						<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_cat=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_("<<")?>" /></a>
+						<input type="submit" name="r_selected" value="<?=_("<")?>" class="button-submit" style="margin-left:10px;" />
 						<input type="hidden" value="<?=$idPaquete?>" name="idPaquete_cat" />
 					<br/>
 					<br/>
@@ -369,8 +369,8 @@ include("session.php");
 							}  
 					?>
 					<br/>
-					<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_cat=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_("Remove all")?>" /></a>
-					<input type="submit" name="r_selected" value="<?=_("Remove selected")?>" class="button-submit" style="margin-left:10px;" />					
+					<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_cat=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_("<<")?>" /></a>
+					<input type="submit" name="r_selected" value="<?=_("<")?>" class="button-submit" style="margin-left:10px;" />					
 					</ul>
 					</form>
 					
@@ -406,8 +406,8 @@ include("session.php");
 					<ul id="sortlist">
 					<h4><?=_("Available groups")?></h4>
 					<br/>
-					<a href="<?=$_SERVER['PHP_SELF']?>?add_all_grp=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_("Add all")?>" /></a>
-					<input type="submit" name="a_selected" value="<?=_("Add selected")?>" class="button-submit" style="margin-left:10px;" />
+					<a href="<?=$_SERVER['PHP_SELF']?>?add_all_grp=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_(">>")?>" /></a>
+					<input type="submit" name="a_selected" value="<?=_(">")?>" class="button-submit" style="margin-left:10px;" />
 					<input type="hidden" value="<?=$idPaquete?>" name="idPaquete_grp" />
 					<br/>
 					<br/>
@@ -422,8 +422,8 @@ include("session.php");
 							}  
 					?>
 					<br/>
-					<a href="<?=$_SERVER['PHP_SELF']?>?add_all_grp=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_("Add all")?>" /></a>
-					<input type="submit" name="a_selected" value="<?=_("Add selected")?>" class="button-submit" style="margin-left:10px;" />					
+					<a href="<?=$_SERVER['PHP_SELF']?>?add_all_grp=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_(">>")?>" /></a>
+					<input type="submit" name="a_selected" value="<?=_(">")?>" class="button-submit" style="margin-left:10px;" />					
 					</ul>
 					</form>			
 					
@@ -431,8 +431,8 @@ include("session.php");
 					<ul id="sortlist2">
 					<h4><?=_("Groups in")?> <?=$nomPaquete?></h4>
 					<br/>
-						<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_grp=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_("Remove all")?>" /></a>
-						<input type="submit" name="r_selected" value="<?=_("Remove selected")?>" class="button-submit" style="margin-left:10px;" />
+						<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_grp=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_("<<")?>" /></a>
+						<input type="submit" name="r_selected" value="<?=_("<")?>" class="button-submit" style="margin-left:10px;" />
 						<input type="hidden" value="<?=$idPaquete?>" name="idPaquete_grp" />
 					<br/>
 					<br/>
@@ -447,8 +447,8 @@ include("session.php");
 							}  
 					?>
 					<br/>
-					<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_grp=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_("Remove all")?>" /></a>
-					<input type="submit" name="r_selected" value="<?=_("Remove selected")?>" class="button-submit" style="margin-left:10px;" />					
+					<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_grp=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_("<<")?>" /></a>
+					<input type="submit" name="r_selected" value="<?=_("<")?>" class="button-submit" style="margin-left:10px;" />					
 					</ul>
 					</form>
 					<hr style="clear:both;visibility:hidden;" />

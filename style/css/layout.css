@@ -230,7 +230,7 @@ body.sort-active *
 
 table
         {
-        width: auto;
+        width: 700px;
         padding: 0;
         margin: 0 auto 1.5em auto;
         /*border-left: 1px solid #C1DAD7;*/
@@ -559,7 +559,7 @@ fieldset {
 	border: 1px solid #ddd;
 	padding: 19px;
 	margin: 0 0 20px 0;
-	background: #fbfbfb;
+	background: #fdfdfd;
 }
 
 fieldset p { margin: 0 0 10px 0; float: left; width: 100%;  }

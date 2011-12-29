@@ -41,14 +41,14 @@ button span span {
  * Inputs
  * ------------- */
 .jNiceInputWrapper {
-	background: transparent url(../../elements/input_left.gif) no-repeat left top;
+	background: transparent url(../elements/input_left.gif) no-repeat left top;
 	height: 23px;
 	padding: 0px;
 
 }
 
 .jNiceInputInner {
-	background: transparent url(../../elements/input_right.gif) no-repeat right top;
+	background: transparent url(..elements/input_right.gif) no-repeat right top;
 	padding: 2px 4px 2px 0px;
 	margin: 0px 0px 0px 4px;
 }

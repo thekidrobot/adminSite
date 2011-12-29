@@ -109,7 +109,7 @@ $queryString_rsConsulta1 = sprintf("&totalRows_rsConsulta1=%d%s", $totalRows_rsC
 					</fieldset>
 				</form>
 				
-				<table class="no-arrow rowstyle-alt colstyle-alt paginate-15 max-pages-5" >
+				<table class="no-arrow rowstyle-alt colstyle-alt paginate-10 max-pages-5" >
 					<thead>
 						<tr>
 						<th class="sortable"><b><?=_("Title / Name")?></b></th>

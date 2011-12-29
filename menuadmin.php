@@ -1,85 +1,82 @@
 <?
-include('Connections/cnxRamp.php');
+include("Connections/cnxRamp.php");
 include("session.php");
 
-$currentPage = getCurrentPage();
-
-	//Add selected multiple
-	$addItems = $_POST['addItems'];
+ //Add selected multiple
+ $addItems = $_POST['addItems'];
+ 
+ if($_POST['idGrupos'] != '')
+ {
+	$idGrupos = $_POST['idGrupos'];
 	
-	if($_POST['idGrupos'] != '')
-	{
-		$idGrupos = $_POST['idGrupos'];
-		
-		$str = "select * from grupos where idGrupos =".$idGrupos;
-		$sql = mysql_query($str) or die(mysql_error($sql));
-		while ($row = mysql_fetch_array($sql)) {  
-			$idGrupos = $row['idGrupos'];
-			$nomGrupo = $row['grupos'];
-			$padre = $row['padre'];
-			$categoria = $row['categoria'];
-		}	
-	}
+	$str = "select * from grupos where idGrupos =".$idGrupos;
+	$sql = mysql_query($str) or die(mysql_error($sql));
+	while ($row = mysql_fetch_array($sql)) {  
+		$idGrupos = $row['idGrupos'];
+		$nomGrupo = $row['grupos'];
+		$padre = $row['padre'];
+		$categoria = $row['categoria'];
+	}	
+ }
 	
-	$N = count($addItems);
-	if($N > 0)
-	{		
-		for($i=0; $i < $N; $i++)
-		{
-			$str = "INSERT INTO archivos_grupo (id_grupo,id_archivo,fecha_inserta)
-												 VALUES ($idGrupos,".$addItems[$i].",NOW())";
-			$sql = mysql_query($str) or die(mysql_error($sql));
-		} 
-	}
-
-	//delete selected multiple
-	$remItems = $_POST['remItems'];
-	$N = count($remItems);
-	if($N > 0)
+ $N = count($addItems);
+ if($N > 0)
+ {		
+	for($i=0; $i < $N; $i++)
 	{
-		$idGrupos = $_POST['idGrupos'];
-		for($i=0; $i < $N; $i++)
-		{
-			$str = "delete from archivos_grupo where id_archivo = ".$remItems[$i]." and id_grupo =".$idGrupos;
-			$sql = mysql_query($str) or die(mysql_error($sql));
-		} 
-	}
-
-	//Delete multiple
-	$arrArchivos = $_POST['archivos'];
-	
-	$U = count($arrArchivos);
-	if($U > 0)
-	{
-	 foreach($arrArchivos as $id)
-	 {
-			$str = "delete from grupos where idGrupos = $id";
-			$sql = mysql_query($str) or die(mysql_error($sql));
-			//Borra de tabla hija
-			$str = "delete from archivos_grupo where id_grupo = $id";
-			$sql = mysql_query($str) or die(mysql_error($sql));
-			
-			if (!headers_sent()) header('Location: '.$currentPage);
-			else echo '<meta http-equiv="refresh" content="0;url='.$currentPage.'" />';
-	 }
+	 $str = "INSERT INTO archivos_grupo (id_grupo,id_archivo,fecha_inserta)
+					 VALUES ($idGrupos,".$addItems[$i].",NOW())";
+	 $sql = mysql_query($str) or die(mysql_error($sql));
 	} 
+ }
 
-	if (trim($_POST['grupos']) != "") {
-		
-		if($_POST['flgEditar'] == 1){
-			$str = "update  grupos
-							set 		grupos = '".$_POST['grupos']."',
-											padre = ".$_POST['padre'].",
-											categoria = '".$_POST['categorias']."'									
-							where 	idGrupos = ".$_POST['idGrupos'];							
-		}
-		elseif($_POST['flgAgregar'] == 1){
-			$str = "insert into grupos (grupos,activo,padre,categoria)
-							values('".$_POST['grupos']."',1,".$_POST['padre'].",'".$_POST['categorias']."')";	
-		}
-		
-		$sql = mysql_query($str) or die(mysql_error($sql));
+ //delete selected multiple
+ $remItems = $_POST['remItems'];
+ $N = count($remItems);
+ if($N > 0)
+ {
+	$idGrupos = $_POST['idGrupos'];
+	for($i=0; $i < $N; $i++)
+	{
+	 $str = "delete from archivos_grupo where id_archivo = ".$remItems[$i]." and id_grupo =".$idGrupos;
+	 $sql = mysql_query($str) or die(mysql_error($sql));
+	} 
+ }
+
+ //Delete multiple
+ $arrArchivos = $_POST['archivos'];
+ 
+ $U = count($arrArchivos);
+ if($U > 0)
+ {
+	foreach($arrArchivos as $id)
+	{
+	 $str = "delete from grupos where idGrupos = $id";
+	 $sql = mysql_query($str) or die(mysql_error($sql));
+	 //Borra de tabla hija
+	 $str = "delete from archivos_grupo where id_grupo = $id";
+	 $sql = mysql_query($str) or die(mysql_error($sql));
+	 
+	 if (!headers_sent()) header('Location: '.$currentPage);
+	 else echo '<meta http-equiv="refresh" content="0;url='.$currentPage.'" />';
 	}
+ } 
+
+ if (trim($_POST['grupos']) != "") {
+	if($_POST['flgEditar'] == 1){
+		$str = "update  grupos
+						set 		grupos = '".$_POST['grupos']."',
+										padre = ".$_POST['padre'].",
+										categoria = '".$_POST['categorias']."'									
+						where 	idGrupos = ".$_POST['idGrupos'];							
+	}
+	elseif($_POST['flgAgregar'] == 1){
+		$str = "insert into grupos (grupos,activo,padre,categoria)
+						values('".$_POST['grupos']."',1,".$_POST['padre'].",'".$_POST['categorias']."')";	
+	}
+	
+	$sql = mysql_query($str) or die(mysql_error($sql));
+ }
 	
 	if(!empty($_GET))
 	{
@@ -147,7 +144,6 @@ $currentPage = getCurrentPage();
 		$str = "delete from archivos_grupo where id_grupo =". $_GET['rem_all_us'];
 		$sql = mysql_query($str) or die(mysql_error($sql));
 	}
-	
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -278,66 +274,92 @@ $currentPage = getCurrentPage();
 			if($_GET['add_us'] != '' or $_GET['add_all_us'] != '' or $_GET['rem_all_us'] != '' or $_POST['idGrupos'] != '')
 			{
 			 ?>
+			 <p>
+				<h2><?=_("Drag and drop to modify") ?> &gt;&gt;
+				 <a href="#" onmouseover="ajax_showTooltip(window.event,'muestraInfoCategorias.php?id=<?=$idGrupos?>',this);return false" onmouseout="ajax_hideTooltip()">
+				 <?=_("Mouseover for more info")?></a>
+				</h2>
+			 </p>
 				<div id="dhtmlgoodies_scrolldiv">
 				 <div id="scrolldiv_parentContainer">
 					<div id="scrolldiv_content">
 					 <p id="changeNotification" style="margin-top:20px">
-						<p align="center"><h3><?=_("Drag and drop to modify") ?> &gt;&gt; <a href="#" onmouseover="ajax_showTooltip(window.event,'muestraInfoCategorias.php?id=<?=$idGrupos?>',this);return false" onmouseout="ajax_hideTooltip()"><?=_("Mouseover for more info")?></a></h3></p>
 						 <div id="activityIndicator" style="display:none; ">
 							<img src="imagenes/loading_indicator.gif" /><?=_("Updating data, please wait")?>...
 						 </div>
 						</p>
-						<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-						<ul id="sortlist">
-						 <h4><?=_("Available videos")?></h4>
-						 <br />
-						 <a href="<?=$_SERVER['PHP_SELF']?>?add_all_us=<?=$idGrupos?>"><input type="button" class="button-submit" value="<?=_("Add All")?>" /></a>
-						 <input type="submit" name="a_selected" value="<?=_("Add Selected")?>" class="button-submit" style="margin-left:10px;" />
-						 <input type="hidden" value="<?=$idGrupos?>" name="idGrupos" />
-						 <br/>
-						 <br/>
-						 <?php
-						 $sql = mysql_query("SELECT * FROM archivos where id_archivo not in
+					 
+						<?php
+
+						 $sql1 = mysql_query("SELECT * FROM archivos where id_archivo not in
 																 (
 																		select 	id_archivo from archivos_grupo
 																		where		id_grupo = $idGrupos
 																 ) 	ORDER BY id_archivo ");
-						 while ($row = mysql_fetch_array($sql)) {  
+						
+						 
+						
+						
+						 $sql2 = mysql_query("SELECT * FROM archivos where id_archivo in
+																 (
+																		 select 	id_archivo from archivos_grupo
+																		 where		id_grupo = $idGrupos
+																 ) 	ORDER BY id_archivo");
+						 
+						 $nleft = mysql_num_rows($sql1);
+						 $nright = mysql_num_rows($sql2);
+						 
+						 if($nleft >= $nright){
+							$height = $nleft * 38;
+						 }
+						 else{
+							$height = $nright * 38;
+						 }
+						
+						?>
+					 
+						<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+						
+						<div class="buttons_left">
+						 <a href="<?=$_SERVER['PHP_SELF']?>?add_all_us=<?=$idGrupos?>"><input type="button" class="button-submit" value="<?=_(">>")?>" /></a><br /><br />
+						 <input type="submit" name="a_selected" value="<?=_(">")?>" class="button-submit" />
+						</div>
+						
+						<ul id="sortlist" style="height:<?=$height?>px;">
+						 <h4><?=_("Available videos")?></h4>
+						 <br />
+						 <br />
+						 <input type="hidden" value="<?=$idGrupos?>" name="idGrupos" />
+						 <?php
+
+						 while ($row = mysql_fetch_array($sql1)) {  
 							?>
 							<li id="itemid_<?=$row['id_archivo']?>"><input type="checkbox" name="addItems[]" value="<?=$row['id_archivo']?>" /><?=$row['titulo']?></li><?php;  
 						 }
 						 ?>
-						 <br/>
-						 <a href="<?=$_SERVER['PHP_SELF']?>?add_all_us=<?=$idGrupos?>"><input type="button" class="button-submit" value="<?=_("Add All")?>" /></a>
-						 <input type="submit" name="a_selected" value="<?=_("Add Selected")?>" class="button-submit" style="margin-left:10px;" />
 						</ul>
 					 </form>
 					 
 					 <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-						<ul id="sortlist2">
+						
+						<div class="buttons_right">
+						 <input type="submit" name="r_selected" value="<?=_("<")?>" class="button-submit" /><br /><br />
+						 <a href="<?=$_SERVER['PHP_SELF']?>?rem_all_us=<?=$idGrupos?>"><input type="button" class="button-submit" value="<?=_("<<")?>" /></a>
+						</div>
+						
+						<ul id="sortlist2" style="height:<?=$height?>px;">
 						 <h4><?=_("Videos in category") ?> <?=ucfirst(strtolower($nomGrupo))?></h4>
-						 <br/>
-						 <a href="<?=$_SERVER['PHP_SELF']?>?rem_all_us=<?=$idGrupos?>"><input type="button" class="button-submit" value="<?=_("Remove all")?>" /></a>
-						 <input type="submit" name="r_selected" value="<?=_("Remove Selected")?>" class="button-submit" style="margin-left:10px;" />
 						 <input type="hidden" value="<?=$idGrupos?>" name="idGrupos" />
 						 <br/>
 						 <br/>
 						 <?php
-						 $sql = mysql_query("SELECT * FROM archivos where id_archivo in
-																(
-																		select 	id_archivo from archivos_grupo
-																		where		id_grupo = $idGrupos
-																) 	ORDER BY id_archivo");
 						 
-						 while ($row = mysql_fetch_array($sql)) {  
+						 while ($row = mysql_fetch_array($sql2)) {  
 							 ?><li id="itemid_<?=$row['id_archivo']?>"><input type="checkbox" name="remItems[]" value="<?=$row['id_archivo']?>" /><?=$row['titulo']?></li><?php;
 						 }
 						 ?>
-						<br/>
-						<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_us=<?=$idGrupos?>"><input type="button" class="button-submit" value="<?=_("Remove all")?>" /></a>
-					 <input type="submit" name="r_selected" value="<?=_("Remove Selected")?>" class="button-submit" style="margin-left:10px;" />
-					</ul>
-				 </form>
+						</ul>
+					 </form>
 				 <hr style="clear:both;visibility:hidden;" />            
 				</div>
 			 </div>
