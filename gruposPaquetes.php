@@ -231,22 +231,22 @@ include("session.php");
     
 		<div id="main">
 
-	<div id="headerDiv">
+			<div id="headerDiv">
 				<h2><?=_("Group of categories - Packages") ?> &gt;&gt; <a id="myHeader" href="javascript:toggle('myContent','myHeader');" ><?=_("Click to add a new package") ?></a></h2>
-			</div>
-			<div id="contentDiv">
-			<?php
-				if($_GET['edit'] != ''){
-				?>
-				<div id="myContent" style="display: block;">
-				<?
-				}
-				else{
+				</div>
+				<div id="contentDiv">
+				<?php
+					if($_GET['edit'] != ''){
 					?>
-					<div id="myContent" style="display: none;">
+					<div id="myContent" style="display: block;">
 					<?
-				}
-			?>	
+					}
+					else{
+						?>
+						<div id="myContent" style="display: none;">
+						<?
+					}
+				?>	
 				<form action="<?=$_SERVER['PHP_SELF']?>" method="post" class="jNice">
 					<fieldset>
 						<p>
@@ -311,66 +311,78 @@ include("session.php");
 		if(trim($_GET['add_cat']) != '' or trim($_GET['add_all_cat']) != "" or trim($_GET['rem_all_cat']) != "" or trim($_POST['idPaquete_cat'] != ''))
 		{
 			?>
+			<p align="center"><h2><?=_("Drag and drop to modify")?></h2></p>	
 			<div id="dhtmlgoodies_scrolldiv">
 				<div id="scrolldiv_parentContainer">
 					<div id="scrolldiv_content">
-						
 					<p id="changeNotification" style="margin-top:20px">
-						<p align="center"><h3><?=_("Drag and drop to modify")?></h3></p>
 						<div id="activityIndicator" style="display:none; ">
 						<img src="imagenes/loading_indicator.gif" /> <?=_("Updating data, please wait")?>...
 						</div>
+						<br />
 					</p>
+					<?	
+						$sql1 = mysql_query("SELECT * FROM grupos where idGrupos not in
+																		(
+																				select 	idGrupos from paquetesgrupos
+																				where		idPaquete = $idPaquete
+																		) 	ORDER BY idGrupos ");  					
+												 
+						$sql2 = mysql_query("SELECT * FROM grupos where idGrupos in
+																(
+																		select 	idGrupos from paquetesgrupos
+																		where		idPaquete = $idPaquete
+																) 	ORDER BY idGrupos ");  											 
+											 
+						$nleft = mysql_num_rows($sql1);
+						$nright = mysql_num_rows($sql2);
+						
+						if($nleft >= $nright){
+						 $height = $nleft * 38;
+						}
+						else{
+						 $height = $nright * 38;
+						}
 					
+					?>
 					<form action="<?=$_SERVER['PHP_SELF']?>" method="post">	
 					
-					<ul id="sortlist">
+					<div class="buttons_left">
+						<a href="<?=$_SERVER['PHP_SELF']?>?add_all_cat=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_(">>")?>" /></a><br /><br />
+						<input type="submit" name="a_selected" value="<?=_(">")?>" class="button-submit" />
+					</div>
+					
+					<ul id="sortlist" style="height:<?=$height?>px;">
 					<h4><?=_("Available categories")?></h4>
-					<br/>
-					<a href="<?=$_SERVER['PHP_SELF']?>?add_all_cat=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_(">>")?>" /></a>
-					<input type="submit" name="a_selected" value="<?=_(">")?>" class="button-submit" style="margin-left:10px;" />
 					<input type="hidden" value="<?=$idPaquete?>" name="idPaquete_cat" />
 					<br/>
 					<br/>
 
 					<?php  
-					$sql = mysql_query("SELECT * FROM grupos where idGrupos not in
-																	(
-																			select 	idGrupos from paquetesgrupos
-																			where		idPaquete = $idPaquete
-																	) 	ORDER BY idGrupos ");  
-							while ($row = mysql_fetch_array($sql)) {  
-									?><li id="itemid_<?=$row['idGrupos']?>"><input type="checkbox" name="addItems[]" value="<?=$row['idGrupos']?>" /><?=$row['grupos']?></li><?php;  
-							}  
+						while ($row = mysql_fetch_array($sql1)) {  
+							?><li id="itemid_<?=$row['idGrupos']?>"><input type="checkbox" name="addItems[]" value="<?=$row['idGrupos']?>" /><?=$row['grupos']?></li><?php;  
+						}  
 					?>
 					<br />
-					<a href="<?=$_SERVER['PHP_SELF']?>?add_all_cat=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_(">>")?>" /></a>
-					<input type="submit" name="a_selected" value="<?=_(">")?>" class="button-submit" style="margin-left:10px;" />
 					</ul>
 					</form>
 					
 					<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-					<ul id="sortlist2">
-					<h4><?=_("Categories in ")?> <?=$nomPaquete?></h4>
-					<br/>
+					<div class="buttons_right">
+						<input type="submit" name="r_selected" value="<?=_("<")?>" class="button-submit" /><br /><br />
 						<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_cat=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_("<<")?>" /></a>
-						<input type="submit" name="r_selected" value="<?=_("<")?>" class="button-submit" style="margin-left:10px;" />
-						<input type="hidden" value="<?=$idPaquete?>" name="idPaquete_cat" />
+					</div>
+					<ul id="sortlist2" style="height:<?=$height?>px;">
+					<h4><?=_("Categories in ")?> <?=$nomPaquete?></h4>
+					<input type="hidden" value="<?=$idPaquete?>" name="idPaquete_cat" />
 					<br/>
 					<br/>
 					<?php  
-							$sql = mysql_query("SELECT * FROM grupos where idGrupos in
-																	(
-																			select 	idGrupos from paquetesgrupos
-																			where		idPaquete = $idPaquete
-																	) 	ORDER BY idGrupos ");  
-							while ($row = mysql_fetch_array($sql)) {  
+							while ($row = mysql_fetch_array($sql2)) {  
 									?><li id="itemid_<?=$row['idGrupos']?>"><input type="checkbox" name="remItems[]" value="<?=$row['idGrupos']?>" /><?=$row['grupos']?></li><?php;
 							}  
 					?>
 					<br/>
-					<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_cat=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_("<<")?>" /></a>
-					<input type="submit" name="r_selected" value="<?=_("<")?>" class="button-submit" style="margin-left:10px;" />					
 					</ul>
 					</form>
 					
@@ -391,64 +403,72 @@ include("session.php");
 		if(trim($_GET['add_usr']) != '' or trim($_GET['add_all_grp']) != "" or trim($_GET['rem_all_grp']) != "" or trim($_POST['idPaquete_grp'] != ''))
 		{
 			?>
+			<p align="center"><h2><?=_("Drag and drop to modify")?></h2></p>
 			<div id="dhtmlgoodies_scrolldiv">
 				<div id="scrolldiv_parentContainer">
 					<div id="scrolldiv_content">			
-			
 					<p id="changeNotification" style="margin-top:20px">
-						<p align="center"><h3><?=_("Drag and drop to modify")?></h3></p>
 						<div id="activityIndicator" style="display:none; ">
 						<img src="imagenes/loading_indicator.gif" /> <?=_("Updating data, please wait")?> ...
 						</div>
 					</p>
-					
-					<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-					<ul id="sortlist">
-					<h4><?=_("Available groups")?></h4>
-					<br/>
-					<a href="<?=$_SERVER['PHP_SELF']?>?add_all_grp=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_(">>")?>" /></a>
-					<input type="submit" name="a_selected" value="<?=_(">")?>" class="button-submit" style="margin-left:10px;" />
-					<input type="hidden" value="<?=$idPaquete?>" name="idPaquete_grp" />
-					<br/>
-					<br/>
-					<?php  
-					$sql = mysql_query("SELECT * FROM gruposdeusuarios where idGrupoDeUsuario not in
+					<?php
+
+						$sql1 = mysql_query("SELECT * FROM gruposdeusuarios where idGrupoDeUsuario not in
 																	(
 																			select 	idGrupoDeUsuario from gruposusuariospaquetes
 																			where		idPaquete = $idPaquete
-																	) 	ORDER BY idGrupoDeUsuario ");  
-							while ($row = mysql_fetch_array($sql)) {  
-									?><li id="itemid_<?=$row['idGrupoDeUsuario']?>"><input type="checkbox" name="addItems[]" value="<?=$row['idGrupoDeUsuario']?>" /><?=$row['nomGrupoDeUsuario']?></li><?php;  
-							}  
+																	) 	ORDER BY idGrupoDeUsuario ");  						
+						
+						$sql2 = mysql_query("SELECT * FROM gruposdeusuarios where idGrupoDeUsuario in
+																	(
+																			select 	idGrupoDeUsuario from gruposusuariospaquetes
+																			where		idPaquete = $idPaquete
+																	) 	ORDER BY idGrupoDeUsuario "); 
+						
+						$nleft = mysql_num_rows($sql1);
+						$nright = mysql_num_rows($sql2);
+						 
+						if($nleft >= $nright){
+						 $height = $nleft * 38;
+						}
+						else{
+						 $height = $nright * 38;
+						}
+					?>
+					<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+					<div class="buttons_left">
+						<a href="<?=$_SERVER['PHP_SELF']?>?add_all_grp=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_(">>")?>" /></a><br /><br />
+						<input type="submit" name="a_selected" value="<?=_(">")?>" class="button-submit" />
+					</div>
+					<ul id="sortlist" style="height:<?=$height?>px;">
+					<h4><?=_("Available groups")?></h4>
+					<input type="hidden" value="<?=$idPaquete?>" name="idPaquete_grp" />
+					<br/>
+					<?php  
+						while ($row = mysql_fetch_array($sql1)) {  
+							?><li id="itemid_<?=$row['idGrupoDeUsuario']?>"><input type="checkbox" name="addItems[]" value="<?=$row['idGrupoDeUsuario']?>" /><?=$row['nomGrupoDeUsuario']?></li><?php;  
+						}  
 					?>
 					<br/>
-					<a href="<?=$_SERVER['PHP_SELF']?>?add_all_grp=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_(">>")?>" /></a>
-					<input type="submit" name="a_selected" value="<?=_(">")?>" class="button-submit" style="margin-left:10px;" />					
 					</ul>
 					</form>			
 					
 					<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-					<ul id="sortlist2">
-					<h4><?=_("Groups in")?> <?=$nomPaquete?></h4>
-					<br/>
+					<div class="buttons_right">
+						<input type="submit" name="r_selected" value="<?=_("<")?>" class="button-submit" /><br /><br />
 						<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_grp=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_("<<")?>" /></a>
-						<input type="submit" name="r_selected" value="<?=_("<")?>" class="button-submit" style="margin-left:10px;" />
-						<input type="hidden" value="<?=$idPaquete?>" name="idPaquete_grp" />
-					<br/>
+					</div>
+					<ul id="sortlist2" style="height:<?=$height?>px;">
+					<h4><?=_("Groups in")?> <?=$nomPaquete?></h4>
+					<input type="hidden" value="<?=$idPaquete?>" name="idPaquete_grp" />
 					<br/>
 					<?php  
-							$sql = mysql_query("SELECT * FROM gruposdeusuarios where idGrupoDeUsuario in
-																	(
-																			select 	idGrupoDeUsuario from gruposusuariospaquetes
-																			where		idPaquete = $idPaquete
-																	) 	ORDER BY idGrupoDeUsuario ");  
-							while ($row = mysql_fetch_array($sql)) {  
-									?><li id="itemid_<?=$row['idGrupoDeUsuario']?>"><input type="checkbox" name="remItems[]" value="<?=$row['idGrupoDeUsuario']?>" /><?=$row['nomGrupoDeUsuario']?></li><?php;
-							}  
+						while ($row = mysql_fetch_array($sql2)) {  
+								?><li id="itemid_<?=$row['idGrupoDeUsuario']?>"><input type="checkbox" name="remItems[]" value="<?=$row['idGrupoDeUsuario']?>" /><?=$row['nomGrupoDeUsuario']?></li><?php;
+						}  
 					?>
 					<br/>
-					<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_grp=<?=$idPaquete?>"><input type="button" class="button-submit" value="<?=_("<<")?>" /></a>
-					<input type="submit" name="r_selected" value="<?=_("<")?>" class="button-submit" style="margin-left:10px;" />					
 					</ul>
 					</form>
 					<hr style="clear:both;visibility:hidden;" />

@@ -275,9 +275,9 @@ include("session.php");
 			{
 			 ?>
 			 <p>
-				<h2><?=_("Drag and drop to modify") ?> &gt;&gt;
-				 <a href="#" onmouseover="ajax_showTooltip(window.event,'muestraInfoCategorias.php?id=<?=$idGrupos?>',this);return false" onmouseout="ajax_hideTooltip()">
-				 <?=_("Mouseover for more info")?></a>
+				<h2><?=_("Drag and drop to modify") ?> <!--&gt;&gt;-->
+				 <!--<a href="#" onmouseover="ajax_showTooltip(window.event,'muestraInfoCategorias.php?id=<?=$idGrupos?>',this);return false" onmouseout="ajax_hideTooltip()">-->
+				 <!--<?=_("Mouseover for more info")?></a>-->
 				</h2>
 			 </p>
 				<div id="dhtmlgoodies_scrolldiv">

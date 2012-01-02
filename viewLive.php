@@ -121,7 +121,7 @@ if($U > 0)
 							?>
 							<tr <?php if($counter % 2) echo " class='alt'"?>>
 								<td>
-									<a href="edicion.php?id_archivo=<?php echo $row_rsArchivos['id_archivo']; ?>">
+									<a href="editLive.php?id_archivo=<?php echo $row_rsArchivos['id_archivo']; ?>">
 									<?=$row_rsArchivos['titulo']; ?>
 									</a>
 								</td>

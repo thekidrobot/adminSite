@@ -55,11 +55,11 @@ function getWidth($image) {
 	function createThumbnail($filename) {
 
 		if(preg_match('/[.](jpg)$/', $filename)) {
-			$im = imagecreatefromjpeg('../data/images/' . $filename);
+			$im = imagecreatefromjpeg('data/images/' . $filename);
 		} else if (preg_match('/[.](gif)$/', $filename)) {
-			$im = imagecreatefromgif('../data/images/' . $filename);
+			$im = imagecreatefromgif('data/images/' . $filename);
 		} else if (preg_match('/[.](png)$/', $filename)) {
-			$im = imagecreatefrompng('../data/images/' . $filename);
+			$im = imagecreatefrompng('data/images/' . $filename);
 		}
 		
 		$ox = imagesx($im);
@@ -82,7 +82,7 @@ function getWidth($image) {
 		
 		$filename_thumb = $filename_strip.".".$file_ext;
 		
-		if(imagejpeg($nm, '../data/images/' . $filename_thumb,100)){
+		if(imagejpeg($nm, 'data/images/' . $filename_thumb,100)){
 			return true;	
 		}else{
 			die('Error creating thumbnail');

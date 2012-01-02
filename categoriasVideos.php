@@ -291,63 +291,77 @@ include("session.php");
 				<div id="scrolldiv_parentContainer">
 					<div id="scrolldiv_content">
 
+						<p><h2><?=_("Drag and drop to modify") ?> <!--&gt;&gt; <a href="#" onmouseover="ajax_showTooltip(window.event,'muestraInfoCategorias.php?id=<?=$idGrupos?>',this);return false" onmouseout="ajax_hideTooltip()"><?=_("Mouseover for more info")?></a>--></h2></p>
 						<p id="changeNotification" style="margin-top:20px">
-							<p align="center"><h3><?=_("Drag and drop to modify") ?> &gt;&gt; <a href="#" onmouseover="ajax_showTooltip(window.event,'muestraInfoCategorias.php?id=<?=$idGrupos?>',this);return false" onmouseout="ajax_hideTooltip()"><?=_("Mouseover for more info")?></a></h3></p>
-							
 							<div id="activityIndicator" style="display:none; ">
 								<img src="imagenes/loading_indicator.gif" /><?=_("Updating data, please wait")?>...
 							</div>
+							<br />
 						</p>
+						<?
 					
+							$sql1 = mysql_query("SELECT * FROM archivos where id_archivo not in
+												(
+														select 	id_archivo from archivos_grupo
+														where		id_grupo = $idGrupos
+												) 	ORDER BY id_archivo ");
+
+							$sql2 = mysql_query("SELECT * FROM archivos where id_archivo in
+																(
+																		select 	id_archivo from archivos_grupo
+																		where		id_grupo = $idGrupos
+																) 	ORDER BY id_archivo");
+																
+					
+							$nleft = mysql_num_rows($sql1);
+							$nright = mysql_num_rows($sql2);
+						 
+							if($nleft >= $nright){
+							 $height = $nleft * 38;
+							}
+							else{
+							 $height = $nright * 38;
+							}
+						?>
 						<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-							<ul id="sortlist">
+							<div class="buttons_left">
+								<a href="<?=$_SERVER['PHP_SELF']?>?add_all_us=<?=$idGrupos?>"><input type="button" class="button-submit" value="<?=_(">>")?>" /></a><br /><br />
+								<input type="submit" name="a_selected" value="<?=_(">")?>" class="button-submit" />
+							</div>
+
+							<ul id="sortlist" style="height:<?=$height?>px;">
 								<h4><?=_("Available videos")?></h4>
-								<br />
-								<a href="<?=$_SERVER['PHP_SELF']?>?add_all_us=<?=$idGrupos?>"><input type="button" class="button-submit" value="<?=_(">>")?>" /></a>
-								<input type="submit" name="a_selected" value="<?=_(">")?>" class="button-submit" style="margin-left:10px;" />
 								<input type="hidden" value="<?=$idGrupos?>" name="idGrupos" />
 								<br/>
 								<br/>
 								<?php
-								$sql = mysql_query("SELECT * FROM archivos where id_archivo not in
-																		(
-																				select 	id_archivo from archivos_grupo
-																				where		id_grupo = $idGrupos
-																		) 	ORDER BY id_archivo ");
-								while ($row = mysql_fetch_array($sql)) {  
+								while ($row = mysql_fetch_array($sql1)) {  
 								?>
 								<li id="itemid_<?=$row['id_archivo']?>"><input type="checkbox" name="addItems[]" value="<?=$row['id_archivo']?>" /><?=$row['titulo']?></li><?php;  
 								}
 							?>
-							<br/>
-							<a href="<?=$_SERVER['PHP_SELF']?>?add_all_us=<?=$idGrupos?>"><input type="button" class="button-submit" value="<?=_(">>")?>" /></a>
-							<input type="submit" name="a_selected" value="<?=_(">")?>" class="button-submit" style="margin-left:10px;" />
 							</ul>
 						</form>
 						
 						<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-							<ul id="sortlist2">
-								<h4><?=_("Videos in category") ?> <?=ucfirst(strtolower($nomGrupo))?></h4>
-								<br/>
+							<div class="buttons_right">
+								
+								<input type="submit" name="r_selected" value="<?=_("<")?>" class="button-submit" /><br /><br />
 								<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_us=<?=$idGrupos?>"><input type="button" class="button-submit" value="<?=_("<<")?>" /></a>
-								<input type="submit" name="r_selected" value="<?=_("<")?>" class="button-submit" style="margin-left:10px;" />
+							</div>
+						
+							<ul id="sortlist2" style="height:<?=$height?>px;">
+								<h4><?=_("Videos in category") ?> <?=ucfirst(strtolower($nomGrupo))?></h4>
 								<input type="hidden" value="<?=$idGrupos?>" name="idGrupos" />
 								<br/>
 								<br/>
 								<?php
-								$sql = mysql_query("SELECT * FROM archivos where id_archivo in
-																	(
-																			select 	id_archivo from archivos_grupo
-																			where		id_grupo = $idGrupos
-																	) 	ORDER BY id_archivo");
-																	
-								while ($row = mysql_fetch_array($sql)) {  
+
+								while ($row = mysql_fetch_array($sql2)) {  
 									?><li id="itemid_<?=$row['id_archivo']?>"><input type="checkbox" name="remItems[]" value="<?=$row['id_archivo']?>" /><?=$row['titulo']?></li><?php;
 								}
 							  ?>
 								<br/>
-								<a href="<?=$_SERVER['PHP_SELF']?>?rem_all_us=<?=$idGrupos?>"><input type="button" class="button-submit" value="<?=_("<<")?>" /></a>
-								<input type="submit" name="r_selected" value="<?=_("<")?>" class="button-submit" style="margin-left:10px;" />
 							</ul>
 						</form>
 						<hr style="clear:both;visibility:hidden;" />            

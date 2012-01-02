@@ -1,14 +1,14 @@
 <ul class="sideNav">
 	<?php
 		if($currentPage == "menuadmin.php"
-			 or $currentPage == "addArchivo.php"
-			 or $currentPage == "listarArchivos.php"
-			 or $currentPage == "edicion.php" 
-			 or $currentPage == "buscarArchivos.php"){
+			 or $currentPage == "addLive.php"
+			 or $currentPage == "viewLive.php"
+			 or $currentPage == "searchLive.php" 
+			 or $currentPage == "editLive.php"){
 			?>
-			<li><a href="addArchivo.php"><?=_("Add Live Channel")?></a></li>
-			<li><a href="listarArchivos.php"><?=_("View Live Channels")?></a></li>
-			<li><a href="buscarArchivos.php"><?=_("Search Live Channels")?></a></li>
+			<li><a href="addLive.php"><?=_("Add Live Channel")?></a></li>
+			<li><a href="viewLive.php"><?=_("View Live Channels")?></a></li>
+			<li><a href="searchLive.php"><?=_("Search Live Channels")?></a></li>
 			<?
 		}
 		elseif($currentPage == "categoriasVideos.php"

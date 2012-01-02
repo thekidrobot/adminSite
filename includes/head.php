@@ -72,8 +72,8 @@ if($currentPage == "menuadmin.php")
 	<!-- End of conditional styles for menuadmin.php-->
 	<?php	
 	}
-	elseif($currentPage == "addArchivo.php"
-				 or $currentPage == "edicion.php")
+	elseif($currentPage == "addLive.php"
+				 or $currentPage == "editLive.php")
 	{
 		?>
 		<!-- Beginning of conditional styles for addArchivo.php-->

@@ -14,8 +14,8 @@ $totalRows_rsArchivo = mysql_num_rows($rsArchivo);
 
 $editFormAction = $_SERVER['PHP_SELF'];
 
-	$large_image_location = "../data/images/";
-	$gallery_upload_path = "../data/images/";
+	$large_image_location = "data/images/";
+	$gallery_upload_path = "data/images/";
 	$max_width = 300;
 	$max_height = 410;
 	$error = '';
@@ -163,9 +163,13 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1"))
 						
 						
 						$actual_filename_thumb = $filename_strip.".".$file_ext;
+						
+						if(trim($actual_filename_thumb == "_small.")){
+							$actual_filename_thumb = "default.jpg";
+						}
 					
 					?>
-					<img src="<?="../data/images/".$actual_filename_thumb?>">
+					<img src="<?="data/images/".$actual_filename_thumb?>">
 				</p>
 				<p>
 					<label><?=_("Folder")?> : </label>
