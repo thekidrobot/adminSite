@@ -565,8 +565,9 @@ fieldset {
 fieldset p { margin: 0 0 10px 0; float: left; width: 100%;  }
 
 fieldset label {
-	display: block;
-	width: 100%;
+	display: inline;
+	float:left;
+	width: 25%;
 	margin: 0 0 7px 0;
 	line-height: 12px;
 }

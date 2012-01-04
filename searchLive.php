@@ -1,5 +1,5 @@
-<?
-include("Connections/cnxRamp.php");
+<?php
+include("includes/connection.php");
 include("session.php");
 
 $strBusca = $_POST['strBusca'];
@@ -10,151 +10,133 @@ if($_POST['strBusca']!= "")
 {
 	switch ($condicion)
 	{
-		case "nombreArchivo":
+		case "name":
 		
 			if($whereCondicion != "") $whereCondicion = " and ";
-			$whereCondicion .= " archivos.nombreArchivo LIKE '%" . $strBusca . "%' ";
+			$whereCondicion .= " name LIKE '%" . $strBusca . "%' ";
 			break;
 		
-		case "tituloArchivo":
+		case "description":
+
 			if($whereCondicion != "") $whereCondicion .= " and ";
-			$whereCondicion .= " archivos.titulo LIKE '%" . $strBusca . "%' ";
+			$whereCondicion .= " description LIKE '%" . $strBusca . "%' ";
 			break;
 		
-		case "temaArchivo":
+		case "rating":
+
 			if($whereCondicion != "") $whereCondicion .= " and ";
-			$whereCondicion .= " archivos.tema LIKE '%" . $strBusca . "%' ";
+			$whereCondicion .= " rating LIKE '%" . $strBusca . "%' ";
 			break;
-		
-		case "fechaArchivo":
-			if($whereCondicion != "") $whereCondicion .= " and ";
-			$whereCondicion .= " archivos.fechaLanzamiento LIKE '%" . $strBusca . "%' ";
-			break;	
 	}
+	
+	if($whereCondicion != "")	$whereCondicion = " where " . $whereCondicion;	
 }
 
-if($whereCondicion != "")	$whereCondicion = " where " . $whereCondicion;	
+$query_rsConsulta = "SELECT * FROM livechannels "  . $whereCondicion;
 
-$maxRows_rsConsulta1 = 10;
-$pageNum_rsConsulta1 = 0;
-if (isset($_GET['pageNum_rsConsulta1'])) {
-  $pageNum_rsConsulta1 = $_GET['pageNum_rsConsulta1'];
-}
-$startRow_rsConsulta1 = $pageNum_rsConsulta1 * $maxRows_rsConsulta1;
-
-$query_rsConsulta1 = "SELECT * FROM archivos "  . $whereCondicion;
-$query_limit_rsConsulta1 = sprintf("%s LIMIT %d, %d", $query_rsConsulta1, $startRow_rsConsulta1, $maxRows_rsConsulta1);
-$rsConsulta1 = mysql_query($query_limit_rsConsulta1, $cnxRamp) or die(mysql_error());
-$row_rsConsulta1 = mysql_fetch_assoc($rsConsulta1);
-
-if (isset($_GET['totalRows_rsConsulta1'])) {
-  $totalRows_rsConsulta1 = $_GET['totalRows_rsConsulta1'];
-} else {
-  $all_rsConsulta1 = mysql_query($query_rsConsulta1);
-  $totalRows_rsConsulta1 = mysql_num_rows($all_rsConsulta1);
-}
-$totalPages_rsConsulta1 = ceil($totalRows_rsConsulta1/$maxRows_rsConsulta1)-1;
-
-$queryString_rsConsulta1 = "";
-if (!empty($_SERVER['QUERY_STRING'])) {
-  $params = explode("&", $_SERVER['QUERY_STRING']);
-  $newParams = array();
-  foreach ($params as $param) {
-    if (stristr($param, "pageNum_rsConsulta1") == false && 
-        stristr($param, "totalRows_rsConsulta1") == false) {
-      array_push($newParams, $param);
-    }
-  }
-  if (count($newParams) != 0) {
-    $queryString_rsConsulta1 = "&" . htmlentities(implode("&", $newParams));
-  }
-}
-$queryString_rsConsulta1 = sprintf("&totalRows_rsConsulta1=%d%s", $totalRows_rsConsulta1, $queryString_rsConsulta1);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <?php include ("includes/head.php") ?>
-<body>
- <div id="wrapper">
-  <h1><a href="menuadmin.php"></a></h1>
-	<?php include("includes/mainnav.php") ?>
-	<!-- // #end mainNav -->
-	<div id="containerHolder">
-	 <div id="container">
-		<div id="sidebar">
-		 <?php include("includes/sidenav.php") ?>
-		</div>    
-		<!-- // #sidebar -->
-		<!-- h2 stays for breadcrumbs -->
-		<!--<h2><a href="#">Dashboard</a> &raquo; <a href="#" class="active">Print resources</a></h2>
-		<h2>&nbsp;</h2>-->
-    
-		<div id="main">
-	
-			<h2><?=_("Find files")?></h2>
-				<form method="post" action="<?=$currentPage?>" class="jNice">
-					<fieldset>
-					<p>
-						<label><?=_("Select a search criteria")?></label>
-						<input type="text" name="strBusca" value="<?=$strBusca ?>" class="text-long">
-						<select name="condicion">
-							<option value="nombreArchivo" <?php if ($condicion == "nombreArchivo") echo "selected='selected'" ?>><?=_("Filename")?></option>
-							<option value="tituloArchivo" <?php if ($condicion == "tituloArchivo") echo "selected='selected'" ?>><?=_("Title")?></option>
-							<option value="temaArchivo" <?php if ($condicion == "temaArchivo") echo "selected='selected'" ?>><?=_("Subject")?></option>
-							<option value="fechaArchivo" <?php if ($condicion == "fechaArchivo") echo "selected='selected'" ?>><?=_("Release date")?></option>
-						</select>
-					</p>
-					<input name="buscar" type="submit" value="<?=_("Find")?>" />
-					</fieldset>
-				</form>
-				
-				<table class="no-arrow rowstyle-alt colstyle-alt paginate-10 max-pages-5" >
-					<thead>
-						<tr>
-						<th class="sortable"><b><?=_("Title / Name")?></b></th>
-						<th class="sortable"><b><?=_("Trainer")?></b></th>
-						<th class="sortable"><b><?=_("Subject")?></b></th>
-						<th class="sortable"><b><?=_("Release Date")?></b></th>
-						</tr>
-					</thead>
-					<tbody>
-					<?php
-					$counter = 0;
-					do
+	<body>
+		<div id="wrapper">
+		<h1><a href="menuadmin.php"></a></h1>
+		<?php include("includes/mainnav.php") ?>
+		<!-- // #end mainNav -->
+		<div id="containerHolder">
+			<div id="container">
+				<div id="sidebar">
+				 <?php include("includes/sidenav.php") ?>
+				</div>    
+				<!-- // #sidebar -->
+		
+				<div id="main">
+					<h2><a href="#"><?=_("Live TV")?></a> &raquo; <a href="#" class="active"><?=_("Find live channels")?></a></h2>
+						<form method="post" action="<?=$currentPage?>" class="jNice">
+						<fieldset>
+						<p>
+							<label><?=_("Select a search criteria")?></label>
+							<input type="text" name="strBusca" value="<?=$strBusca ?>" class="text-long">
+						</p>
+						<p>
+							<label><?=_("Select a search filter")?></label>
+							<select name="condicion">
+								<option value="name" <?php if ($condicion == "name") echo "selected='selected'" ?>><?=_("Channel Name")?></option>
+								<option value="description" <?php if ($condicion == "description") echo "selected='selected'" ?>><?=_("Channel Description")?></option>
+								<option value="rating" <?php if ($condicion == "rating") echo "selected='selected'" ?>><?=_("Channel Rating")?></option>
+							</select>
+						</p>
+						<p>
+							<label>&nbsp;</label>
+							<input name="find" type="submit" value="<?=_("Find")?>" />
+						</p>
+						</fieldset>
+						</form>
+		
+				<?php
+					
+					if($_POST['strBusca']!= "")
 					{
+						$counter = 0;
 						?>
-						<tr <?php if($counter % 2) echo " class='odd'"?>>
-							<td>
-								<a href="editLive.php?id_archivo=<?php echo $row_rsConsulta1['id_archivo']; ?>">
-								<?php echo $row_rsConsulta1['titulo']; ?></a>
-							</td>
-							<td><?php echo $row_rsConsulta1['speaker']; ?></td>
-							<td><?php echo $row_rsConsulta1['tema']; ?></td>
-							<td><?php echo $row_rsConsulta1['fechaLanzamiento']; ?></td>
-						</tr>
-						<?php
-						$counter++;
-					}
-					while ($row_rsConsulta1 = mysql_fetch_assoc($rsConsulta1)); ?>
-					<?
-						if(mysql_num_rows($rsConsulta1) == 0){
-						?>
-						<tr align="center">
-							<td colspan="4"><?=_("No records found")?></td>
-						</tr>
-						<?
+						<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+						<table class="no-arrow rowstyle-alt colstyle-alt paginate-10 max-pages-5" >
+						 <thead>
+							<tr>
+							 <th class="sortable-keep fd-column-0"><b><?=_("Edit")?></b></th>
+							 <th class="sortable-keep fd-column-1"><b><?=_("Description")?></b></th>
+							 <th class="sortable-keep fd-column-2"><b><?=_("Rating")?></b></th>
+							 <th align="center" style="padding:5px 0px 5px 0px">
+							 <input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
+							</th>
+						 </tr>
+						</thead>
+						<tbody>
+						 <?php
+						 $rs_getData = $DB->Execute($query_rsConsulta);
+						 while (!$rs_getData->EOF)
+						 {
+							?>
+							<tr <?php if($counter % 2) echo " class='alt'"?>>
+							 <td>
+								<a href="editLive.php?id_archivo=<?=$rs_getData->fields['id']; ?>">
+								<td><?=$rs_getData->fields['name']; ?></td>
+								</a>
+							 </td>							 
+							 <td><?=$rs_getData->fields['description']; ?></td>
+							 <td><?=$rs_getData->fields['rating']; ?></td>
+							 <td align="center">
+								<input name='archivos[]' type='checkbox' value="<?=$rs_getData->fields['id']?>">
+							 </td>
+							</tr>
+							<?php
+							$counter++;
+							$rs_getData->MoveNext();
+						 }
+						 
+						 if($counter == 0)
+						 {
+							?>
+							<tr>
+								<td colspan="4" align="center">
+									<?=_("No data found")?>
+								</td>
+							</tr>
+							<?php
+						 }
+						 ?>
+						</tbody>
+					 </table>
+					</form>
+					<?php
 					}
 					?>
-					</tbody>
-				</table>
-				<script type="text/javascript" src="js/tablesort.js"></script>
-				<script type="text/javascript" src="js/pagination.js"></script>
-			 </div><!-- // #main -->
+				</div><!-- // #main -->
       <div class="clear"></div>
-      </div><!-- // #container -->
+    </div><!-- // #container -->
     </div><!-- // #containerHolder -->
-    <p id="footer"></p>
+  <p id="footer"></p>
   </div><!-- // #wrapper -->
 </body>
 </html>

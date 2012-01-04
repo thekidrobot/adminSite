@@ -1,5 +1,54 @@
 <?
 
+//Get the current page name
+function getCurrentPage(){
+	$file = $_SERVER["PHP_SELF"];
+	$break = Explode('/', $file);
+	$currentPage = $break[count($break) - 1];
+  return $currentPage;
+}
+
+//Get thumbnail of an already created picture
+function getThumbnail($actual_filename){
+ $file_ext = substr($actual_filename, strrpos($actual_filename, '.') + 1);	
+ $filename_strip= substr($actual_filename,0,strrpos($actual_filename, '.'));	//remove the ext
+ $filename_strip= substr($actual_filename,0,strrpos($actual_filename, '_big')); //remove the _big
+ $filename_strip= $filename_strip."_small";	//add the _small
+ $actual_filename_thumb = $filename_strip.".".$file_ext;
+ return $actual_filename_thumb; 
+}
+
+
+//Safely escape values. Please use in your SQL queries. 
+function escape_value($value)
+{
+  if(function_exists('mysql_real_escape_string'))
+  {
+    if(get_magic_quotes_gpc())
+    { 
+      $value = stripslashes($value); 
+		}
+		$value = mysql_real_escape_string($value);
+	}
+  else
+  {
+    if(!get_magic_quotes_gpc())
+    { 
+      $value = addslashes($value); 
+    }
+  }
+  return $value;
+}
+
+//Safely Redirects
+function redirect($filename)
+{
+	if (!headers_sent()) header('Location: '.$filename);
+	else echo '<meta http-equiv="refresh" content="0;url='.$filename.'" />';
+}
+
+/*******Functions for graphic processing************/
+
 //You do not need to alter these functions
 function resizeImage($image,$width,$height) {
 	$newImageWidth = $width;
