@@ -84,11 +84,11 @@ include("session.php");
 		if(trim($_GET['add_us']) != "" or trim($_GET['add_all_us'])!= "" or trim($_GET['rem_all_us']) != "")
 		{
 			if(trim($_GET['add_us']) != "")
-				$str = "select * from grupos where idGrupos =". $_GET['add_us'];
+				$str = "select * from vodcategories where id =". $_GET['add_us'];
 			elseif (trim($_GET['add_all_us'])!= "")
-				$str = "select * from grupos where idGrupos =". $_GET['add_all_us'];
+				$str = "select * from vodcategories where id =". $_GET['add_all_us'];
 			elseif (trim($_GET['rem_all_us']) != "")
-				$str = "select * from grupos where idGrupos =". $_GET['rem_all_us'];
+				$str = "select * from vodcategories where id =". $_GET['rem_all_us'];
 				
 			$sql = mysql_query($str) or die(mysql_error($sql));
 			while ($row = mysql_fetch_array($sql)) {  
@@ -300,13 +300,13 @@ include("session.php");
 						</p>
 						<?
 					
-							$sql1 = mysql_query("SELECT * FROM archivos where id_archivo not in
+							$sql1 = mysql_query("SELECT * FROM vodchannels where id not in
 												(
 														select 	id_archivo from archivos_grupo
 														where		id_grupo = $idGrupos
 												) 	ORDER BY id_archivo ");
 
-							$sql2 = mysql_query("SELECT * FROM archivos where id_archivo in
+							$sql2 = mysql_query("SELECT * FROM vodchannels where id in
 																(
 																		select 	id_archivo from archivos_grupo
 																		where		id_grupo = $idGrupos
