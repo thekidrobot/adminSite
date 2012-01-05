@@ -131,6 +131,8 @@ function getWidth($image) {
 		
 		$filename_thumb = $filename_strip.".".$file_ext;
 		
+		chmod($filename_thumb, 0777);
+		
 		if(imagejpeg($nm, 'data/images/' . $filename_thumb,100)){
 			return true;	
 		}else{

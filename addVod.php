@@ -81,7 +81,7 @@ if ($_POST["MM_insert"] == "true")
 	
 	$rsInsVod = $DB->Execute($insertSql);
 	
-	redirect("viewLive.php");
+	redirect("viewVod.php");
 }
 ?>
 
@@ -136,7 +136,16 @@ if ($_POST["MM_insert"] == "true")
 					</p>
 					<p>
 						<label><?=_("Release Date")?> : </label>
-						<input name="date_release" type="text" maxlength="150"  class="text-long" />
+						<input type="text" name="date_release" id="date_release" class="text-medium" readonly="readonly" />
+						<img src="images/calendar.png" id="btn_date_release" alt="" />
+						<script type="text/javascript">
+						Calendar.setup({
+							inputField : "date_release", // ID of the input field
+							showsTime: true, // show time
+							ifFormat : "%Y/%m/%d %H:%M:%S", // the date format
+							button : "btn_date_release" // ID of the button
+						})
+						</script>
 					</p>
 					<p>
 						<label><?=_("Keywords (Comma Separated)")?> : </label>

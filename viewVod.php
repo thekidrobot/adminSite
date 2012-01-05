@@ -5,7 +5,7 @@ include("session.php");
 //Delete one
 if($_GET['del']!="" and is_numeric($_GET['del']))
 {
-	$query_rsDel = "SELECT * FROM livechannels WHERE id = ".$_GET["del"];
+	$query_rsDel = "SELECT * FROM vodchannels WHERE id = ".$_GET["del"];
 	$rsDel = $DB->Execute($query_rsDel);
   $actual_filename = $rsDel->fields['pic'];
   
@@ -17,7 +17,7 @@ if($_GET['del']!="" and is_numeric($_GET['del']))
   @unlink($gallery_upload_path.$actual_filename);
   @unlink($gallery_upload_path.$actual_filename_thumb);
   
-	$query_rsDel = "DELETE FROM livechannels where id=".$_GET["del"];
+	$query_rsDel = "DELETE FROM vodchannels where id=".$_GET["del"];
 	$rsDel = $DB->Execute($query_rsDel);
   
   redirect($currentPage);
@@ -31,7 +31,7 @@ if($U > 0)
 {
  foreach($arrArchivos as $id)
  {
-  $query_rsDel = "SELECT * FROM livechannels WHERE id = $id";
+  $query_rsDel = "SELECT * FROM vodchannels WHERE id = $id";
 	$rsDel = $DB->Execute($query_rsDel);
   $actual_filename = $rsDel->fields['pic'];
   
@@ -43,7 +43,7 @@ if($U > 0)
   @unlink($gallery_upload_path.$actual_filename);
   @unlink($gallery_upload_path.$actual_filename_thumb);
   
-  $query_rsDel = "DELETE FROM livechannels WHERE id = $id";
+  $query_rsDel = "DELETE FROM vodchannels WHERE id = $id";
 	$rsDel = $DB->Execute($query_rsDel);
 	
   redirect($currentPage);
@@ -73,9 +73,10 @@ if($U > 0)
 			 <thead>
 				<tr>
 				 <th class="sortable-keep fd-column-0"><b><?=_("Edit")?></b></th>
-				 <th class="sortable-keep fd-column-0"><b><?=_("Name")?></b></th>
-				 <th class="sortable-keep fd-column-1"><b><?=_("Description")?></b></th>
-				 <th class="sortable-keep fd-column-2"><b><?=_("Rating")?></b></th>
+				 <th class="sortable-keep fd-column-0"><b><?=_("Description")?></b></th>
+				 <th class="sortable-keep fd-column-1"><b><?=_("Trainer/Director")?></b></th>
+				 <th class="sortable-keep fd-column-2"><b><?=_("Release Date")?></b></th>
+				 <th class="sortable-keep fd-column-2"><b><?=_("Keywords")?></b></th>
 				 <th align="center" style="padding:5px 0px 5px 0px">
 				 <input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
 				</th>
@@ -83,22 +84,17 @@ if($U > 0)
 			</thead>
 			<tbody>
 			 <?php
-			 $sql_getData = "SELECT * FROM livechannels ORDER BY id DESC";
+			 $sql_getData = "SELECT * FROM vodchannels ORDER BY id DESC";
 			 $rs_getData = $DB->Execute($sql_getData);
 			 while (!$rs_getData->EOF)
 			 {
-				$thumb=getThumbnail($rs_getData->fields['pic']);
-				
 				?>
 				<tr <?php if($counter % 2) echo " class='alt'"?>>
-				 <td>
-					<a href="editLive.php?id_archivo=<?=$rs_getData->fields['id']; ?>">
-					<img src="data/images/<?=$thumb ?>" />
-					</a>
-				 </td>
+				 <td><?=$rs_getData->fields['name']; ?></td>
 				 <td><?=$rs_getData->fields['description']; ?></td>
-				 <td><?=$rs_getData->fields['description']; ?></td>
-				 <td><?=$rs_getData->fields['rating']; ?></td>
+				 <td><?=$rs_getData->fields['trainer']; ?></td>
+				 <td><?=$rs_getData->fields['date_release']; ?></td>
+				 <td><?=$rs_getData->fields['Keywords']; ?></td>
 				 <td align="center">
 					<input name='archivos[]' type='checkbox' value="<?=$rs_getData->fields['id']?>">
 				 </td>

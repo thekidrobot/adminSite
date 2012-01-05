@@ -22,17 +22,30 @@ if($_POST['strBusca']!= "")
 			$whereCondicion .= " description LIKE '%" . $strBusca . "%' ";
 			break;
 		
-		case "rating":
+		case "trainer":
 
 			if($whereCondicion != "") $whereCondicion .= " and ";
-			$whereCondicion .= " rating LIKE '%" . $strBusca . "%' ";
+			$whereCondicion .= " trainer LIKE '%" . $strBusca . "%' ";
 			break;
+		
+		case "date_release":
+
+			if($whereCondicion != "") $whereCondicion .= " and ";
+			$whereCondicion .= " date_release LIKE '%" . $strBusca . "%' ";
+			break;
+		
+		case "keywords":
+
+			if($whereCondicion != "") $whereCondicion .= " and ";
+			$whereCondicion .= " keywords LIKE '%" . $strBusca . "%' ";
+			break;
+		
 	}
 	
 	if($whereCondicion != "")	$whereCondicion = " where " . $whereCondicion;	
 }
 
-$query_rsConsulta = "SELECT * FROM livechannels "  . $whereCondicion;
+$query_rsConsulta = "SELECT * FROM vodchannels "  . $whereCondicion;
 
 ?>
 
@@ -62,9 +75,11 @@ $query_rsConsulta = "SELECT * FROM livechannels "  . $whereCondicion;
 						<p>
 							<label><?=_("Select a search filter")?></label>
 							<select name="condicion">
-								<option value="name" <?php if ($condicion == "name") echo "selected='selected'" ?>><?=_("Channel Name")?></option>
-								<option value="description" <?php if ($condicion == "description") echo "selected='selected'" ?>><?=_("Channel Description")?></option>
-								<option value="rating" <?php if ($condicion == "rating") echo "selected='selected'" ?>><?=_("Channel Rating")?></option>
+								<option value="name" <?php if ($condicion == "name") echo "selected='selected'" ?>><?=_("Movie Name")?></option>
+								<option value="description" <?php if ($condicion == "description") echo "selected='selected'" ?>><?=_("Movie Description")?></option>
+								<option value="trainer" <?php if ($condicion == "trainer") echo "selected='selected'" ?>><?=_("Trainer / Director")?></option>
+								<option value="date_release" <?php if ($condicion == "date_release") echo "selected='selected'" ?>><?=_("Release Date")?></option>
+								<option value="keywords" <?php if ($condicion == "keywords") echo "selected='selected'" ?>><?=_("Keywords")?></option>
 							</select>
 						</p>
 						<p>
@@ -86,7 +101,7 @@ $query_rsConsulta = "SELECT * FROM livechannels "  . $whereCondicion;
 							<tr>
 							 <th class="sortable-keep fd-column-0"><b><?=_("Edit")?></b></th>
 							 <th class="sortable-keep fd-column-1"><b><?=_("Description")?></b></th>
-							 <th class="sortable-keep fd-column-2"><b><?=_("Rating")?></b></th>
+							 <th class="sortable-keep fd-column-2"><b><?=_("keywords")?></b></th>
 							 <th align="center" style="padding:5px 0px 5px 0px">
 							 <input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
 							</th>
@@ -101,11 +116,11 @@ $query_rsConsulta = "SELECT * FROM livechannels "  . $whereCondicion;
 							<tr <?php if($counter % 2) echo " class='alt'"?>>
 							 <td>
 								<a href="editLive.php?id_archivo=<?=$rs_getData->fields['id']; ?>">
-								<td><?=$rs_getData->fields['name']; ?></td>
+								<?=$rs_getData->fields['name']; ?>
 								</a>
 							 </td>							 
 							 <td><?=$rs_getData->fields['description']; ?></td>
-							 <td><?=$rs_getData->fields['rating']; ?></td>
+							 <td><?=$rs_getData->fields['keywords']; ?></td>
 							 <td align="center">
 								<input name='archivos[]' type='checkbox' value="<?=$rs_getData->fields['id']?>">
 							 </td>
