@@ -383,6 +383,56 @@ if($currentPage == "menuadmin.php")
   ul.fdtablePaginater li {float:left;}
   ul.fdtablePaginater {text-align:center;}
   table { border-bottom:1px solid #C1DAD7; }
+	
   </style>
   <![endif]-->
+	
+	<style type="text/css">
+
+	table.gallery{
+		border: solid 1px #ffffff;
+		border-collapse:collapse;
+		padding:0;
+	}
+
+	table.gallery tr td{
+		border: solid 1px #ffffff;
+		border-collapse:collapse;
+		padding:0;
+		margin:0;
+		background-image:none;
+	}
+	
+	.album{
+	  width:100%;
+		float:left;
+	}
+
+	.album img{
+		border: 3px solid #ebebeb;
+	}
+	
+	.album .imageSingle {
+		float: left;
+		padding-top:5px;
+		margin: 15px; 
+		width:156px; 
+		text-align:center; 
+		border:solid 1px #e1e1e1;
+	}
+	
+	.album .imageSingle .image {
+		margin:3px;
+	}
+
+	.album .footer {
+		text-align:left;
+		line-height:17px;
+		border-top:solid 1px #e1e1e1; 
+		padding:7px; 
+		margin-top: 10px;
+	}
+	
+	</style>
+	
 </head>

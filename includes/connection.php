@@ -8,4 +8,5 @@
 	$DB = NewADOConnection('mysql');
 	$DB->Connect($hostname_cnxRamp, $username_cnxRamp, $password_cnxRamp, $database_cnxRamp);
 	$DB->SetFetchMode(ADODB_FETCH_ASSOC);
+	//$DB->debug=true;
 ?>

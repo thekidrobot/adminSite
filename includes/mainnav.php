@@ -3,6 +3,8 @@
 	<?php if($currentPage == "menuadmin.php" or
 					 $currentPage == "addLive.php" or 	
 					 $currentPage == "viewLive.php" or 	
+					 $currentPage == "editLive.php" or 	
+					 $currentPage == "viewLiveDetail.php" or 	
 					 $currentPage == "searchLive.php") echo "class='active'";
 	?>		
 	><?=_("Live Tv")?></a></li>

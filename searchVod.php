@@ -6,6 +6,33 @@ $strBusca = $_POST['strBusca'];
 $condicion = $_POST['condicion'];
 $whereCondicion="";
 
+//Delete multiple
+$arrArchivos = $_POST['archivos'];
+$U = count($arrArchivos);
+
+if($U > 0)
+{
+ foreach($arrArchivos as $id)
+ {
+  $query_rsDel = "SELECT * FROM vodchannels WHERE id = $id";
+	$rsDel = $DB->Execute($query_rsDel);
+  $actual_filename = $rsDel->fields['pic'];
+  
+  //Borrar archivos existentes
+  $gallery_upload_path = "data/images/";
+
+	$actual_filename_thumb = getThumbnail($actual_filename);
+	
+  @unlink($gallery_upload_path.$actual_filename);
+  @unlink($gallery_upload_path.$actual_filename_thumb);
+  
+  $query_rsDel = "DELETE FROM vodchannels WHERE id = $id";
+	$rsDel = $DB->Execute($query_rsDel);
+	
+  redirect($currentPage);
+ }
+} 
+
 if($_POST['strBusca']!= "")
 {
 	switch ($condicion)
@@ -148,6 +175,8 @@ $query_rsConsulta = "SELECT * FROM vodchannels "  . $whereCondicion;
 					}
 					?>
 				</div><!-- // #main -->
+				<script type="text/javascript" src="js/tablesort.js"></script>
+				<script type="text/javascript" src="js/pagination.js"></script>
       <div class="clear"></div>
     </div><!-- // #container -->
     </div><!-- // #containerHolder -->

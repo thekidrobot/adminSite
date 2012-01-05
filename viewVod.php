@@ -94,7 +94,7 @@ if($U > 0)
 				 <td><?=$rs_getData->fields['description']; ?></td>
 				 <td><?=$rs_getData->fields['trainer']; ?></td>
 				 <td><?=$rs_getData->fields['date_release']; ?></td>
-				 <td><?=$rs_getData->fields['Keywords']; ?></td>
+				 <td><?=$rs_getData->fields['keywords']; ?></td>
 				 <td align="center">
 					<input name='archivos[]' type='checkbox' value="<?=$rs_getData->fields['id']?>">
 				 </td>

@@ -68,49 +68,46 @@ if($U > 0)
 		<!-- // #sidebar -->
 		<div id="main">
 		 <h2><a href="#"><?=_("Live TV")?></a> &raquo; <a href="#" class="active"><?=_("View live channels")?></a></h2>
-			<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-			<table class="no-arrow rowstyle-alt colstyle-alt paginate-10 max-pages-5" >
-			 <thead>
-				<tr>
-				 <th class="sortable-keep fd-column-0"><b><?=_("Edit")?></b></th>
-				 <th class="sortable-keep fd-column-0"><b><?=_("Name")?></b></th>
-				 <th class="sortable-keep fd-column-1"><b><?=_("Description")?></b></th>
-				 <th class="sortable-keep fd-column-2"><b><?=_("Rating")?></b></th>
-				 <th align="center" style="padding:5px 0px 5px 0px">
-				 <input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
-				</th>
-			 </tr>
-			</thead>
-			<tbody>
+			
+			<div class="album">
+			 <table class="gallery paginate-2 max-pages-10">
+			 <tr>
 			 <?php
 			 $sql_getData = "SELECT * FROM livechannels ORDER BY id DESC";
 			 $rs_getData = $DB->Execute($sql_getData);
-			 while (!$rs_getData->EOF)
-			 {
-				$thumb=getThumbnail($rs_getData->fields['pic']);
-				
-				?>
-				<tr <?php if($counter % 2) echo " class='alt'"?>>
-				 <td>
-					<a href="editLive.php?id_archivo=<?=$rs_getData->fields['id']; ?>">
-					<img src="data/images/<?=$thumb ?>" />
-					</a>
-				 </td>
-				 <td><?=$rs_getData->fields['description']; ?></td>
-				 <td><?=$rs_getData->fields['description']; ?></td>
-				 <td><?=$rs_getData->fields['rating']; ?></td>
-				 <td align="center">
-					<input name='archivos[]' type='checkbox' value="<?=$rs_getData->fields['id']?>">
-				 </td>
+			 
+			 $counter = 1;
+			 
+				while (!$rs_getData->EOF)
+				{
+					$thumb=getThumbnail($rs_getData->fields['pic']);
+					?>
+						<td>
+							<div class="imageSingle">
+								<div class="image">
+									<a href="viewLiveDetail.php?id=<?=$rs_getData->fields['id']; ?>">
+									<img src="data/images/<?=$thumb ?>" />
+									</a>
+								</div>
+								<div class="footer">
+									<b>Name : </b><?=$rs_getData->fields['name']; ?><br />
+									<b>Rating : </b><?=$rs_getData->fields['rating']; ?></td>
+								</div>
+							</div>
+						<td>
+					<?
+					if ($counter%4 == 0){
+						?>
+						</tr>
+						<tr>
+					<?
+					}
+					$counter++;
+					$rs_getData->MoveNext();
+				}?>
 				</tr>
-				<?php
-				$counter++;
-				$rs_getData->MoveNext();
-			 }?>
-			</tbody>
-		 </table>
-		</form>
-		<script type="text/javascript" src="js/tablesort.js"></script>
+			</table>
+		</div>
 		<script type="text/javascript" src="js/pagination.js"></script>
 	 </div><!-- // #main -->
 	<div class="clear"></div>

@@ -9,7 +9,7 @@ include("session.php");
 	{
 		$idGrupos = $_POST['idGrupos'];
 		
-		$str = "select * from grupos where idGrupos =".$idGrupos;
+		$str = "select * from vodcategories where idGrupos =".$idGrupos;
 		$sql = mysql_query($str) or die(mysql_error($sql));
 		while ($row = mysql_fetch_array($sql)) {  
 			$idGrupos = $row['idGrupos'];
@@ -262,7 +262,7 @@ include("session.php");
 			<tbody>	
 				<?php
 				$counter = 0;
-				$sql = mysql_query("SELECT * FROM grupos order by padre asc");
+				$sql = mysql_query("SELECT * FROM vodcategories order by parent asc");
 					
 				while ($row = mysql_fetch_array($sql)) {  
 					$counter++;	
@@ -271,7 +271,7 @@ include("session.php");
 					<tr <?php if($counter % 2) echo " class='alt'"?>>
 						<td><a href="<?=$_SERVER['PHP_SELF']?>?edit=<?=$row['idGrupos']?>" ><?=ucfirst(strtolower($row['grupos']))?></a></td>
 						<td align="left"><?=$row['categoria']?></td>
-						<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?add_us=<?=$row['idGrupos']?>"><?=_("Add Videos")?></td>
+						<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?add_us=<?=$row['id']?>"><?=_("Add Videos")?></td>
 						<td align="center"><input name='archivos[]' type='checkbox' value="<?=$row['idGrupos']?>"></td>
 						<!--<td class="action"><a href="<?=$_SERVER['PHP_SELF']?>?delete=<?=$row['idGrupos']?>" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')">Borrar</td>-->
 					</tr>
@@ -392,26 +392,3 @@ include("session.php");
 	<script type="text/javascript" src="js/pagination.js"></script>	
 </body>
 </html>
-
-<?php
-
-//Constructs the top menu
-function make_kids($row_id,$dad_name,$padre)
-{
-	$result = mysql_query("SELECT * FROM grupos WHERE padre = $row_id");
-	if (mysql_num_rows($result) > 0)
-	{
-		while ($row = mysql_fetch_array($result))
-		{
-			$selected = '';
-				if($padre == $row['idGrupos']) $selected = "selected='selected'";
-			?>
-				<option value="<?=$row['idGrupos'] ?>" <?=$selected ?>><?=ucfirst(strtolower($dad_name))." - ".ucfirst(strtolower($row['grupos']))?></option>
-			<?php
-			//Welcome Mr. Cobb
-			make_kids($row['idGrupos'],$dad_name." - ".$row['grupos'],$row['padre']);
-		}
-	}
-}	
-
-?>

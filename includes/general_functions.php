@@ -8,6 +8,29 @@ function getCurrentPage(){
   return $currentPage;
 }
 
+
+//Build the top menu
+function make_kids($row_id,$dad_name,$parent)
+{
+	$sql = mysql_query("SELECT * FROM vodcategories WHERE parent = $row_id");
+
+	if (mysql_num_rows($sql) > 0)
+	{
+		while ($row = mysql_fetch_array($sql))
+		{
+			$selected = '';
+				if($parent == $row['id']) $selected = "selected='selected'";
+			?>
+				<option value="<?=$row['id'] ?>" <?=$selected ?>>
+					<?=ucfirst(strtolower($dad_name))." - ".ucfirst(strtolower($row['name']))?>
+				</option>
+			<?php
+			//Welcome Mr. Cobb
+			make_kids($row['id'],$dad_name." - ".$row['name'],$row['parent']);
+		}
+	}
+}	
+
 //Get thumbnail of an already created picture
 function getThumbnail($actual_filename){
  $file_ext = substr($actual_filename, strrpos($actual_filename, '.') + 1);	

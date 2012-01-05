@@ -1,15 +1,10 @@
 <?php
-
 include("includes/connection.php");
 include("session.php");
 
-$strBusca = $_POST['strBusca'];
-$condicion = $_POST['condicion'];
-$whereCondicion="";
-
-//Delete multiple
-$arrArchivos = $_POST['archivos'];
-$U = count($arrArchivos);
+$strFind = $_POST['strBusca'];
+$condition = $_POST['condition'];
+$strWhere="";
 
 //Delete multiple
 $arrArchivos = $_POST['archivos'];
@@ -19,53 +14,27 @@ if($U > 0)
 {
  foreach($arrArchivos as $id)
  {
-  $query_rsDel = "SELECT * FROM livechannels WHERE id = $id";
+  $query_rsDel = "DELETE FROM vodcategories WHERE id = $id";
 	$rsDel = $DB->Execute($query_rsDel);
-  $actual_filename = $rsDel->fields['pic'];
-  
-  //Borrar archivos existentes
-  $gallery_upload_path = "data/images/";
-
-	$actual_filename_thumb = getThumbnail($actual_filename);
-	
-  @unlink($gallery_upload_path.$actual_filename);
-  @unlink($gallery_upload_path.$actual_filename_thumb);
-  
-  $query_rsDel = "DELETE FROM livechannels WHERE id = $id";
-	$rsDel = $DB->Execute($query_rsDel);
-	
   redirect($currentPage);
  }
-} 
+}
 
-if($_POST['strBusca']!= "")
+
+if($_POST['strFind']!= "")
 {
-	switch ($condicion)
+	switch ($condition)
 	{
 		case "name":
 		
-			if($whereCondicion != "") $whereCondicion = " and ";
-			$whereCondicion .= " name LIKE '%" . $strBusca . "%' ";
+			if($strWhere != "") $strWhere= " and ";
+			$strWhere .= " name LIKE '%" . $strFind . "%' ";
 			break;
-		
-		case "description":
-
-			if($whereCondicion != "") $whereCondicion .= " and ";
-			$whereCondicion .= " description LIKE '%" . $strBusca . "%' ";
-			break;
-		
-		case "rating":
-
-			if($whereCondicion != "") $whereCondicion .= " and ";
-			$whereCondicion .= " rating LIKE '%" . $strBusca . "%' ";
-			break;
-	}
 	
-	if($whereCondicion != "")	$whereCondicion = " where " . $whereCondicion;	
+		if($strWhere != "")	$strWhere = " where " . $strWhere;	
+	}
+	$sqlGet = "SELECT * FROM vodcategories "  . $strWhere;
 }
-
-$query_rsConsulta = "SELECT * FROM livechannels "  . $whereCondicion;
-
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -84,19 +53,17 @@ $query_rsConsulta = "SELECT * FROM livechannels "  . $whereCondicion;
 				<!-- // #sidebar -->
 		
 				<div id="main">
-					<h2><a href="#"><?=_("Live TV")?></a> &raquo; <a href="#" class="active"><?=_("Find live channels")?></a></h2>
+					<h2><a href="#"><?=_("VOD Categories")?></a> &raquo; <a href="#" class="active"><?=_("Find VOD Categories")?></a></h2>
 						<form method="post" action="<?=$currentPage?>" class="jNice">
 						<fieldset>
 						<p>
 							<label><?=_("Select a search criteria")?></label>
-							<input type="text" name="strBusca" value="<?=$strBusca ?>" class="text-long">
+							<input type="text" name="strFind" value="<?=$strFind ?>" class="text-long">
 						</p>
 						<p>
 							<label><?=_("Select a search filter")?></label>
-							<select name="condicion">
-								<option value="name" <?php if ($condicion == "name") echo "selected='selected'" ?>><?=_("Channel Name")?></option>
-								<option value="description" <?php if ($condicion == "description") echo "selected='selected'" ?>><?=_("Channel Description")?></option>
-								<option value="rating" <?php if ($condicion == "rating") echo "selected='selected'" ?>><?=_("Channel Rating")?></option>
+							<select name="condition">
+								<option value="name" <?php if ($condition == "name") echo "selected='selected'" ?>><?=_("Category Name")?></option>
 							</select>
 						</p>
 						<p>
@@ -108,7 +75,7 @@ $query_rsConsulta = "SELECT * FROM livechannels "  . $whereCondicion;
 		
 				<?php
 					
-					if($_POST['strBusca']!= "")
+					if($_POST['strFind']!= "")
 					{
 						$counter = 0;
 						?>
@@ -120,24 +87,22 @@ $query_rsConsulta = "SELECT * FROM livechannels "  . $whereCondicion;
 							 <th class="sortable-keep fd-column-1"><b><?=_("Description")?></b></th>
 							 <th class="sortable-keep fd-column-2"><b><?=_("Rating")?></b></th>
 							 <th align="center" style="padding:5px 0px 5px 0px">
-							 <input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
+							 <input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
 							</th>
 						 </tr>
 						</thead>
 						<tbody>
 						 <?php
-						 $rs_getData = $DB->Execute($query_rsConsulta);
+						 $rs_getData = $DB->Execute($sql);
 						 while (!$rs_getData->EOF)
 						 {
 							?>
 							<tr <?php if($counter % 2) echo " class='alt'"?>>
 							 <td>
-								<a href="editLive.php?edit=<?=$rs_getData->fields['id']; ?>">
-								<?=$rs_getData->fields['name']; ?>
+								<a href="<?=$currentPage?>?edit=<?=$rs_getData->fields['id']; ?>">
+								<td><?=$rs_getData->fields['name']; ?></td>
 								</a>
 							 </td>							 
-							 <td><?=$rs_getData->fields['description']; ?></td>
-							 <td><?=$rs_getData->fields['rating']; ?></td>
 							 <td align="center">
 								<input name='archivos[]' type='checkbox' value="<?=$rs_getData->fields['id']?>">
 							 </td>
@@ -165,8 +130,6 @@ $query_rsConsulta = "SELECT * FROM livechannels "  . $whereCondicion;
 					}
 					?>
 				</div><!-- // #main -->
-				<script type="text/javascript" src="js/tablesort.js"></script>
-				<script type="text/javascript" src="js/pagination.js"></script>
       <div class="clear"></div>
     </div><!-- // #container -->
     </div><!-- // #containerHolder -->
