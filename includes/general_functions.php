@@ -19,7 +19,7 @@ function make_kids($row_id,$dad_name,$parent)
 		while ($row = mysql_fetch_array($sql))
 		{
 			$selected = '';
-				if($parent == $row['id']) $selected = "selected='selected'";
+			if($parent == $row['id']) $selected = "selected='selected'";
 			?>
 				<option value="<?=$row['id'] ?>" <?=$selected ?>>
 					<?=ucfirst(strtolower($dad_name))." - ".ucfirst(strtolower($row['name']))?>

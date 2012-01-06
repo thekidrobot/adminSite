@@ -85,19 +85,12 @@ if($currentPage == "menuadmin.php")
 		<!-- End of conditional styles for addArchivo.php-->	
     <?
 	}
-  elseif($currentPage == "categoriasVideos.php")
+  elseif($currentPage == "addVodContent.php")
   {
     ?>
     <!-- Beginning of conditional styles for categoriasVideos.php-->
-		<!-- Tooltip -->
-    <script type="text/javascript" src="js/ajax-tooltip.js"><?php include("dhtmlLicense.txt")?></script>	
-    <link rel="stylesheet" href="css/ajax-tooltip.css" media="screen" type="text/css">
-    
 		<!--	Scroller -->
     <link href="style/css/scrollingContent.css" rel="stylesheet" type="text/css" media="screen" />
-    
-		<!--  Showhide  -->
-    <script type="text/javascript" src="style/js/toggleShowHide.js"></script>
     <script type="text/javascript" src="style/js/scrollingContent.js"></script>
     
 		<!--	Dragdrop	-->
@@ -116,11 +109,11 @@ if($currentPage == "menuadmin.php")
                   changeEffect = new Effect.Highlight('changeNotification', {restoreColor:"transparent" });
               },			
               onUpdate: function(list) {
-                  new Ajax.Request("includes/addVideo.php?idGrupos=<?=$idGrupos?>", {
+                  new Ajax.Request("includes/addVideo.php", {
                   method: "post",
                   onLoading: function(){$('activityIndicator').show()},
                   onLoaded: function(){$('activityIndicator').hide()},
-                  parameters: { data: Sortable.serialize(list), container: list.id }
+                  parameters: { data: Sortable.serialize(list), container: list.id,cat_id: <?=$cat_id?> }
                 });				
               }
           });			
@@ -132,11 +125,11 @@ if($currentPage == "menuadmin.php")
               changeEffect = new Effect.Highlight('changeNotification', {restoreColor:"transparent" });
           },			
           onUpdate: function(list) {
-                  new Ajax.Request("includes/removeVideo.php?idGrupos=<?=$idGrupos?>", {
+                  new Ajax.Request("includes/removeVideo.php", {
                   method: "post",
                   onLoading: function(){$('activityIndicator').show()},
                   onLoaded: function(){$('activityIndicator').hide()},
-                  parameters: { data: Sortable.serialize(list), container: list.id }
+                  parameters: { data: Sortable.serialize(list), container: list.id , cat_id: <?=$cat_id?> }
               });
           }
           });

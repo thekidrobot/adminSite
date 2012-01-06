@@ -2,39 +2,40 @@
 include("includes/connection.php");
 include("session.php");
 
-$strFind = $_POST['strBusca'];
+$strFind = $_POST['strFind'];
 $condition = $_POST['condition'];
 $strWhere="";
-
-//Delete multiple
-$arrArchivos = $_POST['archivos'];
-$U = count($arrArchivos);
-
-if($U > 0)
-{
- foreach($arrArchivos as $id)
- {
-  $query_rsDel = "DELETE FROM vodcategories WHERE id = $id";
-	$rsDel = $DB->Execute($query_rsDel);
-  redirect($currentPage);
- }
-}
-
 
 if($_POST['strFind']!= "")
 {
 	switch ($condition)
 	{
 		case "name":
-		
-			if($strWhere != "") $strWhere= " and ";
-			$strWhere .= " name LIKE '%" . $strFind . "%' ";
+			$strWhere .= " where name LIKE '%" . $strFind . "%' ";
 			break;
-	
-		if($strWhere != "")	$strWhere = " where " . $strWhere;	
 	}
 	$sqlGet = "SELECT * FROM vodcategories "  . $strWhere;
 }
+
+//Delete multiple
+$arrArchivos = $_POST['archivos'];
+
+$U = count($arrArchivos);
+if($U > 0)
+{
+ foreach($arrArchivos as $id)
+ {
+		//Borra de tabla hija
+		$str = "delete from vod_channels_categories where category_id = $id";
+		$strSet = $DB->execute($str);
+		//Borra de tabla padre
+		$str = "delete from vodcategories where id = $id";
+		$strSet = $DB->execute($str);
+	
+		redirect($currentPage);
+ }
+}
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -80,57 +81,46 @@ if($_POST['strFind']!= "")
 						$counter = 0;
 						?>
 						<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-						<table class="no-arrow rowstyle-alt colstyle-alt paginate-10 max-pages-5" >
-						 <thead>
+						<table class="no-arrow rowstyle-alt colstyle-alt paginate-10 max-pages-5">
+							<thead>
 							<tr>
-							 <th class="sortable-keep fd-column-0"><b><?=_("Edit")?></b></th>
-							 <th class="sortable-keep fd-column-1"><b><?=_("Description")?></b></th>
-							 <th class="sortable-keep fd-column-2"><b><?=_("Rating")?></b></th>
-							 <th align="center" style="padding:5px 0px 5px 0px">
-							 <input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
-							</th>
-						 </tr>
+								<th class="sortable"><b><?=_("View Details")?></b></th>
+								<th><b><?=_("Add Content")?></b></th>
+								<th style="text-align:center">
+									<input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
+								</th>
+							</tr>
 						</thead>
-						<tbody>
-						 <?php
-						 $rs_getData = $DB->Execute($sql);
-						 while (!$rs_getData->EOF)
-						 {
-							?>
-							<tr <?php if($counter % 2) echo " class='alt'"?>>
-							 <td>
-								<a href="<?=$currentPage?>?edit=<?=$rs_getData->fields['id']; ?>">
-								<td><?=$rs_getData->fields['name']; ?></td>
-								</a>
-							 </td>							 
-							 <td align="center">
-								<input name='archivos[]' type='checkbox' value="<?=$rs_getData->fields['id']?>">
-							 </td>
-							</tr>
+						<tbody>	
 							<?php
-							$counter++;
-							$rs_getData->MoveNext();
-						 }
-						 
-						 if($counter == 0)
-						 {
+							$counter = 0;
+							$rsGet = $DB->execute($sqlGet);
+							
+							while (!$rsGet->EOF)
+							{  
+								$counter++;
+								$id = $rsGet->fields['id'];
+								$name = $rsGet->fields['name'];
+								?>
+								<tr <?php if($counter % 2) echo " class='alt'"?>>
+									<td><a href="viewVodDetail.php?cat_id=<?=$id?>" ><?=ucfirst(strtolower($name))?></a></td>
+									<td><a href="addVodContent.php?cat_id=<?=$id?>" >Add Content</a></td>
+									<td align="center"><input name='archivos[]' type='checkbox' value="<?=$id?>"></td>
+								</tr>
+								<?php;
+								$rsGet->movenext();
+							}  
 							?>
-							<tr>
-								<td colspan="4" align="center">
-									<?=_("No data found")?>
-								</td>
-							</tr>
-							<?php
-						 }
-						 ?>
-						</tbody>
-					 </table>
+							</tbody>
+						</table>
 					</form>
 					<?php
 					}
 					?>
 				</div><!-- // #main -->
       <div class="clear"></div>
+			<script type="text/javascript" src="js/tablesort.js"></script>
+			<script type="text/javascript" src="js/pagination.js"></script>	
     </div><!-- // #container -->
     </div><!-- // #containerHolder -->
   <p id="footer"></p>

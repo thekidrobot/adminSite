@@ -16,7 +16,15 @@
 					 $currentPage == "searchVod.php") echo "class='active'";
 	?>
 	><?=_("VOD")?></a></li>
-	<li><a href="categoriasVideos.php"><?=_("Categories")?></a></li>
+	<li><a href="viewVodCategories.php"
+	<?php if($currentPage == "viewVodCategories.php" or
+					 $currentPage == "searchVodCategory.php" or 	
+					 $currentPage == "viewVodDetail.php" or 	
+					 $currentPage == "createVodCategory.php" or
+					 $currentPage == "addVodContent.php"
+					 ) echo "class='active'";
+	?>		
+	><?=_("Categories")?></a></li>
 	<li><a href="gruposPaquetes.php"><?=_("Packages")?></a></li>
 	<li><a href="admusuarios.php"><?=_("Subscribers")?></a></li>
 	<li><a href="#"><?=_("Reports")?></a></li>

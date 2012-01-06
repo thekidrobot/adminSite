@@ -2,21 +2,39 @@
 include("includes/connection.php");
 include("session.php");
 
+if($_REQUEST['cat_id'] != ''){
+	$id = $_REQUEST['cat_id'];
+	$sql = "SELECT * FROM vodcategories WHERE id = $id";
+	$rsGet = $DB->Execute($sql);
+
+	while(!$rsGet->EOF)
+	{
+		$name=$rsGet->fields['name'];
+		$parent=$rsGet->fields['parent'];
+		$rsGet->movenext();
+	}
+}
+
 if (trim($_POST['name']) != "")
 {
 	if($_POST['flgEdit'] == 1)
 	{
 		$str = "update  vodcategories
 						set 		name 		= '".$_POST['name']."',
-										parent 	= ".$_POST['parent'].",
-						where 	id 			= ".$_POST['id'];							
+										parent 	= ".$_POST['parent']."
+						where 	id 			= ".$_POST['cat_id'];							
+	
+		$rsSet = $DB->Execute($str);
+		redirect("viewVodCategories.php?cat_id=$id");
 	}
 	elseif($_POST['flgAdd'] == 1)
 	{
 		$str = "insert into vodcategories (name,parent)
 						values('".$_POST['name']."',".$_POST['parent'].")";	
+
+		$rsSet = $DB->Execute($str);
+		redirect("viewVodCategories.php?cat_id=$id");
 	}
-	$rsSet = $DB->Execute($str);
 }
 	
 ?>
@@ -46,7 +64,7 @@ if (trim($_POST['name']) != "")
 					<p>
 						<label><?=_("Parent category")?> : </label>
 						<select name="parent">
-							<option value=0 <?php if($idGrupos == $row['id']) echo "selected='selected'" ?>>
+							<option value=0 <?php if($parent == 0) echo "selected='selected'" ?>>
 								<?=_("No Parent")?>
 							</option>
 							<?php
@@ -57,7 +75,7 @@ if (trim($_POST['name']) != "")
 							while (!$rsGet->EOF)
 							{	
 								?>
-								<option value="<?=$rsGet->fields['id'] ?>" <?php if($padre ==  $rsGet->fields['id']) echo "selected='selected'" ?>>
+								<option value="<?=$rsGet->fields['id'] ?>" <?php if($parent ==  $rsGet->fields['id']) echo "selected='selected'" ?>>
 									<?=ucfirst(strtolower($rsGet->fields['name'])) ?>
 								</option>
 								<?php
@@ -71,7 +89,7 @@ if (trim($_POST['name']) != "")
 					</p>
 					<p>
 						<label>&nbsp;</label>
-						<input type="hidden" name="id" value="<?=$id?>" />				
+						<input type="hidden" name="cat_id" value="<?=$id?>" />				
 						<? if (trim($name) !="")
 						{
 							?>
