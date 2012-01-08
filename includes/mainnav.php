@@ -25,7 +25,15 @@
 					 ) echo "class='active'";
 	?>		
 	><?=_("Categories")?></a></li>
-	<li><a href="gruposPaquetes.php"><?=_("Packages")?></a></li>
+	<li><a href="viewPackages.php"
+	<?php if($currentPage == "viewPackages.php" or
+					 $currentPage == "viewPackageDetail.php" or 	
+					 $currentPage == "addPackageContentLive.php" or 	
+					 $currentPage == "addPackageContentVod.php" or
+					 $currentPage == "createPackage.php"
+					 ) echo "class='active'";
+	?>
+	><?=_("Packages")?></a></li>
 	<li><a href="admusuarios.php"><?=_("Subscribers")?></a></li>
 	<li><a href="#"><?=_("Reports")?></a></li>
 	<li><a href="#"><?=_("Support")?></a></li>

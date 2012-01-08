@@ -90,7 +90,7 @@
 		text-align:center;
 		padding-top:100px;
 		margin:0;
-		z-index:1;
+		z-index:1 !important; 
 	}
 	
 	#dhtmlgoodies_scrolldiv .buttons_right{
@@ -99,7 +99,7 @@
 		text-align:center;
 		padding-top:180px;
 		margin:0;
-		z-index:0;
+		z-index:0 !important;
 	}
 	
 	#dhtmlgoodies_scrolldiv .button-submit{

@@ -249,7 +249,7 @@ if($currentPage == "menuadmin.php")
 			<?php
 		}
   }
-  elseif($currentPage == "gruposPaquetes.php")
+  elseif($currentPage == "addPackageContentLive.php")
   {
   ?>
     <!-- Beginning of conditional styles for gruposPaquetes.php-->	
@@ -257,17 +257,12 @@ if($currentPage == "menuadmin.php")
 		<!--	Scroller	-->
     <link href="style/css/scrollingContent.css" rel="stylesheet" type="text/css" media="screen" />
     <script type="text/javascript" src="style/js/scrollingContent.js"></script>
-		
-		<!--  ShowHide  -->
-    <script type="text/javascript" src="style/js/toggleShowHide.js"></script>
-    
+		    
 		<!--	DragDrop	-->
     <script type="text/javascript" src="js/scriptaculous/lib/prototype.js"></script>
     <script type="text/javascript" src="js/scriptaculous/src/scriptaculous.js"></script>
     <link rel="stylesheet" type="text/css" href="style/css/dragdrop.css" />
-    <?php
-    if(trim($_GET['add_cat'] != "") or trim($_GET['add_all_cat']) != "" or trim($_GET['rem_all_cat']) != "" or trim($_POST['idPaquete_cat'] != '')){
-    ?>
+    
     <script type="text/javascript"> 
       //<![CDATA[
       document.observe('dom:loaded', function() {
@@ -279,11 +274,11 @@ if($currentPage == "menuadmin.php")
                   changeEffect = new Effect.Highlight('changeNotification', {restoreColor:"transparent" });
               },			
               onUpdate: function(list) {
-                  new Ajax.Request("includes/addGrupoPaquete.php?idPaquete=<?=$idPaquete?>", {
+                  new Ajax.Request("includes/addPckLiveRes.php", {
                   method: "post",
                   onLoading: function(){$('activityIndicator').show()},
                   onLoaded: function(){$('activityIndicator').hide()},
-                  parameters: { data: Sortable.serialize(list), container: list.id }
+                  parameters: { data: Sortable.serialize(list), container: list.id, pck_id: <?=$pck_id?> }
                 });				
               }
           });			
@@ -295,63 +290,18 @@ if($currentPage == "menuadmin.php")
               changeEffect = new Effect.Highlight('changeNotification', {restoreColor:"transparent" });
           },			
           onUpdate: function(list) {
-                  new Ajax.Request("includes/removeGrupoPaquete.php?idPaquete=<?=$idPaquete?>", {
+                  new Ajax.Request("includes/remPckLiveRes.php", {
                   method: "post",
                   onLoading: function(){$('activityIndicator').show()},
                   onLoaded: function(){$('activityIndicator').hide()},
-                  parameters: { data: Sortable.serialize(list), container: list.id }
+                  parameters: { data: Sortable.serialize(list), container: list.id, pck_id: <?=$pck_id?> }
               });
           }
           });	
       });
       //]]>
       </script>
-    <?php
-    }
-    elseif(trim($_GET['add_usr'] != "" or trim($_GET['add_all_grp']) != "" or trim($_GET['rem_all_grp']) != "") or trim($_POST['idPaquete_grp'] != ''))
-    {
-      ?>
-      <script type="text/javascript"> 
-      //<![CDATA[
-      document.observe('dom:loaded', function() {
-          var changeEffect;
-          Sortable.create("sortlist2", {containment: ['sortlist', 'sortlist2'], tag:'li', overlap:'horizontal', constraint:false, dropOnEmpty: true,
-              onChange: function(item) {
-                  var list = Sortable.options(item).element;
-                  if(changeEffect) changeEffect.cancel();
-                  changeEffect = new Effect.Highlight('changeNotification', {restoreColor:"transparent" });
-              },			
-              onUpdate: function(list) {
-                  new Ajax.Request("includes/addGrupoUsuarioPaquete.php?idPaquete=<?=$idPaquete?>", {
-                  method: "post",
-                  onLoading: function(){$('activityIndicator').show()},
-                  onLoaded: function(){$('activityIndicator').hide()},
-                  parameters: { data: Sortable.serialize(list), container: list.id }
-                });				
-              }
-          });			
-      
-          Sortable.create("sortlist", {containment: ['sortlist', 'sortlist2'], tag:'li', overlap:'horizontal', constraint:false, dropOnEmpty: true,
-            onChange: function(item) {
-              var list = Sortable.options(item).element;
-              if(changeEffect) changeEffect.cancel();
-              changeEffect = new Effect.Highlight('changeNotification', {restoreColor:"transparent" });
-          },			
-          onUpdate: function(list) {
-                  new Ajax.Request("includes/removeGrupoUsuarioPaquete.php?idPaquete=<?=$idPaquete?>", {
-                  method: "post",
-                  onLoading: function(){$('activityIndicator').show()},
-                  onLoaded: function(){$('activityIndicator').hide()},
-                  parameters: { data: Sortable.serialize(list), container: list.id }
-              });
-          }
-          });	
-      });
-      //]]>
-      </script>
-      <!-- End of conditional styles for gruposPaquetes.php-->	
-      <?php
-    }
+    <?
   }
   elseif($currentPage == "admusuarios.php")
   {
@@ -380,6 +330,7 @@ if($currentPage == "menuadmin.php")
   </style>
   <![endif]-->
 	
+  <!-- This style should be moved to his own CSS -->
 	<style type="text/css">
 
 	table.gallery{
