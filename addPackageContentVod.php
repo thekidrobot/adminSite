@@ -15,7 +15,7 @@
 	{		
 		for($i=0; $i < $N; $i++)
 		{
-			$sql = "INSERT INTO packages_livechannels (resource_id,package_id) VALUES (".$addItems[$i].",$pck_id)";
+			$sql = "INSERT INTO packages_vodchannels (resource_id,package_id) VALUES (".$addItems[$i].",$pck_id)";
 			$rsSet = $DB->execute($sql);
 		} 
 	}	
@@ -28,7 +28,7 @@
 		$pck_id = $_POST['pck_id'];
 		for($i=0; $i < $N; $i++)
 		{
-			$sql = "delete from packages_livechannels where resource_id = ".$remItems[$i]." and package_id =".$pck_id;
+			$sql = "delete from packages_vodchannels where resource_id = ".$remItems[$i]." and package_id =".$pck_id;
 			$rsSet = $DB->execute($sql);
 		} 
 	}
@@ -38,9 +38,9 @@
 		
 		$pck_id = $_POST['pck_id'];
 		
-		$sql = "SELECT * FROM livechannels where id not in
+		$sql = "SELECT * FROM vodchannels where id not in
 						(
-							select 	resource_id from packages_livechannels
+							select 	resource_id from packages_vodchannels
 							where		package_id = $pck_id
 						) ORDER BY id ";  					
 						
@@ -48,7 +48,7 @@
 		
 		while (!$rsGet->EOF)
 		{
-			$sql = "INSERT INTO packages_livechannels (resource_id,package_id)
+			$sql = "INSERT INTO packages_vodchannels (resource_id,package_id)
 							VALUES (".$rsGet->fields['id'].",$pck_id)";
 			$rsSet = $DB->execute($sql);
 			
@@ -60,7 +60,7 @@
 	if (trim($_POST['r_all']) != "")
 	{
 		$pck_id = $_POST['pck_id'];
-		$sql = "delete from packages_livechannels where package_id = $pck_id";
+		$sql = "delete from packages_vodchannels where package_id = $pck_id";
 		$rsSet = $DB->execute($sql);
 	}
 	
@@ -81,7 +81,7 @@
 		</div>    
 		<!-- // #sidebar -->
 		<div id="main">
-			<h2><a href="#"><?=_("Packages")?></a> &raquo; <a href="#" class="active"><?=_("Add live content")?></a></h2>
+			<h2><a href="#"><?=_("Packages")?></a> &raquo; <a href="#" class="active"><?=_("Add VOD content")?></a></h2>
 			<div id="dhtmlgoodies_scrolldiv">
 				<div id="scrolldiv_parentContainer">
 					<div id="scrolldiv_content">
@@ -92,15 +92,15 @@
 							<br />
 						</p>
 						<?	
-							$sql1 = "SELECT * FROM livechannels where id not in
+							$sql1 = "SELECT * FROM vodchannels where id not in
 											(
-												select 	resource_id from packages_livechannels
+												select 	resource_id from packages_vodchannels
 												where		package_id = $pck_id
 											) ORDER BY id ";  					
 												 
-							$sql2 = "SELECT * FROM livechannels where id in
+							$sql2 = "SELECT * FROM vodchannels where id in
 											(
-												select 	resource_id from packages_livechannels
+												select 	resource_id from packages_vodchannels
 												where		package_id = $pck_id
 											) ORDER BY id ";  											 
 											 
@@ -128,7 +128,7 @@
 							</div>
 						
 							<ul id="sortlist" style="height:<?=$height?>px;">
-								<h4><?=_("Available live resources")?></h4>
+								<h4><?=_("Available VOD resources")?></h4>
 								<br/>
 								<?php  
 								while (!$rsGetLeft->EOF)
@@ -154,7 +154,7 @@
 								<input type="hidden" value="<?=$pck_id?>" name="pck_id" />
 							</div>
 							<ul id="sortlist2" style="height:<?=$height?>px;">
-								<h4><?=_("Live resources in ")?> <?=$rsGet->fields['name']?></h4>
+								<h4><?=_("VOD resources in ")?> <?=$rsGet->fields['name']?></h4>
 								<br/>
 								<?php  
 									while (!$rsGetRight->EOF)

@@ -30,6 +30,7 @@
 					 $currentPage == "viewPackageDetail.php" or 	
 					 $currentPage == "addPackageContentLive.php" or 	
 					 $currentPage == "addPackageContentVod.php" or
+					 $currentPage == "searchPackage.php" or
 					 $currentPage == "createPackage.php"
 					 ) echo "class='active'";
 	?>

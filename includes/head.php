@@ -303,6 +303,60 @@ if($currentPage == "menuadmin.php")
       </script>
     <?
   }
+    elseif($currentPage == "addPackageContentVod.php")
+  {
+  ?>
+    <!-- Beginning of conditional styles for gruposPaquetes.php-->	
+    
+		<!--	Scroller	-->
+    <link href="style/css/scrollingContent.css" rel="stylesheet" type="text/css" media="screen" />
+    <script type="text/javascript" src="style/js/scrollingContent.js"></script>
+		    
+		<!--	DragDrop	-->
+    <script type="text/javascript" src="js/scriptaculous/lib/prototype.js"></script>
+    <script type="text/javascript" src="js/scriptaculous/src/scriptaculous.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/css/dragdrop.css" />
+    
+    <script type="text/javascript"> 
+      //<![CDATA[
+      document.observe('dom:loaded', function() {
+          var changeEffect;
+          Sortable.create("sortlist2", {containment: ['sortlist', 'sortlist2'], tag:'li', overlap:'horizontal', constraint:false, dropOnEmpty: true,
+              onChange: function(item) {
+                  var list = Sortable.options(item).element;
+                  if(changeEffect) changeEffect.cancel();
+                  changeEffect = new Effect.Highlight('changeNotification', {restoreColor:"transparent" });
+              },			
+              onUpdate: function(list) {
+                  new Ajax.Request("includes/addPckLiveRes.php", {
+                  method: "post",
+                  onLoading: function(){$('activityIndicator').show()},
+                  onLoaded: function(){$('activityIndicator').hide()},
+                  parameters: { data: Sortable.serialize(list), container: list.id, pck_id: <?=$pck_id?> }
+                });				
+              }
+          });			
+      
+          Sortable.create("sortlist", {containment: ['sortlist', 'sortlist2'], tag:'li', overlap:'horizontal', constraint:false, dropOnEmpty: true,
+            onChange: function(item) {
+              var list = Sortable.options(item).element;
+              if(changeEffect) changeEffect.cancel();
+              changeEffect = new Effect.Highlight('changeNotification', {restoreColor:"transparent" });
+          },			
+          onUpdate: function(list) {
+                  new Ajax.Request("includes/remPckLiveRes.php", {
+                  method: "post",
+                  onLoading: function(){$('activityIndicator').show()},
+                  onLoaded: function(){$('activityIndicator').hide()},
+                  parameters: { data: Sortable.serialize(list), container: list.id, pck_id: <?=$pck_id?> }
+              });
+          }
+          });	
+      });
+      //]]>
+      </script>
+    <?
+  }
   elseif($currentPage == "admusuarios.php")
   {
     ?>

@@ -84,12 +84,13 @@
 					 $currentPage == "viewPackageDetail.php" or 	
 					 $currentPage == "addPackageContentLive.php" or 	
 					 $currentPage == "addPackageContentVod.php" or
+					 $currentPage == "searchPackage.php" or
 					 $currentPage == "createPackage.php")
 		{
 			?>
 			<li><a href="viewPackages" <?php if($currentPage == "viewPackages.php") echo "class='active'"?> > <?=_("View packages")?></a></li>
 			<li><a href="createPackage.php" <?php if($currentPage == "createPackage.php") echo "class='active'"?> > <?=_("Create new package")?></a></li>
-			<li><a href="findPackage.php" <?php if($currentPage == "findPackage.php") echo "class='active'"?>> <?=_("Find packages")?></a></li>
+			<li><a href="searchPackage.php" <?php if($currentPage == "searchPackage.php") echo "class='active'"?>> <?=_("Find packages")?></a></li>
 			<?
 		}		
 		
