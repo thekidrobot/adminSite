@@ -23,6 +23,7 @@ if($_SESSION["usuario"]=="")
 }
  
 include("includes/general_functions.php");
+include("includes/formvalidator.php");
 
 $currentPage = getCurrentPage();
 

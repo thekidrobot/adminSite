@@ -78,6 +78,21 @@ CREATE TABLE `archivos_grupo` (
 
 insert  into `archivos_grupo`(`id_interno`,`id_grupo`,`id_archivo`,`fecha_inserta`) values (2981,15,3148,'2011-12-08 23:46:36'),(2750,11,3130,'2010-12-06 20:59:05'),(2766,8,3126,'2011-11-06 12:29:51'),(2980,15,3147,'2011-12-08 23:46:36'),(2979,15,3146,'2011-12-08 23:46:36'),(2978,15,3145,'2011-12-08 23:46:36'),(2977,15,3144,'2011-12-08 23:46:36'),(2976,15,3143,'2011-12-08 23:46:36'),(2975,15,3142,'2011-12-08 23:46:36'),(2974,15,3141,'2011-12-08 23:46:36'),(2973,15,3140,'2011-12-08 23:46:36'),(2972,15,3138,'2011-12-08 23:46:36'),(3056,15,3130,'2011-12-09 22:47:15'),(2767,8,3149,'2011-11-06 13:49:34'),(2984,15,3151,'2011-12-08 23:46:36'),(2983,15,3150,'2011-12-08 23:46:36'),(2982,15,3149,'2011-12-08 23:46:36'),(3055,15,3127,'2011-12-09 22:47:15'),(2969,15,3135,'2011-12-08 23:46:36'),(2968,15,3134,'2011-12-08 23:46:36'),(3015,15,3132,'2011-12-09 00:59:43'),(3054,15,3136,'2011-12-09 22:47:08'),(3016,15,3133,'2011-12-09 00:59:43'),(3051,10,3127,'2011-12-09 01:16:23'),(2960,22,3131,'2011-12-08 01:47:04'),(2959,22,3135,'2011-12-08 01:47:02'),(2957,22,3134,'2011-12-08 01:46:57'),(2956,22,3130,'2011-12-08 01:46:53'),(2840,22,3128,'2011-11-27 01:32:55'),(2845,22,3126,'2011-11-27 01:33:57'),(2843,22,3132,'2011-11-27 01:33:17'),(2841,22,3127,'2011-11-27 01:32:56'),(2844,22,3133,'2011-11-27 01:33:55'),(2958,22,3136,'2011-12-08 01:47:00'),(3050,11,3128,'2011-12-09 01:16:06'),(3049,11,3127,'2011-12-09 01:16:06'),(3048,6,3134,'2011-12-09 01:09:44'),(3044,6,3133,'2011-12-09 01:00:15'),(3043,6,3132,'2011-12-09 01:00:15'),(3042,6,3131,'2011-12-09 01:00:15'),(3090,10,3128,'2011-12-28 23:58:09'),(3046,6,3128,'2011-12-09 01:09:44'),(3047,6,3130,'2011-12-09 01:09:44'),(3011,15,3128,'2011-12-09 00:59:23'),(3092,7,3128,'2011-12-28 23:58:21'),(3091,7,3127,'2011-12-28 23:58:21'),(3089,13,3143,'2011-12-10 12:01:22'),(3085,13,3127,'2011-12-10 12:01:22'),(3087,13,3133,'2011-12-10 12:01:22'),(3082,13,3128,'2011-12-10 12:00:46'),(3088,13,3135,'2011-12-10 12:01:22'),(3086,13,3131,'2011-12-10 12:01:22');
 
+/*Table structure for table `currencies` */
+
+DROP TABLE IF EXISTS `currencies`;
+
+CREATE TABLE `currencies` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `code` varchar(4) DEFAULT NULL,
+  `name` varbinary(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+/*Data for the table `currencies` */
+
+insert  into `currencies`(`id`,`code`,`name`) values (1,'COP','Colombian Pesos'),(2,'USD','US Dollars'),(3,'BRZ','Brazilian Real');
+
 /*Table structure for table `grupos` */
 
 DROP TABLE IF EXISTS `grupos`;
@@ -159,13 +174,14 @@ CREATE TABLE `livechannels` (
   `description` varchar(500) DEFAULT NULL,
   `url` varchar(200) DEFAULT NULL,
   `price` int(100) DEFAULT '0',
-  `rating` bigint(20) DEFAULT NULL,
+  `currency` int(2) DEFAULT NULL,
+  `rating` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=85 DEFAULT CHARSET=latin1 COMMENT='Table for live content';
+) ENGINE=MyISAM AUTO_INCREMENT=86 DEFAULT CHARSET=latin1 COMMENT='Table for live content';
 
 /*Data for the table `livechannels` */
 
-insert  into `livechannels`(`id`,`pic`,`name`,`number`,`description`,`url`,`price`,`rating`) values (13,'Blue hills274_big.jpg','Canal Caracol',1,'','',0,0),(11,'Water lilies739_big.jpg','Canal RCN',5,'Canal Caracol','www.caracol.com.co',0,1),(12,'Sunset219_big.jpg','blah',1,'blah','',0,0),(14,'Winter_big.jpg','Canal Caracol',5,'','',0,0),(15,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(16,'Water lilies600_big.jpg','Canal RCN',0,'','',0,0),(17,'Sunset165_big.jpg','',1,'','',0,0),(18,'Sunset219_big.jpg','blah',1,'blah','',0,0),(19,'Water lilies600_big.jpg','Canal RCN',0,'','',0,0),(20,'Water lilies600_big.jpg','Canal RCN',0,'','',0,0),(21,'Water lilies600_big.jpg','Canal RCN',0,'','',0,0),(22,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(26,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(27,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(28,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(29,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(30,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(31,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(32,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(33,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(34,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(35,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(36,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(37,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(38,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(39,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(40,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(41,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(42,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(43,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(44,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(45,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(46,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(47,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(48,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(49,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(50,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(51,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(52,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(53,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(54,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(55,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(56,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(57,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(58,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(59,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(60,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(61,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(62,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(63,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(64,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(65,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(66,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(67,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(68,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(69,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(70,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(71,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(72,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(73,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(74,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(75,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(76,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(77,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(78,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(79,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(80,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(81,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(82,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(83,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0),(84,'Water lilies600_big.jpg','Canal RCN',5,'','',0,0);
+insert  into `livechannels`(`id`,`pic`,`name`,`number`,`description`,`url`,`price`,`currency`,`rating`) values (13,'Blue hills274_big.jpg','Canal Caracol',1,'','',0,NULL,0),(11,'Water lilies739_big.jpg','Canal RCN',5,'Canal Caracol','www.caracol.com.co',0,NULL,1),(12,'Sunset219_big.jpg','blah',1,'blah','',0,NULL,0),(14,'Winter_big.jpg','Canal Caracol',5,'','',0,NULL,0),(15,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(16,'Water lilies600_big.jpg','Canal RCN',0,'','',0,NULL,0),(17,'Sunset165_big.jpg','',1,'','',0,NULL,0),(18,'Sunset219_big.jpg','blah',1,'blah','',0,NULL,0),(19,'Water lilies600_big.jpg','Canal RCN',0,'','',0,NULL,0),(20,'Water lilies600_big.jpg','Canal RCN',0,'','',0,NULL,0),(21,'Water lilies600_big.jpg','Canal RCN',0,'','',0,NULL,0),(22,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(26,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(27,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(28,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(29,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(30,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(31,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(32,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(33,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(34,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(35,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(36,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(37,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(38,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(39,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(40,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(41,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(42,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(43,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(44,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(45,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(46,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(47,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(48,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(49,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(50,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(51,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(52,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(53,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(54,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(55,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(56,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(57,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(58,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(59,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(60,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(61,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(62,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(63,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(64,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(65,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(66,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(67,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(68,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(69,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(70,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(71,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(72,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(73,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(74,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(75,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(76,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(77,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(78,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(79,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(80,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(81,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(82,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(83,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,0),(84,'Water lilies600_big.jpg','Canal RCN',5,'','',0,NULL,1000),(85,'wile339_big.jpg','Andres',11,'test','test',1500,2,2);
 
 /*Table structure for table `llaves_plugins` */
 
@@ -258,11 +274,11 @@ CREATE TABLE `packages` (
   `duration` varchar(50) DEFAULT NULL,
   `price` int(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `packages` */
 
-insert  into `packages`(`id`,`name`,`description`,`duration`,`price`) values (1,'dummy','dummy','dummy',1000);
+insert  into `packages`(`id`,`name`,`description`,`duration`,`price`) values (5,'Andres','andres','andres',0),(4,'dummy','dummy','dummy',0);
 
 /*Table structure for table `packages_livechannels` */
 
@@ -276,7 +292,7 @@ CREATE TABLE `packages_livechannels` (
 
 /*Data for the table `packages_livechannels` */
 
-insert  into `packages_livechannels`(`package_id`,`resource_id`) values (1,11),(1,12),(1,14),(1,16);
+insert  into `packages_livechannels`(`package_id`,`resource_id`) values (4,11),(4,12),(5,1),(5,11),(5,12),(5,14);
 
 /*Table structure for table `packages_vodchannels` */
 
@@ -289,6 +305,8 @@ CREATE TABLE `packages_vodchannels` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 /*Data for the table `packages_vodchannels` */
+
+insert  into `packages_vodchannels`(`package_id`,`resource_id`) values (5,1);
 
 /*Table structure for table `paquetes` */
 
@@ -346,6 +364,55 @@ CREATE TABLE `programacion` (
 /*Data for the table `programacion` */
 
 insert  into `programacion`(`id_prog`,`prog_video`,`prog_fecha_ini`,`prog_fecha_fin`,`prog_canal`) values (1,3150,'2010-05-11 22:00:00','2010-05-11 22:30:00',123),(2,3149,'2010-05-11 22:30:00','2010-05-11 23:30:00',123),(3,3148,'2010-05-11 23:30:00','2010-05-11 00:00:00',123);
+
+/*Table structure for table `ratings` */
+
+DROP TABLE IF EXISTS `ratings`;
+
+CREATE TABLE `ratings` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `code` varchar(5) DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+/*Data for the table `ratings` */
+
+insert  into `ratings`(`id`,`code`,`name`) values (1,'G','All Audiences'),(2,'PG','Parental Guidance Suggested'),(3,'PG13','Parents Strongly Cautioned'),(4,'R','Restricted'),(5,'NC17','No Children Under 17');
+
+/*Table structure for table `subscribers` */
+
+DROP TABLE IF EXISTS `subscribers`;
+
+CREATE TABLE `subscribers` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) DEFAULT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `password` varchar(150) DEFAULT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `serial` varchar(150) DEFAULT NULL,
+  `mac` varchar(100) DEFAULT NULL,
+  `license` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+/*Data for the table `subscribers` */
+
+insert  into `subscribers`(`id`,`name`,`username`,`password`,`description`,`serial`,`mac`,`license`) values (4,'Andres','Andres','andres','andres','andres','andres','andres');
+
+/*Table structure for table `subscribers_packages` */
+
+DROP TABLE IF EXISTS `subscribers_packages`;
+
+CREATE TABLE `subscribers_packages` (
+  `subscriber_id` bigint(20) NOT NULL,
+  `package_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`subscriber_id`,`package_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+/*Data for the table `subscribers_packages` */
+
+insert  into `subscribers_packages`(`subscriber_id`,`package_id`) values (4,4);
 
 /*Table structure for table `usuarios` */
 
@@ -466,12 +533,15 @@ CREATE TABLE `vodchannels` (
   `trainer` varchar(100) DEFAULT NULL,
   `date_release` timestamp NULL DEFAULT NULL,
   `keywords` varchar(250) DEFAULT NULL,
-  `rating` bigint(20) DEFAULT NULL,
+  `rating` int(2) DEFAULT NULL,
   `price` int(100) DEFAULT NULL,
+  `currency` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Channels on demand';
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='Channels on demand';
 
 /*Data for the table `vodchannels` */
+
+insert  into `vodchannels`(`id`,`pic`,`name`,`description`,`stb_url`,`download_url`,`pc_url`,`trainer`,`date_release`,`keywords`,`rating`,`price`,`currency`) values (1,'','Andres','andres','andres','andres','andres','andres','2012-01-09 17:27:20','comics,animation',1000,0,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

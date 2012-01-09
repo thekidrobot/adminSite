@@ -683,6 +683,27 @@ fieldset textarea {
 		padding:7px; 
 		margin-top: 10px;
 	}
+	
+	/*For error display	*/
+	
+	h4{
+		font-size: 14px;
+		line-height: 18px;
+		font-weight: bold;
+		color: #EF3B3B;
+		padding: 0 0 0 10px;
+		margin: 20px 0 10px;
+		text-align:left;
+		font-family:"Trebuchet MS";
+	}
+	
+	.err{
+		font-size:12px;
+		padding-left:10px;
+		padding-bottom:20px;
+		color:#D12528;
+		line-height:20px;
+	}
 
 /* Footer ---------------------------------------- */
 

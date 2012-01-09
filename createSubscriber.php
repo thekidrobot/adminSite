@@ -1,6 +1,8 @@
 <?
-	 include("includes/connection.php");
-	 include("session.php");
+	include("includes/connection.php");
+	include("session.php");
+
+	$err = "";
 
 	if($_POST['addPck']!="")
 	{
@@ -14,17 +16,39 @@
 		$mac=escape_value($postArray['mac']);
 		$license=escape_value($postArray['license']);
 		
-		$sql = "INSERT INTO
-						subscribers
-							(name,username,password,description,serial,mac,license)
-						VALUES
-							('$name','$username','$password',
-							 '$description','$serial','$mac','$license')";
-	
-		$rsSet = $DB->Execute($sql);
-		$usr_id = $DB->Insert_ID();
+		
+		$validator = new FormValidator();
+		$validator->addValidation("name","req",_("Name is a mandatory field"));
+		$validator->addValidation("username","req",_("Username is a mandatory field"));
+		$validator->addValidation("password1","req",_("Password is a mandatory field"));
+		$validator->addValidation("password2","req",_("Please confirm the password"));
+		$validator->addValidation("password2","eqelmnt=password1",_("Passwords don't match"));
 
-		redirect("addSubscriberPackage.php?usr_id=$usr_id");	
+		if(!$validator->ValidateForm())
+		{
+			$error_hash = $validator->GetErrors();
+			foreach($error_hash as $inpname => $inp_err)
+			{
+				$err .= $inp_err."</br>";
+			}
+			
+		}
+		else
+		{
+			$password = md5($password);
+			
+			$sql = "INSERT INTO
+							subscribers
+								(name,username,password,description,serial,mac,license)
+							VALUES
+								('$name','$username','$password',
+								 '$description','$serial','$mac','$license')";
+		
+			$rsSet = $DB->Execute($sql);
+			$usr_id = $DB->Insert_ID();
+	
+			redirect("addSubscriberPackage.php?usr_id=$usr_id");				
+		}
 	}
 	
 	if($_POST['flgEdit'] != "")
@@ -82,7 +106,19 @@
 		<!-- // #sidebar -->
     
 		<div id="main">
-			<h2><a href="#"><?=_("Subscribers")?></a> &raquo; <a href="#" class="active"><?=_("Create new subscriber")?></a></h2>		
+			<h2><a href="#"><?=_("Subscribers")?></a> &raquo; <a href="#" class="active"><?=_("Create new subscriber")?></a></h2>
+			
+			<?php
+			if(trim($err) != ""){
+			?>
+				<p>
+				<h4><?=_("Please correct the following errors: ")?></h4>
+				<div class="err"><?=$err?></div>
+				</p>						
+			<?
+			}
+			?>
+			
 			<form action="<?=$currentPage?>" method="post" class="jNice" >
 				<fieldset>
 				<p>
