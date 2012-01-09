@@ -89,6 +89,7 @@ if($_POST["MM_update"] == "true")
 	$url = escape_value($postArray['url']);
 	$price = escape_value($postArray['price']);
 	$rating = escape_value($postArray['rating']);
+	$currency = escape_value($postArray['currency']);
 	
 	$insertSql = "UPDATE livechannels SET
 								name = '$name',
@@ -96,7 +97,8 @@ if($_POST["MM_update"] == "true")
 								description = '$description',
 								url = '$url',
 								price = $price,
-								rating = '$rating'
+								rating = '$rating',
+								currency = '$currency' 
 								WHERE id = $id";
 	
 	$rsInsLive = $DB->Execute($insertSql);
@@ -162,8 +164,34 @@ if($_POST["MM_update"] == "true")
 					<input value="<?=$getData->fields['price']?>"  name="price" type="text" maxlength="150"  value="0" class="text-long" />
 				</p>
 				<p>
-					<label><?=_("Rating")?> : </label>
-					<input value="<?=$getData->fields['rating']?>"  name="rating" type="text" maxlength="150"  class="text-long" />
+				 <label><?=_("Currency")?> : </label>
+					<select name="currency">
+					 <?php
+						$sql="select * from currencies";
+				 		$rsGet=$DB->execute($sql);
+						while(!$rsGet->EOF){
+						?>
+						 <option value="<?=$rsGet->fields['id']?>" <? if ($getData->fields['currency'] == $rsGet->fields['id']) echo "selected='selected'" ?>><?=$rsGet->fields['code']."-".$rsGet->fields['name']?></option>
+						 <?
+						 $rsGet->movenext();
+						}
+						?>
+					 <select>
+					</p>
+					<p>
+					 <label><?=_("Rating")?> : </label>
+					 <select name="rating">
+					  <?php
+					  $sql="select * from ratings";
+					  $rsGet=$DB->execute($sql);
+					  while(!$rsGet->EOF){
+					   ?>
+						 <option value="<?=$rsGet->fields['id']?>" <? if ($getData->fields['rating'] == $rsGet->fields['id']) echo "selected='selected'" ?>><?=$rsGet->fields['code']."-".$rsGet->fields['name']?></option>
+					   <?
+					   $rsGet->movenext();
+						}
+					 ?>
+					<select>
 				</p>
 				<p>
 					<label>&nbsp;</label>

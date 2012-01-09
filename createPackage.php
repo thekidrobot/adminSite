@@ -1,6 +1,13 @@
 <?
 	include("includes/connection.php");
 	include("session.php");
+
+	if($_GET['pck_id'] != "")
+	{
+		$id = $_GET['pck_id'];
+		$sql = "select * from packages where id = $id";
+		$rsGet=$DB->execute($sql);
+	}
 	
 	if($_POST['flgEdit'] != "")
 	{
@@ -100,7 +107,7 @@
 					</p>
 
 					<?php
-					if($_POST['flgEdit'] != "")
+					if($_POST['flgEdit'] != "" or $_GET['pck_id'] != "")
 					{
 						?>
 						<p>
@@ -115,12 +122,14 @@
 						?>
 						<p>
 							<label><?=_("Add Live Content")?></label>
-							<input type="submit" value="<?=_("Save and Add")?>" name="addLive" />
+							<input type="hidden" value="1" name="addLive" />
+							<input type="submit" value="<?=_("Save and Add")?>" name="live" />
 						</p>
 						
 						<p>
 							<label><?=_("Add VOD Content")?></label>
-							<input type="submit" value="<?=_("Save and Add")?>" name="addVod" />
+							<input type="hidden" value="1" name="addVod" />
+							<input type="submit" value="<?=_("Save and Add")?>" name="vod" />
 						</p>
 						<?
 					}

@@ -67,11 +67,13 @@ if ($_POST["MM_insert"] == "true")
 	$description = escape_value($postArray['description']);
 	$url = escape_value($postArray['url']);
 	$price = escape_value($postArray['price']);
+	$currency = escape_value($postArray['currency']);
 	$rating = escape_value($postArray['rating']);
 	
 	$insertSql = "INSERT INTO livechannels
-								(pic,name,number,description,url,price,rating)
-								VALUES ('$pic','$name',$number,'$description','$url',$price,'$rating')";
+								(pic,name,number,description,url,price,currency,rating)
+								VALUES ('$pic','$name',$number,'$description',
+												'$url',$price,$currency,'$rating')";
 	
 	$rsInsLive = $DB->Execute($insertSql);
 	
@@ -107,7 +109,7 @@ if ($_POST["MM_insert"] == "true")
 					</p>
 					<p>
 						<label><?=_("Channel Number")?> : </label>
-						<input name="number" type="text" maxlength="150" class="text-long" />
+						<input name="number" type="text" maxlength="150" class="text-small" />
 					</p>
 					<p>
 						<label><?=_("Channel Description")?> : </label>
@@ -119,11 +121,37 @@ if ($_POST["MM_insert"] == "true")
 					</p>
 					<p>
 						<label><?=_("Price")?> : </label>
-						<input name="price" type="text" maxlength="150"  value="0" class="text-long" />
+						<input name="price" type="text" maxlength="150"  value="0" class="text-small" />
+					</p>
+					<p>
+						<label><?=_("Currency")?> : </label>
+						<select name="currency">
+							<?php
+								$sql="select * from currencies";
+								$rsGet=$DB->execute($sql);
+								while(!$rsGet->EOF){
+									?>
+										<option value="<?=$rsGet->fields['id']?>"><?=$rsGet->fields['code']."-".$rsGet->fields['name']?></option>
+									<?
+									$rsGet->movenext();
+								}
+							?>
+						<select>
 					</p>
 					<p>
 						<label><?=_("Rating")?> : </label>
-						<input name="rating" type="text" maxlength="150"  class="text-long" />
+						<select name="rating">
+							<?php
+								$sql="select * from ratings";
+								$rsGet=$DB->execute($sql);
+								while(!$rsGet->EOF){
+									?>
+										<option value="<?=$rsGet->fields['id']?>"><?=$rsGet->fields['code']."-".$rsGet->fields['name']?></option>
+									<?
+									$rsGet->movenext();
+								}
+							?>
+						<select>
 					</p>
 					<p>
 						<label>&nbsp;</label>

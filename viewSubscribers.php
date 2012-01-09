@@ -6,26 +6,22 @@
 	if($_GET['del']!="")
 	{
 		$id = escape_value($_GET['del']);
-		$sql = "delete from packages where id = ".$id;
+		$sql = "delete from subscribers where id = ".$id;
 		$rsSet = $DB->Execute($sql);
-		$sql = "delete from packages_livechannels where package_id = ".$id;
-		$rsSet = $DB->Execute($sql);
-		$sql = "delete from packages_vodchannels where package_id = ".$id;
+		$sql = "delete from subscribers_packages where subscriber_id = ".$id;
 		$rsSet = $DB->Execute($sql);
 	}
 	
 	//delete selected multiple
-	$arrPackages = $_POST['packages'];
-	$N = count($arrPackages);
+	$arrSubscribers = $_POST['subscribers'];
+	$N = count($arrSubscribers);
 	if($N > 0)
 	{
 		for($i=0; $i < $N; $i++)
 		{
-			$sql = "delete from packages where id = ".$arrPackages[$i];
+			$sql = "delete from subscribers where id = ".$arrPackages[$i];
 			$rsSet = $DB->Execute($sql);
-			$sql = "delete from packages_livechannels where package_id = ".$arrPackages[$i];
-			$rsSet = $DB->Execute($sql);
-			$sql = "delete from packages_vodchannels where package_id = ".$arrPackages[$i];
+			$sql = "delete from subscribers_packages where subscriber_id = ".$arrPackages[$i];
 			$rsSet = $DB->Execute($sql);
 		} 
 	}	
@@ -48,17 +44,16 @@
 		<!-- // #sidebar -->
 		
 		<div id="main">
-			<h2><a href="#"><?=_("Packages")?></a> &raquo; <a href="#" class="active"><?=_("View all packages")?></a></h2>
+			<h2><a href="#"><?=_("Subscribers")?></a> &raquo; <a href="#" class="active"><?=_("View subscribers")?></a></h2>
 
 			<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 			<table class="no-arrow rowstyle-alt colstyle-alt paginate-5 max-pages-5">
 			<thead>
 				<tr>
 					<th class="sortable"><b><?=_("Name")?></b></th>
-					<th class="sortable"><b><?=_("Duration")?></b></th>
-					<th class="sortable"><b><?=_("Price")?></b></th>
-					<th><b><?=_("Add content")?></b></th>
-					<th><b><?=_("Add content")?></b></th>
+					<th class="sortable"><b><?=_("STB Serial Number")?></b></th>
+					<th class="sortable"><b><?=_("STB Mac Address")?></b></th>
+					<th><b><?=_("Add Packages")?></b></th>
 					<th style="text-align:center">
 						<input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
 					</th>
@@ -68,20 +63,19 @@
 				<?php
 					$counter = 0;
 					
-					$sql = "SELECT * FROM packages";
+					$sql = "SELECT * FROM subscribers";
 					$rsGet = $DB->Execute($sql);
-									
+					
 					while (!$rsGet->EOF)
 					{  
 						$counter++;
 						?>
 						<tr <?php if($counter % 2) echo " class='odd'"?>>
-							<td><a href="viewPackageDetail.php?pck_id=<?=$rsGet->fields['id']?>"><?=$rsGet->fields['name']?></a></td>
-							<td><?=$rsGet->fields['duration']?></td>
-							<td><?=$rsGet->fields['price']?></td>
-							<td class="action"><a href="addPackageContentLive?pck_id=<?=$rsGet->fields['id']?>"><?=_("Live")?></td>
-							<td class="action"><a href="addPackageContentVod?pck_id=<?=$rsGet->fields['id']?>"><?=_("OnDemand")?></td>
-							<td align="center"><input name='packages[]' type='checkbox' value="<?=$rsGet->fields['id']?>"></td>
+							<td><a href="viewSubscriberDetail.php?usr_id=<?=$rsGet->fields['id']?>"><?=$rsGet->fields['name']?></a></td>
+							<td><?=$rsGet->fields['serial']?></td>
+							<td><?=$rsGet->fields['mac']?></td>
+							<td class="action"><a href="addSubscriberPackage.php?usr_id=<?=$rsGet->fields['id']?>"><?=_("Add Packages")?></td>
+							<td align="center"><input name='subscribers[]' type='checkbox' value="<?=$rsGet->fields['id']?>"></td>
 						</tr>
 						<?php
 						$rsGet->movenext();

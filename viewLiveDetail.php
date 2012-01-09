@@ -60,8 +60,34 @@ $getData = $DB->Execute($sql);
 					<input value="<?=$getData->fields['price']?>"  name="price" type="text" maxlength="150"  value="0" class="text-long" readonly="readonly" />
 				</p>
 				<p>
-					<label><?=_("Rating")?> : </label>
-					<input value="<?=$getData->fields['rating']?>"  name="rating" type="text" maxlength="150"  class="text-long" readonly="readonly" />
+				 <label><?=_("Currency")?> : </label>
+					<select name="currency">
+					 <?php
+						$sql="select * from currencies where id = ".$getData->fields['currency'];
+				 		$rsGet=$DB->execute($sql);
+						while(!$rsGet->EOF){
+						?>
+						 <option value="<?=$rsGet->fields['id']?>" selected="selected" readonly="readonly"><?=$rsGet->fields['code']."-".$rsGet->fields['name']?></option>
+						 <?
+						 $rsGet->movenext();
+						}
+						?>
+					 <select>
+					</p>
+					<p>
+					 <label><?=_("Rating")?> : </label>
+					 <select name="rating">
+					  <?php
+					  $sql="select * from ratings where id = ".$getData->fields['rating'];
+					  $rsGet=$DB->execute($sql);
+					  while(!$rsGet->EOF){
+					   ?>
+						 <option value="<?=$rsGet->fields['id']?>" selected="selected" readonly="readonly"><?=$rsGet->fields['code']."-".$rsGet->fields['name']?></option>
+					   <?
+					   $rsGet->movenext();
+						}
+					 ?>
+					<select>
 				</p>
 				<p>
 					<label>&nbsp;</label>

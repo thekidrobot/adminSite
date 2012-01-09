@@ -100,7 +100,6 @@ if($N > 0)
 												
 								while (!$rsGet->EOF)
 								{  
-									$counter++;
 									?>
 									<tr <?php if($counter % 2) echo " class='odd'"?>>
 										<td><a href="viewPackageDetail.php?pck_id=<?=$rsGet->fields['id']?>"><?=$rsGet->fields['name']?></a></td>
@@ -112,7 +111,16 @@ if($N > 0)
 									</tr>
 									<?php
 									$rsGet->movenext();
-								}  
+									$counter++;
+								}
+								if ($counter == 0)
+								{
+									?>
+									<tr>
+										<td colspan="6" align="center"><?=_("No records found")?></td>
+									</tr>
+									<?
+								}
 								?>
 						</tbody>
 						</table>

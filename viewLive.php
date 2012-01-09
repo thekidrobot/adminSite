@@ -70,7 +70,7 @@ if($U > 0)
 		 <h2><a href="#"><?=_("Live TV")?></a> &raquo; <a href="#" class="active"><?=_("View live channels")?></a></h2>
 			
 			<div class="album">
-			 <table class="gallery paginate-2 max-pages-10">
+			 <table class="gallery paginate-2 max-pages-5">
 			 <tr>
 			 <?php
 			 $sql_getData = "SELECT * FROM livechannels ORDER BY id DESC";
@@ -81,6 +81,10 @@ if($U > 0)
 				while (!$rs_getData->EOF)
 				{
 					$thumb=getThumbnail($rs_getData->fields['pic']);
+					
+					$sql = "select code from ratings where id = ".$rs_getData->fields['rating'];
+					$rsGetRating = $DB->execute($sql);
+					
 					?>
 						<td>
 							<div class="imageSingle">
@@ -91,7 +95,8 @@ if($U > 0)
 								</div>
 								<div class="footer">
 									<b>Name : </b><?=$rs_getData->fields['name']; ?><br />
-									<b>Rating : </b><?=$rs_getData->fields['rating']; ?></td>
+									<b>Rating : </b><?=$rsGetRating->fields['code']; ?><br />
+									<b>Number : </b><?=$rs_getData->fields['number']; ?></td>
 								</div>
 							</div>
 						<td>

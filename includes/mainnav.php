@@ -35,7 +35,14 @@
 					 ) echo "class='active'";
 	?>
 	><?=_("Packages")?></a></li>
-	<li><a href="admusuarios.php"><?=_("Subscribers")?></a></li>
+	<li><a href="viewSubscribers.php"
+	<?php if($currentPage == "createSubscriber.php" or
+					 $currentPage == "addSubscriberPackage.php" or 	
+					 $currentPage == "viewSubscribers.php" or
+					 $currentPage == "viewSubscriberDetail.php"
+					 ) echo "class='active'";
+	?>
+	><?=_("Subscribers")?></a></li>
 	<li><a href="#"><?=_("Reports")?></a></li>
 	<li><a href="#"><?=_("Support")?></a></li>
 	<li><a href="#"><?=_("FAQ")?></a></li>
