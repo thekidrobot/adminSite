@@ -29,7 +29,17 @@
 			<li><a href="viewLive.php"><?=_("Go to the Channel List")?></a></li>
 			<?
 		}
-		/**************** ONDemand *******************************/
+		/**************** EPG *******************************/
+		elseif($currentPage == "epg.php" or
+					 $currentPage == "viewEpg.php")
+		{
+			?>
+			<li><a href="epg.php" <?php if($currentPage == "epg.php") echo "class='active'"?> ><?=_("Add EPG")?></a></li>
+			<li><a href="viewEpg.php" <?php if($currentPage == "viewEpg.php") echo "class='active'"?> ><?=_("View EPG")?></a></li>
+			<?
+		}
+		
+		/**************** OnDemand *******************************/
 		elseif($currentPage == "viewVod.php"
 			 or $currentPage == "addVod.php"
 			 or $currentPage == "searchVod.php")

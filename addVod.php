@@ -72,12 +72,13 @@ if ($_POST["MM_insert"] == "true")
 	$keywords = escape_value($postArray['keywords']);
 	$rating = escape_value($postArray['rating']);
 	$price = escape_value($postArray['price']);
+	$price = escape_value($postArray['currency']);
 	
 	$insertSql = "INSERT INTO vodchannels
-								(pic,name,description,stb_url,download_url,pc_url,trainer,date_release,keywords,rating,price)
+								(pic,name,description,stb_url,download_url,pc_url,trainer,date_release,keywords,rating,price,currency)
 								VALUES ('$pic','$name','$description',
 												'$stb_url','$download_url','$pc_url',
-												'$trainer','$date_release','$keywords',$rating,$price)";
+												'$trainer','$date_release','$keywords',$rating,$price,$currency)";
 	
 	$rsInsVod = $DB->Execute($insertSql);
 	
@@ -152,13 +153,38 @@ if ($_POST["MM_insert"] == "true")
 						<input name="keywords" type="text" maxlength="150"  class="text-long" />
 					</p>
 					<p>
-						<label><?=_("Rating")?> : </label>
-						<input name="rating" type="text" maxlength="150"  class="text-long" />
+						<label><?=_("Price")?> : </label>
+						<input name="price" type="text" maxlength="150"  value="0" class="text-small" />
 					</p>
 					<p>
-						<label><?=_("Price")?> : </label>
-						<input name="price" type="text" maxlength="150"  value="0" class="text-long" />
+						<label><?=_("Currency")?> : </label>
+						<select name="currency">
+							<?php
+								$sql="select * from currencies";
+								$rsGet=$DB->execute($sql);
+								while(!$rsGet->EOF){
+									?>
+										<option value="<?=$rsGet->fields['id']?>"><?=$rsGet->fields['code']."-".$rsGet->fields['name']?></option>
+									<?
+									$rsGet->movenext();
+								}
+							?>
+						<select>
 					</p>
+					<p>
+						<label><?=_("Rating")?> : </label>
+						<select name="rating">
+							<?php
+								$sql="select * from ratings";
+								$rsGet=$DB->execute($sql);
+								while(!$rsGet->EOF){
+									?>
+										<option value="<?=$rsGet->fields['id']?>"><?=$rsGet->fields['code']."-".$rsGet->fields['name']?></option>
+									<?
+									$rsGet->movenext();
+								}
+							?>
+						<select>
 					<p>
 						<label>&nbsp;</label>
 						<input type="hidden" name="MM_insert" value="true" />

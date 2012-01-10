@@ -4,10 +4,10 @@
 	$username_cnxRamp = "root";
 	$password_cnxRamp = "root";
 	
+	include (dirname(__FILE__) . DIRECTORY_SEPARATOR.'adodb/toexport.inc.php');
 	include (dirname(__FILE__) . DIRECTORY_SEPARATOR.'adodb/adodb.inc.php');
 	$DB = NewADOConnection('mysql');
 	$DB->Connect($hostname_cnxRamp, $username_cnxRamp, $password_cnxRamp, $database_cnxRamp);
 	$DB->SetFetchMode(ADODB_FETCH_ASSOC);
-	//$DB->debug=true;
-	
+	$DB->debug=true;
 ?>

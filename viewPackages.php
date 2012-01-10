@@ -79,8 +79,8 @@
 							<td><a href="viewPackageDetail.php?pck_id=<?=$rsGet->fields['id']?>"><?=$rsGet->fields['name']?></a></td>
 							<td><?=$rsGet->fields['duration']?></td>
 							<td><?=$rsGet->fields['price']?></td>
-							<td class="action"><a href="addPackageContentLive?pck_id=<?=$rsGet->fields['id']?>"><?=_("Live")?></td>
-							<td class="action"><a href="addPackageContentVod?pck_id=<?=$rsGet->fields['id']?>"><?=_("OnDemand")?></td>
+							<td class="action"><a href="addPackageContentLive.php?pck_id=<?=$rsGet->fields['id']?>"><?=_("Live")?></td>
+							<td class="action"><a href="addPackageContentVod.php?pck_id=<?=$rsGet->fields['id']?>"><?=_("OnDemand")?></td>
 							<td align="center"><input name='packages[]' type='checkbox' value="<?=$rsGet->fields['id']?>"></td>
 						</tr>
 						<?php

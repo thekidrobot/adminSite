@@ -8,7 +8,13 @@
 					 $currentPage == "searchLive.php") echo "class='active'";
 	?>		
 	><?=_("Live Tv")?></a></li>
-	<li><a href="#"><?=_("EPG")?></a></li>
+	<li><a href="epg.php"
+	<?php 
+	if($currentPage == "epg.php" or
+		 $currentPage == "viewEpg.php"
+		 ) echo "class='active'";
+	?>
+	><?=_("EPG")?></a></li>
 	<li><a href="viewVod.php"
 	<?php 
 	if($currentPage == "addVod.php" or

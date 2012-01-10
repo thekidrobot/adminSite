@@ -112,8 +112,8 @@
 			if(trim($err) != ""){
 			?>
 				<p>
-				<h4><?=_("Please correct the following errors: ")?></h4>
-				<div class="err"><?=$err?></div>
+					<h3><?=_("Please correct the following errors: ")?></h3>
+					<div class="err"><?=$err?></div>
 				</p>						
 			<?
 			}

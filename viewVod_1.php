@@ -68,49 +68,45 @@ if($U > 0)
 		<!-- // #sidebar -->
 		<div id="main">
 		 <h2><a href="#"><?=_("Video on demand")?></a> &raquo; <a href="#" class="active"><?=_("View VOD movies")?></a></h2>
-			<div class="album">
-			 <table class="gallery paginate-2 max-pages-5">
-			 <tr>
+			<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+			<table class="no-arrow rowstyle-alt colstyle-alt paginate-10 max-pages-5" >
+			 <thead>
+				<tr>
+				 <th class="sortable-keep fd-column-0"><b><?=_("Edit")?></b></th>
+				 <th class="sortable-keep fd-column-0"><b><?=_("Description")?></b></th>
+				 <th class="sortable-keep fd-column-1"><b><?=_("Trainer/Director")?></b></th>
+				 <th class="sortable-keep fd-column-2"><b><?=_("Release Date")?></b></th>
+				 <th class="sortable-keep fd-column-2"><b><?=_("Keywords")?></b></th>
+				 <th align="center" style="padding:5px 0px 5px 0px">
+				 <input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
+				</th>
+			 </tr>
+			</thead>
+			<tbody>
 			 <?php
 			 $sql_getData = "SELECT * FROM vodchannels ORDER BY id DESC";
 			 $rs_getData = $DB->Execute($sql_getData);
-			 
-			 $counter = 1;
-			 
-				while (!$rs_getData->EOF)
-				{
-					$thumb=getThumbnail($rs_getData->fields['pic']);
-					
-					$sql = "select code from ratings where id = ".$rs_getData->fields['rating'];
-					$rsGetRating = $DB->execute($sql);
-					
-					?>
-						<td>
-							<div class="imageSingle">
-								<div class="image">
-									<a href="viewVodDetail.php?id=<?=$rs_getData->fields['id']; ?>">
-									<img src="data/images/<?=$thumb ?>" />
-									</a>
-								</div>
-								<div class="footer">
-									<b>Name : </b><?=$rs_getData->fields['name']; ?><br />
-									<b>Rating : </b><?=$rsGetRating->fields['code']; ?><br />
-								</div>
-							</div>
-						<td>
-					<?
-					if ($counter%4 == 0){
-						?>
-						</tr>
-						<tr>
-					<?
-					}
-					$counter++;
-					$rs_getData->MoveNext();
-				}?>
+			 while (!$rs_getData->EOF)
+			 {
+				?>
+				<tr <?php if($counter % 2) echo " class='alt'"?>>
+				 <td><?=$rs_getData->fields['name']; ?></td>
+				 <td><?=$rs_getData->fields['description']; ?></td>
+				 <td><?=$rs_getData->fields['trainer']; ?></td>
+				 <td><?=$rs_getData->fields['date_release']; ?></td>
+				 <td><?=$rs_getData->fields['keywords']; ?></td>
+				 <td align="center">
+					<input name='archivos[]' type='checkbox' value="<?=$rs_getData->fields['id']?>">
+				 </td>
 				</tr>
-			</table>
-		</div>
+				<?php
+				$counter++;
+				$rs_getData->MoveNext();
+			 }?>
+			</tbody>
+		 </table>
+		</form>
+		<script type="text/javascript" src="js/tablesort.js"></script>
 		<script type="text/javascript" src="js/pagination.js"></script>
 	 </div><!-- // #main -->
 	<div class="clear"></div>

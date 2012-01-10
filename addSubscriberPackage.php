@@ -112,14 +112,14 @@
 					
 							$nleft = $rsGetLeft->numrows();
 							$nright = $rsGetRight->numrows();
-							
-							if($nleft >= $nright)
-							{
-							 $height = $nleft * 38;
+						 
+							if($nleft >= $nright){
+								if($nleft < 4) $height = $nleft * 68;
+								else $height = $nleft * 38;	
 							}
-							else
-							{
-							 $height = $nright * 38;
+							else{
+								if($nright < 4) $height = $nright * 68;
+								else $height = $nright * 38;	
 							}
 						?>
 						<form action="<?=$currentPage?>" method="post">	
