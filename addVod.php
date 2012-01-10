@@ -72,7 +72,7 @@ if ($_POST["MM_insert"] == "true")
 	$keywords = escape_value($postArray['keywords']);
 	$rating = escape_value($postArray['rating']);
 	$price = escape_value($postArray['price']);
-	$price = escape_value($postArray['currency']);
+	$currency = escape_value($postArray['currency']);
 	
 	$insertSql = "INSERT INTO vodchannels
 								(pic,name,description,stb_url,download_url,pc_url,trainer,date_release,keywords,rating,price,currency)

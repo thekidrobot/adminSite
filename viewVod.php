@@ -88,7 +88,7 @@ if($U > 0)
 						<td>
 							<div class="imageSingle">
 								<div class="image">
-									<a href="viewVodDetail.php?id=<?=$rs_getData->fields['id']; ?>">
+									<a href="viewVodMovieDetail.php?id=<?=$rs_getData->fields['id']; ?>">
 									<img src="data/images/<?=$thumb ?>" />
 									</a>
 								</div>

@@ -50,6 +50,16 @@
 			<li><a href="searchVod.php" <?php if($currentPage == "searchVod.php") echo "class='active'"?> ><?=_("Search VOD Movies")?></a></li>
 			<?
 		}
+		elseif($currentPage == "viewVodMovieDetail.php" or
+					 $currentPage == "editVodMovieDetail.php"){
+			?>
+			<li><a href="viewVodMovieDetail.php?id=<?=$id?>" <?php if($currentPage == "viewVodMovieDetail.php") echo "class='active'"?> ><?=_("View VOD movie detail")?></a></li>
+			<li><a href="editVodMovieDetail.php?edit=<?=$id?>" <?php if($currentPage == "editVodMovieDetail.php") echo "class='active'"?> ><?=_("Edit this movie")?></a></li>
+			<li><a href="viewVod.php?del=<?=$id?>" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" ><?=_("Delete this movie")?></a></li>
+			<li><a href="viewVod.php" <?php if($currentPage == "viewVod.php") echo "class='active'"?> ><?=_("Go to the movies list")?></a></li>
+			<?
+		}
+		/************* Categories *******************************/
 		
 		elseif($currentPage == "viewVodCategories.php" or
 					 $currentPage == "searchVodCategory.php" or

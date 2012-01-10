@@ -19,7 +19,9 @@
 	<?php 
 	if($currentPage == "addVod.php" or
 					 $currentPage == "viewVod.php" or 	
-					 $currentPage == "searchVod.php") echo "class='active'";
+					 $currentPage == "searchVod.php" or
+					 $currentPage == "editVodMovieDetail.php" or
+					 $currentPage == "viewVodMovieDetail.php") echo "class='active'";
 	?>
 	><?=_("VOD")?></a></li>
 	<li><a href="viewVodCategories.php"
