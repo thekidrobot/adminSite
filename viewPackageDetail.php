@@ -39,14 +39,28 @@
 					
 					<p>
 					<label><?=_("Package Duration")?></label>
-					<input type="text" name="duration" value="<?=$rsGet->fields['duration']?>" class="text-long" maxlenght="150" readonly="readonly" />
+					<input type="text" name="duration" value="<?=$rsGet->fields['duration']?>" class="text-small" maxlenght="150" readonly="readonly" />
 					</p>
 					
 					<p>
 					<label><?=_("Package Price")?></label>
-					<input type="text" name="price" value="<?=$rsGet->fields['price']?>" class="text-long" maxlenght="150" readonly="readonly" />
+					<input type="text" name="price" value="<?=$rsGet->fields['price']?>" class="text-small" maxlenght="150" readonly="readonly" />
 					</p>
-
+					<p>
+						<label><?=_("Currency")?> : </label>
+						<select name="currency">
+							<?php
+								$sql="select * from currencies where id = ".$rsGet->fields['currency'];
+								$rsGetCurrencies=$DB->execute($sql);
+								while(!$rsGetCurrencies->EOF){
+									?>
+										<option value="<?=$rsGetCurrencies->fields['id']?>"><?=$rsGetCurrencies->fields['code']."-".$rsGetCurrencies->fields['name']?></option>
+									<?
+									$rsGetCurrencies->movenext();
+								}
+							?>
+						<select>
+					</p>
 					<p>
 						<label>&nbsp;</label>
 						<input type="hidden" value="<?=$rsGet->fields['id']?>" name="flgEdit" />

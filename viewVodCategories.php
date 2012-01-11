@@ -58,7 +58,7 @@
 				<table class="no-arrow rowstyle-alt colstyle-alt paginate-10 max-pages-5">
 				<thead>
 				<tr>
-					<th class="sortable"><b><?=_("View Details")?></b></th>
+					<th class="sortable"><b><?=_("Name / View Details")?></b></th>
 					<th><b><?=_("Add Content")?></b></th>
 					<th style="text-align:center">
 						<input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
@@ -68,7 +68,7 @@
 			<tbody>	
 				<?php
 				$counter = 0;
-				$sql = "SELECT * FROM vodcategories order by parent asc";
+				$sql = "SELECT * FROM vodcategories order by id desc";
 				$rsGet = $DB->execute($sql);
 				
 				while (!$rsGet->EOF)

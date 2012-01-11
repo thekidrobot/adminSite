@@ -11,18 +11,33 @@
 		$name=escape_value($postArray['name']);
 		$username=escape_value($postArray['username']);
 		$password=escape_value($postArray['password1']);
-		$description=escape_value($postArray['description']);
+		$address=escape_value($postArray['address']);
+		$email=escape_value($postArray['email']);
+		$account=escape_value($postArray['account']);
+		$phone=escape_value($postArray['phone']);
+		$country=escape_value($postArray['country']);
+		$city=escape_value($postArray['city']);
+		$zip=escape_value($postArray['zip']);
 		$serial=escape_value($postArray['serial']);
 		$mac=escape_value($postArray['mac']);
 		$license=escape_value($postArray['license']);
-		
-		
+				
 		$validator = new FormValidator();
 		$validator->addValidation("name","req",_("Name is a mandatory field"));
 		$validator->addValidation("username","req",_("Username is a mandatory field"));
 		$validator->addValidation("password1","req",_("Password is a mandatory field"));
+		$validator->addValidation("password1","minlen=8",_("Password should be greater than 8 characters"));
+		$validator->addValidation("password1","alnum",_("Password should have only numbers and letters"));
 		$validator->addValidation("password2","req",_("Please confirm the password"));
 		$validator->addValidation("password2","eqelmnt=password1",_("Passwords don't match"));
+		$validator->addValidation("address","req",_("Address is a mandatory field"));
+		$validator->addValidation("email","req",_("Email is a mandatory field"));
+		$validator->addValidation("email","email",_("Email format is not valid"));
+		$validator->addValidation("account","req",_("Account number is a mandatory field"));
+		$validator->addValidation("phone","req",_("Phone number is a mandatory field"));
+		$validator->addValidation("city","req",_("City is a mandatory field"));
+		$validator->addValidation("zip","req",_("Zip code is a mandatory field"));
+		$validator->addValidation("zip","num",_("Zip code should be a number"));
 
 		if(!$validator->ValidateForm())
 		{
@@ -39,10 +54,16 @@
 			
 			$sql = "INSERT INTO
 							subscribers
-								(name,username,password,description,serial,mac,license)
+							(name,username,password,
+							 address,email,account,
+							 phone,country,city,zip,
+							 serial,mac,license
+							)
 							VALUES
 								('$name','$username','$password',
-								 '$description','$serial','$mac','$license')";
+								 '$address','$email','$account',
+								 '$phone','$country','$city','$zip',								 
+								 '$serial','$mac','$license')";
 		
 			$rsSet = $DB->Execute($sql);
 			$usr_id = $DB->Insert_ID();
@@ -50,43 +71,6 @@
 			redirect("addSubscriberPackage.php?usr_id=$usr_id");				
 		}
 	}
-	
-	if($_POST['flgEdit'] != "")
-	{
-		$id = $_POST['flgEdit'];
-		$sql = "select * from subscribers where id = $id";
-		$rsGet=$DB->execute($sql);
-	}
-	
-	if($_POST['updUsr'] != "")
-	{
-		$id = $_POST['updUsr'];
-		
-		$postArray = &$_POST;
-		
-		$name=escape_value($postArray['name']);
-		$username=escape_value($postArray['description']);
-		$password=escape_value($postArray['password1']);
-		$description=escape_value($postArray['description']);
-		$serial=escape_value($postArray['serial']);
-		$mac=escape_value($postArray['mac']);
-		$license=escape_value($postArray['license']);
-		
-		$sql = "update subscribers set
-						name = '$name',
-						username = '$username',
-						password = '$password',
-						description = '$description',
-						serial = '$serial',
-						mac = '$mac',
-						license = '$license'
-						where id = $id";
-						
-		$rsSet=$DB->execute($sql);
-		
-		redirect("viewSubscriberDetail.php?usr_id=$id");
-	}	
-
 
 ?>
 
@@ -106,9 +90,8 @@
 		<!-- // #sidebar -->
     
 		<div id="main">
-			<h2><a href="#"><?=_("Subscribers")?></a> &raquo; <a href="#" class="active"><?=_("Create new subscriber")?></a></h2>
-			
-			<?php
+			<h2><a href="#"><?=_("Subscribers")?></a> &raquo; <a href="#" class="active"><?=_("Create new subscriber")?></a></h2>	
+			<?
 			if(trim($err) != ""){
 			?>
 				<p>
@@ -138,8 +121,43 @@
 					<input type="password" name="password2" value="<?=$rsGet->fields['password']?>" maxlength="15" class="text-long" />
 				</p>
 				<p>
-					<label><?=_("Subscriber Info")?></label>
-					<textarea name="description" maxlenght="500"><?=$rsGet->fields['description']?></textarea>
+					<label><?=_("Subscriber Address")?></label>
+					<input type="text" name="address" value="<?=$rsGet->fields['address']?>" maxlength="200" class="text-long" />
+				</p>
+				<p>
+					<label><?=_("Subscriber Email")?></label>
+					<input type="text" name="email" value="<?=$rsGet->fields['email']?>" maxlength="100" class="text-long" />
+				</p>
+				<p>
+					<label><?=_("Subscriber Account Number")?></label>
+					<input type="text" name="account" value="<?=$rsGet->fields['account']?>" maxlength="100" class="text-long" />
+				</p>
+				<p>
+					<label><?=_("Subscriber Phone")?></label>
+					<input type="text" name="phone" value="<?=$rsGet->fields['phone']?>" maxlength="100" class="text-long" />
+				</p>
+				<p>
+					<label><?=_("Subscriber Country")?> : </label>
+					<select name="country">
+						<?php
+							$sql="select * from countries";
+							$rsGetCountries=$DB->execute($sql);
+							while(!$rsGetCountries->EOF){
+								?>
+									<option value="<?=$rsGetCountries->fields['id']?>" <? if($rsGetCountries->fields['id'] == $rsGet->fields['country']) echo "selected = 'selected'" ?>><?=$rsGetCountries->fields['name']?></option>
+								<?
+								$rsGetCountries->movenext();
+							}
+						?>
+					<select>
+				</p>
+				<p>
+					<label><?=_("Subscriber city")?></label>
+					<input type="text" name="city" value="<?=$rsGet->fields['city']?>" maxlength="100" class="text-long" />
+				</p>
+				<p>
+					<label><?=_("Subscriber Zip code")?></label>
+					<input type="text" name="zip" value="<?=$rsGet->fields['zip']?>" maxlength="10" class="text-small" />
 				</p>
 				<p>
 					<label><?=_("STB Mac Address")?></label>
@@ -153,28 +171,11 @@
 					<label><?=_("Computer License")?></label>
 					<input name="license" type="text" value="<?=$rsGet->fields['license']?>" class="text-long" />
 				</p>
-				<?
-				if($_POST['flgEdit'] != "")
-				{
-					?>
-					<p>
-						<label>&nbsp;</label>
-						<input type="hidden" name="updUsr" value="<?=$id?>" />
-						<input type="submit" name="updateUser" value="<?=_("Update")?>" />
-					</p>					
-					<?
-				}
-				else
-				{
-					?>
-					<p>
-						<label><?=_("Save and Add Packages")?></label>
-						<input type="hidden" name="addPck" value="1" />
-						<input type="submit" name="addPackages" value="<?=_("Save")?>" />
-					</p>					
-					<?
-				}
-				?>
+				<p>
+					<label><?=_("Save and Add Packages")?></label>
+					<input type="hidden" name="addPck" value="1" />
+					<input type="submit" name="addPackages" value="<?=_("Save")?>" />
+				</p>					
 			 </fieldset>
 			</form>
 		</div><!-- // #main -->

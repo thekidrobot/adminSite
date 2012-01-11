@@ -59,6 +59,15 @@ if((!empty($_FILES['pic']['name'])) && ($_FILES['pic']['error'] == 0))
 
 if ($_POST["MM_insert"] == "true")
 {
+
+	$validator = new FormValidator();
+	
+	$validator->addValidation("name","req",_("Name is a mandatory field"));
+	$validator->addValidation("number","req",_("Channel number is a mandatory field"));
+	$validator->addValidation("number","num",_("Channel number should be a numerical value"));
+	$validator->addValidation("description","maxlen=100",_("Description shouldn't be longer than 100 characters"));
+	$validator->addValidation("price","num",_("Price should be a numerical value"));
+
 	$postArray = &$_POST ;
 	
 	$pic = escape_value($filename);
@@ -69,15 +78,37 @@ if ($_POST["MM_insert"] == "true")
 	$price = escape_value($postArray['price']);
 	$currency = escape_value($postArray['currency']);
 	$rating = escape_value($postArray['rating']);
+
+	$sqlChannel = "select count(*) as channels from livechannels where number = $number";
+	$rsGetChannel = $DB->execute($sqlChannel);
+	$channelExists = $rsGetChannel->fields['channels'];
 	
-	$insertSql = "INSERT INTO livechannels
-								(pic,name,number,description,url,price,currency,rating)
-								VALUES ('$pic','$name',$number,'$description',
-												'$url',$price,$currency,'$rating')";
-	
-	$rsInsLive = $DB->Execute($insertSql);
-	
-	redirect("viewLive.php");
+	if($channelExists > 0)
+	{
+		$err .= "Channel number must be unique</br>";
+	}
+	else
+	{
+		if(!$validator->ValidateForm())
+		{
+			$error_hash = $validator->GetErrors();
+			foreach($error_hash as $inpname => $inp_err)
+			{
+				$err .= $inp_err."</br>";
+			}
+		}
+		else
+		{	
+			$insertSql = "INSERT INTO livechannels
+										(pic,name,number,description,url,price,currency,rating)
+										VALUES ('$pic','$name',$number,'$description',
+														'$url',$price,$currency,'$rating')";
+			
+			$rsInsLive = $DB->Execute($insertSql);
+			
+			redirect("viewLive.php");
+		}
+	}
 }
 ?>
 
@@ -97,6 +128,18 @@ if ($_POST["MM_insert"] == "true")
 		<!-- // #sidebar -->
 		<div id="main">
 			<h2><a href="#"><?=_("Live TV")?></a> &raquo; <a href="#" class="active"><?=_("Add a live channel")?></a></h2>
+			
+			<?php
+			if(trim($err) != ""){
+			?>
+				<p>
+					<h3><?=_("Please correct the following errors: ")?></h3>
+					<div class="err"><?=$err?></div>
+				</p>						
+			<?
+			}
+			?>
+			
 			<form method="post" enctype="multipart/form-data" action="<?php echo $currentPage; ?>" class="jNice">
 				<fieldset>
 					<p>
@@ -109,7 +152,7 @@ if ($_POST["MM_insert"] == "true")
 					</p>
 					<p>
 						<label><?=_("Channel Number")?> : </label>
-						<input name="number" type="text" maxlength="150" class="text-small" />
+						<input name="number" type="text" maxlength="10" class="text-small" />
 					</p>
 					<p>
 						<label><?=_("Channel Description")?> : </label>

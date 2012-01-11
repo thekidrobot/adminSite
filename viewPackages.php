@@ -57,8 +57,8 @@
 					<th class="sortable"><b><?=_("Name")?></b></th>
 					<th class="sortable"><b><?=_("Duration")?></b></th>
 					<th class="sortable"><b><?=_("Price")?></b></th>
-					<th><b><?=_("Add content")?></b></th>
-					<th><b><?=_("Add content")?></b></th>
+					<th><b><?=_("Add content Live")?></b></th>
+					<th><b><?=_("Add content OnDemand")?></b></th>
 					<th style="text-align:center">
 						<input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
 					</th>
@@ -68,7 +68,7 @@
 				<?php
 					$counter = 0;
 					
-					$sql = "SELECT * FROM packages";
+					$sql = "SELECT * FROM packages order by id desc";
 					$rsGet = $DB->Execute($sql);
 									
 					while (!$rsGet->EOF)

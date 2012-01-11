@@ -3,7 +3,7 @@
 # Server version:               5.5.12
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3603
-# Date/time:                    2012-01-10 17:56:13
+# Date/time:                    2012-01-11 21:10:12
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -26,6 +26,273 @@ DELETE FROM `administrador`;
 INSERT INTO `administrador` (`IdAdministrador`, `Login`, `Clave`) VALUES
 	(2, 'admin', 'admin123');
 /*!40000 ALTER TABLE `administrador` ENABLE KEYS */;
+
+
+# Dumping structure for table lfg.countries
+DROP TABLE IF EXISTS `countries`;
+CREATE TABLE IF NOT EXISTS `countries` (
+  `id` int(11) NOT NULL,
+  `name` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+# Dumping data for table lfg.countries: 252 rows
+DELETE FROM `countries`;
+/*!40000 ALTER TABLE `countries` DISABLE KEYS */;
+INSERT INTO `countries` (`id`, `name`) VALUES
+	(1, 'Afghanistan'),
+	(2, 'Albania'),
+	(3, 'Algeria'),
+	(4, 'American Samoa'),
+	(5, 'Andorra'),
+	(6, 'Angola'),
+	(7, 'Anguilla'),
+	(8, 'Antarctica'),
+	(9, 'Antigua and Barbuda'),
+	(10, 'Argentina'),
+	(11, 'Armenia'),
+	(12, 'Armenia'),
+	(13, 'Aruba'),
+	(14, 'Australia'),
+	(15, 'Austria'),
+	(16, 'Azerbaijan'),
+	(17, 'Azerbaijan'),
+	(18, 'Bahamas'),
+	(19, 'Bahrain'),
+	(20, 'Bangladesh'),
+	(21, 'Barbados'),
+	(22, 'Belarus'),
+	(23, 'Belgium'),
+	(24, 'Belize'),
+	(25, 'Benin'),
+	(26, 'Bermuda'),
+	(27, 'Bhutan'),
+	(28, 'Bolivia'),
+	(29, 'Bosnia and Herzegovina'),
+	(30, 'Botswana'),
+	(31, 'Bouvet Island'),
+	(32, 'Brazil'),
+	(33, 'British Indian Ocean Territory'),
+	(34, 'Brunei Darussalam'),
+	(35, 'Bulgaria'),
+	(36, 'Burkina Faso'),
+	(37, 'Burundi'),
+	(38, 'Cambodia'),
+	(39, 'Cameroon'),
+	(40, 'Canada'),
+	(41, 'Cape Verde'),
+	(42, 'Cayman Islands'),
+	(43, 'Central African Republic'),
+	(44, 'Chad'),
+	(45, 'Chile'),
+	(46, 'China'),
+	(47, 'Christmas Island'),
+	(48, 'Cocos (Keeling) Islands'),
+	(49, 'Colombia'),
+	(50, 'Comoros'),
+	(51, 'Congo'),
+	(52, 'Congo, The Democratic Republic of The'),
+	(53, 'Cook Islands'),
+	(54, 'Costa Rica'),
+	(55, 'Cote D\'ivoire'),
+	(56, 'Croatia'),
+	(57, 'Cuba'),
+	(58, 'Cyprus'),
+	(59, 'Cyprus'),
+	(60, 'Czech Republic'),
+	(61, 'Denmark'),
+	(62, 'Djibouti'),
+	(63, 'Dominica'),
+	(64, 'Dominican Republic'),
+	(65, 'Easter Island'),
+	(66, 'Ecuador'),
+	(67, 'Egypt'),
+	(68, 'El Salvador'),
+	(69, 'Equatorial Guinea'),
+	(70, 'Eritrea'),
+	(71, 'Estonia'),
+	(72, 'Ethiopia'),
+	(73, 'Falkland Islands (Malvinas)'),
+	(74, 'Faroe Islands'),
+	(75, 'Fiji'),
+	(76, 'Finland'),
+	(77, 'France'),
+	(78, 'French Guiana'),
+	(79, 'French Polynesia'),
+	(80, 'French Southern Territories'),
+	(81, 'Gabon'),
+	(82, 'Gambia'),
+	(83, 'Georgia'),
+	(84, 'Georgia'),
+	(85, 'Germany'),
+	(86, 'Ghana'),
+	(87, 'Gibraltar'),
+	(88, 'Greece'),
+	(89, 'Greenland'),
+	(90, 'Greenland'),
+	(91, 'Grenada'),
+	(92, 'Guadeloupe'),
+	(93, 'Guam'),
+	(94, 'Guatemala'),
+	(95, 'Guinea'),
+	(96, 'Guinea-bissau'),
+	(97, 'Guyana'),
+	(98, 'Haiti'),
+	(99, 'Heard Island and Mcdonald Islands'),
+	(100, 'Honduras'),
+	(101, 'Hong Kong'),
+	(102, 'Hungary'),
+	(103, 'Iceland'),
+	(104, 'India'),
+	(105, 'Indonesia'),
+	(106, 'Indonesia'),
+	(107, 'Iran'),
+	(108, 'Iraq'),
+	(109, 'Ireland'),
+	(110, 'Israel'),
+	(111, 'Italy'),
+	(112, 'Jamaica'),
+	(113, 'Japan'),
+	(114, 'Jordan'),
+	(115, 'Kazakhstan'),
+	(116, 'Kazakhstan'),
+	(117, 'Kenya'),
+	(118, 'Kiribati'),
+	(119, 'Korea, North'),
+	(120, 'Korea, South'),
+	(121, 'Kosovo'),
+	(122, 'Kuwait'),
+	(123, 'Kyrgyzstan'),
+	(124, 'Laos'),
+	(125, 'Latvia'),
+	(126, 'Lebanon'),
+	(127, 'Lesotho'),
+	(128, 'Liberia'),
+	(129, 'Libyan Arab Jamahiriya'),
+	(130, 'Liechtenstein'),
+	(131, 'Lithuania'),
+	(132, 'Luxembourg'),
+	(133, 'Macau'),
+	(134, 'Macedonia'),
+	(135, 'Madagascar'),
+	(136, 'Malawi'),
+	(137, 'Malaysia'),
+	(138, 'Maldives'),
+	(139, 'Mali'),
+	(140, 'Malta'),
+	(141, 'Marshall Islands'),
+	(142, 'Martinique'),
+	(143, 'Mauritania'),
+	(144, 'Mauritius'),
+	(145, 'Mayotte'),
+	(146, 'Mexico'),
+	(147, 'Micronesia, Federated States of'),
+	(148, 'Moldova, Republic of'),
+	(149, 'Monaco'),
+	(150, 'Mongolia'),
+	(151, 'Montenegro'),
+	(152, 'Montserrat'),
+	(153, 'Morocco'),
+	(154, 'Mozambique'),
+	(155, 'Myanmar'),
+	(156, 'Namibia'),
+	(157, 'Nauru'),
+	(158, 'Nepal'),
+	(159, 'Netherlands'),
+	(160, 'Netherlands Antilles'),
+	(161, 'New Caledonia'),
+	(162, 'New Zealand'),
+	(163, 'Nicaragua'),
+	(164, 'Niger'),
+	(165, 'Nigeria'),
+	(166, 'Niue'),
+	(167, 'Norfolk Island'),
+	(168, 'Northern Mariana Islands'),
+	(169, 'Norway'),
+	(170, 'Oman'),
+	(171, 'Pakistan'),
+	(172, 'Palau'),
+	(173, 'Palestinian Territory'),
+	(174, 'Panama'),
+	(175, 'Papua New Guinea'),
+	(176, 'Paraguay'),
+	(177, 'Peru'),
+	(178, 'Philippines'),
+	(179, 'Pitcairn'),
+	(180, 'Poland'),
+	(181, 'Portugal'),
+	(182, 'Puerto Rico'),
+	(183, 'Qatar'),
+	(184, 'Reunion'),
+	(185, 'Romania'),
+	(186, 'Russia'),
+	(187, 'Russia'),
+	(188, 'Rwanda'),
+	(189, 'Saint Helena'),
+	(190, 'Saint Kitts and Nevis'),
+	(191, 'Saint Lucia'),
+	(192, 'Saint Pierre and Miquelon'),
+	(193, 'Saint Vincent and The Grenadines'),
+	(194, 'Samoa'),
+	(195, 'San Marino'),
+	(196, 'Sao Tome and Principe'),
+	(197, 'Saudi Arabia'),
+	(198, 'Senegal'),
+	(199, 'Serbia and Montenegro'),
+	(200, 'Seychelles'),
+	(201, 'Sierra Leone'),
+	(202, 'Singapore'),
+	(203, 'Slovakia'),
+	(204, 'Slovenia'),
+	(205, 'Solomon Islands'),
+	(206, 'Somalia'),
+	(207, 'South Africa'),
+	(208, 'South Georgia and The South Sandwich Islands'),
+	(209, 'Spain'),
+	(210, 'Sri Lanka'),
+	(211, 'Sudan'),
+	(212, 'Suriname'),
+	(213, 'Svalbard and Jan Mayen'),
+	(214, 'Swaziland'),
+	(215, 'Sweden'),
+	(216, 'Switzerland'),
+	(217, 'Syria'),
+	(218, 'Taiwan'),
+	(219, 'Tajikistan'),
+	(220, 'Tanzania, United Republic of'),
+	(221, 'Thailand'),
+	(222, 'Timor-leste'),
+	(223, 'Togo'),
+	(224, 'Tokelau'),
+	(225, 'Tonga'),
+	(226, 'Trinidad and Tobago'),
+	(227, 'Tunisia'),
+	(228, 'Turkey'),
+	(229, 'Turkey'),
+	(230, 'Turkmenistan'),
+	(231, 'Turks and Caicos Islands'),
+	(232, 'Tuvalu'),
+	(233, 'Uganda'),
+	(234, 'Ukraine'),
+	(235, 'United Arab Emirates'),
+	(236, 'United Kingdom'),
+	(237, 'United States'),
+	(238, 'United States Minor Outlying Islands'),
+	(239, 'Uruguay'),
+	(240, 'Uzbekistan'),
+	(241, 'Vanuatu'),
+	(242, 'Vatican City'),
+	(243, 'Venezuela'),
+	(244, 'Vietnam'),
+	(245, 'Virgin Islands, British'),
+	(246, 'Virgin Islands, U.S.'),
+	(247, 'Wallis and Futuna'),
+	(248, 'Western Sahara'),
+	(249, 'Yemen'),
+	(250, 'Yemen'),
+	(251, 'Zambia'),
+	(252, 'Zimbabwe');
+/*!40000 ALTER TABLE `countries` ENABLE KEYS */;
 
 
 # Dumping structure for table lfg.currencies
@@ -57,9 +324,9 @@ CREATE TABLE IF NOT EXISTS `grid_live` (
   `start_date` datetime DEFAULT NULL,
   `end_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='Programming grid for live channels';
+) ENGINE=MyISAM AUTO_INCREMENT=218 DEFAULT CHARSET=latin1 COMMENT='Programming grid for live channels';
 
-# Dumping data for table lfg.grid_live: 1 rows
+# Dumping data for table lfg.grid_live: 72 rows
 DELETE FROM `grid_live`;
 /*!40000 ALTER TABLE `grid_live` DISABLE KEYS */;
 INSERT INTO `grid_live` (`id`, `channel_id`, `name`, `description`, `start_date`, `end_date`) VALUES
@@ -153,7 +420,7 @@ CREATE TABLE IF NOT EXISTS `livechannels` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=86 DEFAULT CHARSET=latin1 COMMENT='Table for live content';
 
-# Dumping data for table lfg.livechannels: 72 rows
+# Dumping data for table lfg.livechannels: 71 rows
 DELETE FROM `livechannels`;
 /*!40000 ALTER TABLE `livechannels` DISABLE KEYS */;
 INSERT INTO `livechannels` (`id`, `pic`, `name`, `number`, `description`, `url`, `price`, `currency`, `rating`) VALUES
@@ -226,9 +493,8 @@ INSERT INTO `livechannels` (`id`, `pic`, `name`, `number`, `description`, `url`,
 	(80, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
 	(81, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
 	(82, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(83, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(84, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(85, 'wile339_big.jpg', 'Andres', 11, 'test', 'test', 1500, 1, 1);
+	(84, 'Water lilies444_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
+	(85, 'wile339_big.jpg', 'Andres', 11, 'test', 'test', 1500, 3, 1);
 /*!40000 ALTER TABLE `livechannels` ENABLE KEYS */;
 
 
@@ -240,15 +506,17 @@ CREATE TABLE IF NOT EXISTS `packages` (
   `description` varchar(500) DEFAULT NULL,
   `duration` varchar(50) DEFAULT NULL,
   `price` int(20) DEFAULT NULL,
+  `currency` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
-# Dumping data for table lfg.packages: 2 rows
+# Dumping data for table lfg.packages: 3 rows
 DELETE FROM `packages`;
 /*!40000 ALTER TABLE `packages` DISABLE KEYS */;
-INSERT INTO `packages` (`id`, `name`, `description`, `duration`, `price`) VALUES
-	(5, 'Andres', 'andres', 'andres', 0),
-	(4, 'dummy', 'dummy', 'dummy', 0);
+INSERT INTO `packages` (`id`, `name`, `description`, `duration`, `price`, `currency`) VALUES
+	(5, 'Andres', 'andres', '100', 111, 3),
+	(4, 'dummy', 'dummy', 'dummy', 0, 2),
+	(6, 'Canal Caracol', '', '11', 111, 3);
 /*!40000 ALTER TABLE `packages` ENABLE KEYS */;
 
 
@@ -281,7 +549,7 @@ CREATE TABLE IF NOT EXISTS `packages_vodchannels` (
   PRIMARY KEY (`package_id`,`resource_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-# Dumping data for table lfg.packages_vodchannels: 1 rows
+# Dumping data for table lfg.packages_vodchannels: 0 rows
 DELETE FROM `packages_vodchannels`;
 /*!40000 ALTER TABLE `packages_vodchannels` DISABLE KEYS */;
 /*!40000 ALTER TABLE `packages_vodchannels` ENABLE KEYS */;
@@ -336,18 +604,24 @@ CREATE TABLE IF NOT EXISTS `subscribers` (
   `name` varchar(150) DEFAULT NULL,
   `username` varchar(100) DEFAULT NULL,
   `password` varchar(150) DEFAULT NULL,
-  `description` varchar(500) DEFAULT NULL,
+  `address` varchar(500) DEFAULT NULL,
+  `email` varchar(500) DEFAULT NULL,
+  `account` varchar(500) DEFAULT NULL,
+  `phone` varchar(500) DEFAULT NULL,
+  `country` varchar(500) DEFAULT NULL,
+  `city` varchar(500) DEFAULT NULL,
+  `zip` varchar(500) DEFAULT NULL,
   `serial` varchar(150) DEFAULT NULL,
   `mac` varchar(100) DEFAULT NULL,
   `license` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 # Dumping data for table lfg.subscribers: 1 rows
 DELETE FROM `subscribers`;
 /*!40000 ALTER TABLE `subscribers` DISABLE KEYS */;
-INSERT INTO `subscribers` (`id`, `name`, `username`, `password`, `description`, `serial`, `mac`, `license`) VALUES
-	(4, 'Andres', 'Andres', 'andres', 'andres', 'andres', 'andres', 'andres');
+INSERT INTO `subscribers` (`id`, `name`, `username`, `password`, `address`, `email`, `account`, `phone`, `country`, `city`, `zip`, `serial`, `mac`, `license`) VALUES
+	(7, 'Cosme Fulanito', 'cosmeFulanito', '16d7a4fca7442dda3ad93c9a726597e4', 'Test', 'my@email.com', 'test', 'test', '39', 'Mumbai', '111', '1112', '111', '');
 /*!40000 ALTER TABLE `subscribers` ENABLE KEYS */;
 
 
@@ -359,11 +633,11 @@ CREATE TABLE IF NOT EXISTS `subscribers_packages` (
   PRIMARY KEY (`subscriber_id`,`package_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-# Dumping data for table lfg.subscribers_packages: 1 rows
+# Dumping data for table lfg.subscribers_packages: 2 rows
 DELETE FROM `subscribers_packages`;
 /*!40000 ALTER TABLE `subscribers_packages` DISABLE KEYS */;
 INSERT INTO `subscribers_packages` (`subscriber_id`, `package_id`) VALUES
-	(4, 4);
+	(7, 5);
 /*!40000 ALTER TABLE `subscribers_packages` ENABLE KEYS */;
 
 

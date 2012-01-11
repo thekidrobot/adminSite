@@ -74,15 +74,32 @@ if ($_POST["MM_insert"] == "true")
 	$price = escape_value($postArray['price']);
 	$currency = escape_value($postArray['currency']);
 	
-	$insertSql = "INSERT INTO vodchannels
-								(pic,name,description,stb_url,download_url,pc_url,trainer,date_release,keywords,rating,price,currency)
-								VALUES ('$pic','$name','$description',
-												'$stb_url','$download_url','$pc_url',
-												'$trainer','$date_release','$keywords',$rating,$price,$currency)";
+	$validator = new FormValidator();
+
+	$validator->addValidation("name","req",_("Name is a mandatory field"));
+	$validator->addValidation("description","maxlen=100",_("Description shouldn't be longer than 100 characters"));
+	$validator->addValidation("price","num",_("Price should be a numerical value"));
 	
-	$rsInsVod = $DB->Execute($insertSql);
-	
-	redirect("viewVod.php");
+	if(!$validator->ValidateForm())
+	{
+		$error_hash = $validator->GetErrors();
+		foreach($error_hash as $inpname => $inp_err)
+		{
+			$err .= $inp_err."</br>";
+		}
+	}
+	else
+	{	
+		$insertSql = "INSERT INTO vodchannels
+									(pic,name,description,stb_url,download_url,pc_url,trainer,date_release,keywords,rating,price,currency)
+									VALUES ('$pic','$name','$description',
+													'$stb_url','$download_url','$pc_url',
+													'$trainer','$date_release','$keywords',$rating,$price,$currency)";
+		
+		$rsInsVod = $DB->Execute($insertSql);
+		
+		redirect("viewVod.php");
+	}
 }
 ?>
 
@@ -102,6 +119,18 @@ if ($_POST["MM_insert"] == "true")
 		<!-- // #sidebar -->
 		<div id="main">
 			<h2><a href="#"><?=_("Video on demand")?></a> &raquo; <a href="#" class="active"><?=_("Add a VOD movie")?></a></h2>
+		
+			<?php
+			if(trim($err) != ""){
+			?>
+				<p>
+					<h3><?=_("Please correct the following errors: ")?></h3>
+					<div class="err"><?=$err?></div>
+				</p>						
+			<?
+			}
+			?>
+		
 			<form method="post" enctype="multipart/form-data" action="<?php echo $currentPage; ?>" class="jNice">
 				<fieldset>
 					<p>

@@ -19,9 +19,9 @@
 	{
 		for($i=0; $i < $N; $i++)
 		{
-			$sql = "delete from subscribers where id = ".$arrPackages[$i];
+			$sql = "delete from subscribers where id = ".$arrSubscribers[$i];
 			$rsSet = $DB->Execute($sql);
-			$sql = "delete from subscribers_packages where subscriber_id = ".$arrPackages[$i];
+			$sql = "delete from subscribers_packages where subscriber_id = ".$arrSubscribers[$i];
 			$rsSet = $DB->Execute($sql);
 		} 
 	}	

@@ -82,6 +82,12 @@ if($_POST["MM_update"] == "true")
 		}
 	}
 	
+	$validator = new FormValidator();
+
+	$validator->addValidation("name","req",_("Name is a mandatory field"));
+	$validator->addValidation("description","maxlen=100",_("Description shouldn't be longer than 100 characters"));
+	$validator->addValidation("price","num",_("Price should be a numerical value"));
+	
 	$postArray = &$_POST ;
 	
 	$name = escape_value($postArray['name']);
@@ -96,23 +102,34 @@ if($_POST["MM_update"] == "true")
 	$price = escape_value($postArray['price']);
 	$currency = escape_value($postArray['currency']);
 	
-	$sql = "UPDATE vodchannels set
-					name = '$name',
-					description = '$description' ,
-					stb_url = '$stb_url',
-					download_url = '$download_url',
-					pc_url = '$pc_url',
-					trainer = '$trainer',
-					date_release = '$date_release',
-					keywords = '$keywords',
-					rating = $rating,
-					price = $price,
-					currency = $currency
-					where id = $id";
+	if(!$validator->ValidateForm())
+	{
+		$error_hash = $validator->GetErrors();
+		foreach($error_hash as $inpname => $inp_err)
+		{
+			$err .= $inp_err."</br>";
+		}
+	}
+	else
+	{		
+		$sql = "UPDATE vodchannels set
+						name = '$name',
+						description = '$description' ,
+						stb_url = '$stb_url',
+						download_url = '$download_url',
+						pc_url = '$pc_url',
+						trainer = '$trainer',
+						date_release = '$date_release',
+						keywords = '$keywords',
+						rating = $rating,
+						price = $price,
+						currency = $currency
+						where id = $id";
+		
+		$rsSet = $DB->Execute($sql);
 	
-	$rsSet = $DB->Execute($sql);
-
-	redirect($currentPage."?edit=".$id);
+		redirect($currentPage."?edit=".$id);
+	}
 }
 
 ?>
@@ -133,6 +150,18 @@ if($_POST["MM_update"] == "true")
 		<!-- // #sidebar -->
 		<div id="main">
 			<h2><a href="#"><?=_("Video on demand")?></a> &raquo; <a href="#" class="active"><?=_("Edit VOD movie details")?></a></h2>
+			
+			<?php
+			if(trim($err) != ""){
+			?>
+				<p>
+					<h3><?=_("Please correct the following errors: ")?></h3>
+					<div class="err"><?=$err?></div>
+				</p>						
+			<?
+			}
+			?>
+			
 			<form method="post" enctype="multipart/form-data" action="<?php echo $currentPage; ?>" class="jNice">
 				<fieldset>
 					<p>

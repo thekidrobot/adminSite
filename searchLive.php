@@ -57,7 +57,13 @@ if($_POST['strBusca']!= "")
 		case "rating":
 
 			if($whereCondicion != "") $whereCondicion .= " and ";
-			$whereCondicion .= " rating LIKE '%" . $strBusca . "%' ";
+			$whereCondicion .= " rating in( select id from ratings where code LIKE '%" . $strBusca . "%')";
+			break;
+		
+		case "number":
+
+			if($whereCondicion != "") $whereCondicion .= " and ";
+			$whereCondicion .= " number LIKE '%" . $strBusca . "%' ";
 			break;
 	}
 	
@@ -65,6 +71,7 @@ if($_POST['strBusca']!= "")
 }
 
 $query_rsConsulta = "SELECT * FROM livechannels "  . $whereCondicion;
+$query_rsConsulta .= " ORDER BY id DESC";
 
 ?>
 
@@ -97,6 +104,7 @@ $query_rsConsulta = "SELECT * FROM livechannels "  . $whereCondicion;
 								<option value="name" <?php if ($condicion == "name") echo "selected='selected'" ?>><?=_("Channel Name")?></option>
 								<option value="description" <?php if ($condicion == "description") echo "selected='selected'" ?>><?=_("Channel Description")?></option>
 								<option value="rating" <?php if ($condicion == "rating") echo "selected='selected'" ?>><?=_("Channel Rating")?></option>
+								<option value="number" <?php if ($condicion == "number") echo "selected='selected'" ?>><?=_("Channel Number")?></option>
 							</select>
 						</p>
 						<p>
@@ -116,10 +124,10 @@ $query_rsConsulta = "SELECT * FROM livechannels "  . $whereCondicion;
 						<table class="no-arrow rowstyle-alt colstyle-alt paginate-10 max-pages-5" >
 						 <thead>
 							<tr>
-							 <th class="sortable-keep fd-column-0"><b><?=_("Edit")?></b></th>
+							 <th class="sortable-keep fd-column-0"><b><?=_("Channel Name / Edit")?></b></th>
 							 <th class="sortable-keep fd-column-1"><b><?=_("Description")?></b></th>
 							 <th class="sortable-keep fd-column-2"><b><?=_("Rating")?></b></th>
-							 <th align="center" style="padding:5px 0px 5px 0px">
+							 <th align="center">
 							 <input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
 							</th>
 						 </tr>
@@ -129,6 +137,10 @@ $query_rsConsulta = "SELECT * FROM livechannels "  . $whereCondicion;
 						 $rs_getData = $DB->Execute($query_rsConsulta);
 						 while (!$rs_getData->EOF)
 						 {
+							
+							$sql = "select code from ratings where id = ".$rs_getData->fields['rating'];
+							$rsGetRating = $DB->execute($sql);
+							
 							?>
 							<tr <?php if($counter % 2) echo " class='alt'"?>>
 							 <td>
@@ -137,7 +149,7 @@ $query_rsConsulta = "SELECT * FROM livechannels "  . $whereCondicion;
 								</a>
 							 </td>							 
 							 <td><?=$rs_getData->fields['description']; ?></td>
-							 <td><?=$rs_getData->fields['rating']; ?></td>
+							 <td><?=$rsGetRating->fields['code']; ?></td>
 							 <td align="center">
 								<input name='archivos[]' type='checkbox' value="<?=$rs_getData->fields['id']?>">
 							 </td>

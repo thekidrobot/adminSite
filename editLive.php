@@ -81,6 +81,14 @@ if($_POST["MM_update"] == "true")
 		}
 	}
 
+	$validator = new FormValidator();
+	
+	$validator->addValidation("name","req",_("Name is a mandatory field"));
+	$validator->addValidation("number","req",_("Channel number is a mandatory field"));
+	$validator->addValidation("number","num",_("Channel number should be a numerical value"));
+	$validator->addValidation("description","maxlen=100",_("Description shouldn't be longer than 100 characters"));
+	$validator->addValidation("price","num",_("Price should be a numerical value"));
+
 	$postArray = &$_POST ;
 
 	$name = escape_value($postArray['name']);
@@ -90,20 +98,43 @@ if($_POST["MM_update"] == "true")
 	$price = escape_value($postArray['price']);
 	$rating = escape_value($postArray['rating']);
 	$currency = escape_value($postArray['currency']);
-	
-	$insertSql = "UPDATE livechannels SET
-								name = '$name',
-								number = $number,
-								description = '$description',
-								url = '$url',
-								price = $price,
-								rating = '$rating',
-								currency = '$currency' 
-								WHERE id = $id";
-	
-	$rsInsLive = $DB->Execute($insertSql);
 
-	redirect($currentPage."?edit=".$id);
+	$sqlChannel = "select count(*) as channels from livechannels where number = $number";
+	$rsGetChannel = $DB->execute($sqlChannel);
+	$channelExists = $rsGetChannel->fields['channels'];
+	
+	if($channelExists > 0)
+	{
+		$err .= "Channel number must be unique</br>";
+	}
+	else
+	{
+		if(!$validator->ValidateForm())
+		{
+			$error_hash = $validator->GetErrors();
+			foreach($error_hash as $inpname => $inp_err)
+			{
+				$err .= $inp_err."</br>";
+			}
+		}
+		else
+		{		
+			$insertSql = "UPDATE livechannels SET
+										name = '$name',
+										number = $number,
+										description = '$description',
+										url = '$url',
+										price = $price,
+										rating = '$rating',
+										currency = '$currency' 
+										WHERE id = $id";
+			
+			$rsInsLive = $DB->Execute($insertSql);
+		
+			redirect($currentPage."?edit=".$id);
+		}
+	}
+	
 }
 
 ?>
@@ -123,6 +154,19 @@ if($_POST["MM_update"] == "true")
 		</div>    
 			<div id="main">
 			<h2><a href="#"><?=_("Live TV")?></a> &raquo; <a href="#" class="active"><?=_("Edit Channel Information")?></a></h2>
+			
+			<?php
+			if(trim($err) != ""){
+			?>
+				<p>
+					<h3><?=_("Please correct the following errors: ")?></h3>
+					<div class="err"><?=$err?></div>
+				</p>						
+			<?
+			}
+			?>
+			
+			
 			<form method="POST" enctype="multipart/form-data" action="<?php echo $editFormAction; ?>" class="jNice">
 				<fieldset>
 				<p>
@@ -149,7 +193,7 @@ if($_POST["MM_update"] == "true")
 				</p>
 				<p>
 					<label><?=_("Channel Number")?> : </label>
-					<input value="<?=$getData->fields['number']?>"  name="number" type="text" maxlength="150" class="text-long" />
+					<input value="<?=$getData->fields['number']?>"  name="number" type="text" maxlength="10" class="text-small" />
 				</p>
 				<p>
 					<label><?=_("Channel Description")?> : </label>
@@ -161,7 +205,7 @@ if($_POST["MM_update"] == "true")
 				</p>
 				<p>
 					<label><?=_("Price")?> : </label>
-					<input value="<?=$getData->fields['price']?>"  name="price" type="text" maxlength="150"  value="0" class="text-long" />
+					<input value="<?=$getData->fields['price']?>"  name="price" type="text" maxlength="150"  value="0" class="text-small" />
 				</p>
 				<p>
 				 <label><?=_("Currency")?> : </label>

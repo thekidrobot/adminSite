@@ -26,17 +26,38 @@
 		$description=escape_value($postArray['description']);
 		$duration=escape_value($postArray['duration']);
 		$price=escape_value($postArray['price']);
+		$currency=escape_value($postArray['currency']);
 		
-		$sql = "update packages set
-						name = '$name',
-						description = '$description',
-						duration = '$duration',
-						price = '$price'
-						where id = $id";
-						
-		$rsSet=$DB->execute($sql);
+		$validator = new FormValidator();
+	
+		$validator->addValidation("name","req",_("Name is a mandatory field"));
+		$validator->addValidation("description","maxlen=100",_("Description shouldn't be longer than 100 characters"));
+		$validator->addValidation("price","num",_("Price should be a numerical value"));
+		$validator->addValidation("price","req",_("Price is a mandatory field"));
+		$validator->addValidation("Duration","num",_("Duration should be a numerical value"));
 		
-		redirect('viewPackages.php');
+		if(!$validator->ValidateForm())
+		{
+			$error_hash = $validator->GetErrors();
+			foreach($error_hash as $inpname => $inp_err)
+			{
+				$err .= $inp_err."</br>";
+			}
+		}
+		else
+		{	
+			$sql = "update packages set
+							name = '$name',
+							description = '$description',
+							duration = '$duration',
+							price = '$price',
+							currency = $currency
+							where id = $id";
+							
+			$rsSet=$DB->execute($sql);
+			
+			redirect('viewPackages.php');
+		}
 	}	
 	
 	
@@ -48,20 +69,39 @@
 		$description=escape_value($postArray['description']);
 		$duration=escape_value($postArray['duration']);
 		$price=escape_value($postArray['price']);
+		$currency=escape_value($postArray['currency']);
 		
-		$sql = "INSERT INTO packages
-						(name,description,duration,price)
-						VALUES ('$name','$description','$duration','$price')";
+		$validator = new FormValidator();
 	
-		$rsSet = $DB->Execute($sql);
-		
-		$pck_id = $DB->Insert_ID();
+		$validator->addValidation("name","req",_("Name is a mandatory field"));
+		$validator->addValidation("description","maxlen=100",_("Description shouldn't be longer than 100 characters"));
+		$validator->addValidation("price","num",_("Price should be a numerical value"));
+		$validator->addValidation("price","req",_("Price is a mandatory field"));
+		$validator->addValidation("Duration","num",_("Duration should be a numerical value"));
 
-		if($_POST['addLive']!=""){
-			redirect("addPackageContentLive.php?pck_id=$pck_id");
+		if(!$validator->ValidateForm())
+		{
+			$error_hash = $validator->GetErrors();
+			foreach($error_hash as $inpname => $inp_err)
+			{
+				$err .= $inp_err."</br>";
+			}
 		}
-		elseif($_POST['addVod']!=""){
-			redirect("addPackageContentVod.php?pck_id=$pck_id");
+		else
+		{	
+			$sql = "INSERT INTO packages
+							(name,description,duration,price,currency)
+							VALUES ('$name','$description','$duration','$price',$currency)";
+		
+			$rsSet = $DB->Execute($sql);
+			$pck_id = $DB->Insert_ID();
+	
+			if($_POST['addLive']!=""){
+				redirect("addPackageContentLive.php?pck_id=$pck_id");
+			}
+			elseif($_POST['addVod']!=""){
+				redirect("addPackageContentVod.php?pck_id=$pck_id");
+			}
 		}
 	}
 	
@@ -83,7 +123,30 @@
 		<!-- // #sidebar -->
     
 		<div id="main">
-			<h2><a href="#">Packages</a> &raquo; <a href="#" class="active">Add a new Package</a></h2>
+			
+			<?php
+			if($_POST['flgEdit'] != "")
+			{
+				?>
+				<h2><a href="#"><?=_("Packages")?></a> &raquo; <a href="#" class="active"><?=_("Edit package information")?></a></h2>		
+				<?
+			}
+			else
+			{
+				?>
+				<h2><a href="#"><?=_("Packages")?></a> &raquo; <a href="#" class="active"><?=_("Add a new Package")?></a></h2>
+				<?
+			}
+			if(trim($err) != ""){
+			?>
+				<p>
+					<h3><?=_("Please correct the following errors: ")?></h3>
+					<div class="err"><?=$err?></div>
+				</p>						
+			<?
+			}
+			?>
+			
 			<form action="<?=$currentPage?>" method="post" class="jNice">
 				<fieldset>
 					<p>
@@ -98,14 +161,28 @@
 					
 					<p>
 					<label><?=_("Package Duration")?></label>
-					<input type="text" name="duration" value="<?=$rsGet->fields['duration']?>" class="text-long" maxlenght="150" />
+					<input type="text" name="duration" value="<?=$rsGet->fields['duration']?>" class="text-small" maxlenght="20" />
 					</p>
 					
 					<p>
 					<label><?=_("Package Price")?></label>
-					<input type="text" name="price" value="<?=$rsGet->fields['price']?>" class="text-long" maxlenght="150" />
+					<input type="text" name="price" value="<?=$rsGet->fields['price']?>" class="text-small" maxlenght="10" />
 					</p>
-
+					<p>
+						<label><?=_("Currency")?> : </label>
+						<select name="currency">
+							<?php
+								$sql="select * from currencies";
+								$rsGetCurrencies=$DB->execute($sql);
+								while(!$rsGetCurrencies->EOF){
+									?>
+										<option value="<?=$rsGetCurrencies->fields['id']?>" <? if($rsGetCurrencies->fields['id'] == $rsGet->fields['currency']) echo "selected='selected'" ?>><?=$rsGetCurrencies->fields['code']."-".$rsGetCurrencies->fields['name']?></option>
+									<?
+									$rsGetCurrencies->movenext();
+								}
+							?>
+						<select>
+					</p>
 					<?php
 					if($_POST['flgEdit'] != "" or $_GET['pck_id'] != "")
 					{
@@ -113,7 +190,8 @@
 						<p>
 							<label>&nbsp;</label>
 							<input type="hidden" value="<?=$id?>" name="pck_id" />
-							<input type="submit" value="<?=_("Update")?>" name="flgUpd" />
+							<input type="hidden" value="1" name="flgUpd" />
+							<input type="submit" value="<?=_("Update")?>" name="update" />
 						</p>
 						<?
 					}
