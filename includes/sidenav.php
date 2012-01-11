@@ -119,8 +119,8 @@
 		{
 			?>
 			<li><a href="#" <?php if($currentPage == "viewPackageDetail.php") echo "class='active'"?> > <?=_("View package detail")?></a></li>			
-			<li><a href="addPackageContentVod.php?pck_id=<?=$pck_id ?>" <?php if($currentPage == "addPackageContentVod.php") echo "class='active'"?> > <?=_("Add VOD Content")?></a></li>		
-			<li><a href="addPackageContentLive.php?pck_id=<?=$pck_id ?>" <?php if($currentPage == "addPackageContentLive.php") echo "class='active'"?> > <?=_("Add Live Content")?></a></li>						
+			<li><a href="addPackageContentVod.php?pck_id=<?=$pck_id ?>" <?php if($currentPage == "addPackageContentVod.php") echo "class='active'"?> > <?=_("View / Add VOD content")?></a></li>		
+			<li><a href="addPackageContentLive.php?pck_id=<?=$pck_id ?>" <?php if($currentPage == "addPackageContentLive.php") echo "class='active'"?> > <?=_("View / Add Live Content")?></a></li>						
 			<li><a href="createPackage.php?pck_id=<?=$pck_id ?>" <?php if($currentPage == "createPackage.php") echo "class='active'"?> > <?=_("Edit this package")?></a></li>
 			<li><a href="viewPackages.php?del=<?=$pck_id ?>" <?php if($currentPage == "viewPackages.php") echo "class='active'"?> onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')"> <?=_("Delete this package")?></a></li>
 			<li><a href="viewPackages.php" <?php if($currentPage == "viewPackages.php") echo "class='active'"?>> <?=_("Back to package list")?></a></li>
@@ -134,8 +134,8 @@
 				else 	$pck_id = $_POST['flgEdit'];
 			?>
 				<li><a href="viewPackageDetail.php?pck_id=<?=$pck_id ?>" <?php if($currentPage == "viewPackageDetail.php") echo "class='active'"?> > <?=_("View package detail")?></a></li>
-				<li><a href="addPackageContentVod.php?pck_id=<?=$pck_id ?>" <?php if($currentPage == "addPackageContentVod.php") echo "class='active'"?> > <?=_("Add VOD Content")?></a></li>		
-				<li><a href="addPackageContentLive.php?pck_id=<?=$pck_id ?>" <?php if($currentPage == "addPackageContentLive.php") echo "class='active'"?> > <?=_("Add Live Content")?></a></li>			
+				<li><a href="addPackageContentVod.php?pck_id=<?=$pck_id ?>" <?php if($currentPage == "addPackageContentVod.php") echo "class='active'"?> > <?=_("View / Add VOD content")?></a></li>		
+				<li><a href="addPackageContentLive.php?pck_id=<?=$pck_id ?>" <?php if($currentPage == "addPackageContentLive.php") echo "class='active'"?> > <?=_("View / Add Live Content")?></a></li>			
 				<li><a href="createPackage.php?pck_id=<?=$pck_id ?>" <?php if($currentPage == "createPackage.php") echo "class='active'"?> > <?=_("Edit this package")?></a></li>
 				<li><a href="viewPackages.php?del=<?=$pck_id ?>" <?php if($currentPage == "viewPackages.php") echo "class='active'"?> onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')"> <?=_("Delete this package")?></a></li>
 				<li><a href="viewPackages.php" <?php if($currentPage == "viewPackages.php") echo "class='active'"?>> <?=_("Back to package list")?></a></li>
@@ -154,8 +154,8 @@
 		{
 		?>
 			<li><a href="viewPackageDetail.php?pck_id=<?=$pck_id ?>" <?php if($currentPage == "viewPackageDetail.php") echo "class='active'"?> > <?=_("View package detail")?></a></li>
-			<li><a href="#" <?php if($currentPage == "addPackageContentVod.php") echo "class='active'"?> > <?=_("Add VOD Content")?></a></li>
-			<li><a href="addPackageContentLive.php?pck_id=<?=$pck_id ?>" <?php if($currentPage == "addPackageContentLive.php") echo "class='active'"?> > <?=_("Add Live Content")?></a></li>
+			<li><a href="#" <?php if($currentPage == "addPackageContentVod.php") echo "class='active'"?> > <?=_("View / Add VOD content")?></a></li>
+			<li><a href="addPackageContentLive.php?pck_id=<?=$pck_id ?>" <?php if($currentPage == "addPackageContentLive.php") echo "class='active'"?> > <?=_("View / Add Live Content")?></a></li>
 			<li><a href="createPackage.php?pck_id=<?=$pck_id ?>" <?php if($currentPage == "createPackage.php") echo "class='active'"?> > <?=_("Edit this package")?></a></li>
 			<li><a href="viewPackages.php?del=<?=$pck_id ?>" <?php if($currentPage == "viewPackages.php") echo "class='active'"?> onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')"> <?=_("Delete this package")?></a></li>
 			<li><a href="viewPackages.php" <?php if($currentPage == "viewPackages.php") echo "class='active'"?>> <?=_("Back to package list")?></a></li>
@@ -165,8 +165,8 @@
 		{
 		?>
 			<li><a href="viewPackageDetail.php?pck_id=<?=$pck_id ?>" <?php if($currentPage == "viewPackageDetail.php") echo "class='active'"?> > <?=_("View package detail")?></a></li>
-			<li><a href="addPackageContentVod.php?pck_id=<?=$pck_id ?>" <?php if($currentPage == "addPackageContentVod.php") echo "class='active'"?> > <?=_("Add VOD Content")?></a></li>		
-			<li><a href="#" <?php if($currentPage == "addPackageContentLive.php") echo "class='active'"?> > <?=_("Add Live Content")?></a></li>
+			<li><a href="addPackageContentVod.php?pck_id=<?=$pck_id ?>" <?php if($currentPage == "addPackageContentVod.php") echo "class='active'"?> > <?=_("View / Add VOD content")?></a></li>		
+			<li><a href="#" <?php if($currentPage == "addPackageContentLive.php") echo "class='active'"?> > <?=_("View / Add Live Content")?></a></li>
 			<li><a href="createPackage.php?pck_id=<?=$pck_id ?>" <?php if($currentPage == "createPackage.php") echo "class='active'"?> > <?=_("Edit this package")?></a></li>
 			<li><a href="viewPackages.php?del=<?=$pck_id ?>" <?php if($currentPage == "viewPackages.php") echo "class='active'"?> onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')"> <?=_("Delete this package")?></a></li>
 			<li><a href="viewPackages.php" <?php if($currentPage == "viewPackages.php") echo "class='active'"?>> <?=_("Back to package list")?></a></li>
@@ -190,7 +190,7 @@
 		{
 		?>
 			<li><a href="viewSubscriberDetail.php?usr_id=<?=$usr_id?>" <?php if($currentPage == "viewSubscriberDetail.php") echo "class='active'"?> > <?=_("View Subscriber Detail")?></a></li>		
-			<li><a href="addSubscriberPackage.php?usr_id=<?=$usr_id?>" <?php if($currentPage == "addSubscriberPackage.php") echo "class='active'"?> > <?=_("View user packages")?></a></li>
+			<li><a href="addSubscriberPackage.php?usr_id=<?=$usr_id?>" <?php if($currentPage == "addSubscriberPackage.php") echo "class='active'"?> > <?=_("View / Add user packages")?></a></li>
 			<li><a href="viewSubscribers.php?del=<?=$usr_id?>" <?php if($currentPage == "viewSubscribers.php") echo "class='active'"?> onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" > <?=_("Delete this Subscriber")?></a></li>
 			<li><a href="viewSubscribers.php" <?php if($currentPage == "viewSubscribers.php") echo "class='active'"?> > <?=_("Back to subscribers list")?></a></li>
 		<?	
@@ -204,7 +204,7 @@
 				?>
 				<li><a href="#" <?php if($currentPage == "createSubscriber.php") echo "class='active'"?> > <?=_("Edit Subscriber Detail")?></a></li>		
 				<li><a href="viewSubscriberDetail.php?usr_id=<?=$usr_id?>" <?php if($currentPage == "viewSubscriberDetail.php") echo "class='active'"?> > <?=_("View Subscriber Detail")?></a></li>		
-				<li><a href="addSubscriberPackage.php?usr_id=<?=$usr_id?>" <?php if($currentPage == "addSubscriberPackage.php") echo "class='active'"?> > <?=_("View user packages")?></a></li>
+				<li><a href="addSubscriberPackage.php?usr_id=<?=$usr_id?>" <?php if($currentPage == "addSubscriberPackage.php") echo "class='active'"?> > <?=_("View / Add user packages")?></a></li>
 				<li><a href="viewSubscribers.php?del=<?=$usr_id?>" <?php if($currentPage == "viewSubscribers.php") echo "class='active'"?> onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" > <?=_("Delete this Subscriber")?></a></li>
 				<li><a href="viewSubscribers.php" <?php if($currentPage == "viewSubscribers.php") echo "class='active'"?> > <?=_("Back to subscribers list")?></a></li>
 				<?

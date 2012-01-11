@@ -68,7 +68,7 @@
 			$rsSet = $DB->Execute($sql);
 			$usr_id = $DB->Insert_ID();
 	
-			redirect("addSubscriberPackage.php?usr_id=$usr_id");				
+			redirect("viewSubscribers.php");				
 		}
 	}
 
@@ -172,7 +172,7 @@
 					<input name="license" type="text" value="<?=$rsGet->fields['license']?>" class="text-long" />
 				</p>
 				<p>
-					<label><?=_("Save and Add Packages")?></label>
+					<label><?=_("Save Subscriber")?></label>
 					<input type="hidden" name="addPck" value="1" />
 					<input type="submit" name="addPackages" value="<?=_("Save")?>" />
 				</p>					

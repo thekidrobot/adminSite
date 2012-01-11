@@ -61,7 +61,7 @@
 	}	
 	
 	
-	if($_POST['addLive']!="" or $_POST['addVod']!="")
+	if($_POST['flgAdd']!="")
 	{
 		$postArray = &$_POST;
 		
@@ -96,12 +96,8 @@
 			$rsSet = $DB->Execute($sql);
 			$pck_id = $DB->Insert_ID();
 	
-			if($_POST['addLive']!=""){
-				redirect("addPackageContentLive.php?pck_id=$pck_id");
-			}
-			elseif($_POST['addVod']!=""){
-				redirect("addPackageContentVod.php?pck_id=$pck_id");
-			}
+			redirect("viewPackages.php");
+		
 		}
 	}
 	
@@ -199,15 +195,9 @@
 					{
 						?>
 						<p>
-							<label><?=_("Add Live Content")?></label>
-							<input type="hidden" value="1" name="addLive" />
-							<input type="submit" value="<?=_("Save and Add")?>" name="live" />
-						</p>
-						
-						<p>
-							<label><?=_("Add VOD Content")?></label>
-							<input type="hidden" value="1" name="addVod" />
-							<input type="submit" value="<?=_("Save and Add")?>" name="vod" />
+							<label><?=_("Add package")?></label>
+							<input type="hidden" value="1" name="flgAdd" />
+							<input type="submit" value="<?=_("Add")?>" name="add" />
 						</p>
 						<?
 					}

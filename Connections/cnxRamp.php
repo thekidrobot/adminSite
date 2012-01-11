@@ -8,7 +8,7 @@ $username_cnxRamp = "root";
 $password_cnxRamp = "root";
 
 //$hostname_cnxRamp = "localhost";
-//$database_cnxRamp = "rampmood_ws_test";
+//$database_cnxRamp = "rampmood_lfg";
 //$username_cnxRamp = "rampmood_wsuser";
 //$password_cnxRamp = "sP-~,0hQ8dP=";
 

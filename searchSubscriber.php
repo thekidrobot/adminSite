@@ -92,8 +92,7 @@ if($N > 0)
 									<?php
 										$counter = 0;
 										
-										$sql = "SELECT * FROM subscribers";
-										$rsGet = $DB->Execute($sql);
+										$rsGet = $DB->Execute($sqlGet);
 										
 										while (!$rsGet->EOF)
 										{  
