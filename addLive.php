@@ -52,7 +52,7 @@ if((!empty($_FILES['pic']['name'])) && ($_FILES['pic']['error'] == 0))
 			{
 				$uploaded = resizeImage($large_image_location,$max_width,$max_height);
 			}
-			createThumbnail($filename);
+			$small_pic = createThumbnail($filename);
 		}
 	}
 }
@@ -70,7 +70,8 @@ if ($_POST["MM_insert"] == "true")
 
 	$postArray = &$_POST ;
 	
-	$pic = escape_value($filename);
+	$big_pic = escape_value($filename);
+	$small_pic = escape_value($small_pic);
 	$name = escape_value($postArray['name']);
 	$number = escape_value($postArray['number']);
 	$description = escape_value($postArray['description']);
@@ -100,8 +101,8 @@ if ($_POST["MM_insert"] == "true")
 		else
 		{	
 			$insertSql = "INSERT INTO livechannels
-										(pic,name,number,description,url,price,currency,rating)
-										VALUES ('$pic','$name',$number,'$description',
+										(big_pic,small_pic,name,number,description,url,price,currency,rating)
+										VALUES ('$big_pic','$small_pic','$name',$number,'$description',
 														'$url',$price,$currency,'$rating')";
 			
 			$rsInsLive = $DB->Execute($insertSql);

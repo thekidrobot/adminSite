@@ -5,6 +5,12 @@
 	if($_GET['pck_id'] != "")
 	{
 		$id = $_GET['pck_id'];
+		
+		if(trim($id) == "" or !is_numeric($id) or $id == 0)
+		{
+			redirect("viewPackages.php");
+		}			
+		
 		$sql = "select * from packages where id = $id";
 		$rsGet=$DB->execute($sql);
 	}

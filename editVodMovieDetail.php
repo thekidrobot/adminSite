@@ -3,7 +3,14 @@ include("includes/connection.php");
 include("session.php");
 
 $id = escape_value($_REQUEST['edit']);
+
+if(trim($id) == "" or !is_numeric($id) or $id == 0)
+{
+	redirect("viewVod.php");
+}
+
 $sql = "SELECT * FROM vodchannels WHERE id = $id";
+
 $getData = $DB->Execute($sql);
 
 if($_POST["MM_update"] == "true")
@@ -59,24 +66,17 @@ if($_POST["MM_update"] == "true")
 					{
 						$uploaded = resizeImage($large_image_location,$max_width,$max_height);
 					}
-					createThumbnail($filename);
+					$thumb = createThumbnail($filename);
 				
 					//Borrar archivos existentes
-					$actual_filename = $getData->fields['pic'];
+					$actual_filename = $getData->fields['big_pic'];
+					$actual_filename_thumb = $getData->fields['small_pic'];
 					
-					$file_ext = substr($actual_filename, strrpos($actual_filename, '.') + 1);	 //remove the ext
-					$filename_strip= substr($actual_filename,0,strrpos($actual_filename, '.')); 
-					$filename_strip= substr($actual_filename,0,strrpos($actual_filename, '_big')); //remove the _big
-					$filename_strip= $filename_strip."_small"; //add the _small
-			
-					$actual_filename_thumb = $filename_strip.".".$file_ext;
-
 					unlink($gallery_upload_path.$actual_filename);
 					unlink($gallery_upload_path.$actual_filename_thumb);
 		
-					$sqlUpd = "UPDATE vodchannels SET pic = '$filename' WHERE id=$id";
+					$sqlUpd = "UPDATE vodchannels SET big_pic = '$filename', small_pic = '$thumb' WHERE id=$id";
 					$rsUpd = $DB->Execute($sqlUpd);
-
 				}
 			}
 		}
@@ -166,15 +166,9 @@ if($_POST["MM_update"] == "true")
 				<fieldset>
 					<p>
 						<label><?=_("Actual Logo")?> : </label>
-						<?php
-						
-							$actual_filename = $getData->fields['pic'];
+						<?php						
+							$actual_filename = $getData->fields['small_pic'];
 							$actual_filename_thumb = getThumbnail($actual_filename);
-													
-							if(trim($actual_filename_thumb == "_small.")){
-								$actual_filename_thumb = "default.jpg";
-							}
-						
 						?>
 						<img src="<?="data/images/".$actual_filename_thumb?>">
 					</p>

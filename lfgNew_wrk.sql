@@ -3,7 +3,7 @@
 # Server version:               5.5.12
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3603
-# Date/time:                    2012-01-11 21:10:12
+# Date/time:                    2012-01-12 17:19:48
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -409,7 +409,8 @@ INSERT INTO `grid_live` (`id`, `channel_id`, `name`, `description`, `start_date`
 DROP TABLE IF EXISTS `livechannels`;
 CREATE TABLE IF NOT EXISTS `livechannels` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `pic` varchar(50) DEFAULT NULL,
+  `big_pic` varchar(100) DEFAULT NULL,
+  `small_pic` varchar(100) DEFAULT NULL,
   `name` varchar(150) DEFAULT NULL,
   `number` int(10) DEFAULT NULL,
   `description` varchar(500) DEFAULT NULL,
@@ -418,83 +419,84 @@ CREATE TABLE IF NOT EXISTS `livechannels` (
   `currency` int(2) DEFAULT NULL,
   `rating` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=86 DEFAULT CHARSET=latin1 COMMENT='Table for live content';
+) ENGINE=MyISAM AUTO_INCREMENT=89 DEFAULT CHARSET=latin1 COMMENT='Table for live content';
 
-# Dumping data for table lfg.livechannels: 71 rows
+# Dumping data for table lfg.livechannels: 72 rows
 DELETE FROM `livechannels`;
 /*!40000 ALTER TABLE `livechannels` DISABLE KEYS */;
-INSERT INTO `livechannels` (`id`, `pic`, `name`, `number`, `description`, `url`, `price`, `currency`, `rating`) VALUES
-	(13, 'Blue hills274_big.jpg', 'Canal Caracol', 1, '', '', 0, 1, 1),
-	(11, 'Water lilies739_big.jpg', 'Canal RCN', 5, 'Canal Caracol', 'www.caracol.com.co', 0, 1, 1),
-	(12, 'Sunset219_big.jpg', 'blah', 1, 'blah', '', 0, 1, 1),
-	(14, 'Winter_big.jpg', 'Canal Caracol', 5, '', '', 0, 1, 1),
-	(15, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(16, 'Water lilies600_big.jpg', 'Canal RCN', 0, '', '', 0, 1, 1),
-	(17, 'Sunset165_big.jpg', '', 1, '', '', 0, 1, 1),
-	(18, 'Sunset219_big.jpg', 'blah', 1, 'blah', '', 0, 1, 1),
-	(19, 'Water lilies600_big.jpg', 'Canal RCN', 0, '', '', 0, 1, 1),
-	(20, 'Water lilies600_big.jpg', 'Canal RCN', 0, '', '', 0, 1, 1),
-	(21, 'Water lilies600_big.jpg', 'Canal RCN', 0, '', '', 0, 1, 1),
-	(22, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(26, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(27, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(28, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(29, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(30, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(31, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(32, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(33, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(34, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(35, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(36, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(37, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(38, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(39, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(40, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(41, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(42, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(43, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(44, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(45, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(46, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(47, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(48, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(49, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(50, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(51, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(52, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(53, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(54, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(55, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(56, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(57, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(58, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(59, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(60, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(61, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(62, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(63, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(64, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(65, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(66, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(67, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(68, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(69, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(70, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(71, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(72, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(73, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(74, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(75, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(76, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(77, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(78, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(79, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(80, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(81, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(82, 'Water lilies600_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(84, 'Water lilies444_big.jpg', 'Canal RCN', 5, '', '', 0, 1, 1),
-	(85, 'wile339_big.jpg', 'Andres', 11, 'test', 'test', 1500, 3, 1);
+INSERT INTO `livechannels` (`id`, `big_pic`, `small_pic`, `name`, `number`, `description`, `url`, `price`, `currency`, `rating`) VALUES
+	(13, 'Blue hills274_big.jpg', NULL, 'Canal Caracol', 1, '', '', 0, 1, 1),
+	(11, 'Water lilies739_big.jpg', NULL, 'Canal RCN', 5, 'Canal Caracol', 'www.caracol.com.co', 0, 1, 1),
+	(12, 'Sunset219_big.jpg', NULL, 'blah', 1, 'blah', '', 0, 1, 1),
+	(14, 'Winter_big.jpg', NULL, 'Canal Caracol', 5, '', '', 0, 1, 1),
+	(15, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(16, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 0, '', '', 0, 1, 1),
+	(17, 'Sunset165_big.jpg', NULL, '', 1, '', '', 0, 1, 1),
+	(18, 'Sunset219_big.jpg', NULL, 'blah', 1, 'blah', '', 0, 1, 1),
+	(19, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 0, '', '', 0, 1, 1),
+	(20, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 0, '', '', 0, 1, 1),
+	(21, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 0, '', '', 0, 1, 1),
+	(22, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(26, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(27, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(28, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(29, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(30, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(31, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(32, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(33, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(34, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(35, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(36, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(37, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(38, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(39, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(40, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(41, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(42, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(43, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(44, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(45, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(46, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(47, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(48, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(49, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(50, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(51, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(52, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(53, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(54, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(55, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(56, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(57, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(58, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(59, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(60, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(61, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(62, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(63, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(64, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(65, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(66, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(67, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(68, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(69, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(70, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(71, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(72, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(73, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(74, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(75, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(76, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(77, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(78, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(79, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(80, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(81, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(82, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(84, 'Water lilies444_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
+	(85, 'wile339_big.jpg', NULL, 'Andres', 11, 'test', 'test', 1500, 3, 1),
+	(88, 'Winter696_big.jpg', 'Winter696_small.jpg', 'Cosme Fulanito', 112, 'Cosme Fulanito', '', 0, 2, 1);
 /*!40000 ALTER TABLE `livechannels` ENABLE KEYS */;
 
 
@@ -615,7 +617,7 @@ CREATE TABLE IF NOT EXISTS `subscribers` (
   `mac` varchar(100) DEFAULT NULL,
   `license` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 # Dumping data for table lfg.subscribers: 1 rows
 DELETE FROM `subscribers`;
@@ -633,7 +635,7 @@ CREATE TABLE IF NOT EXISTS `subscribers_packages` (
   PRIMARY KEY (`subscriber_id`,`package_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-# Dumping data for table lfg.subscribers_packages: 2 rows
+# Dumping data for table lfg.subscribers_packages: 1 rows
 DELETE FROM `subscribers_packages`;
 /*!40000 ALTER TABLE `subscribers_packages` DISABLE KEYS */;
 INSERT INTO `subscribers_packages` (`subscriber_id`, `package_id`) VALUES
@@ -681,7 +683,8 @@ INSERT INTO `vodcategories` (`id`, `name`, `parent`) VALUES
 DROP TABLE IF EXISTS `vodchannels`;
 CREATE TABLE IF NOT EXISTS `vodchannels` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `pic` varchar(50) NOT NULL DEFAULT '0',
+  `big_pic` varchar(100) NOT NULL DEFAULT '0',
+  `small_pic` varchar(100) NOT NULL DEFAULT '0',
   `name` varchar(150) DEFAULT NULL,
   `description` varchar(500) DEFAULT NULL,
   `stb_url` varchar(200) DEFAULT NULL,
@@ -699,8 +702,8 @@ CREATE TABLE IF NOT EXISTS `vodchannels` (
 # Dumping data for table lfg.vodchannels: 1 rows
 DELETE FROM `vodchannels`;
 /*!40000 ALTER TABLE `vodchannels` DISABLE KEYS */;
-INSERT INTO `vodchannels` (`id`, `pic`, `name`, `description`, `stb_url`, `download_url`, `pc_url`, `trainer`, `date_release`, `keywords`, `rating`, `price`, `currency`) VALUES
-	(1, 'Blue hills274_small.jpg', 'Andres', 'andres', 'andres', 'andres', 'andres', 'andres', '2012-01-09 17:27:20', 'comics,animation', 1, 0, 1);
+INSERT INTO `vodchannels` (`id`, `big_pic`, `small_pic`, `name`, `description`, `stb_url`, `download_url`, `pc_url`, `trainer`, `date_release`, `keywords`, `rating`, `price`, `currency`) VALUES
+	(1, 'Water lilies378_big.jpg', 'Water lilies378_small.jpg', 'Andres', 'andres', 'andres', 'andres', 'andres', 'andres', '2012-01-09 17:27:20', 'comics,animation', 1, 0, 1);
 /*!40000 ALTER TABLE `vodchannels` ENABLE KEYS */;
 
 
@@ -715,6 +718,8 @@ CREATE TABLE IF NOT EXISTS `vod_channels_categories` (
 # Dumping data for table lfg.vod_channels_categories: 0 rows
 DELETE FROM `vod_channels_categories`;
 /*!40000 ALTER TABLE `vod_channels_categories` DISABLE KEYS */;
+INSERT INTO `vod_channels_categories` (`channel_id`, `category_id`) VALUES
+	(1, 21);
 /*!40000 ALTER TABLE `vod_channels_categories` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

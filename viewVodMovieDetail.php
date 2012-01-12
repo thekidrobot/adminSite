@@ -3,6 +3,12 @@ include("includes/connection.php");
 include("session.php");
 
 $id = $_GET['id'];
+
+if(trim($id) == "" or !is_numeric($id) or $id == 0)
+{
+	redirect("viewVod.php");
+}
+
 $sql = "SELECT * FROM vodchannels WHERE id = $id";
 $rsGet = $DB->execute($sql);
 
@@ -30,12 +36,8 @@ $rsGet = $DB->execute($sql);
 						<label><?=_("Actual Logo")?> : </label>
 						<?php
 						
-							$actual_filename = $rsGet->fields['pic'];
+							$actual_filename = $rsGet->fields['small_pic'];
 							$actual_filename_thumb = getThumbnail($actual_filename);
-													
-							if(trim($actual_filename_thumb == "_small.")){
-								$actual_filename_thumb = "default.jpg";
-							}
 						?>
 						<img src="<?="data/images/".$actual_filename_thumb?>">
 					</p>

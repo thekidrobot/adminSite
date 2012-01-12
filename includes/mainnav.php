@@ -7,7 +7,7 @@
 					 $currentPage == "viewLiveDetail.php" or 	
 					 $currentPage == "searchLive.php") echo "class='active'";
 	?>		
-	><?=_("Live Tv")?></a></li>
+	><?=_("Live TV")?></a></li>
 	<li><a href="epg.php"
 	<?php 
 	if($currentPage == "epg.php" or
@@ -15,7 +15,7 @@
 		 ) echo "class='active'";
 	?>
 	><?=_("EPG")?></a></li>
-	<li><a href="viewVod.php"
+	<li><a href="addVod.php"
 	<?php 
 	if($currentPage == "addVod.php" or
 					 $currentPage == "viewVod.php" or 	
@@ -24,7 +24,7 @@
 					 $currentPage == "viewVodMovieDetail.php") echo "class='active'";
 	?>
 	><?=_("VOD")?></a></li>
-	<li><a href="viewVodCategories.php"
+	<li><a href="createVodCategory.php"
 	<?php if($currentPage == "viewVodCategories.php" or
 					 $currentPage == "searchVodCategory.php" or 	
 					 $currentPage == "viewVodDetail.php" or 	
@@ -33,7 +33,7 @@
 					 ) echo "class='active'";
 	?>		
 	><?=_("Categories")?></a></li>
-	<li><a href="viewPackages.php"
+	<li><a href="createPackage.php"
 	<?php if($currentPage == "viewPackages.php" or
 					 $currentPage == "viewPackageDetail.php" or 	
 					 $currentPage == "addPackageContentLive.php" or 	
@@ -43,7 +43,7 @@
 					 ) echo "class='active'";
 	?>
 	><?=_("Packages")?></a></li>
-	<li><a href="viewSubscribers.php"
+	<li><a href="createSubscriber.php"
 	<?php if($currentPage == "createSubscriber.php" or
 					 $currentPage == "addSubscriberPackage.php" or 	
 					 $currentPage == "viewSubscribers.php" or

@@ -32,13 +32,13 @@ function make_kids($row_id,$dad_name,$parent)
 }	
 
 //Get thumbnail of an already created picture
-function getThumbnail($actual_filename){
- $file_ext = substr($actual_filename, strrpos($actual_filename, '.') + 1);	
- $filename_strip= substr($actual_filename,0,strrpos($actual_filename, '.'));	//remove the ext
- $filename_strip= substr($actual_filename,0,strrpos($actual_filename, '_big')); //remove the _big
- $filename_strip= $filename_strip."_small";	//add the _small
- $actual_filename_thumb = $filename_strip.".".$file_ext;
- return $actual_filename_thumb; 
+function getThumbnail($actual_filename)
+{
+	if(trim($actual_filename)== "")
+	{
+		$actual_filename = "default.jpg"; 	
+	}
+	return $actual_filename;
 }
 
 
@@ -156,9 +156,11 @@ function getWidth($image) {
 		
 		chmod($filename_thumb, 0777);
 		
-		if(imagejpeg($nm, 'data/images/' . $filename_thumb,100)){
-			return true;	
-		}else{
+		if(imagejpeg($nm, 'data/images/' . $filename_thumb,100))
+		{
+			return $filename_thumb;	
+		}else
+		{
 			die('Error creating thumbnail');
 		}
 	}

@@ -4,6 +4,11 @@ include("session.php");
 
 $id = $_GET['cat_id'];
 
+if(trim($id) == "" or !is_numeric($id) or $id == 0)
+{
+	redirect("viewVodCategories.php");
+}
+
 $sql = "SELECT * FROM vodcategories WHERE id = $id";
 $rsGet = $DB->Execute($sql);
 

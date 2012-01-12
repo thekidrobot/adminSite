@@ -3,6 +3,11 @@
 	include("session.php");
 
 	$pck_id = $_REQUEST['pck_id'];
+
+	if(trim($pck_id) == "" or !is_numeric($pck_id) or $pck_id == 0)
+	{
+		redirect("viewPackages.php");
+	}	
 	
 	$sql = "select * from packages where id = $pck_id";
 	$rsGet = $DB->Execute($sql);

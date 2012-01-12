@@ -3,6 +3,10 @@ include("includes/connection.php");
 include("session.php");
 
 $id = escape_value($_GET['id']);
+if(trim($id) == "" or !is_numeric($id) or $id == 0)
+{
+	redirect("viewLive.php");
+}
 $sql = "SELECT * FROM livechannels WHERE id = $id";
 $getData = $DB->Execute($sql);
 
@@ -28,16 +32,10 @@ $getData = $DB->Execute($sql);
 				<p>
 					<label><?=_("Actual Logo")?> : </label>
 					<?php
-					
-						$actual_filename = $getData->fields['pic'];
-						$actual_filename_thumb = getThumbnail($actual_filename);
-												
-						if(trim($actual_filename_thumb == "_small.")){
-							$actual_filename_thumb = "default.jpg";
-						}
-					
+						$actual_filename = $getData->fields['small_pic'];
+						$thumb = getThumbnail($actual_filename);
 					?>
-					<img src="<?="data/images/".$actual_filename_thumb?>">
+					<img src="<?="data/images/".$thumb?>">
 				</p>
 				<p>
 					<label><?=_("Channel Name")?> : </label>

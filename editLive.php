@@ -3,6 +3,12 @@ include("includes/connection.php");
 include("session.php");
 
 $id = escape_value($_GET['edit']);
+
+if(trim($id) == "" or !is_numeric($id) or $id == 0)
+{
+	redirect("viewLive.php");
+}
+
 $sql = "SELECT * FROM livechannels WHERE id = $id";
 $getData = $DB->Execute($sql);
 
@@ -59,23 +65,14 @@ if($_POST["MM_update"] == "true")
 					{
 						$uploaded = resizeImage($large_image_location,$max_width,$max_height);
 					}
-					createThumbnail($filename);
+					$thumbnail = createThumbnail($filename);
+
+					unlink($gallery_upload_path.$getData->fields['big_pic']);
+					unlink($gallery_upload_path.$getData->fields['small_pic']);
 				
-					//Borrar archivos existentes
-					$actual_filename = $getData->fields['pic'];
-					
-					$file_ext = substr($actual_filename, strrpos($actual_filename, '.') + 1);	 //remove the ext
-					$filename_strip= substr($actual_filename,0,strrpos($actual_filename, '.')); 
-					$filename_strip= substr($actual_filename,0,strrpos($actual_filename, '_big')); //remove the _big
-					$filename_strip= $filename_strip."_small"; //add the _small
-			
-					$actual_filename_thumb = $filename_strip.".".$file_ext;
-		
-					$sqlUpd = "UPDATE livechannels SET pic = '$filename' WHERE id=$id";
+					$sqlUpd = "UPDATE livechannels SET big_pic = '$filename', small_pic = '$thumbnail' WHERE id=$id";
 					$rsUpd = $DB->Execute($sqlUpd);
-			
-					unlink($gallery_upload_path.$actual_filename);
-					unlink($gallery_upload_path.$actual_filename_thumb);
+
 				}
 			}
 		}
@@ -99,7 +96,7 @@ if($_POST["MM_update"] == "true")
 	$rating = escape_value($postArray['rating']);
 	$currency = escape_value($postArray['currency']);
 
-	$sqlChannel = "select count(*) as channels from livechannels where number = $number";
+	$sqlChannel = "select count(*) as channels from livechannels where number = $number and id <> $id";
 	$rsGetChannel = $DB->execute($sqlChannel);
 	$channelExists = $rsGetChannel->fields['channels'];
 	
@@ -172,14 +169,8 @@ if($_POST["MM_update"] == "true")
 				<p>
 					<label><?=_("Actual Logo")?> : </label>
 					<?php
-					
-						$actual_filename = $getData->fields['pic'];
-						$actual_filename_thumb = getThumbnail($actual_filename);
-												
-						if(trim($actual_filename_thumb == "_small.")){
-							$actual_filename_thumb = "default.jpg";
-						}
-					
+						$actual_filename = $getData->fields['small_pic'];
+						$actual_filename_thumb = getThumbnail($actual_filename);	
 					?>
 					<img src="<?="data/images/".$actual_filename_thumb?>">
 				</p>

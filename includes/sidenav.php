@@ -8,23 +8,16 @@
 			 or $currentPage == "searchLive.php"
 			 ){
 			?>
-			<li><a href="viewLive.php" <?php if($currentPage == "viewLive.php") echo "class='active'"?> ><?=_("View Live Channels")?></a></li>
 			<li><a href="addLive.php" <?php if($currentPage == "addLive.php") echo "class='active'"?> ><?=_("Add Live Channel")?></a></li>
+			<li><a href="viewLive.php" <?php if($currentPage == "viewLive.php") echo "class='active'"?> ><?=_("View Live Channels")?></a></li>
 			<li><a href="searchLive.php" <?php if($currentPage == "searchLive.php") echo "class='active'"?> ><?=_("Search Live Channels")?></a></li>
 			<?
 		}
-		elseif($currentPage == "editLive.php"){
+		elseif($currentPage == "editLive.php" or
+					$currentPage == "viewLiveDetail.php"){
 			?>
-			<li><a href="viewLiveDetail.php?id=<?=$id?>" > <?=_("View Channel Details")?></a></li>
-			<li><a href="editLive.php?edit=<?=$id?>" class='active'><?=_("Edit this channel")?></a></li>
-			<li><a href="viewLive.php?del=<?=$id?>" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" ><?=_("Delete this channel")?></a></li>
-			<li><a href="viewLive.php"><?=_("Go to the Channel List")?></a></li>
-			<?
-		}
-		elseif($currentPage == "viewLiveDetail.php"){
-			?>
-			<li><a href="#" class='active'> <?=_("View Channel Details")?></a></li>
-			<li><a href="editLive.php?edit=<?=$id?>" ><?=_("Edit this channel")?></a></li>
+			<li><a href="viewLiveDetail.php?id=<?=$id?>" <?php if($currentPage == "viewLiveDetail.php") echo "class='active'" ?>> <?=_("View Channel Details")?></a></li>
+			<li><a href="editLive.php?edit=<?=$id?>" <?php if($currentPage == "editLive.php") echo "class='active'" ?>><?=_("Edit this channel")?></a></li>
 			<li><a href="viewLive.php?del=<?=$id?>" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" ><?=_("Delete this channel")?></a></li>
 			<li><a href="viewLive.php"><?=_("Go to the Channel List")?></a></li>
 			<?
@@ -45,8 +38,8 @@
 			 or $currentPage == "searchVod.php")
 		{
 			?>
-			<li><a href="viewVod.php" <?php if($currentPage == "viewVod.php") echo "class='active'"?> ><?=_("View VOD Movies")?></a></li>
 			<li><a href="addVod.php" <?php if($currentPage == "addVod.php") echo "class='active'"?> ><?=_("Add VOD Movie")?></a></li>
+			<li><a href="viewVod.php" <?php if($currentPage == "viewVod.php") echo "class='active'"?> ><?=_("View VOD Movies")?></a></li>
 			<li><a href="searchVod.php" <?php if($currentPage == "searchVod.php") echo "class='active'"?> ><?=_("Search VOD Movies")?></a></li>
 			<?
 		}
@@ -67,8 +60,8 @@
 					)
 		{
 			?>
-			<li><a href="viewVodCategories.php" <?php if($currentPage == "viewVodCategories.php") echo "class='active'"?> > <?=_("View VOD Categories")?></a></li>
 			<li><a href="createVodCategory.php" <?php if($currentPage == "createVodCategory.php") echo "class='active'"?> > <?=_("Create VOD Category")?></a></li>
+			<li><a href="viewVodCategories.php" <?php if($currentPage == "viewVodCategories.php") echo "class='active'"?> > <?=_("View VOD Categories")?></a></li>
 			<li><a href="searchVodCategory.php" <?php if($currentPage == "searchVodCategory.php") echo "class='active'"?> > <?=_("Find VOD Category")?></a></li>
 			<?
 		}
@@ -96,8 +89,8 @@
 			else
 			{
 				?>
-				<li><a href="viewVodCategories.php" <?php if($currentPage == "viewVodCategories.php") echo "class='active'"?> > <?=_("View VOD Categories")?></a></li>
 				<li><a href="createVodCategory.php" <?php if($currentPage == "createVodCategory.php") echo "class='active'"?> > <?=_("Create VOD Category")?></a></li>
+				<li><a href="viewVodCategories.php" <?php if($currentPage == "viewVodCategories.php") echo "class='active'"?> > <?=_("View VOD Categories")?></a></li>
 				<li><a href="searchVodCategory.php" <?php if($currentPage == "searchVodCategory.php") echo "class='active'"?> > <?=_("Find VOD Category")?></a></li>				
 				<?
 			}
@@ -108,8 +101,8 @@
 					 $currentPage == "searchPackage.php") 
 		{
 			?>
-			<li><a href="viewPackages.php" <?php if($currentPage == "viewPackages.php") echo "class='active'"?> > <?=_("View packages")?></a></li>
 			<li><a href="createPackage.php" <?php if($currentPage == "createPackage.php") echo "class='active'"?> > <?=_("Create new package")?></a></li>
+			<li><a href="viewPackages.php" <?php if($currentPage == "viewPackages.php") echo "class='active'"?> > <?=_("View packages")?></a></li>
 			<li><a href="searchPackage.php" <?php if($currentPage == "searchPackage.php") echo "class='active'"?>> <?=_("Find packages")?></a></li>
 			<?
 		}		
@@ -144,8 +137,8 @@
 			else
 			{
 				?>
-				<li><a href="viewPackages.php" <?php if($currentPage == "viewPackages.php") echo "class='active'"?> > <?=_("View packages")?></a></li>
 				<li><a href="createPackage.php" <?php if($currentPage == "createPackage.php") echo "class='active'"?> > <?=_("Create new package")?></a></li>
+				<li><a href="viewPackages.php" <?php if($currentPage == "viewPackages.php") echo "class='active'"?> > <?=_("View packages")?></a></li>
 				<li><a href="searchPackage.php" <?php if($currentPage == "searchPackage.php") echo "class='active'"?>> <?=_("Find packages")?></a></li>
 				<?	
 			}
@@ -179,8 +172,8 @@
 					 )
 		{
 		?>
-			<li><a href="viewSubscribers.php" <?php if($currentPage == "viewSubscribers.php") echo "class='active'"?> > <?=_("View Subscribers")?></a></li>		
 			<li><a href="createSubscriber.php" <?php if($currentPage == "createSubscriber.php") echo "class='active'"?> > <?=_("Create New Subscriber")?></a></li>
+			<li><a href="viewSubscribers.php" <?php if($currentPage == "viewSubscribers.php") echo "class='active'"?> > <?=_("View Subscribers")?></a></li>		
 			<li><a href="searchSubscriber.php" <?php if($currentPage == "searchSubscriber.php") echo "class='active'"?> > <?=_("Search Subscribers")?></a></li>
 		<?	
 		}
@@ -189,8 +182,8 @@
 					 )
 		{
 		?>
-			<li><a href="viewSubscriberDetail.php?usr_id=<?=$usr_id?>" <?php if($currentPage == "viewSubscriberDetail.php") echo "class='active'"?> > <?=_("View Subscriber Detail")?></a></li>		
 			<li><a href="addSubscriberPackage.php?usr_id=<?=$usr_id?>" <?php if($currentPage == "addSubscriberPackage.php") echo "class='active'"?> > <?=_("View / Add user packages")?></a></li>
+			<li><a href="viewSubscriberDetail.php?usr_id=<?=$usr_id?>" <?php if($currentPage == "viewSubscriberDetail.php") echo "class='active'"?> > <?=_("View Subscriber Detail")?></a></li>		
 			<li><a href="viewSubscribers.php?del=<?=$usr_id?>" <?php if($currentPage == "viewSubscribers.php") echo "class='active'"?> onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" > <?=_("Delete this Subscriber")?></a></li>
 			<li><a href="viewSubscribers.php" <?php if($currentPage == "viewSubscribers.php") echo "class='active'"?> > <?=_("Back to subscribers list")?></a></li>
 		<?	
@@ -212,8 +205,8 @@
 			else
 			{
 				?>
-				<li><a href="viewSubscribers.php" <?php if($currentPage == "viewSubscribers.php") echo "class='active'"?> > <?=_("View Subscribers")?></a></li>		
 				<li><a href="createSubscriber.php" <?php if($currentPage == "createSubscriber.php") echo "class='active'"?> > <?=_("Create New Subscriber")?></a></li>
+				<li><a href="viewSubscribers.php" <?php if($currentPage == "viewSubscribers.php") echo "class='active'"?> > <?=_("View Subscribers")?></a></li>		
 				<li><a href="searchSubscriber.php" <?php if($currentPage == "searchSubscriber.php") echo "class='active'"?> > <?=_("Search Subscribers")?></a></li>
 				<?	
 			}

@@ -4,6 +4,11 @@
 	
 	$cat_id = $_REQUEST['cat_id'];
 	
+	if(trim($cat_id) == "" or !is_numeric($cat_id) or $cat_id == 0)
+	{
+		redirect("viewVodCategories.php");
+	}
+	
 	$sql = "select * from vodcategories where id = $cat_id";
 	$rsGet = $DB->Execute($sql);
 	

@@ -7,15 +7,12 @@ if($_GET['del']!="" and is_numeric($_GET['del']))
 {
 	$query_rsDel = "SELECT * FROM vodchannels WHERE id = ".$_GET["del"];
 	$rsDel = $DB->Execute($query_rsDel);
-  $actual_filename = $rsDel->fields['pic'];
   
   //Borrar archivos existentes
 	$gallery_upload_path = "data/images/";
 
-	$actual_filename_thumb = getThumbnail($actual_filename);	
-
-  @unlink($gallery_upload_path.$actual_filename);
-  @unlink($gallery_upload_path.$actual_filename_thumb);
+  @unlink($gallery_upload_path.$rsDel->fields['big_pic']);
+  @unlink($gallery_upload_path.$rsDel->fields['small_pic']);
   
 	$query_rsDel = "DELETE FROM vodchannels where id=".$_GET["del"];
 	$rsDel = $DB->Execute($query_rsDel);
@@ -33,15 +30,12 @@ if($U > 0)
  {
   $query_rsDel = "SELECT * FROM vodchannels WHERE id = $id";
 	$rsDel = $DB->Execute($query_rsDel);
-  $actual_filename = $rsDel->fields['pic'];
   
   //Borrar archivos existentes
   $gallery_upload_path = "data/images/";
 
-	$actual_filename_thumb = getThumbnail($actual_filename);
-	
-  @unlink($gallery_upload_path.$actual_filename);
-  @unlink($gallery_upload_path.$actual_filename_thumb);
+  @unlink($gallery_upload_path.$rsDel->fields['big_pic']);
+  @unlink($gallery_upload_path.$rsDel->fields['small_pic']);
   
   $query_rsDel = "DELETE FROM vodchannels WHERE id = $id";
 	$rsDel = $DB->Execute($query_rsDel);
@@ -79,7 +73,7 @@ if($U > 0)
 			 
 				while (!$rs_getData->EOF)
 				{
-					$thumb=getThumbnail($rs_getData->fields['pic']);
+					$thumb=getThumbnail($rs_getData->fields['small_pic']);
 					
 					$sql = "select code from ratings where id = ".$rs_getData->fields['rating'];
 					$rsGetRating = $DB->execute($sql);

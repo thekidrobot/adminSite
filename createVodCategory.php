@@ -2,8 +2,15 @@
 include("includes/connection.php");
 include("session.php");
 
-if($_REQUEST['cat_id'] != ''){
+if($_REQUEST['cat_id'] != '')
+{
 	$id = $_REQUEST['cat_id'];
+	
+	if(trim($id) == "" or !is_numeric($id) or $id == 0)
+	{
+		redirect("viewVodCategories.php");
+	}
+	
 	$sql = "SELECT * FROM vodcategories WHERE id = $id";
 	$rsGet = $DB->Execute($sql);
 
