@@ -78,7 +78,15 @@ if ($_POST["MM_insert"] == "true")
 
 	$validator->addValidation("name","req",_("Name is a mandatory field"));
 	$validator->addValidation("description","maxlen=100",_("Description shouldn't be longer than 100 characters"));
+	$validator->addValidation("description","req",_("Description is a mandatory field"));
+	$validator->addValidation("stb_url","req",_("STB URL is a mandatory field"));
+	$validator->addValidation("download_url","req",_("Download URL is a mandatory field"));
+	$validator->addValidation("pc_url","req",_("PC URL is a mandatory field"));
+	$validator->addValidation("trainer","req",_("Trainer is a mandatory field"));
+	$validator->addValidation("price","req",_("Price is a mandatory field"));
 	$validator->addValidation("price","num",_("Price should be a numerical value"));
+	$validator->addValidation("date_release","req",_("Release date is a mandatory field"));
+	$validator->addValidation("keywords","req",_("Keywords is a mandatory field"));
 	
 	if(!$validator->ValidateForm())
 	{

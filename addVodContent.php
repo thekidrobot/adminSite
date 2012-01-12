@@ -2,6 +2,8 @@
 	include("includes/connection.php");
 	include("session.php");
 	
+	$msg = "";
+	
 	$cat_id = $_REQUEST['cat_id'];
 	
 	if(trim($cat_id) == "" or !is_numeric($cat_id) or $cat_id == 0)
@@ -22,6 +24,7 @@
 		{
 			$sql = "INSERT INTO vod_channels_categories (channel_id,category_id) VALUES (".$addItems[$i].",$cat_id)";
 			$rsSet = $DB->execute($sql);
+			$msg = _("Changes done!");
 		} 
 	}	
 	
@@ -35,7 +38,8 @@
 		{
 			$sql = "delete from vod_channels_categories where channel_id = ".$remItems[$i]." and category_id =".$cat_id;
 			$rsSet = $DB->execute($sql);
-		} 
+		}
+		$msg = _("Changes done!");
 	}
 
 	//Add All
@@ -58,7 +62,8 @@
 			$rsSet = $DB->execute($sql);
 			
 			$rsGet->movenext();
-		}	
+		}
+		$msg = _("Changes done!");	
 	}
 	
 	//Delete All
@@ -67,6 +72,7 @@
 		$cat_id = $_POST['cat_id'];
 		$sql = "delete from vod_channels_categories where category_id = $cat_id";
 		$rsSet = $DB->execute($sql);
+		$msg = _("Changes done!");
 	}
 	
 ?>
@@ -88,17 +94,28 @@
 		<div id="main">
 
 			<div id="headerDiv">
-				<h2><a href="#">VOD Categories</a> &raquo; <a href="#" class="active">Add Content</a></h2>
+				<h2><a href="#"><?=_("VOD Categories")?></a> &raquo; <a href="#" class="active"><?=_("Add Content for ") ?><?=strtolower($rsGet->fields['name'])?></a></h2>
 			</div>
 			
 			<div id="dhtmlgoodies_scrolldiv">
 				<div id="scrolldiv_parentContainer">
 					<div id="scrolldiv_content">
 
-						<p id="changeNotification" style="margin-top:20px">
+						<p id="changeNotification">
 							<div id="activityIndicator" style="display:none; ">
-								<img src="imagenes/loading_indicator.gif" /><?=_("Updating data, please wait")?>...
+								<img src="imagenes/loading_indicator.gif" style="margin-right:10px;" /><?=_("Updating data, please wait")?>...
 							</div>
+							<div id="completeIndicator" style="display:none; ">
+								<?=_("Changes Done!") ?>
+							</div>
+							<?php if(trim($msg)!=""){
+								?>
+								<div align="center">
+									<?=$msg?>
+								</div>
+								<?
+							}
+							?>
 							<br />
 						</p>
 						<?

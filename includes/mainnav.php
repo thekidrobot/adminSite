@@ -11,6 +11,7 @@
 	<li><a href="epg.php"
 	<?php 
 	if($currentPage == "epg.php" or
+		 $currentPage == "viewEpgDetails.php" or
 		 $currentPage == "viewEpg.php"
 		 ) echo "class='active'";
 	?>

@@ -66,6 +66,9 @@ if ($_POST["MM_insert"] == "true")
 	$validator->addValidation("number","req",_("Channel number is a mandatory field"));
 	$validator->addValidation("number","num",_("Channel number should be a numerical value"));
 	$validator->addValidation("description","maxlen=100",_("Description shouldn't be longer than 100 characters"));
+	$validator->addValidation("description","req",_("Description is a mandatory field"));
+	$validator->addValidation("url","req",_("Channel URL is a mandatory field"));
+	$validator->addValidation("price","req",_("Price is a mandatory field"));
 	$validator->addValidation("price","num",_("Price should be a numerical value"));
 
 	$postArray = &$_POST ;

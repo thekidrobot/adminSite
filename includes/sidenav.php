@@ -24,11 +24,13 @@
 		}
 		/**************** EPG *******************************/
 		elseif($currentPage == "epg.php" or
-					 $currentPage == "viewEpg.php")
+					 $currentPage == "viewEpg.php" or
+					 $currentPage == "viewEpgDetails.php"
+					 )
 		{
 			?>
 			<li><a href="epg.php" <?php if($currentPage == "epg.php") echo "class='active'"?> ><?=_("Add EPG")?></a></li>
-			<li><a href="viewEpg.php" <?php if($currentPage == "viewEpg.php") echo "class='active'"?> ><?=_("View EPG")?></a></li>
+			<li><a href="viewEpg.php" <?php if($currentPage == "viewEpg.php" or $currentPage == "viewEpgDetails.php") echo "class='active'"?> ><?=_("View EPG")?></a></li>
 			<?
 		}
 		

@@ -48,6 +48,8 @@
                   method: "post",
                   onLoading: function(){$('activityIndicator').show()},
                   onLoaded: function(){$('activityIndicator').hide()},
+                  onLoading: function(){$('completeIndicator').hide()},
+                  onLoaded: function(){$('completeIndicator').show()},                  
                   parameters: { data: Sortable.serialize(list), container: list.id,cat_id: <?=$cat_id?> }
                 });				
               }
@@ -102,6 +104,8 @@
 									method: "post",
 									onLoading: function(){$('activityIndicator').show()},
 									onLoaded: function(){$('activityIndicator').hide()},
+                  onLoading: function(){$('completeIndicator').hide()},
+                  onLoaded: function(){$('completeIndicator').show()},                      
 									parameters: { data: Sortable.serialize(list), container: list.id, usr_id: <?=$usr_id?> }
 								});				
 							}
@@ -155,6 +159,8 @@
                   method: "post",
                   onLoading: function(){$('activityIndicator').show()},
                   onLoaded: function(){$('activityIndicator').hide()},
+                  onLoading: function(){$('completeIndicator').hide()},
+                  onLoaded: function(){$('completeIndicator').show()},    
                   parameters: { data: Sortable.serialize(list), container: list.id, pck_id: <?=$pck_id?> }
                 });				
               }
@@ -207,6 +213,8 @@
                   method: "post",
                   onLoading: function(){$('activityIndicator').show()},
                   onLoaded: function(){$('activityIndicator').hide()},
+                  onLoading: function(){$('completeIndicator').hide()},
+                  onLoaded: function(){$('completeIndicator').show()},    
                   parameters: { data: Sortable.serialize(list), container: list.id, pck_id: <?=$pck_id?> }
                 });				
               }

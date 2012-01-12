@@ -2,6 +2,8 @@
 	include("includes/connection.php");
 	include("session.php");
 
+	$msg = "";
+
 	$usr_id = $_REQUEST['usr_id'];
 	
 	$sql = "select * from subscribers where id = $usr_id";
@@ -19,7 +21,8 @@
 							(subscriber_id,package_id)
 							VALUES ($usr_id,".$addItems[$i].")";
 			$rsSet = $DB->execute($sql);
-		} 
+		}
+		$msg = _("Changes done!");		
 	}	
 	
 	//delete selected multiple	
@@ -33,7 +36,8 @@
 			$sql = "delete from subscribers_packages
 							where package_id = ".$remItems[$i]." and subscriber_id =".$usr_id;
 			$rsSet = $DB->execute($sql);
-		} 
+		}
+		$msg = _("Changes done!");		
 	}
 	
 	//Add All
@@ -47,16 +51,17 @@
 							where		subscriber_id = $usr_id
 						) ORDER BY id ";  					
 						
-		$rsGet = $DB->execute($sql);
+		$rsGetPck = $DB->execute($sql);
 		
-		while (!$rsGet->EOF)
+		while (!$rsGetPck->EOF)
 		{
 			$sql = "INSERT INTO subscribers_packages (package_id,subscriber_id)
-							VALUES (".$rsGet->fields['id'].",$usr_id)";
-			$rsSet = $DB->execute($sql);
+							VALUES (".$rsGetPck->fields['id'].",$usr_id)";
+			$rsSetPck = $DB->execute($sql);
 			
-			$rsGet->movenext();
-		}	
+			$rsGetPck->movenext();
+		}
+		$msg = _("Changes done!");		
 	}
 	
 	//Delete All
@@ -65,6 +70,7 @@
 		$usr_id = $_POST['usr_id'];
 		$sql = "delete from subscribers_packages where subscriber_id = $usr_id";
 		$rsSet = $DB->execute($sql);
+		$msg = _("Changes done!");		
 	}
 	
 ?>
@@ -84,14 +90,25 @@
 		</div>    
 		<!-- // #sidebar -->
 		<div id="main">
-			<h2><a href="#"><?=_("Subscribers")?></a> &raquo; <a href="#" class="active"><?=_("Add packages")?></a></h2>
+			<h2><a href="#"><?=_("Subscribers")?></a> &raquo; <a href="#" class="active"><?=_("Add packages for ")?><?=$rsGet->fields['name']?></a></h2>
 			<div id="dhtmlgoodies_scrolldiv">
 				<div id="scrolldiv_parentContainer">
 					<div id="scrolldiv_content">
-						<p id="changeNotification" style="margin-top:20px">
+						<p id="changeNotification">
 							<div id="activityIndicator" style="display:none; ">
-								<img src="imagenes/loading_indicator.gif" /> <?=_("Updating data, please wait")?>...
+								<img src="imagenes/loading_indicator.gif" style="margin-right:10px;" /><?=_("Updating data, please wait")?>...
 							</div>
+							<div id="completeIndicator" style="display:none; ">
+								<?=_("Changes Done!")?>
+							</div>
+							<?php if(trim($msg)!=""){
+								?>
+								<div align="center">
+									<?=$msg?>
+								</div>
+								<?
+							}
+							?>
 							<br />
 						</p>
 						<?	
@@ -124,10 +141,10 @@
 						?>
 						<form action="<?=$currentPage?>" method="post">	
 							<div class="buttons_left">
+								<input type="hidden" value="<?=$usr_id?>" name="usr_id" />
 								<input type="submit" name="a_all" value="<?=_(">>")?>" class="button-submit" />
 								<br /><br />
 								<input type="submit" name="a_selected" value="<?=_(">")?>" class="button-submit" />
-								<input type="hidden" value="<?=$usr_id?>" name="usr_id" />
 							</div>
 						
 							<ul id="sortlist" style="height:<?=$height?>px;">
@@ -157,7 +174,7 @@
 								<input type="hidden" value="<?=$usr_id?>" name="usr_id" />
 							</div>
 							<ul id="sortlist2" style="height:<?=$height?>px;">
-								<h4><?=_("Packages for ")?> <?=$rsGet->fields['name']?></h4>
+								<h4><?=_("Packages for ")?><?=$rsGet->fields['name']?></h4>
 								<br/>
 								<?php  
 									while (!$rsGetRight->EOF)

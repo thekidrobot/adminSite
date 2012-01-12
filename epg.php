@@ -4,8 +4,18 @@ include("includes/connection.php");
 include("session.php");
 
 $csvName = "gridLiveTemplate.csv";
+
+$sql = "select
+				id as channel_id,
+				'Provide a name' as name,
+				'Provide a description' as description,
+				DATE(NOW()) as start_date,
+				TIME(NOW()) as start_time,
+				DATE(NOW()) as end_date,
+				TIME(NOW()) as end_time
+				from livechannels";
 	
-$rsSetCsv = $DB->Execute('select id as channel_id, name as name, "Provide a description" as description, NOW() as start_date, NOW() as end_date from livechannels');
+$rsSetCsv = $DB->Execute($sql);
 $fp = fopen($csvName, "w");
 if ($fp){
 	rs2csvfile($rsSetCsv, $fp); // write to file (there is also an rs2tabfile function)

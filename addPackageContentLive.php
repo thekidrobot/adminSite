@@ -2,6 +2,8 @@
 	include("includes/connection.php");
 	include("session.php");
 
+	$msg = "";
+
 	$pck_id = $_REQUEST['pck_id'];
 
 	if(trim($pck_id) == "" or !is_numeric($pck_id) or $pck_id == 0)
@@ -22,7 +24,8 @@
 		{
 			$sql = "INSERT INTO packages_livechannels (resource_id,package_id) VALUES (".$addItems[$i].",$pck_id)";
 			$rsSet = $DB->execute($sql);
-		} 
+		}
+		$msg = _("Changes done!");
 	}	
 	
 	//delete selected multiple	
@@ -35,7 +38,8 @@
 		{
 			$sql = "delete from packages_livechannels where resource_id = ".$remItems[$i]." and package_id =".$pck_id;
 			$rsSet = $DB->execute($sql);
-		} 
+		}
+		$msg = _("Changes done!");
 	}
 
 	//Add All
@@ -58,7 +62,8 @@
 			$rsSet = $DB->execute($sql);
 			
 			$rsGet->movenext();
-		}	
+		}
+		$msg = _("Changes done!");
 	}
 	
 	//Delete All
@@ -67,6 +72,7 @@
 		$pck_id = $_POST['pck_id'];
 		$sql = "delete from packages_livechannels where package_id = $pck_id";
 		$rsSet = $DB->execute($sql);
+		$msg = _("Changes done!");
 	}
 	
 ?>
@@ -86,14 +92,25 @@
 		</div>    
 		<!-- // #sidebar -->
 		<div id="main">
-			<h2><a href="#"><?=_("Packages")?></a> &raquo; <a href="#" class="active"><?=_("Add live content")?></a></h2>
+			<h2><a href="#"><?=_("Packages")?></a> &raquo; <a href="#" class="active"><?=_("Add live content for ")?><?=strtolower($rsGet->fields['name'])?></a></h2>
 			<div id="dhtmlgoodies_scrolldiv">
 				<div id="scrolldiv_parentContainer">
 					<div id="scrolldiv_content">
-						<p id="changeNotification" style="margin-top:20px">
+						<p id="changeNotification">
 							<div id="activityIndicator" style="display:none; ">
-								<img src="imagenes/loading_indicator.gif" /> <?=_("Updating data, please wait")?>...
+								<img src="imagenes/loading_indicator.gif" style="margin-right:10px;" /><?=_("Updating data, please wait")?>...
 							</div>
+							<div id="completeIndicator" style="display:none; ">
+								<?=_("Changes Done!")?>
+							</div>
+							<?php if(trim($msg)!=""){
+								?>
+								<div align="center">
+									<?=$msg?>
+								</div>
+								<?
+							}
+							?>
 							<br />
 						</p>
 						<?	

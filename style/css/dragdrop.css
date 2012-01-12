@@ -52,8 +52,11 @@
 			cursor:move;
 		}
 		
-		#activityIndicator, #changeNotification {
+		#activityIndicator, #changeNotification, #completeIndicator {
+			margin-top:20px;
+			margin-bottom:15px;
 			text-align: center;
+			font-size:12px;
 			/*font: normal 1em georgia, arial, helvetica;*/
 		}
 
