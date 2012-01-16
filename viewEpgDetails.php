@@ -33,9 +33,10 @@
 			<table class="no-arrow rowstyle-alt colstyle-alt paginate-20 max-pages-3">
 			<thead>
 				<tr>
-					<th class="sortable"><b><?=_("Channel")?></b></th>
-					<th class="sortable"><b><?=_("Name")?></b></th>
+					<th class="sortable"><b><?=_("Channel name")?></b></th>
+					<th class="sortable"><b><?=_("Grid name")?></b></th>
 					<th class="sortable"><b><?=_("Description")?></b></th>
+					<th class="sortable"><b><?=_("Rating")?></b></th>
 					<th class="sortable"><b><?=_("Start Date")?></b></th>
 					<th class="sortable"><b><?=_("Start Time")?></b></th>
 					<th class="sortable"><b><?=_("End Date")?></b></th>
@@ -53,13 +54,17 @@
 					{
 						$sql = "select name from livechannels where id = ".$rsGet->fields['channel_id'];
 						$rsGetChannel = $DB->execute($sql);
+
+						$sql = "select code from ratings where id = ".$rsGet->fields['rating'];
+						$rsGetRating = $DB->execute($sql);
 						
 						$counter++;
 						?>
 						<tr <?php if($counter % 2) echo " class='odd'"?>>
 							<td><?=$rsGetChannel->fields['name']?></td>
-							<td><?=$rsGet->fields['name']?></td>
-							<td><?=$rsGet->fields['description']?></td>
+							<td><?=$rsGet->fields['grid_name']?></td>
+							<td><?=$rsGet->fields['grid_description']?></td>
+							<td><?=$rsGetRating->fields['code']?></td>
 							<td><?=$rsGet->fields['start_date']?></td>
 							<td><?=$rsGet->fields['start_time']?></td>
 							<td><?=$rsGet->fields['end_date']?></td>

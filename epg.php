@@ -7,8 +7,10 @@ $csvName = "gridLiveTemplate.csv";
 
 $sql = "select
 				id as channel_id,
-				'Provide a name' as name,
-				'Provide a description' as description,
+				name as channel_name,
+				'Provide a name' as grid_name,
+				'Provide a description' as grid_description,
+				1 as rating,
 				DATE(NOW()) as start_date,
 				TIME(NOW()) as start_time,
 				DATE(NOW()) as end_date,

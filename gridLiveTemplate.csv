@@ -1,73 +1,73 @@
-channel_id,name,description,start_date,start_time,end_date,end_time
-11,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-12,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-13,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-14,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-15,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-16,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-17,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-18,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-19,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-20,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-21,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-22,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-26,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-27,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-28,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-29,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-30,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-31,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-32,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-33,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-34,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-35,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-36,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-37,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-38,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-39,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-40,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-41,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-42,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-43,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-44,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-45,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-46,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-47,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-48,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-49,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-50,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-51,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-52,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-53,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-54,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-55,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-56,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-57,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-58,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-59,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-60,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-61,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-62,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-63,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-64,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-65,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-66,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-67,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-68,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-69,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-70,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-71,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-72,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-73,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-74,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-75,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-76,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-77,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-78,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-79,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-80,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-81,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-82,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-84,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-85,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
-88,Provide a name,Provide a description,2012-01-12,23:02:27,2012-01-12,23:02:27
+channel_id,channel_name,grid_name,grid_description,rating,start_date,start_time,end_date,end_time
+13,Canal Caracol,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+11,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+12,blah,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+14,Canal Caracol,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+15,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+16,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+17,,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+18,blah,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+19,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+20,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+21,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+22,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+26,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+27,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+28,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+29,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+30,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+31,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+32,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+33,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+34,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+35,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+36,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+37,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+38,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+39,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+40,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+41,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+42,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+43,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+44,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+45,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+46,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+47,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+48,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+49,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+50,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+51,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+52,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+53,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+54,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+55,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+56,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+57,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+58,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+59,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+60,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+61,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+62,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+63,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+64,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+65,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+66,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+67,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+68,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+69,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+70,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+71,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+72,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+73,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+74,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+75,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+76,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+77,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+78,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+79,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+80,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+81,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+82,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+84,Canal RCN,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+85,Andres,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
+88,Cosme Fulanito,Provide a name,Provide a description,1,2012-01-13,10:25:57,2012-01-13,10:25:57
