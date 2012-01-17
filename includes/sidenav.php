@@ -180,12 +180,14 @@
 		<?	
 		}
 		elseif($currentPage == "viewSubscriberDetail.php" or
-					 $currentPage == "addSubscriberPackage.php"
+					 $currentPage == "addSubscriberPackage.php" or
+					 $currentPage == "ticketSubscriber.php"
 					 )
 		{
 		?>
 			<li><a href="addSubscriberPackage.php?usr_id=<?=$usr_id?>" <?php if($currentPage == "addSubscriberPackage.php") echo "class='active'"?> > <?=_("View / Add user packages")?></a></li>
-			<li><a href="viewSubscriberDetail.php?usr_id=<?=$usr_id?>" <?php if($currentPage == "viewSubscriberDetail.php") echo "class='active'"?> > <?=_("View Subscriber Detail")?></a></li>		
+			<li><a href="viewSubscriberDetail.php?usr_id=<?=$usr_id?>" <?php if($currentPage == "viewSubscriberDetail.php") echo "class='active'"?> > <?=_("View Subscriber Detail")?></a></li>
+			<li><a href="ticketSubscriber.php?usr_id=<?=$usr_id?>" <?php if($currentPage == "ticketSubscriber.php") echo "class='active'"?> > <?=_("Manage Tickets")?></a></li>
 			<li><a href="viewSubscribers.php?del=<?=$usr_id?>" <?php if($currentPage == "viewSubscribers.php") echo "class='active'"?> onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" > <?=_("Delete this Subscriber")?></a></li>
 			<li><a href="viewSubscribers.php" <?php if($currentPage == "viewSubscribers.php") echo "class='active'"?> > <?=_("Back to subscribers list")?></a></li>
 		<?	

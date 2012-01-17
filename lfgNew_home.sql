@@ -55,16 +55,12 @@ DROP TABLE IF EXISTS `grid_live`;
 CREATE TABLE `grid_live` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `channel_id` bigint(20) DEFAULT NULL,
-  `channel_name` varchar(100) DEFAULT NULL,
-  `grid_name` varchar(100) DEFAULT NULL,
-  `grid_description` varchar(500) DEFAULT NULL,
-  `rating` int(10) DEFAULT NULL,
-  `start_date` date DEFAULT NULL,
-  `start_time` time DEFAULT NULL,
-  `end_date` date DEFAULT NULL,
-  `end_time` time DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `start_date` datetime DEFAULT NULL,
+  `end_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=290 DEFAULT CHARSET=latin1 COMMENT='Programming grid for live channels';
+) ENGINE=MyISAM AUTO_INCREMENT=218 DEFAULT CHARSET=latin1 COMMENT='Programming grid for live channels';
 
 /*Table structure for table `livechannels` */
 
@@ -142,6 +138,20 @@ CREATE TABLE `ratings` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
+/*Table structure for table `restrictions` */
+
+DROP TABLE IF EXISTS `restrictions`;
+
+CREATE TABLE `restrictions` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `price` int(20) DEFAULT NULL,
+  `currency` int(2) DEFAULT NULL,
+  `duration` int(10) DEFAULT NULL,
+  `views` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
 /*Table structure for table `subscribers` */
 
 DROP TABLE IF EXISTS `subscribers`;
@@ -173,6 +183,33 @@ CREATE TABLE `subscribers_packages` (
   `package_id` bigint(20) NOT NULL,
   PRIMARY KEY (`subscriber_id`,`package_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tickets` */
+
+DROP TABLE IF EXISTS `tickets`;
+
+CREATE TABLE `tickets` (
+  `subscriber_id` bigint(20) NOT NULL,
+  `resource_id` bigint(20) NOT NULL,
+  `restriction_id` bigint(20) DEFAULT NULL,
+  `ticket_number` varchar(250) DEFAULT NULL,
+  `creation_date` datetime DEFAULT NULL,
+  `status` int(1) DEFAULT NULL,
+  PRIMARY KEY (`subscriber_id`,`resource_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+/*Table structure for table `trainers` */
+
+DROP TABLE IF EXISTS `trainers`;
+
+CREATE TABLE `trainers` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) DEFAULT NULL,
+  `description` varchar(250) DEFAULT NULL,
+  `big_pic` varchar(100) DEFAULT NULL,
+  `small_pic` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `vod_channels_categories` */
 
@@ -208,14 +245,14 @@ CREATE TABLE `vodchannels` (
   `stb_url` varchar(200) DEFAULT NULL,
   `download_url` varchar(200) DEFAULT NULL,
   `pc_url` varchar(200) DEFAULT NULL,
-  `trainer` varchar(100) DEFAULT NULL,
+  `trainer` int(10) DEFAULT NULL,
   `date_release` timestamp NULL DEFAULT NULL,
   `keywords` varchar(250) DEFAULT NULL,
   `rating` int(2) DEFAULT NULL,
   `price` int(100) DEFAULT NULL,
   `currency` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='Channels on demand';
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COMMENT='Channels on demand';
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

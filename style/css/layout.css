@@ -374,6 +374,7 @@ td
         border: 1px solid #c4c4c4;
         padding: 6px 12px 6px 12px;
         color: #7a7a7a;
+				vertical-align:middle;
         }
 td.lft
         {
@@ -638,6 +639,20 @@ fieldset textarea {
 	border: 1px solid #408080;
 	background:transparent;
 	/*background: url(../img/button-submit.gif) no-repeat left top;*/
+}
+
+.button-save {
+	margin: 0;
+	padding: 0;
+	border: none;
+	background-color: transparent;
+	background: url('../../images/save.png') no-repeat left top;
+	width: 32px;
+	height: 32px;
+	display: block;
+	float: left;
+	overflow: visible;
+	border: none;
 }
 
 /* Album ----------------------------------------- */

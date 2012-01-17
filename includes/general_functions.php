@@ -70,6 +70,20 @@ function redirect($filename)
 	else echo '<meta http-equiv="refresh" content="0;url='.$filename.'" />';
 }
 
+//Random String Generator
+function genRandomString()
+{
+    $length = 12;
+    $characters = "0123456789abcdefghijklmnopqrstuvwxyz";
+    $string = '';    
+
+    for ($p = 0; $p < $length; $p++) {
+        $string .= $characters[mt_rand(0, strlen($characters))];
+    }
+    return $string;
+}
+
+
 /*******Functions for graphic processing************/
 
 //You do not need to alter these functions
