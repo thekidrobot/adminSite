@@ -209,7 +209,18 @@ if($_POST["MM_update"] == "true")
 					</p>
 					<p>
 						<label><?=_("Movie Director / Trainer")?> : </label>
-						<input name="trainer" type="text" value="<?=$getData->fields['trainer']?>" class="text-long" />
+						<select name="trainer">
+						<?php
+							$sql="select * from trainers";
+							$rsGetTrainers=$DB->execute($sql);
+							while(!$rsGetTrainers->EOF){
+								?>
+									<option value="<?=$rsGetTrainers->fields['id']?>" <? if($rsGetTrainers->fields['id'] == $getData->fields['trainer']) echo "selected='selected'" ?>><?=$rsGetTrainers->fields['name']?></option>
+								<?
+								$rsGetTrainers->movenext();
+							}
+						?>
+						</select>
 					</p>
 					<p>
 						<label><?=_("Release Date")?> : </label>
@@ -236,7 +247,7 @@ if($_POST["MM_update"] == "true")
 									$rsGetCurrencies->movenext();
 								}
 							?>
-						<select>
+						</select>
 					</p>
 					<p>
 						<label><?=_("Rating")?> : </label>
@@ -251,13 +262,14 @@ if($_POST["MM_update"] == "true")
 									$rsGetRating->movenext();
 								}
 							?>
-						<select>
-						<p>
-							<label>&nbsp;</label>
-							<input type="hidden" name="edit" value="<?=$id?>">
-							<input type="hidden" name="MM_update" value="true">
-							<input type="submit" value="<?=_("Update")?>">
-						</p>
+						</select>
+					</p>
+					<p>
+						<label>&nbsp;</label>
+						<input type="hidden" name="edit" value="<?=$id?>">
+						<input type="hidden" name="MM_update" value="true">
+						<input type="submit" value="<?=_("Update")?>">
+					</p>
 				</fieldset>
 			</form>	
 		 

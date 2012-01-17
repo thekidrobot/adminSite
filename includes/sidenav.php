@@ -213,7 +213,62 @@
 				<?	
 			}
 		}
-		
+		/************************ Trainers **********************************/
+		elseif($currentPage == "addTrainer.php" or 
+					 $currentPage == "viewTrainers.php" or
+					 $currentPage == "searchTrainer.php")
+		{
+			?>
+			<li><a href="addTrainer.php" <?php if($currentPage == "addTrainer.php") echo "class='active'"?> > <?=_("Create new Trainer")?></a></li>		
+			<li><a href="viewTrainers.php" <?php if($currentPage == "viewTrainers.php") echo "class='active'"?> > <?=_("View Trainers")?></a></li>
+			<li><a href="searchTrainer.php" <?php if($currentPage == "searchTrainer.php") echo "class='active'"?> > <?=_("Search Trainers")?></a></li>
+			<?	
+		}
+		elseif($currentPage == "viewTrainerDetail.php" or 
+					 $currentPage == "editTrainerDetail.php"){
+			?>
+				<li><a href="viewTrainerDetail.php?id=<?=$id?>" <?php if($currentPage == "viewTrainerDetail.php") echo "class='active'"?> > <?=_("View Trainer Detail")?></a></li>		
+				<li><a href="editTrainerDetail.php?edit=<?=$id?>" <?php if($currentPage == "editTrainerDetail.php") echo "class='active'"?> > <?=_("Edit Trainer Detail")?></a></li>
+				<?
+					$cntTrainers = 0;
+					$readonly = "";
+					$sql= "select name from vodchannels where trainer = $id";
+					$rsGetTrainers = $DB->execute($sql);
+					$cntTrainers = $rsGetTrainers->RecordCount();
+					if($cntTrainers > 0){
+						?>
+						<li><a href="#" onclick="return alert('<?=_("You cannot delete a trainer with videos assigned to it.")?>')" > <?=_("Delete this Trainer")?></a></li>
+						<?
+					}
+					else{
+						?>
+						<li><a href="viewTrainers.php?del=<?=$id?>" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" > <?=_("Delete this Trainer")?></a></li>
+						<?
+					}
+				?>
+				<li><a href="viewTrainers.php" <?php if($currentPage == "viewTrainers.php") echo "class='active'"?> > <?=_("Back to trainers list")?></a></li>
+			<?
+		}
+		/************************ Restrictions **********************************/
+		elseif($currentPage == "createRestriction.php" or 
+					 $currentPage == "viewRestrictions.php" or
+					 $currentPage == "searchRestriction.php")
+		{
+			?>
+			<li><a href="createRestriction.php" <?php if($currentPage == "createRestriction.php") echo "class='active'"?> > <?=_("Create new Restriction")?></a></li>		
+			<li><a href="viewRestrictions.php" <?php if($currentPage == "viewRestrictions.php") echo "class='active'"?> > <?=_("View Restrictions")?></a></li>
+			<li><a href="searchRestriction.php" <?php if($currentPage == "searchRestriction.php") echo "class='active'"?> > <?=_("Search Restrictions")?></a></li>
+			<?	
+		}
+		elseif($currentPage == "viewRestrictionDetail.php" or 
+					 $currentPage == "editRestrictionDetail.php"){
+			?>
+				<li><a href="viewRestrictionDetail.php?id=<?=$id?>" <?php if($currentPage == "viewRestrictionDetail.php") echo "class='active'"?> > <?=_("View Restriction Detail")?></a></li>		
+				<li><a href="editRestrictionDetail.php?id=<?=$id?>" <?php if($currentPage == "editRestrictionDetail.php") echo "class='active'"?> > <?=_("Edit Restriction Detail")?></a></li>		
+				<li><a href="viewRestrictions.php?del=<?=$id?>" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" > <?=_("Delete this Restiction")?></a></li>
+				<li><a href="viewRestrictions.php" <?php if($currentPage == "viewRestrictions.php") echo "class='active'"?> > <?=_("Back to restrictions list")?></a></li>
+			<?
+		}		
 	?>
 </ul>
 <!-- // .sideNav -->

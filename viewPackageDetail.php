@@ -43,7 +43,7 @@
 					</p>
 					
 					<p>
-					<label><?=_("Package Duration")?></label>
+					<label><?=_("Package Duration (In Days)")?></label>
 					<input type="text" name="duration" value="<?=$rsGet->fields['duration']?>" class="text-small" maxlenght="150" readonly="readonly" />
 					</p>
 					

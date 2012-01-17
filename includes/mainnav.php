@@ -44,16 +44,32 @@
 					 ) echo "class='active'";
 	?>
 	><?=_("Packages")?></a></li>
+	<li><a href="addTrainer.php"
+	<?php if($currentPage == "addTrainer.php" or
+					 $currentPage == "viewTrainers.php" or 	
+					 $currentPage == "viewTrainerDetail.php" or
+					 $currentPage == "editTrainerDetail.php" or
+					 $currentPage == "searchTrainer.php"
+					 ) echo "class='active'";
+	?>
+	><?=_("Trainers")?></a></li>
 	<li><a href="createSubscriber.php"
 	<?php if($currentPage == "createSubscriber.php" or
 					 $currentPage == "addSubscriberPackage.php" or 	
 					 $currentPage == "viewSubscribers.php" or
+					 $currentPage == "ticketSubscribers.php" or
 					 $currentPage == "viewSubscriberDetail.php"
 					 ) echo "class='active'";
 	?>
 	><?=_("Subscribers")?></a></li>
-	<li><a href="#"><?=_("Reports")?></a></li>
-	<li><a href="#"><?=_("Support")?></a></li>
+	<li><a href="createRestriction.php"
+	<?php if($currentPage == "createRestriction.php" or
+					 $currentPage == "viewRestrictions.php" or
+					 $currentPage == "viewRestrictionDetail.php" or
+					 $currentPage == "editRestrictionDetail.php"
+					 ) echo "class='active'";
+	?>	
+	><?=_("Restrictions")?></a></li>
 	<li><a href="#"><?=_("FAQ")?></a></li>
 	<li class="logout"><a href="index.php"><?=_("Logout")?></a></li>
 </ul>

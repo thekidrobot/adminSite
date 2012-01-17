@@ -66,7 +66,18 @@ $rsGet = $DB->execute($sql);
 					</p>
 					<p>
 						<label><?=_("Movie Director / Trainer")?> : </label>
-						<input name="trainer" type="text" value="<?=$rsGet->fields['trainer']?>" class="text-long" readonly="readonly" />
+						<select name="trainer">
+						<?php
+							$sql="select * from trainers where id = ".$rsGet->fields['trainer'];
+							$rsGetTrainers=$DB->execute($sql);
+							while(!$rsGetTrainers->EOF){
+								?>
+									<option value="<?=$rsGetTrainers->fields['id']?>"><?=$rsGetTrainers->fields['name']?></option>
+								<?
+								$rsGetTrainers->movenext();
+							}
+						?>
+						</select>
 					</p>
 					<p>
 						<label><?=_("Release Date")?> : </label>
@@ -93,7 +104,7 @@ $rsGet = $DB->execute($sql);
 									$rsGetCurrencies->movenext();
 								}
 							?>
-						<select>
+						</select>
 					</p>
 					<p>
 						<label><?=_("Rating")?> : </label>
@@ -108,11 +119,12 @@ $rsGet = $DB->execute($sql);
 									$rsGetRating->movenext();
 								}
 							?>
-						<select>
-						<p>
-							<label>&nbsp;</label>
-							<a href="editVodMovieDetail.php?edit=<?=$id?>"><input type="button" class="button-submit" value="<?=_("Click to edit")?>" /></a>
-						</p>
+						</select>
+					 </p>
+					 <p>
+						 <label>&nbsp;</label>
+						 <a href="editVodMovieDetail.php?edit=<?=$id?>"><input type="button" class="button-submit" value="<?=_("Click to edit")?>" /></a>
+					 </p>
 				</fieldset>
 			</form>	
 		 

@@ -3,7 +3,7 @@
 # Server version:               5.5.12
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3603
-# Date/time:                    2012-01-12 17:19:48
+# Date/time:                    2012-01-17 20:14:47
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -551,9 +551,13 @@ CREATE TABLE IF NOT EXISTS `packages_vodchannels` (
   PRIMARY KEY (`package_id`,`resource_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-# Dumping data for table lfg.packages_vodchannels: 0 rows
+# Dumping data for table lfg.packages_vodchannels: 3 rows
 DELETE FROM `packages_vodchannels`;
 /*!40000 ALTER TABLE `packages_vodchannels` DISABLE KEYS */;
+INSERT INTO `packages_vodchannels` (`package_id`, `resource_id`) VALUES
+	(5, 1),
+	(6, 1),
+	(6, 2);
 /*!40000 ALTER TABLE `packages_vodchannels` ENABLE KEYS */;
 
 
@@ -599,6 +603,27 @@ INSERT INTO `ratings` (`id`, `code`, `name`) VALUES
 /*!40000 ALTER TABLE `ratings` ENABLE KEYS */;
 
 
+# Dumping structure for table lfg.restrictions
+DROP TABLE IF EXISTS `restrictions`;
+CREATE TABLE IF NOT EXISTS `restrictions` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `price` int(20) DEFAULT NULL,
+  `currency` int(2) DEFAULT NULL,
+  `duration` int(10) DEFAULT NULL,
+  `views` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+# Dumping data for table lfg.restrictions: 2 rows
+DELETE FROM `restrictions`;
+/*!40000 ALTER TABLE `restrictions` DISABLE KEYS */;
+INSERT INTO `restrictions` (`id`, `name`, `price`, `currency`, `duration`, `views`) VALUES
+	(2, 'Rule 1', 2000, 10, 3, 0),
+	(3, 'Rule 2', 1, 1, 1, 0);
+/*!40000 ALTER TABLE `restrictions` ENABLE KEYS */;
+
+
 # Dumping structure for table lfg.subscribers
 DROP TABLE IF EXISTS `subscribers`;
 CREATE TABLE IF NOT EXISTS `subscribers` (
@@ -635,12 +660,52 @@ CREATE TABLE IF NOT EXISTS `subscribers_packages` (
   PRIMARY KEY (`subscriber_id`,`package_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-# Dumping data for table lfg.subscribers_packages: 1 rows
+# Dumping data for table lfg.subscribers_packages: 3 rows
 DELETE FROM `subscribers_packages`;
 /*!40000 ALTER TABLE `subscribers_packages` DISABLE KEYS */;
 INSERT INTO `subscribers_packages` (`subscriber_id`, `package_id`) VALUES
-	(7, 5);
+	(7, 4),
+	(7, 5),
+	(7, 6);
 /*!40000 ALTER TABLE `subscribers_packages` ENABLE KEYS */;
+
+
+# Dumping structure for table lfg.tickets
+DROP TABLE IF EXISTS `tickets`;
+CREATE TABLE IF NOT EXISTS `tickets` (
+  `id` bigint(50) NOT NULL AUTO_INCREMENT,
+  `subscriber_id` bigint(20) DEFAULT NULL,
+  `resource_id` bigint(20) DEFAULT NULL,
+  `restriction_id` bigint(20) DEFAULT NULL,
+  `ticket_number` varchar(250) DEFAULT NULL,
+  `creation_date` datetime DEFAULT NULL,
+  `status` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+# Dumping data for table lfg.tickets: 0 rows
+DELETE FROM `tickets`;
+/*!40000 ALTER TABLE `tickets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tickets` ENABLE KEYS */;
+
+
+# Dumping structure for table lfg.trainers
+DROP TABLE IF EXISTS `trainers`;
+CREATE TABLE IF NOT EXISTS `trainers` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) DEFAULT NULL,
+  `description` varchar(250) DEFAULT NULL,
+  `big_pic` varchar(100) DEFAULT NULL,
+  `small_pic` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+# Dumping data for table lfg.trainers: 1 rows
+DELETE FROM `trainers`;
+/*!40000 ALTER TABLE `trainers` DISABLE KEYS */;
+INSERT INTO `trainers` (`id`, `name`, `description`, `big_pic`, `small_pic`) VALUES
+	(1, 'Michael Jackson', 'The king of pop', 'oh_big.jpg', 'oh_small.jpg');
+/*!40000 ALTER TABLE `trainers` ENABLE KEYS */;
 
 
 # Dumping structure for table lfg.vodcategories
@@ -690,20 +755,21 @@ CREATE TABLE IF NOT EXISTS `vodchannels` (
   `stb_url` varchar(200) DEFAULT NULL,
   `download_url` varchar(200) DEFAULT NULL,
   `pc_url` varchar(200) DEFAULT NULL,
-  `trainer` varchar(100) DEFAULT NULL,
+  `trainer` int(10) DEFAULT NULL,
   `date_release` timestamp NULL DEFAULT NULL,
   `keywords` varchar(250) DEFAULT NULL,
   `rating` int(2) DEFAULT NULL,
   `price` int(100) DEFAULT NULL,
   `currency` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='Channels on demand';
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COMMENT='Channels on demand';
 
-# Dumping data for table lfg.vodchannels: 1 rows
+# Dumping data for table lfg.vodchannels: 2 rows
 DELETE FROM `vodchannels`;
 /*!40000 ALTER TABLE `vodchannels` DISABLE KEYS */;
 INSERT INTO `vodchannels` (`id`, `big_pic`, `small_pic`, `name`, `description`, `stb_url`, `download_url`, `pc_url`, `trainer`, `date_release`, `keywords`, `rating`, `price`, `currency`) VALUES
-	(1, 'Water lilies378_big.jpg', 'Water lilies378_small.jpg', 'Andres', 'andres', 'andres', 'andres', 'andres', 'andres', '2012-01-09 17:27:20', 'comics,animation', 1, 0, 1);
+	(1, 'Water lilies378_big.jpg', 'Water lilies378_small.jpg', 'Andres', 'andres', 'andres', 'andres', 'andres', 1, '2012-01-09 17:27:20', 'comics,animation', 1, 0, 1),
+	(2, 'moto_pix_big.jpg', 'moto_pix_small.jpg', 'Moto', 'Moto', 'www.moto.com', 'www.moto.com', 'www.moto.com', 1, '2012-01-17 14:22:59', 'moto,movie', 1, 0, 1);
 /*!40000 ALTER TABLE `vodchannels` ENABLE KEYS */;
 
 
@@ -715,7 +781,7 @@ CREATE TABLE IF NOT EXISTS `vod_channels_categories` (
   PRIMARY KEY (`channel_id`,`category_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-# Dumping data for table lfg.vod_channels_categories: 0 rows
+# Dumping data for table lfg.vod_channels_categories: 1 rows
 DELETE FROM `vod_channels_categories`;
 /*!40000 ALTER TABLE `vod_channels_categories` DISABLE KEYS */;
 INSERT INTO `vod_channels_categories` (`channel_id`, `category_id`) VALUES

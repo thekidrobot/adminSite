@@ -2,78 +2,8 @@
 include("includes/connection.php");
 include("session.php");
 
-$large_image_location = "data/images/";
-$gallery_upload_path = "data/images/";
-$max_width = 300;
-$max_height = 410;
-$error = '';
-
-$userfile_name = $_FILES['pic']['name'];
-$userfile_tmp = $_FILES['pic']['tmp_name'];
-$userfile_size = $_FILES['pic']['size'];
-$filename = basename($userfile_name);
-
-$file_ext = substr($filename, strrpos($filename, '.') + 1);	 //remove the ext
-$filename_strip= substr($filename,0,strrpos($filename, '.'));
-
-//Only process if the file is a JPG and below the allowed limit
-if((!empty($_FILES['pic']['name'])) && ($_FILES['pic']['error'] == 0))
-{
-	if (($file_ext!="jpg"))
-	{
-		$error= _("Only JPG images are accepted for uploading");
-	}
-	
-	//If is ok, so we can upload the image.
-	if (strlen($error)==0)
-	{
-		if (isset($_FILES['pic']['name']))
-		{
-			$filename =$filename_strip."_big".".".$file_ext;
-			
-			if(is_file($gallery_upload_path.$filename))
-			{
-				while (file_exists($gallery_upload_path.$filename))
-				{
-					$filename_strip .= rand(100, 999);
-					$filename =$filename_strip."_big".".".$file_ext;
-				}
-			}
-
-			$large_image_location = $gallery_upload_path .$filename;
-			move_uploaded_file($userfile_tmp, $large_image_location);
-			chmod($large_image_location, 0777);
-					
-			$width = getWidth($large_image_location);
-			$height = getHeight($large_image_location);
-				
-			//Scale the image if it is greater than the width set above
-			if (($width > $max_width) or ($height > $max_height))
-			{
-				$uploaded = resizeImage($large_image_location,$max_width,$max_height);
-			}
-			createThumbnail($filename);
-		}
-	}
-}
-
 if ($_POST["MM_insert"] == "true")
 {
-	$postArray = &$_POST ;
-	
-	$pic = escape_value($filename);
-	$name = escape_value($postArray['name']);
-	$description = escape_value($postArray['description']);
-	$stb_url = escape_value($postArray['stb_url']);
-	$download_url = escape_value($postArray['download_url']);
-	$pc_url = escape_value($postArray['pc_url']);
-	$trainer = escape_value($postArray['trainer']);
-	$date_release = escape_value($postArray['date_release']);
-	$keywords = escape_value($postArray['keywords']);
-	$rating = escape_value($postArray['rating']);
-	$price = escape_value($postArray['price']);
-	$currency = escape_value($postArray['currency']);
-	
 	$validator = new FormValidator();
 
 	$validator->addValidation("name","req",_("Name is a mandatory field"));
@@ -98,9 +28,80 @@ if ($_POST["MM_insert"] == "true")
 	}
 	else
 	{	
+		$large_image_location = "data/images/";
+		$gallery_upload_path = "data/images/";
+		$max_width = 300;
+		$max_height = 410;
+		$error = '';
+		
+		$userfile_name = $_FILES['pic']['name'];
+		$userfile_tmp = $_FILES['pic']['tmp_name'];
+		$userfile_size = $_FILES['pic']['size'];
+		$filename = basename($userfile_name);
+		
+		$file_ext = substr($filename, strrpos($filename, '.') + 1);	 //remove the ext
+		$filename_strip= substr($filename,0,strrpos($filename, '.'));
+		
+		//Only process if the file is a JPG and below the allowed limit
+		if((!empty($_FILES['pic']['name'])) && ($_FILES['pic']['error'] == 0))
+		{
+			if (($file_ext!="jpg"))
+			{
+				$error= _("Only JPG images are accepted for uploading");
+			}
+			
+			//If is ok, so we can upload the image.
+			if (strlen($error)==0)
+			{
+				if (isset($_FILES['pic']['name']))
+				{
+					$filename =$filename_strip."_big".".".$file_ext;
+					
+					if(is_file($gallery_upload_path.$filename))
+					{
+						while (file_exists($gallery_upload_path.$filename))
+						{
+							$filename_strip .= rand(100, 999);
+							$filename =$filename_strip."_big".".".$file_ext;
+						}
+					}
+		
+					$large_image_location = $gallery_upload_path .$filename;
+					move_uploaded_file($userfile_tmp, $large_image_location);
+					chmod($large_image_location, 0777);
+							
+					$width = getWidth($large_image_location);
+					$height = getHeight($large_image_location);
+						
+					//Scale the image if it is greater than the width set above
+					if (($width > $max_width) or ($height > $max_height))
+					{
+						$uploaded = resizeImage($large_image_location,$max_width,$max_height);
+					}
+					$thumb = createThumbnail($filename);
+				}
+			}
+		}
+
+		$postArray = &$_POST ;
+		
+		$big_pic = escape_value($filename);
+		$small_pic = escape_value($thumb);
+		$name = escape_value($postArray['name']);
+		$description = escape_value($postArray['description']);
+		$stb_url = escape_value($postArray['stb_url']);
+		$download_url = escape_value($postArray['download_url']);
+		$pc_url = escape_value($postArray['pc_url']);
+		$trainer = escape_value($postArray['trainer']);
+		$date_release = escape_value($postArray['date_release']);
+		$keywords = escape_value($postArray['keywords']);
+		$rating = escape_value($postArray['rating']);
+		$price = escape_value($postArray['price']);
+		$currency = escape_value($postArray['currency']);
+
 		$insertSql = "INSERT INTO vodchannels
-									(pic,name,description,stb_url,download_url,pc_url,trainer,date_release,keywords,rating,price,currency)
-									VALUES ('$pic','$name','$description',
+									(big_pic,small_pic,name,description,stb_url,download_url,pc_url,trainer,date_release,keywords,rating,price,currency)
+									VALUES ('$big_pic','$small_pic','$name','$description',
 													'$stb_url','$download_url','$pc_url',
 													'$trainer','$date_release','$keywords',$rating,$price,$currency)";
 		
@@ -170,7 +171,18 @@ if ($_POST["MM_insert"] == "true")
 					</p>
 					<p>
 						<label><?=_("Movie Director / Trainer")?> : </label>
-						<input name="trainer" type="text" maxlength="350"  class="text-long" />
+						<select name="trainer">
+						<?php
+							$sql="select * from trainers";
+							$rsGet=$DB->execute($sql);
+							while(!$rsGet->EOF){
+								?>
+									<option value="<?=$rsGet->fields['id']?>"><?=$rsGet->fields['name']?></option>
+								<?
+								$rsGet->movenext();
+							}
+						?>
+						</select>
 					</p>
 					<p>
 						<label><?=_("Release Date")?> : </label>
@@ -206,7 +218,7 @@ if ($_POST["MM_insert"] == "true")
 									$rsGet->movenext();
 								}
 							?>
-						<select>
+						</select>
 					</p>
 					<p>
 						<label><?=_("Rating")?> : </label>
@@ -221,7 +233,8 @@ if ($_POST["MM_insert"] == "true")
 									$rsGet->movenext();
 								}
 							?>
-						<select>
+						</select>
+					</p>
 					<p>
 						<label>&nbsp;</label>
 						<input type="hidden" name="MM_insert" value="true" />

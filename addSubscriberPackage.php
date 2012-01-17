@@ -6,6 +6,11 @@
 
 	$usr_id = $_REQUEST['usr_id'];
 	
+	if(trim($usr_id) == "" or !is_numeric($usr_id) or $usr_id == 0)
+	{
+		redirect("viewSubscribers.php");
+	}	
+	
 	$sql = "select * from subscribers where id = $usr_id";
 	$rsGet = $DB->Execute($sql);
 	
