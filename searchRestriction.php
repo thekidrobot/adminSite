@@ -34,7 +34,7 @@ if($U > 0)
   @unlink($gallery_upload_path.$rsDel->fields['big_pic']);
   @unlink($gallery_upload_path.$rsDel->fields['small_pic']);
   
-  $query_rsDel = "DELETE FROM restrictions WHERE id = $id";
+  $query_rsDel = "DELETE FROM restrictions WHERE id = $id and id not in(select distinct restriction_id from tickets)";
 	$rsDel = $DB->Execute($query_rsDel);
 	
   redirect($currentPage);
@@ -105,12 +105,22 @@ if($U > 0)
 										while (!$rsGet->EOF)
 										{  
 											$counter++;
+											
+											$cntRestrictions = 0;
+											$readonly = "";
+											$sql= "select restriction_id from tickets where restriction_id = ".$rsGet->fields['id'];
+											$rsGetRestrictions = $DB->execute($sql);
+											$cntRestrictions = $rsGetRestrictions->RecordCount();
+											if($cntRestrictions > 0){
+												$readonly = "disabled='disabled'";
+											}
+											
 											?>
 											<tr <?php if($counter % 2) echo " class='odd'"?>>
 												<td><a href="viewRestrictionDetail.php?id=<?=$rsGet->fields['id']?>"><?=$rsGet->fields['name']?></a></td>
 												<td><?=$rsGet->fields['duration']?></td>
 												<td><?=$rsGet->fields['views']?></td>
-												<td align="center"><input name='rules[]' type='checkbox' value="<?=$rsGet->fields['id']?>"></td>
+												<td align="center"><input name='rules[]' type='checkbox' value="<?=$rsGet->fields['id']?>" <?=$readonly?>></td>
 											</tr>
 											<?php
 											$rsGet->movenext();

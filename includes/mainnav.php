@@ -57,7 +57,7 @@
 	<?php if($currentPage == "createSubscriber.php" or
 					 $currentPage == "addSubscriberPackage.php" or 	
 					 $currentPage == "viewSubscribers.php" or
-					 $currentPage == "ticketSubscribers.php" or
+					 $currentPage == "ticketSubscriber.php" or
 					 $currentPage == "viewSubscriberDetail.php"
 					 ) echo "class='active'";
 	?>

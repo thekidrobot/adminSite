@@ -267,7 +267,24 @@
 			?>
 				<li><a href="viewRestrictionDetail.php?id=<?=$id?>" <?php if($currentPage == "viewRestrictionDetail.php") echo "class='active'"?> > <?=_("View Restriction Detail")?></a></li>		
 				<li><a href="editRestrictionDetail.php?id=<?=$id?>" <?php if($currentPage == "editRestrictionDetail.php") echo "class='active'"?> > <?=_("Edit Restriction Detail")?></a></li>		
-				<li><a href="viewRestrictions.php?del=<?=$id?>" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" > <?=_("Delete this Restiction")?></a></li>
+
+				<?
+					$cntRestrictions = 0;
+					$readonly = "";
+					$sql= "select restriction_id from tickets where restriction_id = $id";
+					$rsGetRestrictions = $DB->execute($sql);
+					$cntRestrictions = $rsGetRestrictions->RecordCount();
+					if($cntRestrictions > 0){
+						?>
+						<li><a href="#" onclick="return alert('<?=_("You cannot delete a restriction with videos assigned to it.")?>')" > <?=_("Delete this Restriction")?></a></li>
+						<?
+					}
+					else{
+						?>
+						<li><a href="viewRestrictions.php?del=<?=$id?>" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" > <?=_("Delete this Restiction")?></a></li>
+						<?
+					}
+				?>
 				<li><a href="viewRestrictions.php" <?php if($currentPage == "viewRestrictions.php") echo "class='active'"?> > <?=_("Back to restrictions list")?></a></li>
 			<?
 		}		
