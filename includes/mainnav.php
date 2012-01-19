@@ -66,7 +66,8 @@
 	<?php if($currentPage == "createRestriction.php" or
 					 $currentPage == "viewRestrictions.php" or
 					 $currentPage == "viewRestrictionDetail.php" or
-					 $currentPage == "editRestrictionDetail.php"
+					 $currentPage == "editRestrictionDetail.php" or
+					 $currentPage == "searchRestriction.php"
 					 ) echo "class='active'";
 	?>	
 	><?=_("Restrictions")?></a></li>

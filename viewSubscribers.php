@@ -54,6 +54,7 @@
 					<th class="sortable"><b><?=_("STB Serial Number")?></b></th>
 					<th class="sortable"><b><?=_("STB Mac Address")?></b></th>
 					<th><b><?=_("Add Packages")?></b></th>
+					<th><b><?=_("Manage Tickets")?></b></th>
 					<th style="text-align:center">
 						<input class="button-submit" type="submit" value="<?=_("Delete Selected")?>" name="borrar" onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" />
 					</th>
@@ -75,6 +76,7 @@
 							<td><?=$rsGet->fields['serial']?></td>
 							<td><?=$rsGet->fields['mac']?></td>
 							<td class="action"><a href="addSubscriberPackage.php?usr_id=<?=$rsGet->fields['id']?>"><?=_("Add Packages")?></td>
+							<td class="action"><a href="ticketSubscriber.php?usr_id=<?=$rsGet->fields['id']?>"><?=_("Manage Tickets")?></td>
 							<td align="center"><input name='subscribers[]' type='checkbox' value="<?=$rsGet->fields['id']?>"></td>
 						</tr>
 						<?php

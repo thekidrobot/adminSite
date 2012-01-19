@@ -649,8 +649,8 @@ fieldset textarea {
 	background: url('../../images/save.png') no-repeat left top;
 	width: 32px;
 	height: 32px;
-	display: block;
-	float: left;
+	/*display: block;*/
+	/*float: right;*/
 	overflow: visible;
 	border: none;
 }

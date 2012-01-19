@@ -22,15 +22,15 @@
 		$price=escape_value($postArray['price']);
 		$currency=escape_value($postArray['currency']);
 		$duration=escape_value($postArray['duration']);
-		$views=escape_value($postArray['views']);
+		$max_views=escape_value($postArray['max_views']);
 				
 		$validator = new FormValidator();
 		$validator->addValidation("name","req",_("Name is a mandatory field"));
 		$validator->addValidation("price","req",_("Price is a mandatory field"));
 		$validator->addValidation("duration","req",_("Duration is a mandatory field"));
 		$validator->addValidation("duration","num",_("Duration should be a number"));
-		$validator->addValidation("views","req",_("Views is a mandatory field"));
-		$validator->addValidation("views","num",_("Views should be a number"));
+		$validator->addValidation("max_views","req",_("Views is a mandatory field"));
+		$validator->addValidation("max_views","num",_("Views should be a number"));
 		
 		if(!$validator->ValidateForm())
 		{
@@ -48,7 +48,7 @@
 						 price = '$price',
 						 currency = '$currency',
 						 duration = '$duration',
-						 views = '$views'
+						 max_views = '$max_views'
 						 where id = $id";
 						 
 		 $rsSet=$DB->execute($sql);
@@ -111,13 +111,13 @@
 					</select>
 				</p>
 				<p>
-					<label><?=_("Rule time (In Days)")?></label>
+					<label><?=_("Validity (In Days)")?></label>
 					<input type="text" name="duration" value="<?=$rsGet->fields['duration']?>" maxlength="200" class="text-small" />
 				</p>
 				<p>
 					<label><?=_("Number of views")?><br/>
 					<?=_("(Zero means unlimited)")?></label>
-					<input type="text" name="views" value="0" maxlength="100" class="text-small" />
+					<input type="text" name="max_views" value="<?=$rsGet->fields['max_views']?>" maxlength="100" class="text-small" />
 				</p>
 				<p>
 					<label><?=_("Save Rule")?></label>
