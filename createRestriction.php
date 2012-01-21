@@ -37,9 +37,9 @@
 			
 			$sql = "INSERT INTO
 							restrictions
-							(name,price,duration,currency,current_views,max_views)
+							(name,price,duration,currency,max_views)
 							VALUES
-							('$name','$price','$currency','$duration',0,'$views')";
+							('$name','$price','$currency','$duration','$views')";
 		
 			$rsSet = $DB->Execute($sql);
 			$usr_id = $DB->Insert_ID();

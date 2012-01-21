@@ -6,7 +6,8 @@
 	if($_GET['del']!="")
 	{
 		$id = escape_value($_GET['del']);
-		$sql = "delete from restrictions where id = $id and id not in(select distinct restriction_id from tickets)";
+		$sql = "delete from restrictions where id = $id and id
+						not in(select distinct restriction_id from tickets)";
 		$rsSet = $DB->Execute($sql);
 	}
 	
@@ -17,7 +18,8 @@
 	{
 		for($i=0; $i < $N; $i++)
 		{
-			$sql = "delete from restrictions where id = ".$arrRules[$i]." and id not in(select distinct restriction_id from tickets)";
+			$sql = "delete from restrictions where id = ".$arrRules[$i]." and id
+							not in(select distinct restriction_id from tickets)";
 			$rsSet = $DB->Execute($sql);
 		} 
 	}		
@@ -76,7 +78,7 @@
 						<tr <?php if($counter % 2) echo " class='odd'"?>>
 							<td><a href="viewRestrictionDetail.php?id=<?=$rsGet->fields['id']?>"><?=$rsGet->fields['name']?></a></td>
 							<td><?=$rsGet->fields['duration']?></td>
-							<td><?=$rsGet->fields['views']?></td>
+							<td><?=$rsGet->fields['max_views']?></td>
 							<td align="center"><input name='rules[]' type='checkbox' value="<?=$rsGet->fields['id']?>" <?=$readonly?>></td>
 						</tr>
 						<?php

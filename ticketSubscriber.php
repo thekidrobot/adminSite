@@ -76,7 +76,8 @@
 					$counter = 0;
 					
 					while (!$rsGet->EOF)
-					{  
+					{
+						$ticket_number = "";
 						$counter++;
 						$vid_id = $rsGet->fields['id'];
 						
@@ -163,7 +164,7 @@
 								<input name="usr_id" type="hidden" value="<?=$id?>" />
 								<input name="vid_id" type="hidden" value="<?=$vid_id?>" />
 								<input name="save_tkt" type="hidden" value="1" />								
-								<input name="ticket" type="text" maxlength="10" value="<?=$ticket_number?>" class="text-medium" readonly="readonly" />
+								<input name="ticket" type="text" maxlength="10" value="<?=$ticket_number?>" class="text-medium" readonly="readonly" onkeypress="return handleEnter(this, event)" />
 							</td>
 							<td align="center">
 							<?php if($all_tickets_expired == 1){
