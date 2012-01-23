@@ -1,0 +1,9 @@
+﻿{"status":"success","categories":[
+{"categoryId":"1","parentId":"0","categoryName":"5 Melhores","isProtected":"0"},
+{"categoryId":"2","parentId":"0","categoryName":"Ação","isProtected":"0"},
+{"categoryId":"3","parentId":"0","categoryName":"Ficção","isProtected":"0"},
+{"categoryId":"4","parentId":"0","categoryName":"Infantis","isProtected":"0"},
+{"categoryId":"5","parentId":"0","categoryName":"Adulto","isProtected":"1"}
+]}
+
+//Info sobre categorias
