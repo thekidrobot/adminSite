@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Komodo Project File - DO NOT EDIT -->
+<project id="7c061be2-a749-4e8c-9373-7a3d1a674846" kpf_version="4" name="nusoap.kpf">
+<preference-set idref="7c061be2-a749-4e8c-9373-7a3d1a674846">
+  <boolean id="import_live">1</boolean>
+</preference-set>
+</project>
