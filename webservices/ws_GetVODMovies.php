@@ -68,8 +68,7 @@ function receiveUserData($pin='')
 						 $user['description'] = trim($row->description),$user['name'] = trim($row->name),
 						 $user['poster']=trim($row->poster),$user['posterLarge']=trim($row->posterLarge));
 						
-						$usuario.=json_encode($user
-																	).',';
+						$usuario.=json_encode($user).',';
 				}
 				$usuario = "[".substr($usuario,0,strlen($usuario)-1)."]";
 

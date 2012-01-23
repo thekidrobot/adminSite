@@ -3,7 +3,7 @@
 # Server version:               5.5.12
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3603
-# Date/time:                    2012-01-19 19:44:59
+# Date/time:                    2012-01-23 18:49:00
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -620,14 +620,16 @@ CREATE TABLE IF NOT EXISTS `subscribers` (
   `serial` varchar(150) DEFAULT NULL,
   `mac` varchar(100) DEFAULT NULL,
   `license` varchar(100) DEFAULT NULL,
+  `last_login` datetime DEFAULT NULL,
+  `pin` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 # Dumping data for table lfg.subscribers: 1 rows
 DELETE FROM `subscribers`;
 /*!40000 ALTER TABLE `subscribers` DISABLE KEYS */;
-INSERT INTO `subscribers` (`id`, `name`, `username`, `password`, `address`, `email`, `account`, `phone`, `country`, `city`, `zip`, `serial`, `mac`, `license`) VALUES
-	(7, 'Cosme Fulanito', 'cosmeFulanito', '16d7a4fca7442dda3ad93c9a726597e4', 'Test', 'my@email.com', 'test', 'test', '39', 'Mumbai', '111', '1112', '111', '');
+INSERT INTO `subscribers` (`id`, `name`, `username`, `password`, `address`, `email`, `account`, `phone`, `country`, `city`, `zip`, `serial`, `mac`, `license`, `last_login`, `pin`) VALUES
+	(7, 'Cosme Fulanito', 'cosmeFulanito', '16d7a4fca7442dda3ad93c9a726597e4', 'Test', 'my@email.com', 'test', 'test', '39', 'Mumbai', '111', 'S3R1AL', 'MM:AA:CC:AA:DD:RR:EE:SS', '', '2012-01-23 16:07:12', 'vht6jjogq4m4m4c');
 /*!40000 ALTER TABLE `subscribers` ENABLE KEYS */;
 
 
