@@ -84,15 +84,15 @@ DROP TABLE IF EXISTS `livechannels`;
 
 CREATE TABLE `livechannels` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `big_pic` varchar(100) DEFAULT NULL,
-  `small_pic` varchar(100) DEFAULT NULL,
-  `name` varchar(150) DEFAULT NULL,
-  `number` int(10) DEFAULT NULL,
-  `description` varchar(500) DEFAULT NULL,
-  `url` varchar(200) DEFAULT NULL,
-  `price` int(100) DEFAULT '0',
-  `currency` int(2) DEFAULT NULL,
-  `rating` int(2) DEFAULT NULL,
+  `big_pic` varchar(100) DEFAULT NULL COMMENT 'profile picture in big size',
+  `small_pic` varchar(100) DEFAULT NULL COMMENT 'profile picture in small size',
+  `name` varchar(150) DEFAULT NULL COMMENT 'channel name',
+  `number` int(10) DEFAULT NULL COMMENT 'channel number, should be unique.',
+  `description` varchar(500) DEFAULT NULL COMMENT 'channel description',
+  `url` varchar(200) DEFAULT NULL COMMENT 'channel url',
+  `price` int(100) DEFAULT '0' COMMENT 'channel price',
+  `currency` int(2) DEFAULT NULL COMMENT 'currency code',
+  `rating` int(2) DEFAULT NULL COMMENT 'rating code',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=89 DEFAULT CHARSET=latin1 COMMENT='Table for live content';
 
@@ -106,13 +106,13 @@ DROP TABLE IF EXISTS `packages`;
 
 CREATE TABLE `packages` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) DEFAULT NULL,
-  `description` varchar(500) DEFAULT NULL,
-  `duration` varchar(50) DEFAULT NULL,
-  `price` int(20) DEFAULT NULL,
-  `currency` int(2) DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL COMMENT 'package name',
+  `description` varchar(500) DEFAULT NULL COMMENT 'package description',
+  `duration` varchar(50) DEFAULT NULL COMMENT 'package duration (in days)',
+  `price` int(20) DEFAULT NULL COMMENT 'package price',
+  `currency` int(2) DEFAULT NULL COMMENT 'currency code',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COMMENT='package info';
 
 /*Data for the table `packages` */
 
@@ -123,10 +123,10 @@ insert  into `packages`(`id`,`name`,`description`,`duration`,`price`,`currency`)
 DROP TABLE IF EXISTS `packages_livechannels`;
 
 CREATE TABLE `packages_livechannels` (
-  `package_id` bigint(20) NOT NULL,
-  `resource_id` bigint(20) NOT NULL,
+  `package_id` bigint(20) NOT NULL COMMENT 'Package ID',
+  `resource_id` bigint(20) NOT NULL COMMENT 'Video ID (from livechannels)',
   PRIMARY KEY (`package_id`,`resource_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Link table between packages and live videos';
 
 /*Data for the table `packages_livechannels` */
 
@@ -137,31 +137,14 @@ insert  into `packages_livechannels`(`package_id`,`resource_id`) values (4,11),(
 DROP TABLE IF EXISTS `packages_vodchannels`;
 
 CREATE TABLE `packages_vodchannels` (
-  `package_id` bigint(20) NOT NULL,
-  `resource_id` bigint(20) NOT NULL,
+  `package_id` bigint(20) NOT NULL COMMENT 'package ID',
+  `resource_id` bigint(20) NOT NULL COMMENT 'video ID (from vodchannels)',
   PRIMARY KEY (`package_id`,`resource_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Link table between packages and VOD videos';
 
 /*Data for the table `packages_vodchannels` */
 
 insert  into `packages_vodchannels`(`package_id`,`resource_id`) values (5,1),(6,1),(6,2);
-
-/*Table structure for table `programacion` */
-
-DROP TABLE IF EXISTS `programacion`;
-
-CREATE TABLE `programacion` (
-  `id_prog` bigint(20) NOT NULL AUTO_INCREMENT,
-  `prog_video` int(11) NOT NULL,
-  `prog_fecha_ini` datetime NOT NULL,
-  `prog_fecha_fin` datetime NOT NULL,
-  `prog_canal` int(11) NOT NULL,
-  PRIMARY KEY (`id_prog`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-
-/*Data for the table `programacion` */
-
-insert  into `programacion`(`id_prog`,`prog_video`,`prog_fecha_ini`,`prog_fecha_fin`,`prog_canal`) values (1,3150,'2010-05-11 22:00:00','2010-05-11 22:30:00',123),(2,3149,'2010-05-11 22:30:00','2010-05-11 23:30:00',123),(3,3148,'2010-05-11 23:30:00','2010-05-11 00:00:00',123);
 
 /*Table structure for table `ratings` */
 
@@ -184,17 +167,17 @@ DROP TABLE IF EXISTS `restrictions`;
 
 CREATE TABLE `restrictions` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) DEFAULT NULL,
-  `price` int(20) DEFAULT NULL,
-  `currency` int(2) DEFAULT NULL,
-  `duration` int(10) DEFAULT NULL,
-  `views` int(10) DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL COMMENT 'Rule name',
+  `price` int(20) DEFAULT NULL COMMENT 'Rule price',
+  `currency` int(2) DEFAULT NULL COMMENT 'Currency code',
+  `duration` int(10) DEFAULT NULL COMMENT 'Rule duration (in days)',
+  `max_views` int(10) DEFAULT NULL COMMENT 'Max number of views (zero for infinite)',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COMMENT='Rules table, used for tickets. ';
 
 /*Data for the table `restrictions` */
 
-insert  into `restrictions`(`id`,`name`,`price`,`currency`,`duration`,`views`) values (2,'Rule 1',2000,10,3,0),(3,'Rule 2',1,1,1,0);
+insert  into `restrictions`(`id`,`name`,`price`,`currency`,`duration`,`max_views`) values (2,'Rule 1',2000,10,3,1),(3,'Rule 2',1,1,1,0);
 
 /*Table structure for table `subscribers` */
 
@@ -230,7 +213,7 @@ CREATE TABLE `subscribers_packages` (
   `subscriber_id` bigint(20) NOT NULL,
   `package_id` bigint(20) NOT NULL,
   PRIMARY KEY (`subscriber_id`,`package_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Link table between subscribers and packages';
 
 /*Data for the table `subscribers_packages` */
 
@@ -241,18 +224,20 @@ insert  into `subscribers_packages`(`subscriber_id`,`package_id`) values (7,4),(
 DROP TABLE IF EXISTS `tickets`;
 
 CREATE TABLE `tickets` (
-  `subscriber_id` bigint(20) NOT NULL,
-  `resource_id` bigint(20) NOT NULL,
-  `restriction_id` bigint(20) DEFAULT NULL,
-  `ticket_number` varchar(250) DEFAULT NULL,
-  `creation_date` datetime DEFAULT NULL,
-  `status` int(1) DEFAULT NULL,
-  PRIMARY KEY (`subscriber_id`,`resource_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Ticket ID',
+  `subscriber_id` bigint(20) NOT NULL COMMENT 'Subscriber ID',
+  `resource_id` bigint(20) NOT NULL COMMENT 'Video ID (from VOD)',
+  `current_views` int(20) DEFAULT NULL COMMENT 'Number of views from the user',
+  `restriction_id` bigint(20) DEFAULT NULL COMMENT 'Rule ID (from restrictions table)',
+  `ticket_number` varchar(250) DEFAULT NULL COMMENT 'autogenerated ticket number',
+  `creation_date` datetime DEFAULT NULL COMMENT 'ticket creation timestamp',
+  `status` int(1) DEFAULT NULL COMMENT 'status (0 = inactive / 1=active)',
+  PRIMARY KEY (`subscriber_id`,`resource_id`,`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Tickets table, define restrictions per user and video. ';
 
 /*Data for the table `tickets` */
 
-insert  into `tickets`(`subscriber_id`,`resource_id`,`restriction_id`,`ticket_number`,`creation_date`,`status`) values (7,2,2,'ar072vtq8lqe','2012-01-17 23:37:18',1),(7,1,3,'066taduy1sc','2012-01-17 23:38:47',1);
+insert  into `tickets`(`id`,`subscriber_id`,`resource_id`,`current_views`,`restriction_id`,`ticket_number`,`creation_date`,`status`) values (1,7,2,0,2,'g8uh2im3s3ww','2012-01-21 11:21:07',1),(1,7,1,0,2,'reltj1u64ve','2012-01-21 11:20:53',1);
 
 /*Table structure for table `trainers` */
 
@@ -290,9 +275,9 @@ insert  into `vod_channels_categories`(`channel_id`,`category_id`) values (1,21)
 DROP TABLE IF EXISTS `vodcategories`;
 
 CREATE TABLE `vodcategories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador interno',
-  `name` varchar(500) DEFAULT NULL COMMENT 'Nombre del grupo',
-  `parent` int(11) NOT NULL COMMENT 'registro padre de esta misma tabla',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(500) DEFAULT NULL COMMENT 'Group name',
+  `parent` int(11) NOT NULL COMMENT 'Parent branch ID',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
