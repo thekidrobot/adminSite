@@ -62,9 +62,12 @@ function receiveUserData($pin='')
 				while($row = mysql_fetch_object($result))
 				{
 						array_push
-						($channels,$user['id'] = trim($row->id),$user['url'] = trim($row->url),
-						 $user['number'] = trim($row->number),$user['name'] = trim($row->name),
-						 $user['poster']=trim($row->poster),$user['posterLarge']=trim($row->posterLarge));
+						($channels,
+						 $user['channelId'] = trim($row->id),
+						 $user['channelNumber'] = trim($row->number),
+						 $user['channelName'] = trim($row->name),
+						 $user['sourceUrl'] = trim($row->url),
+						 $user['iconUrl']=trim($row->poster));
 						
 						$usuario.=json_encode($user).',';
 				}
