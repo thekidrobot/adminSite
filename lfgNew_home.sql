@@ -198,12 +198,14 @@ CREATE TABLE `subscribers` (
   `serial` varchar(150) DEFAULT NULL,
   `mac` varchar(100) DEFAULT NULL,
   `license` varchar(100) DEFAULT NULL,
+  `last_login` datetime DEFAULT NULL,
+  `pin` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `subscribers` */
 
-insert  into `subscribers`(`id`,`name`,`username`,`password`,`address`,`email`,`account`,`phone`,`country`,`city`,`zip`,`serial`,`mac`,`license`) values (7,'Cosme Fulanito','cosmeFulanito','16d7a4fca7442dda3ad93c9a726597e4','Test','my@email.com','test','test','39','Mumbai','111','1112','111','');
+insert  into `subscribers`(`id`,`name`,`username`,`password`,`address`,`email`,`account`,`phone`,`country`,`city`,`zip`,`serial`,`mac`,`license`,`last_login`,`pin`) values (7,'Cosme Fulanito','cosmeFulanito','16d7a4fca7442dda3ad93c9a726597e4','Test','my@email.com','test','test','39','Mumbai','111','S3R1AL','MM:AA:CC:AA:DD:RR:EE:SS','','2012-02-01 23:49:25','r406gfgl2xda2w');
 
 /*Table structure for table `subscribers_packages` */
 

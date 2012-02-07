@@ -1,0 +1,58 @@
+ChannelList -> Live
+
+Archivos de categoria Live
+
+Carpeta+NombreArchivo - Tema
+texto
+titulo
+tema [nuevo en archivos]
+FechaRelease [nuevo en archivos]
+Categoria / Subcategoria [LIVE]
+
+filtrado para el usuario que se autentique (pin) [Tabla grupos_usuario]
+
+SELECT 	CONCAT(a.carpeta,a.nombreArchivo) AS url,
+	a.texto,
+	a.titulo,
+	/*a.tema,
+	a.fechaRelease*/
+	g.categoria,
+	g.grupos
+FROM 	archivos a, archivos_grupo ag, grupos_usuario gu, usuarios u, grupos g
+WHERE 	a.id_archivo = ag.id_archivo
+AND 	g.idGrupos = ag.id_grupo
+AND 	g.idGrupos = gu.IdGrupos
+AND 	u.IdUsuario = gu.IdUsuario
+AND 	u.pin = "rb419eegovfpam"
+AND	g.categoria = "Live"
+
+======================================================
+
+VODmovies -> OnDemand
+
+Archivos de categoria OnDemand
+
+Carpeta+NombreArchivo - Tema
+texto
+titulo
+tema [nuevo en archivos]
+FechaRelease [nuevo en archivos]
+Categoria / Subcategoria [OnDemand]
+
+filtrado para el usuario que se autentique (pin) [Tabla grupos_usuario]
+
+SELECT 	CONCAT(a.carpeta,a.nombreArchivo) AS url,
+	a.texto,
+	a.titulo,
+	/*a.tema,
+	a.fechaRelease*/
+	g.categoria,
+	g.grupos
+FROM 	archivos a, archivos_grupo ag, grupos_usuario gu, usuarios u, grupos g
+WHERE 	a.id_archivo = ag.id_archivo
+AND 	g.idGrupos = ag.id_grupo
+AND 	g.idGrupos = gu.IdGrupos
+AND 	u.IdUsuario = gu.IdUsuario
+AND 	u.pin = "rb419eegovfpam"
+AND	g.categoria = "OnDemand"
+
