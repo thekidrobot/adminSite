@@ -1,7 +1,7 @@
-[9:22:01 PM IST] * Personal - Evgeny Kaiko: I am missing GetVODMovies by category ID
-[9:22:19 PM IST] * Personal - Evgeny Kaiko: and also GetVODMovies have "categories"
+[9:22:01 PM IST] * Personal - Evgeny Kaiko: I am missing GetVODMovies by category ID  : Done!
+[9:22:19 PM IST] * Personal - Evgeny Kaiko: and also GetVODMovies have "categories" : Done!
 [9:25:33 PM IST] Andrés González Vargas: 1 sec
-[9:27:18 PM IST] * Personal - Evgeny Kaiko: And how to get program lists for channel
+[9:27:18 PM IST] * Personal - Evgeny Kaiko: And how to get program lists for channel  http://localhost/adminSite/webservices/GetProgramList.php?id=13
 [9:27:55 PM IST] * Personal - Evgeny Kaiko: also we don't need 
 http://rampmoodle.com/adminSiteBeta/webservices/GetVODCategories.php?id=1 = Categories by ID
 [9:29:08 PM IST] Andrés González Vargas: I want to finish all of this by today

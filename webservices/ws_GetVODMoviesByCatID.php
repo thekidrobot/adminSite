@@ -27,7 +27,7 @@ $soap_server->register
     'ReceiveUserId'
 );
 
-function receiveUserData($pin='')
+function receiveUserData($id='')
 {
 		$arr_msg = array('status'=> '');
 		$user = array();
@@ -41,17 +41,14 @@ function receiveUserData($pin='')
 						vc.keywords as keywords,
 						vc.date_release as date_release,
 						vc.small_pic as poster,
-						vc.big_pic as posterLarge
+						vc.big_pic as posterLarge,
+						vcc.category_id as categoryId
 					 FROM
 						vodchannels vc,
-						packages_vodchannels pv,
-						subscribers sc,
-						subscribers_packages sp
+						vod_channels_categories vcc
 					 WHERE
-						pv.resource_id = vc.id AND
-						pv.package_id = sp.package_id AND
-						sp.subscriber_id = sc.id AND
-						sc.pin = '$pin'";
+						vc.id = vcc.channel_id AND
+						vcc.category_id = '$id'";
 		
 		$result = mysql_query($sql);  
 		if(mysql_num_rows($result) == 0)
@@ -64,7 +61,7 @@ function receiveUserData($pin='')
 				while($row = mysql_fetch_object($result))
 				{
 						array_push
-						($channels,$user['id'] = trim($row->id),$user['url'] = trim($row->url),
+						($channels,$user['vodId'] = trim($row->id),$user['categoryId'] = trim($row->categoryId),$user['url'] = trim($row->url),
 						 $user['description'] = trim($row->description),$user['name'] = trim($row->name),
 						 $user['poster']=trim($row->poster),$user['posterLarge']=trim($row->posterLarge));
 						
