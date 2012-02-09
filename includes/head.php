@@ -37,7 +37,8 @@ function handleEnter (field, event) {
 <?php
   if($currentPage == "addLive.php" or
      $currentPage == "editLive.php" or
-     $currentPage == "addVod.php")
+     $currentPage == "addVod.php" or
+     $currentPage == "editVodMovieDetail.php" )
 	{
 		?>
 		<link rel="stylesheet" type="text/css" media="all" href="jscalendar/calendar-blue.css" />

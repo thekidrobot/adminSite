@@ -64,6 +64,12 @@ $rsGet = $DB->execute($sql);
 						<label><?=_("Movie PC URL")?> : </label>
 						<input name="pc_url" type="text" value="<?=$rsGet->fields['pc_url']?>" class="text-long" readonly="readonly" />
 					</p>
+					
+					<p>
+						<label><?=_("Movie Local URL")?> : </label>
+						<input name="local_url" type="text" maxlength="350"  class="text-long" value="<?=$rsGet->fields['local_url']?>" readonly="readonly" />
+					</p>	
+				 
 					<p>
 						<label><?=_("Movie Director / Trainer")?> : </label>
 						<select name="trainer">

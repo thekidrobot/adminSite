@@ -12,6 +12,7 @@ if ($_POST["MM_insert"] == "true")
 	$validator->addValidation("stb_url","req",_("STB URL is a mandatory field"));
 	$validator->addValidation("download_url","req",_("Download URL is a mandatory field"));
 	$validator->addValidation("pc_url","req",_("PC URL is a mandatory field"));
+	$validator->addValidation("local_url","req",_("Local URL is a mandatory field"));
 	$validator->addValidation("trainer","req",_("Trainer is a mandatory field"));
 	$validator->addValidation("price","req",_("Price is a mandatory field"));
 	$validator->addValidation("price","num",_("Price should be a numerical value"));
@@ -92,6 +93,7 @@ if ($_POST["MM_insert"] == "true")
 		$stb_url = escape_value($postArray['stb_url']);
 		$download_url = escape_value($postArray['download_url']);
 		$pc_url = escape_value($postArray['pc_url']);
+		$local_url = escape_value($postArray['local_url']);
 		$trainer = escape_value($postArray['trainer']);
 		$date_release = escape_value($postArray['date_release']);
 		$keywords = escape_value($postArray['keywords']);
@@ -100,9 +102,10 @@ if ($_POST["MM_insert"] == "true")
 		$currency = escape_value($postArray['currency']);
 
 		$insertSql = "INSERT INTO vodchannels
-									(big_pic,small_pic,name,description,stb_url,download_url,pc_url,trainer,date_release,keywords,rating,price,currency)
+									(big_pic,small_pic,name,description,stb_url,download_url,pc_url,local_url,
+									trainer,date_release,keywords,rating,price,currency)
 									VALUES ('$big_pic','$small_pic','$name','$description',
-													'$stb_url','$download_url','$pc_url',
+													'$stb_url','$download_url','$pc_url','$local_url',
 													'$trainer','$date_release','$keywords',$rating,$price,$currency)";
 		
 		$rsInsVod = $DB->Execute($insertSql);
@@ -169,6 +172,12 @@ if ($_POST["MM_insert"] == "true")
 						<label><?=_("Movie PC URL")?> : </label>
 						<input name="pc_url" type="text" maxlength="350"  class="text-long" />
 					</p>
+					
+					<p>
+						<label><?=_("Movie Local URL")?> : </label>
+						<input name="local_url" type="text" maxlength="350"  class="text-long" />
+					</p>
+					
 					<p>
 						<label><?=_("Movie Director / Trainer")?> : </label>
 						<select name="trainer">

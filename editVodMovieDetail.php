@@ -90,6 +90,7 @@ if($_POST["MM_update"] == "true")
 	$validator->addValidation("stb_url","req",_("STB URL is a mandatory field"));
 	$validator->addValidation("download_url","req",_("Download URL is a mandatory field"));
 	$validator->addValidation("pc_url","req",_("PC URL is a mandatory field"));
+	$validator->addValidation("local_url","req",_("Local URL is a mandatory field"));
 	$validator->addValidation("trainer","req",_("Trainer is a mandatory field"));
 	$validator->addValidation("price","req",_("Price is a mandatory field"));
 	$validator->addValidation("price","num",_("Price should be a numerical value"));
@@ -103,6 +104,7 @@ if($_POST["MM_update"] == "true")
 	$stb_url = escape_value($postArray['stb_url']);
 	$download_url = escape_value($postArray['download_url']);
 	$pc_url = escape_value($postArray['pc_url']);
+	$local_url = escape_value($postArray['local_url']);
 	$trainer = escape_value($postArray['trainer']);
 	$date_release = escape_value($postArray['date_release']);
 	$keywords = escape_value($postArray['keywords']);
@@ -126,6 +128,7 @@ if($_POST["MM_update"] == "true")
 						stb_url = '$stb_url',
 						download_url = '$download_url',
 						pc_url = '$pc_url',
+						local_url = '$local_url',
 						trainer = '$trainer',
 						date_release = '$date_release',
 						keywords = '$keywords',
@@ -207,6 +210,12 @@ if($_POST["MM_update"] == "true")
 						<label><?=_("Movie PC URL")?> : </label>
 						<input name="pc_url" type="text" value="<?=$getData->fields['pc_url']?>" class="text-long" />
 					</p>
+					
+					<p>
+						<label><?=_("Movie Local URL")?> : </label>
+						<input name="local_url" type="text" maxlength="350"  class="text-long" value="<?=$getData->fields['local_url']?>" />
+					</p>	
+					
 					<p>
 						<label><?=_("Movie Director / Trainer")?> : </label>
 						<select name="trainer">
@@ -224,7 +233,16 @@ if($_POST["MM_update"] == "true")
 					</p>
 					<p>
 						<label><?=_("Release Date")?> : </label>
-						<input type="text" name="date_release" value="<?=$getData->fields['date_release']?>" class="text-medium" />
+						<input type="text" id="date_release" name="date_release" value="<?=$getData->fields['date_release']?>" class="text-medium" />
+						<img src="images/calendar.png" id="btn_date_release" alt="" />
+						<script type="text/javascript">
+						Calendar.setup({
+							inputField : "date_release", // ID of the input field
+							showsTime: true, // show time
+							ifFormat : "%Y/%m/%d %H:%M:%S", // the date format
+							button : "btn_date_release" // ID of the button
+						})
+						</script>
 					</p>
 					<p>
 						<label><?=_("Keywords (Comma Separated)")?> : </label>
@@ -263,6 +281,10 @@ if($_POST["MM_update"] == "true")
 								}
 							?>
 						</select>
+					</p>
+					<p>
+					 	<label><?=_("Resources")?> : </label>
+						<a href="uploadFiles.php?id=<?=$id?>" target="_blank"><?=_("Upload / Modify Resources")?></a>
 					</p>
 					<p>
 						<label>&nbsp;</label>
