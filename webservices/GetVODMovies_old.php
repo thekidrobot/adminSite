@@ -5,13 +5,12 @@ header('Content-type: application/json');
 require_once('conexion.inc.php');
 require_once('lib/nusoap.php');
 
-$userid = escape_value($_GET['userid']);
-$id = escape_value($_GET['id']);
+$userId = escape_value($_GET['id']);
 
 $page = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
 $page = 'http://'.substr($page,0,strrpos($page,"/"));
 
-$soap_client = new nusoap_client($page.'/ws_GetVODMoviesByPin.php?wsdl', true);
+$soap_client = new nusoap_client($page.'/ws_GetVODMovies.php?wsdl', true);
 
 $error = $soap_client->getError();
 
@@ -21,7 +20,7 @@ if ($error)
 }
 else
 {
-    $res = $soap_client->call('receiveUserData',array('userid' => $userid,'id' => $id));
+    $res = $soap_client->call('receiveUserData',array('userId' => $userId));
     
     if ($soap_client->fault)
     {

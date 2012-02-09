@@ -127,6 +127,20 @@ $rsGet = $DB->execute($sql);
 							?>
 						</select>
 					 </p>
+					<p>
+					 <label><?=_("Available Resources")?></label>
+					 <?php
+						$sql = "select * from vodchannels_resources where channel_id = $id";
+						$rsGet = $DB->Execute($sql);
+						while(!$rsGet->EOF){
+							?>
+							<a href="resources/<?=$rsGet->fields['resource_path']?>"><?=$rsGet->fields['resource_path']?></a>
+							<?
+							$rsGet->movenext();
+						}
+						if($rsGet->numrows() == 0) echo _("No resources available");
+					 ?>
+					</p>					
 					 <p>
 						 <label>&nbsp;</label>
 						 <a href="editVodMovieDetail.php?edit=<?=$id?>"><input type="button" class="button-submit" value="<?=_("Click to edit")?>" /></a>

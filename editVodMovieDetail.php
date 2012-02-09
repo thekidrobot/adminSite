@@ -287,6 +287,20 @@ if($_POST["MM_update"] == "true")
 						<a href="uploadFiles.php?id=<?=$id?>" target="_blank"><?=_("Upload / Modify Resources")?></a>
 					</p>
 					<p>
+					 <label><?=_("Available Resources")?></label>
+					 <?php
+						$sql = "select * from vodchannels_resources where channel_id = $id";
+						$rsGet = $DB->Execute($sql);
+						while(!$rsGet->EOF){
+							?>
+							<a href="resources/<?=$rsGet->fields['resource_path']?>"><?=$rsGet->fields['resource_path']?></a>
+							<?
+							$rsGet->movenext();
+						}
+						if($rsGet->numrows() == 0) echo _("No resources available");
+					 ?>
+					</p>
+					<p>
 						<label>&nbsp;</label>
 						<input type="hidden" name="edit" value="<?=$id?>">
 						<input type="hidden" name="MM_update" value="true">

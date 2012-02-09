@@ -18,7 +18,7 @@ $soap_server->configureWSDL('WDSL Authentication', $ns);
 $soap_server->register
 (
     'receiveUserData',
-    array('userid' => 'xsd:string','id' => 'xsd:string'),
+    array('userId' => 'xsd:string'),
     array('return' => 'xsd:string'),
     $ns,
     $ns.'#receiveUserData',
@@ -27,7 +27,7 @@ $soap_server->register
     'ReceiveUserId'
 );
 
-function receiveUserData($userid='',$id='')
+function receiveUserData($pin='')
 {
 		$arr_msg = array('status'=> '');
 		$user = array();
@@ -53,9 +53,8 @@ function receiveUserData($userid='',$id='')
 					  vc.id = vcc.channel_id AND
 						pv.resource_id = vc.id AND
 						pv.package_id = sp.package_id AND
-						sp.subscriber_id = sc.id AND 
-						sc.pin = '$userid' AND 
-						vcc.category_id = $id";
+						sp.subscriber_id = sc.id AND
+						sc.pin = '$pin'";
 		
 		$result = mysql_query($sql);  
 		if(mysql_num_rows($result) == 0)

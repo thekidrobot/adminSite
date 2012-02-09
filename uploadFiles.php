@@ -125,6 +125,7 @@ if ($_GET['id']){ ?>
     <?
     $rsGet->movenext();
   }
+  if($rsGet->numrows() == 0) echo _("No resources available");
  ?>
  </table>
  </form>

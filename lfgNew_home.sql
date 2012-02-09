@@ -300,6 +300,7 @@ CREATE TABLE `vodchannels` (
   `stb_url` varchar(200) DEFAULT NULL,
   `download_url` varchar(200) DEFAULT NULL,
   `pc_url` varchar(200) DEFAULT NULL,
+  `local_url` varchar(200) DEFAULT NULL,
   `trainer` int(10) DEFAULT NULL,
   `date_release` timestamp NULL DEFAULT NULL,
   `keywords` varchar(250) DEFAULT NULL,
@@ -307,11 +308,24 @@ CREATE TABLE `vodchannels` (
   `price` int(100) DEFAULT NULL,
   `currency` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COMMENT='Channels on demand';
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COMMENT='Channels on demand';
 
 /*Data for the table `vodchannels` */
 
-insert  into `vodchannels`(`id`,`big_pic`,`small_pic`,`name`,`description`,`stb_url`,`download_url`,`pc_url`,`trainer`,`date_release`,`keywords`,`rating`,`price`,`currency`) values (1,'Water lilies378_big.jpg','Water lilies378_small.jpg','Andres','andres','andres','andres','andres',1,'2012-01-09 17:27:20','comics,animation',1,0,1),(2,'moto_pix_big.jpg','moto_pix_small.jpg','Moto','Moto','www.moto.com','www.moto.com','www.moto.com',1,'2012-01-17 14:22:59','moto,movie',1,0,1),(3,'515px-Treehouse_of_Horror_XIIIa_big.jpg','515px-Treehouse_of_Horror_XIIIa_small.jpg','simpsons','simpsons','simpsons','simpsons','simpsons',1,'2012-01-17 22:05:38','simpsons',1,0,1);
+insert  into `vodchannels`(`id`,`big_pic`,`small_pic`,`name`,`description`,`stb_url`,`download_url`,`pc_url`,`local_url`,`trainer`,`date_release`,`keywords`,`rating`,`price`,`currency`) values (1,'Water lilies378_big.jpg','Water lilies378_small.jpg','Andres','andres','andres','andres','andres',NULL,1,'2012-01-09 17:27:20','comics,animation',1,0,1),(2,'moto_pix_big.jpg','moto_pix_small.jpg','Moto','Moto','www.moto.com','www.moto.com','www.moto.com',NULL,1,'2012-01-17 14:22:59','moto,movie',1,0,1),(3,'515px-Treehouse_of_Horror_XIIIa_big.jpg','515px-Treehouse_of_Horror_XIIIa_small.jpg','simpsons','simpsons','simpsons','simpsons','simpsons',NULL,1,'2012-01-17 22:05:38','simpsons',1,0,1),(4,'','','Test','Test','test','test','test','test',1,'2012-02-13 14:14:42','test',1,0,1);
+
+/*Table structure for table `vodchannels_resources` */
+
+DROP TABLE IF EXISTS `vodchannels_resources`;
+
+CREATE TABLE `vodchannels_resources` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `channel_id` bigint(20) DEFAULT NULL,
+  `resource_path` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+/*Data for the table `vodchannels_resources` */
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
