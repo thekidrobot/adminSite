@@ -1,5 +1,6 @@
 <?php
 session_start();
+header('Content-type: application/json');
 // libraries
 require_once('conexion.inc.php');
 require_once('lib/nusoap.php');
@@ -35,7 +36,7 @@ else
         }
         else
         {
-            echo '<pre>'.$res.'</pre>';
+            echo $res;
         }
     }
 }

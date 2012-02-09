@@ -59,7 +59,7 @@ function receiveUserData($id='')
 				$usuario = "[".substr($usuario,0,strlen($usuario)-1)."]";
 
 				$arr_msg['status'] = 'success';
-				$arr_msg['movies'] = $usuario;		
+				$arr_msg['channel'] = $usuario;		
 		}
 		$usuario = str_replace('\\','',json_encode($arr_msg));
 		$usuario = str_replace('"[','[',$usuario);
