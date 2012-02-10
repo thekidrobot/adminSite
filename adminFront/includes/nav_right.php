@@ -9,15 +9,14 @@
 			<!--  start account-content -->	
 			<div class="account-content">
 			<div class="account-drop-inner">
-				<a href="" id="acc-settings">Settings</a>
+				<a href="settings.php" id="acc-settings"><?=_("Settings")?></a>
 				<div class="clear">&nbsp;</div>
 				<div class="acc-line">&nbsp;</div>
-				<a href="" id="acc-details">Support </a>
+				<a href="support.php" id="acc-details"><?=_("Support")?></a>
 				<div class="clear">&nbsp;</div>
 				<div class="acc-line">&nbsp;</div>
-				<a href="" id="acc-project">Contact Info</a>
+				<a href="contact.php" id="acc-project"><?=_("Contact Info")?></a>
 			</div>
 			</div>
 			<!--  end account-content -->
-		
 		</div>
