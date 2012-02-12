@@ -6,7 +6,7 @@ header('Content-type: application/json');
 require_once('conexion.inc.php');
 require_once('lib/nusoap.php');
 
-$id = escape_value($_GET['id']);
+$id = escape_value($_GET['userid']);
 
 $page = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
 $page = 'http://'.substr($page,0,strrpos($page,"/"));

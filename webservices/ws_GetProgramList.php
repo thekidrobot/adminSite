@@ -18,7 +18,7 @@ $soap_server->configureWSDL('WDSL Authentication', $ns);
 $soap_server->register
 (
     'receiveUserData',
-    array('userId' => 'xsd:string'),
+    array('userid' => 'xsd:string','id' => 'xsd:string'),
     array('return' => 'xsd:string'),
     $ns,
     $ns.'#receiveUserData',
@@ -27,17 +27,26 @@ $soap_server->register
     'ReceiveUserId'
 );
 
-function receiveUserData($id='')
+function receiveUserData($userid='',$id='')
 {
 		$arr_msg = array('status'=> '');
 		$user = array();
 		$channels = array();
 		
-		$sql = "SELECT *
+		$sql = "SELECT distinct gl.*
 					  FROM
-						 grid_live
+						 grid_live gl,
+						 livechannels lc,
+						 packages_livechannels pl,
+						 subscribers_packages sp,
+						 subscribers sc
 					  WHERE
-						 channel_id = '$id'";
+						 gl.channel_id = lc.id AND
+						 lc.id = pl.resource_id AND
+						 pl.package_id = sp.package_id AND
+						 sp.subscriber_id = sc.id AND
+						 gl.channel_id = '$id' AND
+						 sc.pin = '$userid'";
 		
 		$result = mysql_query($sql);  
 		if(mysql_num_rows($result) == 0)
@@ -59,7 +68,7 @@ function receiveUserData($id='')
 				$usuario = "[".substr($usuario,0,strlen($usuario)-1)."]";
 
 				$arr_msg['status'] = 'success';
-				$arr_msg['channel'] = $usuario;		
+				$arr_msg['programs'] = $usuario;		
 		}
 		$usuario = str_replace('\\','',json_encode($arr_msg));
 		$usuario = str_replace('"[','[',$usuario);

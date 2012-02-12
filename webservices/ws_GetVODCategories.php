@@ -33,13 +33,20 @@ function receiveUserData($id='1')
 		$user = array();
 		$channels = array();
 		
-		$sql = "SELECT *
-						FROM vodcategories ";
-				
-		if(trim($id) != ""){
-				$sql.="WHERE id = $id";
-		}		
-		
+		$sql = "SELECT DISTINCT vc.*
+						FROM subscribers sc,
+						subscribers_packages sp,
+						packages_vodchannels pv,
+						vod_channels_categories vcc,
+						vodcategories vc,
+						vodchannels vch
+						WHERE
+						sc.id = sp.subscriber_id AND
+						sp.package_id = pv.package_id AND
+						pv.resource_id = vch.id AND
+						vcc.channel_id = vch.id AND
+						vcc.category_id = vc.id AND
+						sc.pin = '$id'";
 		
 		$result = mysql_query($sql);  
 		if(mysql_num_rows($result) == 0)

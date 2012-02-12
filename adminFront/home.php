@@ -37,7 +37,7 @@
 
 	<!--  start page-heading -->
 	<div id="page-heading">
-		<h1>Add product</h1>
+		<h1><?=_("Live Video")?></h1>
 	</div>
 	<!-- end page-heading -->
 
@@ -57,22 +57,55 @@
 		
 			<!--  start table-content  -->
 			<div id="table-content">
-			<h2>Sub Heading </h2>
-			<h3>Local Heading</h3>
+			<h2><?=_("Available Channels")?></h2>
+			<h3><?=_("Available Channels")?></h3>
 			
-			Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet consectetur 
-			adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  dolore magna aliqua. Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet consectetur 
-			adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  dolore magna aliqua. 
-			<br />
-			<br />
-			Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet consectetur 
-			adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  dolore magna aliqua. Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet consectetur 
-			adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  dolore magna aliqua. 
-			<br />
-			<br />
-			Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet consectetur 
-			adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  dolore magna aliqua. Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet consectetur 
-			adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  dolore magna aliqua. 
+			<div class="album">
+			 <table class="gallery paginate-1 max-pages-6">
+			 <tr>
+			 <?php
+			 $sql_getData = "SELECT * FROM livechannels ORDER BY id DESC";
+			 $rs_getData = $DB->Execute($sql_getData);
+			 
+			 $counter = 1;
+			 
+				while (!$rs_getData->EOF)
+				{
+					$thumb=getThumbnail($rs_getData->fields['small_pic']);
+					
+					$sql = "select code from ratings where id = ".$rs_getData->fields['rating'];
+					$rsGetRating = $DB->execute($sql);
+					
+					?>
+						<td>
+							<div class="imageSingle">
+								<a href="http://youtu.be/2qR_94Jmg4A" rel="prettyPhoto" title="">
+								<div class="image">
+									<img src="../data/images/<?=$thumb ?>" />
+								</div>
+								</a>
+								<div class="footer">
+									<b>Name : </b><?=$rs_getData->fields['name']; ?><br />
+									<b>Number : </b><?=$rs_getData->fields['number']; ?><br />
+									<a href="#">View EPG</a><br />
+									<a href="http://www.google.com?iframe=true&width=100%&height=100%" rel="prettyPhoto[iframes]" title="Google.com opened at 100%">More Details</a>
+									</td>
+								</div>
+							</div>
+						<td>
+					<?
+					if ($counter%6 == 0){
+						?>
+						</tr>
+						<tr>
+					<?
+					}
+					$counter++;
+					$rs_getData->MoveNext();
+				}?>
+				</tr>
+			</table>
+		</div>
 			
 			
 			</div>

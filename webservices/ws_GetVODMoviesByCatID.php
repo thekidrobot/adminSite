@@ -35,7 +35,8 @@ function receiveUserData($id='')
 		
 		$sql = "SELECT distinct
 						vc.id as id,
-						vc.stb_url as url,
+						vc.local_url as localURL,
+						vc.stb_url as remoteURL,
 						vc.description as description,
 						vc.name as name,
 						vc.keywords as keywords,
@@ -61,7 +62,8 @@ function receiveUserData($id='')
 				while($row = mysql_fetch_object($result))
 				{
 						array_push
-						($channels,$user['vodId'] = trim($row->id),$user['categoryId'] = trim($row->categoryId),$user['url'] = trim($row->url),
+						($channels,$user['vodId'] = trim($row->id),$user['categoryId'] = trim($row->categoryId),
+						 $user['localURL'] = trim($row->local_url),$user['remoteURL'] = trim($row->stb_url),
 						 $user['description'] = trim($row->description),$user['name'] = trim($row->name),
 						 $user['poster']=trim($row->poster),$user['posterLarge']=trim($row->posterLarge));
 						

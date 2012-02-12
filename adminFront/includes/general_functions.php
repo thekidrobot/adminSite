@@ -136,4 +136,14 @@ function spamcheck($field)
   }
 }
 
+//Get thumbnail of an already created picture
+function getThumbnail($actual_filename)
+{
+	if(trim($actual_filename)== "")
+	{
+		$actual_filename = "default.jpg"; 	
+	}
+	return $actual_filename;
+}
+
 ?>

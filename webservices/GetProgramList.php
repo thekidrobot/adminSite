@@ -5,7 +5,8 @@ header('Content-type: application/json');
 require_once('conexion.inc.php');
 require_once('lib/nusoap.php');
 
-$userId = escape_value($_GET['id']);
+$userid = escape_value($_GET['userid']);
+$id = escape_value($_GET['id']);
 
 $page = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
 $page = 'http://'.substr($page,0,strrpos($page,"/"));
@@ -20,7 +21,7 @@ if ($error)
 }
 else
 {
-    $res = $soap_client->call('receiveUserData',array('userId' => $userId));
+    $res = $soap_client->call('receiveUserData',array('userid' => $userid,'id' => $id));
     
     if ($soap_client->fault)
     {
