@@ -52,7 +52,7 @@ function receiveAuthData($mac='',$serial='')
 		
 		if(mysql_num_rows($result) == 0)
 		{
-				$arr_msg['status'] = 'failure';
+				$arr_msg['status'] = 'success';
 				$arr_msg['packages'] = 'NULL';
 		}
 		else

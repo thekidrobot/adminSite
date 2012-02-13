@@ -51,8 +51,8 @@ function receiveUserData($userid='',$id='')
 		$result = mysql_query($sql);  
 		if(mysql_num_rows($result) == 0)
 		{
-				$arr_msg['status'] = 'failure';
-				$arr_msg['categories'] = '';				
+				$arr_msg['status'] = 'success';
+				$arr_msg['programs'] = '';				
 		}
 		else
 		{
