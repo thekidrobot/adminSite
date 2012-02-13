@@ -19,10 +19,12 @@
 
 <!--  jquery core -->
 <script src="js/jquery/jquery-1.4.1.min.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="js/tablesort.js"></script>
 <script type="text/javascript" src="js/pagination.js"></script>
 
 <!-- Lightbox -->
-<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jQuery.js" type="text/javascript" charset="utf-8"></script>
 <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" charset="utf-8" />
 <script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
 

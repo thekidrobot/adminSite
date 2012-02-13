@@ -1,5 +1,6 @@
 <?php
 	include('includes/head.php');
+	$id = escape_value($_GET['id']);
 ?>
 <body> 
 <!-- Start: page-top-outer -->
@@ -57,57 +58,55 @@
 		
 			<!--  start table-content  -->
 			<div id="table-content">
-			<h2><?=_("Available Channels")?></h2>
-			<h3><?=_("Available Channels")?></h3>
+			<h2><?=_("View EPG")?></h2>
+			<h3><?=_("Available Grid")?></h3>
 			
-			<div class="album">
-			 <table class="gallery paginate-1 max-pages-6">
-			 <tr>
-			 <?php
-			 $sql_getData = "SELECT * FROM livechannels ORDER BY id DESC";
-			 $rs_getData = $DB->Execute($sql_getData);
-			 
-			 $counter = 1;
-			 
-				while (!$rs_getData->EOF)
-				{
-					$thumb=getThumbnail($rs_getData->fields['small_pic']);
-					
-					$sql = "select code from ratings where id = ".$rs_getData->fields['rating'];
-					$rsGetRating = $DB->execute($sql);
-					
-					?>
-						<td>
-							<div class="imageSingle">
-								<a href="http://youtu.be/2qR_94Jmg4A" rel="prettyPhoto" title="">
-								<div class="image">
-									<img src="../data/images/<?=$thumb ?>" />
-								</div>
-								</a>
-								<div class="footer">
-									<b><?=_("Name")?> : </b><?=$rs_getData->fields['name']; ?><br />
-									<b><?=_("Number")?> : </b><?=$rs_getData->fields['number']; ?><br />
-									<a href="viewEpg.php?id=<?=$rs_getData->fields['id']?>&iframe=true&width=100%&height=100%" rel="prettyPhoto[epg]" title="View EPG for channel <?=$rs_getData->fields['name']; ?>"><?=_("View EPG")?></a><br />
-									<a href="viewLiveDetail.php?id=<?=$rs_getData->fields['id']?>&iframe=true&width=100%&height=100%"" rel="prettyPhoto[details]" title="View Details for channel <?=$rs_getData->fields['name']; ?>">More Details</a>
-									</td>
-								</div>
-							</div>
-						<td>
-					<?
-					if ($counter%6 == 0){
-						?>
-						</tr>
-						<tr>
-					<?
-					}
-					$counter++;
-					$rs_getData->MoveNext();
-				}?>
+			<table class="no-arrow rowstyle-alt colstyle-alt paginate-20 max-pages-3">
+			<thead>
+				<tr>
+					<th class="sortable"><b><?=_("Channel name")?></b></th>
+					<th class="sortable"><b><?=_("Grid name")?></b></th>
+					<th class="sortable"><b><?=_("Description")?></b></th>
+					<th class="sortable"><b><?=_("Rating")?></b></th>
+					<th class="sortable"><b><?=_("Start Date")?></b></th>
+					<th class="sortable"><b><?=_("Start Time")?></b></th>
+					<th class="sortable"><b><?=_("End Date")?></b></th>
+					<th class="sortable"><b><?=_("End Time")?></b></th>
 				</tr>
+			</thead>
+			<tbody>
+				<?php
+					$counter = 0;
+					
+					$sql = "SELECT * FROM grid_live where channel_id = $id";
+					$rsGet = $DB->Execute($sql);
+					
+					while (!$rsGet->EOF)
+					{
+						$sql = "select name from livechannels where id = ".$rsGet->fields['channel_id'];
+						$rsGetChannel = $DB->execute($sql);
+
+						$sql = "select code from ratings where id = ".$rsGet->fields['rating'];
+						$rsGetRating = $DB->execute($sql);
+						
+						$counter++;
+						?>
+						<tr <?php if($counter % 2) echo " class='odd'"?>>
+							<td><b><?=$rsGetChannel->fields['name']?></b></td>
+							<td><?=$rsGet->fields['grid_name']?></td>
+							<td><?=$rsGet->fields['grid_description']?></td>
+							<td><?=$rsGetRating->fields['code']?></td>
+							<td><?=$rsGet->fields['start_date']?></td>
+							<td><?=$rsGet->fields['start_time']?></td>
+							<td><?=$rsGet->fields['end_date']?></td>
+							<td><?=$rsGet->fields['end_time']?></td>
+						</tr>
+						<?php
+						$rsGet->movenext();
+					}  
+					?>
+			</tbody>
 			</table>
-		</div>
-			
-			
 			</div>
 			<!--  end table-content  -->
 	

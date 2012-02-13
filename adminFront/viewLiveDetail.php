@@ -1,5 +1,12 @@
 <?php
 	include('includes/head.php');
+	$id = escape_value($_GET['id']);
+	if(trim($id) == "" or !is_numeric($id) or $id == 0)
+	{
+		redirect("home.php");
+	}
+	$sql = "SELECT * FROM livechannels WHERE id = $id";
+	$getData = $DB->Execute($sql);
 ?>
 <body> 
 <!-- Start: page-top-outer -->
@@ -57,56 +64,79 @@
 		
 			<!--  start table-content  -->
 			<div id="table-content">
-			<h2><?=_("Available Channels")?></h2>
-			<h3><?=_("Available Channels")?></h3>
+			<h2><?=_("View EPG")?></h2>
+			<h3><?=_("Available Grid")?></h3>
 			
-			<div class="album">
-			 <table class="gallery paginate-1 max-pages-6">
-			 <tr>
-			 <?php
-			 $sql_getData = "SELECT * FROM livechannels ORDER BY id DESC";
-			 $rs_getData = $DB->Execute($sql_getData);
-			 
-			 $counter = 1;
-			 
-				while (!$rs_getData->EOF)
-				{
-					$thumb=getThumbnail($rs_getData->fields['small_pic']);
-					
-					$sql = "select code from ratings where id = ".$rs_getData->fields['rating'];
-					$rsGetRating = $DB->execute($sql);
-					
+			<table border="0" cellpadding="0" cellspacing="0"  id="id-form">
+			<tr>
+				<th valign="top"><?=_("Actual Logo")?> : </th>
+				<td>
+					<?php
+						$actual_filename = $getData->fields['small_pic'];
+						$thumb = getThumbnail($actual_filename);
 					?>
-						<td>
-							<div class="imageSingle">
-								<a href="http://youtu.be/2qR_94Jmg4A" rel="prettyPhoto" title="">
-								<div class="image">
-									<img src="../data/images/<?=$thumb ?>" />
-								</div>
-								</a>
-								<div class="footer">
-									<b><?=_("Name")?> : </b><?=$rs_getData->fields['name']; ?><br />
-									<b><?=_("Number")?> : </b><?=$rs_getData->fields['number']; ?><br />
-									<a href="viewEpg.php?id=<?=$rs_getData->fields['id']?>&iframe=true&width=100%&height=100%" rel="prettyPhoto[epg]" title="View EPG for channel <?=$rs_getData->fields['name']; ?>"><?=_("View EPG")?></a><br />
-									<a href="viewLiveDetail.php?id=<?=$rs_getData->fields['id']?>&iframe=true&width=100%&height=100%"" rel="prettyPhoto[details]" title="View Details for channel <?=$rs_getData->fields['name']; ?>">More Details</a>
-									</td>
-								</div>
-							</div>
-						<td>
-					<?
-					if ($counter%6 == 0){
-						?>
-						</tr>
-						<tr>
-					<?
-					}
-					$counter++;
-					$rs_getData->MoveNext();
-				}?>
-				</tr>
-			</table>
-		</div>
+					<img src="<?="../data/images/".$thumb?>">
+				</td>
+			</tr>
+				
+			<tr>
+				<th valign="top"><?=_("Channel Name")?> : </th>
+				<td><?=$getData->fields['name']?></td>
+			</tr>
+
+			<tr>
+				<th valign="top"><?=_("Channel Number")?> : </th>
+				<td><?=$getData->fields['number']?></td>
+			</tr>
+
+			<tr>
+				<th valign="top"><?=_("Channel Description")?> : </th>
+				<td><?=$getData->fields['description']?></td>
+			</tr>			
 			
+
+			<tr>
+				<th valign="top"><?=_("Channel URL")?> : </th>
+				<td><?=$getData->fields['url']?></td>
+			</tr>
+			
+			
+			<tr>
+				<th valign="top"><?=_("Price")?></th>
+				<td><?=$getData->fields['price']?></td>
+			</tr>
+
+
+			<tr>
+				<th valign="top"><?=_("Currency")?> :</th>
+				<td>
+				<?php
+					$sql="select * from currencies where id = ".$getData->fields['currency'];
+					$rsGet=$DB->execute($sql);
+					while(!$rsGet->EOF)
+					{
+						echo $rsGet->fields['code'] ."-". $rsGet->fields['name'];	
+						$rsGet->movenext();
+					}
+					?>
+				</td>
+			</tr>
+
+			<tr>
+				<th valign="top"><?=_("Rating")?> : </th>
+					<td>
+					<?php
+					  $sql="select * from ratings where id = ".$getData->fields['rating'];
+					  $rsGet=$DB->execute($sql);
+					  while(!$rsGet->EOF){
+					   echo $rsGet->fields['code'] ."-". $rsGet->fields['name'];
+					   $rsGet->movenext();
+						}
+					 ?>
+					</td>
+			</tr>
+			
+			</table>
 			
 			</div>
 			<!--  end table-content  -->

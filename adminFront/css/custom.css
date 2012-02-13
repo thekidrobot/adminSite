@@ -11,68 +11,68 @@ body.sort-active *
         }
 */
 
-/*table*/
-/*        {*/
-/*        width: 700px;*/
-/*        padding: 0;*/
-/*        margin: 0 auto 1.5em auto;*/
-/*        /*border-left: 1px solid #C1DAD7;*/*/
-/*        border: 1px solid #c4c4c4;*/
-/*        border-collapse:collapse;*/
-/*        }*/
-.cs1
+#table-content table
+        {
+        width: 700px;
+        padding: 0;
+        margin: 0 auto 1.5em auto;
+        /*border-left: 1px solid #C1DAD7;*/
+        border: 1px solid #c4c4c4;
+        border-collapse:collapse;
+        }
+#table-content .cs1
         {
         width:30em;
         }
-.cs2
+#table-content .cs2
         {
         width:20em;
         }
-.cs1 td,
-.cs2 td,
+#table-content .cs1 td,
+#table-content .cs2 td,
 
 #scientificNotation
         {
         text-align:right;
         }
 
-/*caption*/
-/*        {*/
-/*        padding: 0 0 5px 0;*/
-/*        margin:0 auto;*/
-/*        width:auto;*/
-/*        font: italic 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;*/
-/*        text-align: right;*/
-/*        }*/
-/*th*/
-/*        {*/
-/*        font: bold 10px/22px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;*/
-/*        color: #808080;*/
-/*				border: 1px solid #c4c4c4;*/
-/*        /*border-right: 1px solid #C1DAD7;*/*/
-/*        /*border-bottom: 1px solid #C1DAD7;*/*/
-/*        /*border-top: 1px solid #C1DAD7;*/*/
-/*        letter-spacing: 1px;*/
-/*        text-transform: uppercase;*/
-/*        text-align: left;*/
-/*        padding: 8px 12px 4px 12px;*/
-/*        /*background: #c0c0c0 url(../../css/images/bg_header.jpg) no-repeat;*/*/
-/*        background: #f0f0f0;*/
-/*        vertical-align:middle;*/
-/*				text-align:center !important;*/
-/*        }*/
-/*td.total*/
-/*        {*/
-/*        border-top: 0;*/
-/*        border-left: 0;*/
-/*        /*border-right: 1px solid #C1DAD7;*/*/
-/*        border: 1px solid #f0f0f0;*/
-/*        background: none;*/
-/*        text-align:right;*/
-/*        font-weight:bold;*/
-/*        text-transform:uppercase;*/
-/*        letter-spacing:1px;*/
-/*        }*/
+#table-content caption
+        {
+        padding: 0 0 5px 0;
+        margin:0 auto;
+        width:auto;
+        font: italic 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+        text-align: right;
+        }
+#table-content th
+        {
+        font: bold 10px/22px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+        color: #808080;
+				border: 1px solid #c4c4c4;
+        /*border-right: 1px solid #C1DAD7;*/
+        /*border-bottom: 1px solid #C1DAD7;*/
+        /*border-top: 1px solid #C1DAD7;*/
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-align: left;
+        padding: 8px 12px 4px 12px;
+        /*background: #c0c0c0 url(../css/images/bg_header.jpg) no-repeat;*/
+        background: #f0f0f0;
+        vertical-align:middle;
+				text-align:center !important;
+        }
+#table-content td.total
+        {
+        border-top: 0;
+        border-left: 0;
+        /*border-right: 1px solid #C1DAD7;*/
+        border: 1px solid #f0f0f0;
+        background: none;
+        text-align:right;
+        font-weight:bold;
+        text-transform:uppercase;
+        letter-spacing:1px;
+        }
 
 th.sortable,
 th.sortable-text,
@@ -92,19 +92,19 @@ th.sortable-sortEnglishDateTime
 
         {
         cursor:pointer;
-        background: #f0f0f0 url(../../css/images/bg_header_sortable.png) no-repeat;
+        background: #f0f0f0 url(../css/images/bg_header_sortable.png) no-repeat;
         padding: 8px 12px 4px 16px;
         }
 th.forwardSort
         {
-        background:#f0f0f0 url(../../css/images/bg_header_down.png) no-repeat 0 0;
+        background:#f0f0f0 url(../css/images/bg_header_down.png) no-repeat 0 0;
         }
 th.reverseSort
         {
-        background:#f0f0f0 url(../../css/images/bg_header_up.png) no-repeat 0 0;
+        background:#f0f0f0 url(../css/images/bg_header_up.png) no-repeat 0 0;
         }
-table thead th.forwardSort a,
-table thead th.reverseSort a
+#table-content table thead th.forwardSort a,
+#table-content table thead th.reverseSort a
         {
         color:#000;
         text-decoration:none;
@@ -113,7 +113,7 @@ table thead th.reverseSort a
 These styles should be added when very long tables are expected
 th.sort-active
         {
-        /*background:#CAE8EA url(../../css/images/bg_header_sorting.jpg) no-repeat 0 0;*/
+        /*background:#CAE8EA url(../css/images/bg_header_sorting.jpg) no-repeat 0 0;*/
         cursor:wait;
         }
 th.sort-active a
@@ -122,45 +122,47 @@ th.sort-active a
         cursor:wait;
         }
 
-/*th a*/
-/*        {*/
-/*        text-decoration:none;*/
-/*        color: #804040;*/
-/*        background:transparent;*/
-/*        }*/
-/*td a*/
-/*        {*/
-/*        text-decoration:none;*/
-/*        color:#7d7d7d;*/
-/*        background:transparent;*/
-/*        }*/
-/*td img*/
-/*        {*/
-/*        margin:0 auto;*/
-/*        border:3px solid #ddd;*/
-/*        }*/
-/*td a:hover*/
-/*        {*/
-/*        color:#a84444;*/
-/*        border-bottom:1px dotted #a80000;*/
-/*        background:transparent;*/
-/*        }*/
-/*td*/
-/*        {*/
-/*				font-size:11px;*/
-/*        /*font: normal 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;*/*/
-/*        /*border-right: 1px solid #C1DAD7;*/*/
-/*        /*border-bottom: 1px solid #C1DAD7;*/*/
-/*        border: 1px solid #c4c4c4;*/
-/*        padding: 6px 12px 6px 12px;*/
-/*        color: #7a7a7a;*/
-/*				vertical-align:middle;*/
-/*        }*/
-td.lft
+#table-content th a
+        {
+        text-decoration:none;
+        color: #804040;
+        background:transparent;
+        }
+#table-content td a
+        {
+        text-decoration:none;
+        color:#7d7d7d;
+        background:transparent;
+        }
+#table-content td img
+        {
+        margin:0 auto;
+        border:3px solid #ddd;
+        }
+#table-content td a:hover
+        {
+				color: #92b22c;
+				text-decoration:underline;
+        background:transparent;
+        }
+#table-content td
+        {
+				font-size:11px;
+        font: normal 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+        border-right: 1px solid #C1DAD7;
+        border-bottom: 1px solid #C1DAD7;
+        border: 1px solid #c4c4c4;
+        /*padding: 6px 12px 6px 12px;*/
+        color: #7a7a7a;
+				vertical-align:middle;
+				border-collapse:collapse;
+				text-align:center;
+        }
+#table-content td.lft
         {
         text-align:left;
         }
-tr.alt
+#table-content tr.alt
         {
         background: #F5FAFA;
         color: #797268;
@@ -171,24 +173,24 @@ tr.alt
    will produce 1000 http requests for the image in question) */
 tr[class="alt"] td
         {
-        /*background: #F5FAFA url(../../css/images/td_alt.jpg) no-repeat;*/
+        /*background: #F5FAFA url(../css/images/td_alt.jpg) no-repeat;*/
         background-color: #fbfbfb;
         }
 td[class~="alt"]
         {
-        /*background: #edf3f3 url(../../css/images/col_alt.jpg) no-repeat !important;*/
+        /*background: #edf3f3 url(../css/images/col_alt.jpg) no-repeat !important;*/
         background-color: #fbfbfb;
         }
 /* Poor old Internet Explorer won't see the next two rules either as it doesn't get :first-child */
 /*tbody tr.alt td:first-child*/
 /*        {*/
-/*        background: #F5FAFA url(../../css/images/bullet2.gif) no-repeat;*/
+/*        background: #F5FAFA url(../css/images/bullet2.gif) no-repeat;*/
 /*        background-color: #fbfbfb;*/
 /*        /*font-weight:bold;*/*/
 /*        }*/
 /*tbody tr td:first-child*/
 /*        {*/
-/*        background: #fff url(../../css/images/bullet1.gif) no-repeat;*/
+/*        background: #fff url(../css/images/bullet1.gif) no-repeat;*/
 /*        background-color: #fff;*/
 /*        /*font-weight:bold;*/*/
 /*        }*/
@@ -261,7 +263,7 @@ ul.fdtablePaginater li div span
         display:block;
         line-height:2em;
         border:1px solid #fff;
-        background:#fff url(../../css/images/gradient.gif) repeat-x 0 -20px;
+        background:#fff url(../css/images/gradient.gif) repeat-x 0 -20px;
         }
 ul.fdtablePaginater li a
         {
@@ -341,7 +343,7 @@ p.paginationText
 	}
 
 	table.gallery tr td{
-		border: solid 1px #ffffff;
+		border: none !important;
 		border-collapse:collapse;
 		padding:0;
 		margin:0;
@@ -384,7 +386,7 @@ p.paginationText
 		margin: 15px; 
 		width:156px; 
 		text-align:center; 
-		border:solid 1px #e1e1e1;
+		border:solid 1px #f2f2f2;
 	}
 	
 	.album .imageSingle .image {
@@ -394,7 +396,7 @@ p.paginationText
 	.album .footer {
 		text-align:left;
 		line-height:17px;
-		border-top:solid 1px #e1e1e1; 
+		border-top:solid 1px #f2f2f2; 
 		padding:7px; 
 		margin-top: 10px;
 	}
