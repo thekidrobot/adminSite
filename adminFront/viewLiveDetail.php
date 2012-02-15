@@ -5,7 +5,18 @@
 	{
 		redirect("home.php");
 	}
-	$sql = "SELECT * FROM livechannels WHERE id = $id";
+	$sql = "SELECT lc.*
+					FROM
+					 livechannels lc,
+					 packages_livechannels pl,
+					 subscribers_packages sp
+					WHERE
+					 lc.id = pl.resource_id AND
+					 pl.package_id = sp.package_id AND
+					 sp.subscriber_id = ".$_SESSION['id']." AND 
+					 lc.id = $id 
+					 ORDER BY lc.id DESC";
+											
 	$getData = $DB->Execute($sql);
 ?>
 <body> 
@@ -64,8 +75,8 @@
 		
 			<!--  start table-content  -->
 			<div id="table-content">
-			<h2><?=_("View EPG")?></h2>
-			<h3><?=_("Available Grid")?></h3>
+			<h2><?=_("View Details")?></h2>
+			<h3><?=_("Available Details")?></h3>
 			
 			<table border="0" cellpadding="0" cellspacing="0"  id="id-form">
 			<tr>
@@ -75,7 +86,7 @@
 						$actual_filename = $getData->fields['small_pic'];
 						$thumb = getThumbnail($actual_filename);
 					?>
-					<img src="<?="../data/images/".$thumb?>">
+					<img style="margin-top:15px;" src="<?="../data/images/".$thumb?>">
 				</td>
 			</tr>
 				

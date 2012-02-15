@@ -4,4 +4,7 @@
 <preference-set idref="90b5e8d6-0dd4-4d23-8ecd-ea4a37a68040">
   <boolean id="import_live">1</boolean>
 </preference-set>
+<preference-set idref="90b5e8d6-0dd4-4d23-8ecd-ea4a37a68040/vod.php">
+  <string id="spellcheckLangID">en-US</string>
+</preference-set>
 </project>

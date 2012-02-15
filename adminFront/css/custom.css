@@ -402,3 +402,20 @@ p.paginationText
 		padding:7px; 
 		margin-top: 10px;
 	}
+	
+#custom_form{
+	width:100%;
+}
+
+#custom_form label{
+	width:200px;
+	padding:10px 40px 10px 0px;
+	color:#313131 !important;
+	float:left;
+}
+
+#custom_form p{
+	width:100%;
+	padding-top:15px;
+	font-weight:bold;
+}

@@ -2,6 +2,7 @@
     session_start();
     include('includes/connection.php');
     include('includes/general_functions.php');
+		include("includes/formvalidator.php");
     
 		$logged = isLoggedIn();
     if ($logged == false) redirect('index.php');

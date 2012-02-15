@@ -64,7 +64,17 @@
 			 <table class="gallery paginate-1 max-pages-6">
 			 <tr>
 			 <?php
-			 $sql_getData = "SELECT * FROM livechannels ORDER BY id DESC";
+			 $sql_getData = "SELECT lc.*
+											 FROM
+											  livechannels lc,
+												packages_livechannels pl,
+												subscribers_packages sp
+											 WHERE
+											  lc.id = pl.resource_id AND
+												pl.package_id = sp.package_id AND
+												sp.subscriber_id = ".$_SESSION['id'].
+											" ORDER BY lc.id DESC";
+											 
 			 $rs_getData = $DB->Execute($sql_getData);
 			 
 			 $counter = 1;
