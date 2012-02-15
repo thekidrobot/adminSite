@@ -11,7 +11,7 @@ $id = escape_value($_GET['id']);
 $page = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
 $page = 'http://'.substr($page,0,strrpos($page,"/"));
 
-$soap_client = new nusoap_client($page.'/ws_GetVODMoviesByPin.php?wsdl', true);
+$soap_client = new nusoap_client($page.'/ws_GetVODMovies.php?wsdl', true);
 
 $error = $soap_client->getError();
 

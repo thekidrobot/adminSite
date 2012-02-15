@@ -59,9 +59,9 @@ function receiveUserData($userid='',$id='')
 				while($row = mysql_fetch_object($result))
 				{
 						array_push
-						($channels,$user['cgId'] = trim($row->id),$user['title'] = trim($row->name),
-						 $user['description'] = trim($row->description),
-						 $user['beginDate']=strtotime($row->start_date),$user['endDate']=strtotime($row->end_date));
+						($channels,$user['cgId'] = trim($row->id),$user['title'] = trim($row->grid_name),
+						 $user['description'] = trim($row->grid_description),
+						 $user['beginDate']=$row->start_date." ".$row->start_time,$user['endDate']=strtotime($row->end_date." ".$row->end_time));
 						
 						$usuario.=json_encode($user).',';
 				}

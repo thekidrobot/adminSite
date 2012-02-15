@@ -35,8 +35,8 @@ function receiveUserData($id='')
 		
 		$sql = "SELECT distinct
 						vc.id as id,
-						vc.local_url as localURL,
-						vc.stb_url as remoteURL,
+						vc.local_url as local_url,
+						vc.stb_url as stb_url,
 						vc.description as description,
 						vc.name as name,
 						vc.keywords as keywords,
