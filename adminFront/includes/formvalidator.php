@@ -225,7 +225,7 @@ class FormValidator
 
 	function test_datatype($input_value,$reg_exp)
 	{
-		if(ereg($reg_exp,$input_value))
+		if(@ereg($reg_exp,$input_value))
 		{
 			return false;
 		}
@@ -234,7 +234,7 @@ class FormValidator
 
 	function validate_email($email) 
 	{
-		return eregi("^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$", $email);
+		return @eregi("^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$", $email);
 	}
 
 	function validate_for_numeric_input($input_value,&$validation_success)

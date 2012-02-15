@@ -78,7 +78,19 @@
 				<?php
 					$counter = 0;
 					
-					$sql = "SELECT * FROM grid_live where channel_id = $id";
+					$sql = "SELECT DISTINCT gl.*
+									FROM
+									 grid_live gl,
+									 livechannels lc,
+									 packages_livechannels pl,
+									 subscribers_packages sp
+									WHERE
+									 gl.channel_id = lc.id AND
+									 lc.id = pl.resource_id AND
+									 pl.package_id = sp.package_id AND
+									 sp.subscriber_id = ".$_SESSION['id']." AND 
+									 gl.channel_id = $id";
+									 
 					$rsGet = $DB->Execute($sql);
 					
 					while (!$rsGet->EOF)

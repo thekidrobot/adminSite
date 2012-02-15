@@ -146,4 +146,24 @@ function getThumbnail($actual_filename)
 	return $actual_filename;
 }
 
+//Build categories recursively
+function make_kids($row_id,$dad_name,$parent)
+{
+	$sql = mysql_query("SELECT * FROM vodcategories WHERE parent = $row_id");
+
+	if (mysql_num_rows($sql) > 0)
+	{
+		while ($row = mysql_fetch_array($sql))
+		{
+			$selected = '';
+			if($parent == $row['id']) $selected = "selected='selected'";
+			?>
+				<option value="<?=$row['id'] ?>" <?=$selected ?>><?=ucfirst(strtolower($dad_name))." - ".ucfirst(strtolower($row['name']))?></option>
+			<?php
+			//Welcome Mr. Cobb
+			make_kids($row['id'],$dad_name." - ".$row['name'],$row['parent']);
+		}
+	}
+}	
+
 ?>

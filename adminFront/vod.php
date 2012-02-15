@@ -60,13 +60,42 @@
 			<h2><?=_("Available Channels")?></h2>
 			<h3><?=_("Available Channels")?></h3>
 			
-			<form action="">
-				<select class="styledselect_form_1">
-					<option value="" selected="selected">--Select a Category --</option>
-					<option value="">C1</option>
-					<option value="">C2</option>
-					<option value="">C3</option>
-					<option value="">C4</option>
+			<form action="<?=$_SERVER['PHP_SELF']?>">
+				<select name="parent" class="styledselect_form_1">
+					<option value=0 <?php if($parent == 0) echo "selected='selected'" ?>><?=_("All Categories")?></option>
+					<?php
+					//First level menus
+					//$sql = "SELECT
+					//					vc.*
+					//				FROM
+					//					vodcategories vc,
+					//					vod_channels_categories vcc,
+					//					packages_vodchannels pv,
+					//					subscribers_packages sp
+					//				WHERE
+					//					vc.id = vcc.category_id AND
+					//					vc.id = pv.resource_id AND
+					//					pv.package_id = sp.package_id AND
+					//					sp.subscriber_id = ".$_SESSION['id']." AND
+					//					vc.parent = 0
+					//				ORDER BY
+					//					vc.id";
+					
+					$sql = "SELECT * from vodcategories";
+					
+					$rsGet = $DB->Execute($sql);
+					
+					while (!$rsGet->EOF)
+					{	
+						?>
+						<option value="<?=$rsGet->fields['id'] ?>" <?php if($parent ==  $rsGet->fields['id']) echo "selected='selected'" ?>><?=ucfirst(strtolower($rsGet->fields['name'])) ?></option>
+						<?php
+						$dad=$rsGet->fields['name'];
+						//Second+ level menus - Sorry for the mess, Padre needs to be sent as a comparison value.
+						make_kids($rsGet->fields['id'],$dad,$padre);
+						$rsGet->MoveNext();
+					}
+					?>
 				</select>
 			</form>
 			
@@ -107,18 +136,24 @@
 						<td>
 							<div class="imageSingle">
 								<a href="http://youtu.be/2qR_94Jmg4A" rel="prettyPhoto" title="">
-								<div class="image">
-									<img src="../data/images/<?=$thumb ?>" />
-								</div>
+									<div class="image">
+										<img src="../data/images/<?=$thumb ?>" />
+									</div>
 								</a>
+								
 								<div class="footer">
 									<b><?=_("Name")?> : </b><?=$rs_getData->fields['name']; ?><br />
-									<b><?=_("Current Views")?> : </b><?=$rs_getData->fields['current_views']; ?><br />
-									<b><?=_("Max Views")?> : </b><?=$rs_getData->fields['max_views']; ?><br />
-									<b><?=_("Validity (days)")?> : </b><?=$rs_getData->fields['duration']; ?><br />
-									<a href="viewLiveDetail.php?id=<?=$rs_getData->fields['id']?>&iframe=true&width=100%&height=100%"" rel="prettyPhoto[details]" title="View Details for channel <?=$rs_getData->fields['name']; ?>">More Details</a><br />
+									<a href="viewVodDetail.php?id=<?=$rs_getData->fields['id']?>&iframe=true&width=100%&height=100%"" rel="prettyPhoto[details]" title="View Details for video <?=$rs_getData->fields['name']; ?>">More Details</a><br />
 									<a href="<?=$rs_getData->fields['local_url']?>"><?=_("View Local")?></a><br />
 									<a href="<?=$rs_getData->fields['stb_url']?>"><?=_("View Through Internet")?></a>
+								</div>
+							</div>
+							<div class="imageSingle">
+								<b><?=_("Current Views")?> : </b><?=$rs_getData->fields['current_views']; ?><br />
+								<b><?=_("Max Views")?> : </b><?=$rs_getData->fields['max_views']; ?><br />
+								<b><?=_("Validity (days)")?> : </b><?=$rs_getData->fields['duration']; ?><br />
+								
+								<div class="footer">
 									<b><?=_("Additional Resources")?> : </b>
 									<?php
 										while (!$rsGetResources->EOF){
@@ -133,10 +168,10 @@
 										<?
 										}
 									?>
-									</td>
 								</div>
 							</div>
-						<td>
+
+						</td>
 					<?
 					if ($counter%6 == 0){
 						?>
