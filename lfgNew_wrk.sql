@@ -3,7 +3,7 @@
 # Server version:               5.5.12
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3603
-# Date/time:                    2012-02-13 15:53:35
+# Date/time:                    2012-02-16 16:08:03
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -328,7 +328,7 @@ CREATE TABLE IF NOT EXISTS `grid_live` (
   `end_date` date DEFAULT NULL,
   `end_time` time DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=218 DEFAULT CHARSET=latin1 COMMENT='Programming grid for live channels';
+) ENGINE=MyISAM AUTO_INCREMENT=362 DEFAULT CHARSET=latin1 COMMENT='Programming grid for live channels';
 
 # Dumping data for table lfg.grid_live: 72 rows
 DELETE FROM `grid_live`;
@@ -633,7 +633,7 @@ CREATE TABLE IF NOT EXISTS `subscribers` (
 DELETE FROM `subscribers`;
 /*!40000 ALTER TABLE `subscribers` DISABLE KEYS */;
 INSERT INTO `subscribers` (`id`, `name`, `username`, `password`, `address`, `email`, `account`, `phone`, `country`, `city`, `zip`, `serial`, `mac`, `license`, `last_login`, `pin`) VALUES
-	(7, 'Cosme Fulanito', 'cosmeFulanito', '16d7a4fca7442dda3ad93c9a726597e4', 'Test', 'my@email.com', 'test', 'test', '39', 'Mumbai', '111', 'S3R1AL', 'MM:AA:CC:AA:DD:RR:EE:SS', '', '2012-02-01 23:49:25', 'r406gfgl2xda2w');
+	(7, 'Cosme Fulanito', 'cosmeFulanito', '16d7a4fca7442dda3ad93c9a726597e4', 'This is my address', 'victor@rampcolombia.com', 'test', 'test', '104', 'Mumbai', '10000', 'S3R1AL', 'MM:AA:CC:AA:DD:RR:EE:SS', '', '2012-02-01 23:49:25', 'r406gfgl2xda2w');
 /*!40000 ALTER TABLE `subscribers` ENABLE KEYS */;
 
 
@@ -653,6 +653,25 @@ INSERT INTO `subscribers_packages` (`subscriber_id`, `package_id`) VALUES
 	(7, 5),
 	(7, 6);
 /*!40000 ALTER TABLE `subscribers_packages` ENABLE KEYS */;
+
+
+# Dumping structure for table lfg.support_tickets
+DROP TABLE IF EXISTS `support_tickets`;
+CREATE TABLE IF NOT EXISTS `support_tickets` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `userid` int(10) DEFAULT NULL,
+  `enquiry_type` varchar(50) DEFAULT NULL,
+  `enquiry_text` varchar(500) DEFAULT NULL,
+  `date_opened` timestamp NULL DEFAULT NULL,
+  `date_closed` timestamp NULL DEFAULT NULL,
+  `status` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Table for support Tickets';
+
+# Dumping data for table lfg.support_tickets: 0 rows
+DELETE FROM `support_tickets`;
+/*!40000 ALTER TABLE `support_tickets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `support_tickets` ENABLE KEYS */;
 
 
 # Dumping structure for table lfg.tickets

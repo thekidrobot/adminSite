@@ -59,21 +59,140 @@
 			<div id="table-content">
 			<h2><?=_("Raise a ticket")?></h2>
 			<h3><?=_("Be in touch with us")?></h3>
+
+<?
+	
+	if($_POST['usr_id'] != "")
+	{
+		$id = $_POST['usr_id'];
+		
+		$postArray = &$_POST;
+		
+		$userid=escape_value($postArray['usr_id']);
+		$username=escape_value($postArray['usr_name']);
+		$enquiry_type=escape_value($postArray['enquiry_type']);
+		$enquiry_text=nl2br(escape_value($postArray['enquiry_text']));
+				
+		$validator = new FormValidator();
+		$validator->addValidation("enquiry_text","req",_("Please let us know your enquiry"));
+		$validator->addValidation("enquiry_text","maxlen=500",_("The text should be less than 500 characters"));
+		
+		if(!$validator->ValidateForm())
+		{
+			$error_hash = $validator->GetErrors();
+			foreach($error_hash as $inpname => $inp_err)
+			{
+				$err .= $inp_err."</br>";
+			}
+		}
+		else
+		{
+			$email_admin = "produccionvzdc@gmail.com";
 			
-			Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet consectetur 
-			adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  dolore magna aliqua. Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet consectetur 
-			adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  dolore magna aliqua. 
-			<br />
-			<br />
-			Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet consectetur 
-			adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  dolore magna aliqua. Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet consectetur 
-			adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  dolore magna aliqua. 
-			<br />
-			<br />
-			Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet consectetur 
-			adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  dolore magna aliqua. Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet consectetur 
-			adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  dolore magna aliqua. 
+			$email_subscriber = $_SESSION['email'];
+ 
+			 $mailcheck1 = spamcheck($email_admin);
+			 $mailcheck2 = spamcheck($email_subscriber);
+ 
+			 if ($mailcheck1==FALSE or $mailcheck2==FALSE){
+				 $err = "Invalid email format. Please update your data with a valid email";
+			 }
+			 else
+			 {
+				
+				$enquiry_text = $enquiry_text;
+				
+				 $sql = "INSERT INTO support_tickets
+									(userid,enquiry_type,enquiry_text,
+									 date_opened,status)
+								 VALUES
+									($userid,'$enquiry_type','$enquiry_text',NOW(),0)";
+						 
+				 $rsSet=$DB->execute($sql);
+							
+				 if($rsSet){
+					 
+					 $ticket_number = $DB->Insert_ID();
+									 
+					 //For the mail
+					 $subject = nl2br($enquiry_type);
+					
+					 $enquiry_text = nl2br($enquiry_text);
+		 
+					 $msg="<p>$enquiry_text</p>
+								 <br />
+								 -- <br />
+								 Regards,<br />
+								 $username
+								 <br />Mail: $email_subscriber
+								 <br />Ticket Number: $ticket_number";				
+				
+					 $msg = nl2br($msg);
+
+					 sendemail($email_admin,$subject,$msg);
+					 sendemail($email_subscriber,$subject,$msg);
+
+					 $msg = "Your ticket has been created with the number $ticket_number.<br />
+									 A mail has been sent to the support team and to your inbox.";
+									 
+				}
+			}			
+		}
+	}
+	
+?>
 			
+			<?
+			if(trim($err) != ""){
+			?>
+				<p>
+					<label><?=_("Please correct the following errors: ")?></label>
+					<div><?=$err?></div>
+				</p>						
+			<?
+			}
+			elseif(trim($msg) != ""){
+			?>
+				<p>
+					<div><?=$msg?></div>
+				</p>						
+			<?
+			}
+			?>
+			
+			<div id="custom_form">
+				<form action="<?=$currentPage?>" method="post">
+
+				<p>
+					<label><?=_("Subscriber Name")?></label>
+					<input type="text" name="usr_name" value="<?=$_SESSION['name']?>" readonly="readonly" class="inp-form" />
+				</p>
+
+				<p>
+					<label><?=_("Enquiry Type")?> : </label>
+					<select name="enquiry_type" class="styledselect_form_1">
+						<option value="I'm feeling lonely"><?=_("I'm feeling lonely")?></option>
+						<option value="I'm hungry"><?=_("I'm hungry")?></option>
+						<option value="I'm bored"><?=_("I'm bored")?></option>
+						<option value="I don't have friends"><?=_("I don't have friends")?></option>
+						<option value="I don't know"><?=_("I don't know")?></option>
+					<select>
+				</p>
+
+				<p>
+					<label><?=_("Your enquiry")?> : </label>
+					<textarea name="enquiry_text" class="form-textarea"><?=$_POST['enquiry_text']?></textarea>
+				</p>
+
+				<p>
+					<label>&nbsp;</label>
+ 					<input type="hidden" value="<?=$_SESSION['id']?>" name="usr_id" />
+					<input type="submit" value="<?=_("Update")?>" name="edit" class="form-submit" />
+				</p> 
+
+			</form>
+			
+			</div>
 			
 			</div>
 			<!--  end table-content  -->
