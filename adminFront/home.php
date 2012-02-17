@@ -58,7 +58,7 @@
 			<!--  start table-content  -->
 			<div id="table-content">
 			<h2><?=_("Available Channels")?></h2>
-			<h3><?=_("Available Channels")?></h3>
+			<!--<h3><?=_("Available Channels")?></h3>-->
 			
 			<div class="album">
 			 <table class="gallery paginate-1 max-pages-6">
@@ -73,7 +73,7 @@
 											  lc.id = pl.resource_id AND
 												pl.package_id = sp.package_id AND
 												sp.subscriber_id = ".$_SESSION['id'].
-											" ORDER BY lc.id DESC";
+											" ORDER BY lc.number";
 											 
 			 $rs_getData = $DB->Execute($sql_getData);
 			 
@@ -89,22 +89,23 @@
 					?>
 						<td>
 							<div class="imageSingle">
-								<a href="http://youtu.be/2qR_94Jmg4A" rel="prettyPhoto" title="">
 								<div class="image">
-									<img src="../data/images/<?=$thumb ?>" />
-								</div>
-								</a>
-								<div class="footer">
-									<b><?=_("Name")?> : </b><?=$rs_getData->fields['name']; ?><br />
-									<b><?=_("Number")?> : </b><?=$rs_getData->fields['number']; ?><br />
-									<a href="viewEpg.php?id=<?=$rs_getData->fields['id']?>&iframe=true&width=100%&height=100%" rel="prettyPhoto[epg]" title="View EPG for channel <?=$rs_getData->fields['name']; ?>"><?=_("View EPG")?></a><br />
-									<a href="viewLiveDetail.php?id=<?=$rs_getData->fields['id']?>&iframe=true&width=100%&height=100%"" rel="prettyPhoto[details]" title="View Details for channel <?=$rs_getData->fields['name']; ?>">More Details</a>
-									</td>
-								</div>
+									<a href="http://youtu.be/2qR_94Jmg4A" rel="prettyPhoto" title="">
+										<img src="../data/images/<?=$thumb ?>" />
+									</a>									
+									<div class="caption">
+										<b># <?=$rs_getData->fields['number']; ?> : </b><?=$rs_getData->fields['name']; ?><br />
+										<?=$rs_getData->fields['description']; ?><br />
+										<div class="actions">
+											<a href="viewEpg.php?id=<?=$rs_getData->fields['id']?>&iframe=true&width=100%&height=100%" rel="prettyPhoto[epg]" title="View EPG for channel <?=$rs_getData->fields['name']; ?>"><img src="images/icons/calendar.png" alt="<?=_("View EPG")?>" class="icon" /></a>
+											<a href="viewLiveDetail.php?id=<?=$rs_getData->fields['id']?>&iframe=true&width=100%&height=100%"" rel="prettyPhoto[details]" title="View Details for channel <?=$rs_getData->fields['name']; ?>"><img src="images/icons/more_details.png" alt="<?=_("More Details")?>" class="icon" /></a>
+										</div>
+									</div>
+								</div>								
 							</div>
 						<td>
 					<?
-					if ($counter%6 == 0){
+					if ($counter%4 == 0){
 						?>
 						</tr>
 						<tr>

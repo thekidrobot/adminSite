@@ -187,42 +187,42 @@
 			
 			<div id="custom_form">
 				<form action="<?=$currentPage?>" method="post">
-				<p>
-					<label><?=_("Subscriber Name")?> :</label>
-					<input type="text" name="name" value="<?=$rsGet->fields['name']?>" maxlength="255" class="inp-form" />
-				</p>
-
-				<p>
-					<label><?=_("Subscriber Username")?></label>
-					<input type="text" name="username" value="<?=$rsGet->fields['username']?>" maxlength="100" class="inp-form" />
-				</p>
-				<p>
-					<label><?=_("Subscriber Password")?></label>
-					<input type="password" name="password1" value="<?=$rsGet->fields['password']?>" maxlength="15" class="inp-form" />
-				</p>
-				<p>
-					<label><?=_("Repeat Password")?></label>
-					<input type="password" name="password2" value="<?=$rsGet->fields['password']?>" maxlength="15" class="inp-form" />
-				</p>				
-				<p>
-					<label><?=_("Subscriber Address")?></label>
-					<input type="text" name="address" value="<?=$rsGet->fields['address']?>" maxlength="200" class="inp-form" />
-				</p>
-				<p>
-					<label><?=_("Subscriber Email")?></label>
-					<input type="text" name="email" value="<?=$rsGet->fields['email']?>" maxlength="100" class="inp-form" />
-				</p>
-				<p>
-					<label><?=_("Subscriber Account Number")?></label>
-					<input type="text" name="account" value="<?=$rsGet->fields['account']?>" maxlength="100" class="inp-form" />
-				</p>
-				<p>
-					<label><?=_("Subscriber Phone")?></label>
-					<input type="text" name="phone" value="<?=$rsGet->fields['phone']?>" maxlength="100" class="inp-form" />
-				</p>
-				<p>
-					<label><?=_("Subscriber Country")?> : </label>
-					<select name="country" class="styledselect_form_1">
+				<table align="left">
+				<tr>
+					<td><?=_("Subscriber Name")?> :</td>
+					<td><input type="text" name="name" value="<?=$rsGet->fields['name']?>" maxlength="255" class="inp-form" /></td>
+				</tr>
+				<tr>
+					<td><?=_("Subscriber Username")?></td>
+					<td><input type="text" name="username" value="<?=$rsGet->fields['username']?>" maxlength="100" class="inp-form" readonly="readonly" /></td>
+				</tr>
+				<tr>
+					<td><?=_("Subscriber Password")?></td>
+					<td><input type="password" name="password1" value="<?=$rsGet->fields['password']?>" maxlength="15" class="inp-form" /></td>
+				</tr>
+				<tr>
+					<td><?=_("Repeat Password")?></td>
+					<td><input type="password" name="password2" value="<?=$rsGet->fields['password']?>" maxlength="15" class="inp-form" /></td>
+				</tr>				
+				<tr>
+					<td><?=_("Subscriber Address")?></td>
+					<td><input type="text" name="address" value="<?=$rsGet->fields['address']?>" maxlength="200" class="inp-form" /></td>
+				</tr>
+				<tr>
+					<td><?=_("Subscriber Email")?></td>
+					<td><input type="text" name="email" value="<?=$rsGet->fields['email']?>" maxlength="100" class="inp-form" /></td>
+				</tr>
+				<tr>
+					<td><?=_("Subscriber Account Number")?></td>
+					<td><input type="text" name="account" value="<?=$rsGet->fields['account']?>" maxlength="100" class="inp-form" /></td>
+				</tr>
+				<tr>
+					<td><?=_("Subscriber Phone")?></td>
+					<td><input type="text" name="phone" value="<?=$rsGet->fields['phone']?>" maxlength="100" class="inp-form" /></td>
+				</tr>
+				<tr>
+					<td><?=_("Subscriber Country")?> : </td>
+					<td><select name="country" class="styledselect_form_1">
 						<?php
 							$sql="select * from countries";
 							$rsGetCountries=$DB->execute($sql);
@@ -233,36 +233,38 @@
 								$rsGetCountries->movenext();
 							}
 						?>
-					<select>
-				</p>
-				<p>
-					<label><?=_("Subscriber city")?></label>
-					<input type="text" name="city" value="<?=$rsGet->fields['city']?>" maxlength="100" class="inp-form" />
-				</p>
-				<p>
-					<label><?=_("Subscriber Zip code")?></label>
-					<input type="text" name="zip" value="<?=$rsGet->fields['zip']?>" maxlength="10" class="inp-form" />
-				</p>
-				<p>
-					<label><?=_("STB Mac Address")?></label>
-					<input type="text" name="mac" value="<?=$rsGet->fields['mac']?>" maxlength="100" class="inp-form" />
-				</p>
-				<p>
-					<label><?=_("STB Serial number")?></label>
-					<input type="text" name="serial" value="<?=$rsGet->fields['serial']?>" maxlength="100" class="inp-form" />
-				</p> 	 
-				<p>
-					<label><?=_("Computer License")?></label>
-					<input name="license" type="text" value="<?=$rsGet->fields['license']?>" class="inp-form" />
-				</p>
-				<p>
-					<label><?=_("Update")?></label>
- 					<input type="hidden" value="<?=$rsGet->fields['id']?>" name="usr_id" />
+					<select></td>
+				</tr>
+				<tr>
+					<td><?=_("Subscriber city")?></td>
+					<td><input type="text" name="city" value="<?=$rsGet->fields['city']?>" maxlength="100" class="inp-form" /></td>
+				</tr>
+				<tr>
+					<td><?=_("Subscriber Zip code")?></td>
+					<td><input type="text" name="zip" value="<?=$rsGet->fields['zip']?>" maxlength="10" class="inp-form" /></td>
+				</tr>
+				<tr>
+					<td><?=_("STB Mac Address")?></td>
+					<td><input type="text" name="mac" value="<?=$rsGet->fields['mac']?>" maxlength="100" class="inp-form" /></td>
+				</tr>
+				<tr>
+					<td><?=_("STB Serial number")?></td>
+					<td><input type="text" name="serial" value="<?=$rsGet->fields['serial']?>" maxlength="100" class="inp-form" /></td>
+				</tr> 	 
+				<tr>
+					<td><?=_("Computer License")?></td>
+					<td><input name="license" type="text" value="<?=$rsGet->fields['license']?>" class="inp-form" /></td>
+				</tr>
+				<tr>
+					<td><?=_("Update")?></td>
+ 					<td>
+					<input type="hidden" value="<?=$rsGet->fields['id']?>" name="usr_id" />
 					<input type="submit" value="<?=_("Update")?>" name="edit" class="form-submit" />
-				</p> 
-
+					</td>
+				</tr> 
+				</table>
 			</form>
-			
+				
 			</div>
 			
 			</div>
