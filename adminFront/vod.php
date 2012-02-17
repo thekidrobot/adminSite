@@ -57,47 +57,58 @@
 		
 			<!--  start table-content  -->
 			<div id="table-content">
-			<h2><?=_("Available Channels")?></h2>
-			<h3><?=_("Available Channels")?></h3>
+			<h2><?=_("Available Videos")?></h2>
+			<!--<h3><?=_("Available Videos")?></h3>-->
 			
+			<div id="custom_form">
 			<form action="<?=$_SERVER['PHP_SELF']?>">
-				<select name="parent" class="styledselect_form_1">
-					<option value=0 <?php if($parent == 0) echo "selected='selected'" ?>><?=_("All Categories")?></option>
-					<?php
-					//First level menus
-					//$sql = "SELECT
-					//					vc.*
-					//				FROM
-					//					vodcategories vc,
-					//					vod_channels_categories vcc,
-					//					packages_vodchannels pv,
-					//					subscribers_packages sp
-					//				WHERE
-					//					vc.id = vcc.category_id AND
-					//					vc.id = pv.resource_id AND
-					//					pv.package_id = sp.package_id AND
-					//					sp.subscriber_id = ".$_SESSION['id']." AND
-					//					vc.parent = 0
-					//				ORDER BY
-					//					vc.id";
-					
-					$sql = "SELECT * from vodcategories";
-					
-					$rsGet = $DB->Execute($sql);
-					
-					while (!$rsGet->EOF)
-					{	
-						?>
-						<option value="<?=$rsGet->fields['id'] ?>" <?php if($parent ==  $rsGet->fields['id']) echo "selected='selected'" ?>><?=ucfirst(strtolower($rsGet->fields['name'])) ?></option>
-						<?php
-						$dad=$rsGet->fields['name'];
-						//Second+ level menus - Sorry for the mess, Padre needs to be sent as a comparison value.
-						make_kids($rsGet->fields['id'],$dad,$padre);
-						$rsGet->MoveNext();
-					}
-					?>
-				</select>
+				<table align="left" style="width:300px;">
+					<tr>
+						<td align="left" width="150px">
+							<select name="category" class="styledselect_form_1">
+								<option value="0"><?=_("All Categories")?></option>
+								<?php
+								
+								//$sql = "SELECT
+								//					vc.*
+								//				FROM
+								//					vodcategories vc,
+								//					vod_channels_categories vcc,
+								//					packages_vodchannels pv,
+								//					subscribers_packages sp
+								//				WHERE
+								//					vc.id = vcc.category_id AND
+								//					vc.id = pv.resource_id AND
+								//					pv.package_id = sp.package_id AND
+								//					sp.subscriber_id = ".$_SESSION['id']." AND
+								//					vc.parent = 0
+								//				ORDER BY
+								//					vc.id";
+								
+								$sql = "SELECT * from vodcategories";
+								
+								$rsGet = $DB->Execute($sql);
+								
+								while (!$rsGet->EOF)
+								{	
+									?>
+									<option value="<?=$rsGet->fields['id'] ?>" ><?=ucfirst(strtolower($rsGet->fields['name'])) ?></option>
+									<?php
+									$dad=$rsGet->fields['name'];
+									//Second+ level menus - Sorry for the mess, Padre needs to be sent as a comparison value.
+									make_kids($rsGet->fields['id'],$dad,$padre);
+									$rsGet->MoveNext();
+								}
+								?>
+							</select>
+						</td>
+						<td align="left" width="50px">
+							<input type="submit" value="<?=_("Submit")?>" name="submit" class="form-submit" />
+						</td>
+					</tr>
+				</table>
 			</form>
+			</div>
 			
 			<div class="album">
 			 <table class="gallery paginate-1 max-pages-6">
@@ -135,25 +146,36 @@
 					?>
 						<td>
 							<div class="imageSingle">
-								<a href="http://youtu.be/2qR_94Jmg4A" rel="prettyPhoto" title="">
-									<div class="image">
-										<img src="../data/images/<?=$thumb ?>" />
+								<div class="image">
+									<img src="../data/images/<?=$thumb ?>" />
+									
+									<div class="caption">
+										<b><?=_("Name")?> : </b><?=$rs_getData->fields['name']; ?><br />
+										<b><?=_("Current Views")?> : </b><?=$rs_getData->fields['current_views']; ?><br />
+										<b><?=_("Max Views")?> : </b><?=$rs_getData->fields['max_views']; ?><br />
+										<b><?=_("Validity (days)")?> : </b><?=$rs_getData->fields['duration']; ?><br />
+										
+										<div class="actions">
+											<a href="viewVodDetail.php?id=<?=$rs_getData->fields['id']?>&iframe=true&width=100%&height=100%"" rel="prettyPhoto[details]" title="View Details for video <?=$rs_getData->fields['name']; ?>">
+												<img src="images/icons/more_details.png" alt="<?=_("More Details")?>" class="icon" />
+											</a>
+											
+											<a href="http://youtu.be/2qR_94Jmg4A" rel="prettyPhoto" title="<?=_("View Local")?>">
+												<!--<a href="<?=$rs_getData->fields['local_url']?>" title="<?=_("View Local")?>">-->
+												<img src="images/icons/view_local.png" alt="<?=_("View Local")?>" class="icon" />
+											</a>
+											
+											<a href="http://youtu.be/2qR_94Jmg4A" rel="prettyPhoto" title="<?=_("View through Internet")?>">
+											<!--<a href="<?=$rs_getData->fields['stb_url']?>" title="<?=_("View through Internet")?>">-->
+												<img src="images/icons/view_internet.png" alt="<?=_("View trough Internet")?>" class="icon" />
+											</a>
+										</div>
 									</div>
-								</a>
-								
-								<div class="footer">
-									<b><?=_("Name")?> : </b><?=$rs_getData->fields['name']; ?><br />
-									<a href="viewVodDetail.php?id=<?=$rs_getData->fields['id']?>&iframe=true&width=100%&height=100%"" rel="prettyPhoto[details]" title="View Details for video <?=$rs_getData->fields['name']; ?>">More Details</a><br />
-									<a href="<?=$rs_getData->fields['local_url']?>"><?=_("View Local")?></a><br />
-									<a href="<?=$rs_getData->fields['stb_url']?>"><?=_("View Through Internet")?></a>
 								</div>
 							</div>
+							
 							<div class="imageSingle">
-								<b><?=_("Current Views")?> : </b><?=$rs_getData->fields['current_views']; ?><br />
-								<b><?=_("Max Views")?> : </b><?=$rs_getData->fields['max_views']; ?><br />
-								<b><?=_("Validity (days)")?> : </b><?=$rs_getData->fields['duration']; ?><br />
-								
-								<div class="footer">
+								<div class="image">
 									<b><?=_("Additional Resources")?> : </b>
 									<?php
 										while (!$rsGetResources->EOF){
@@ -173,7 +195,7 @@
 
 						</td>
 					<?
-					if ($counter%6 == 0){
+					if ($counter%4 == 0){
 						?>
 						</tr>
 						<tr>

@@ -162,34 +162,38 @@
 			
 			<div id="custom_form">
 				<form action="<?=$currentPage?>" method="post">
+				<table align="left">
+				<tr>
+					<td><?=_("Subscriber Name")?></td>
+					<td><input type="text" name="usr_name" value="<?=$_SESSION['name']?>" readonly="readonly" class="inp-form" /></td>
+				</tr>
 
-				<p>
-					<label><?=_("Subscriber Name")?></label>
-					<input type="text" name="usr_name" value="<?=$_SESSION['name']?>" readonly="readonly" class="inp-form" />
-				</p>
+				<tr>
+					<td><?=_("Enquiry Type")?> : </td>
+					<td>
+						<select name="enquiry_type" class="styledselect_form_1">
+							<option value="I'm feeling lonely"><?=_("I'm feeling lonely")?></option>
+							<option value="I'm hungry"><?=_("I'm hungry")?></option>
+							<option value="I'm bored"><?=_("I'm bored")?></option>
+							<option value="I don't have friends"><?=_("I don't have friends")?></option>
+							<option value="I don't know"><?=_("I don't know")?></option>
+						<select>
+					</td>
+				</tr>
 
-				<p>
-					<label><?=_("Enquiry Type")?> : </label>
-					<select name="enquiry_type" class="styledselect_form_1">
-						<option value="I'm feeling lonely"><?=_("I'm feeling lonely")?></option>
-						<option value="I'm hungry"><?=_("I'm hungry")?></option>
-						<option value="I'm bored"><?=_("I'm bored")?></option>
-						<option value="I don't have friends"><?=_("I don't have friends")?></option>
-						<option value="I don't know"><?=_("I don't know")?></option>
-					<select>
-				</p>
+				<tr>
+					<td><?=_("Your enquiry")?> : </td>
+					<td><textarea name="enquiry_text" class="form-textarea"><?=$_POST['enquiry_text']?></textarea></td>
+				</tr>
 
-				<p>
-					<label><?=_("Your enquiry")?> : </label>
-					<textarea name="enquiry_text" class="form-textarea"><?=$_POST['enquiry_text']?></textarea>
-				</p>
-
-				<p>
-					<label>&nbsp;</label>
- 					<input type="hidden" value="<?=$_SESSION['id']?>" name="usr_id" />
+				<tr>
+					<td>&nbsp;</td>
+ 					<td>
+					<input type="hidden" value="<?=$_SESSION['id']?>" name="usr_id" />
 					<input type="submit" value="<?=_("Update")?>" name="edit" class="form-submit" />
-				</p> 
-
+					</td>
+				</tr> 
+				</table>
 			</form>
 			
 			</div>

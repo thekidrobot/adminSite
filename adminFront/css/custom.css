@@ -383,11 +383,11 @@ p.paginationText
 
 	.album .imageSingle {
 		float: left;
-		padding-top:5px;
-		padding-left:5px;
+		padding-top:10px;
+		padding-left:10px;
 		margin: 15px; 
-		width:156px; 
-		text-align:center; 
+		width:256px; 
+		text-align:left; 
 		border:solid 1px #f2f2f2;
 	}
 	
@@ -402,20 +402,47 @@ p.paginationText
 		padding:7px; 
 		margin-top: 10px;
 	}
-	
-#custom_form{
-	width:100%;
+
+.album .icon{
+	border:none !important;
+	text-decoration: none;
+	padding:0px 2px 0px 2px;
 }
 
-#custom_form label{
-	width:200px;
-	padding:10px 40px 10px 0px;
-	color:#313131 !important;
-	float:left;
+.album .caption{
+	float: right;
+	padding-right:10px;
+	width:120px;
+}
+	
+.album .actions{
+	text-align:left;
+	padding-top:5px;
+	padding-right:10px;
+	width:120px;
+	border-top:solid 1px #f2f2f2; 
+}
+
+#custom_form{
+	width:100%;
 }
 
 #custom_form p{
 	width:100%;
 	padding-top:15px;
 	font-weight:bold;
+}
+
+#custom_form table{
+	border:none;
+	border-collapse:collapse;
+	text-align:left;
+	width:50%;
+}
+
+#custom_form td{
+	border:none;
+	border-collapse:collapse;
+	padding:5px 0px 5px 0px;
+	text-align:left;
 }
