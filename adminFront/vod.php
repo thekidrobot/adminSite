@@ -59,9 +59,14 @@
 			<div id="table-content">
 			<h2><?=_("Available Videos")?></h2>
 			<!--<h3><?=_("Available Videos")?></h3>-->
+
+			<?php
+				$catId = $_POST['category'];
+			?>
+
 			
 			<div id="custom_form">
-			<form action="<?=$_SERVER['PHP_SELF']?>">
+			<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 				<table align="left" style="width:300px;">
 					<tr>
 						<td align="left" width="150px">
@@ -92,7 +97,7 @@
 								while (!$rsGet->EOF)
 								{	
 									?>
-									<option value="<?=$rsGet->fields['id'] ?>" ><?=ucfirst(strtolower($rsGet->fields['name'])) ?></option>
+									<option value="<?=$rsGet->fields['id'] ?>" <?php if($catId == $rsGet->fields['id']) echo "selected='selected'" ?>><?=ucfirst(strtolower($rsGet->fields['name'])) ?></option>
 									<?php
 									$dad=$rsGet->fields['name'];
 									//Second+ level menus - Sorry for the mess, Padre needs to be sent as a comparison value.
