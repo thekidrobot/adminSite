@@ -7,14 +7,15 @@ button {
 	padding: 0px 0px;
 	margin-right:10px;
 	border: none;
-	background-color: transparent;
+	background-color:#666666;
 	cursor: pointer;
 	min-width: 94px;
 	height: 29px;
 	display: block;
 	float: left;
 	overflow: visible;
-	border: 1px solid #408080;
+	border: 1px solid #050505;
+	color:#FFFFFF !important;
 }
 
 *:first-child+html button[type]{width: 1;} /* IE7 */
@@ -28,7 +29,7 @@ button span {
 
 button span span {
 	/*background: transparent url(../img/btn_right.gif) no-repeat left top;*/
-	color: #646464;
+	/*color: #646464;*/
 	margin: 0;
 	padding: 0 0 0 10px;
 	font: 11px Arial, Helvetica, sans-serif;

@@ -3,7 +3,8 @@
 .clear { clear: both; }
 
 body {
-	background: white;
+	background:url('../img/bgpattern.jpg');
+	background-repeat:repeat-x;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	color: #646464;
@@ -59,8 +60,9 @@ h1 span { display: none; }
 	font-weight: bold;
 	line-height: 37px;
 	text-decoration: none;
-	color: #646464;
+	color: #FFFFFF;
 	padding: 0 20px;
+	background: url(../img/top_inactive.jpg) repeat-x left top; 
 }
 
 #mainNav li.logout {
@@ -69,11 +71,16 @@ h1 span { display: none; }
 	border-right: none;
 }
 
-#mainNav li a:hover { background: #fdfcf6; }
+#mainNav li a:hover {
+	background: #f0f0f0 url(../img/top_active.jpg) repeat-x left top;
+	color: #FFFFFF;
+	/*background: #fdfcf6;*/
+}
 
 #mainNav li a.active, #mainNav li a.active {
-	background: #f0f0f0 url(../img/top-menu-item-bg.gif) repeat-x left top;
-	color: #454545;
+	/*background: #f0f0f0 url(../img/top-menu-item-bg.gif) repeat-x left top;*/
+	background: #f0f0f0 url(../img/top_active.jpg) repeat-x left top;
+	color: #FFFFFF;
 }
 
 /* Container ---------------------------------------- */
@@ -95,7 +102,10 @@ h1 span { display: none; }
 
 #sidebar {
 	width: 179px;
+	height:auto;
+	min-height:600px;
 	float: left;
+	background: url(../img/left_menu.jpg) repeat-x left top;
 }
 
 #sidebar .sideNav { width: 179px; }
@@ -116,8 +126,10 @@ h1 span { display: none; }
 #sidebar .sideNav li a:hover { background: #fdfcf6; }
 
 #sidebar .sideNav li a.active, #sidebar .sideNav li a.active:hover {
-	background: #f0f7fa;
-	color: #c66653;
+	/*background: #f0f7fa;*/
+	background: #FF6600;	
+	/*color: #c66653;*/
+	color: #FFFFFF;
 }
 
 /* Breadcrumb ---------------------------------------- */
