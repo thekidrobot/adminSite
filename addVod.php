@@ -146,7 +146,7 @@ if ($_POST["MM_insert"] == "true")
 			<form method="post" enctype="multipart/form-data" action="<?php echo $currentPage; ?>" class="jNice">
 				<fieldset>
 					<p>
-						<label><?=_("Upload a logo (300x410px)") ?></label>
+						<label><?=_("Upload a logo (JPG, 300x410px)") ?></label>
 						<input name="pic" type="file" size="23" />
 					</p>
 					<p>

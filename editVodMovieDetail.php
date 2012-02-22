@@ -184,7 +184,7 @@ if($_POST["MM_update"] == "true")
 						<img src="<?="data/images/".$actual_filename_thumb?>">
 					</p>
 					<p>
-						<label><?=_("Upload a logo (300x410px)") ?></label>
+						<label><?=_("Upload a logo (JPG, 300x410px)") ?></label>
 						<input name="pic" type="file" size="23" />
 					</p>
 					<p>

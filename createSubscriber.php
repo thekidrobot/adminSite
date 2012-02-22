@@ -106,35 +106,35 @@
 				<fieldset>
 				<p>
 					<label><?=_("Subscriber Name")?></label>
-					<input type="text" name="name" value="<?=$rsGet->fields['name']?>" maxlength="255" class="text-long" />
+					<input type="text" name="name" value="<?=$_POST['name']?>" maxlength="255" class="text-long" />
 				</p>
 				<p>
 					<label><?=_("Subscriber Username")?></label>
-					<input type="text" name="username" value="<?=$rsGet->fields['username']?>" maxlength="100" class="text-long" />
+					<input type="text" name="username" value="<?=$_POST['username']?>" maxlength="100" class="text-long" />
 				</p>
 				<p>
-					<label><?=_("Subscriber Password")?></label>
-					<input type="password" name="password1" value="<?=$rsGet->fields['password']?>" maxlength="15" class="text-long" />
+					<label><?=_("Subscriber Password <br /> [More than 8 characters]")?></label>
+					<input type="password" name="password1" value="" maxlength="150" class="text-long" />
 				</p>
 				<p>
 					<label><?=_("Repeat Password")?></label>
-					<input type="password" name="password2" value="<?=$rsGet->fields['password']?>" maxlength="15" class="text-long" />
+					<input type="password" name="password2" value="" maxlength="150" class="text-long" />
 				</p>
 				<p>
 					<label><?=_("Subscriber Address")?></label>
-					<input type="text" name="address" value="<?=$rsGet->fields['address']?>" maxlength="200" class="text-long" />
+					<input type="text" name="address" value="<?=$_POST['address']?>" maxlength="200" class="text-long" />
 				</p>
 				<p>
 					<label><?=_("Subscriber Email")?></label>
-					<input type="text" name="email" value="<?=$rsGet->fields['email']?>" maxlength="100" class="text-long" />
+					<input type="text" name="email" value="<?=$_POST['email']?>" maxlength="100" class="text-long" />
 				</p>
 				<p>
 					<label><?=_("Subscriber Account Number")?></label>
-					<input type="text" name="account" value="<?=$rsGet->fields['account']?>" maxlength="100" class="text-long" />
+					<input type="text" name="account" value="<?=$_POST['account']?>" maxlength="100" class="text-long" />
 				</p>
 				<p>
 					<label><?=_("Subscriber Phone")?></label>
-					<input type="text" name="phone" value="<?=$rsGet->fields['phone']?>" maxlength="100" class="text-long" />
+					<input type="text" name="phone" value="<?=$_POST['phone']?>" maxlength="100" class="text-long" />
 				</p>
 				<p>
 					<label><?=_("Subscriber Country")?> : </label>
@@ -144,7 +144,7 @@
 							$rsGetCountries=$DB->execute($sql);
 							while(!$rsGetCountries->EOF){
 								?>
-									<option value="<?=$rsGetCountries->fields['id']?>" <? if($rsGetCountries->fields['id'] == $rsGet->fields['country']) echo "selected = 'selected'" ?>><?=$rsGetCountries->fields['name']?></option>
+									<option value="<?=$rsGetCountries->fields['id']?>" <? if($rsGetCountries->fields['id'] == $_POST['country']) echo "selected = 'selected'" ?>><?=$rsGetCountries->fields['name']?></option>
 								<?
 								$rsGetCountries->movenext();
 							}
@@ -153,23 +153,23 @@
 				</p>
 				<p>
 					<label><?=_("Subscriber city")?></label>
-					<input type="text" name="city" value="<?=$rsGet->fields['city']?>" maxlength="100" class="text-long" />
+					<input type="text" name="city" value="<?=$_POST['city']?>" maxlength="100" class="text-long" />
 				</p>
 				<p>
 					<label><?=_("Subscriber Zip code")?></label>
-					<input type="text" name="zip" value="<?=$rsGet->fields['zip']?>" maxlength="10" class="text-small" />
+					<input type="text" name="zip" value="<?=$_POST['zip']?>" maxlength="10" class="text-small" />
 				</p>
 				<p>
 					<label><?=_("STB Mac Address")?></label>
-					<input type="text" name="mac" value="<?=$rsGet->fields['mac']?>" maxlength="100" class="text-long" />
+					<input type="text" name="mac" value="<?=$_POST['mac']?>" maxlength="100" class="text-long" />
 				</p>
 				<p>
 					<label><?=_("STB Serial number")?></label>
-					<input type="text" name="serial" value="<?=$rsGet->fields['serial']?>" maxlength="100" class="text-long" />
+					<input type="text" name="serial" value="<?=$_POST['serial']?>" maxlength="100" class="text-long" />
 				</p> 	 
 				<p>
 					<label><?=_("Computer License")?></label>
-					<input name="license" type="text" value="<?=$rsGet->fields['license']?>" class="text-long" />
+					<input name="license" type="text" value="<?=$_POST['license']?>" class="text-long" />
 				</p>
 				<p>
 					<label><?=_("Save Subscriber")?></label>

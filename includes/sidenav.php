@@ -8,8 +8,8 @@
 			 or $currentPage == "searchLive.php"
 			 ){
 			?>
-			<li><a href="addLive.php" <?php if($currentPage == "addLive.php") echo "class='active'"?> ><?=_("Add Live Channel")?></a></li>
 			<li><a href="viewLive.php" <?php if($currentPage == "viewLive.php") echo "class='active'"?> ><?=_("View Live Channels")?></a></li>
+			<li><a href="addLive.php" <?php if($currentPage == "addLive.php") echo "class='active'"?> ><?=_("Add Live Channel")?></a></li>
 			<li><a href="searchLive.php" <?php if($currentPage == "searchLive.php") echo "class='active'"?> ><?=_("Search Live Channels")?></a></li>
 			<?
 		}
@@ -29,8 +29,8 @@
 					 )
 		{
 			?>
-			<li><a href="epg.php" <?php if($currentPage == "epg.php") echo "class='active'"?> ><?=_("Add EPG")?></a></li>
 			<li><a href="viewEpg.php" <?php if($currentPage == "viewEpg.php" or $currentPage == "viewEpgDetails.php") echo "class='active'"?> ><?=_("View EPG")?></a></li>
+			<li><a href="epg.php" <?php if($currentPage == "epg.php") echo "class='active'"?> ><?=_("Add EPG")?></a></li>
 			<?
 		}
 		
@@ -40,8 +40,8 @@
 			 or $currentPage == "searchVod.php")
 		{
 			?>
-			<li><a href="addVod.php" <?php if($currentPage == "addVod.php") echo "class='active'"?> ><?=_("Add VOD Movie")?></a></li>
 			<li><a href="viewVod.php" <?php if($currentPage == "viewVod.php") echo "class='active'"?> ><?=_("View VOD Movies")?></a></li>
+			<li><a href="addVod.php" <?php if($currentPage == "addVod.php") echo "class='active'"?> ><?=_("Add VOD Movie")?></a></li>
 			<li><a href="searchVod.php" <?php if($currentPage == "searchVod.php") echo "class='active'"?> ><?=_("Search VOD Movies")?></a></li>
 			<?
 		}
@@ -62,8 +62,8 @@
 					)
 		{
 			?>
+			<li><a href="viewVodCategories.php" <?php if($currentPage == "viewVodCategories.php") echo "class='active'"?> > <?=_("View VOD Categories")?></a></li>			
 			<li><a href="createVodCategory.php" <?php if($currentPage == "createVodCategory.php") echo "class='active'"?> > <?=_("Create VOD Category")?></a></li>
-			<li><a href="viewVodCategories.php" <?php if($currentPage == "viewVodCategories.php") echo "class='active'"?> > <?=_("View VOD Categories")?></a></li>
 			<li><a href="searchVodCategory.php" <?php if($currentPage == "searchVodCategory.php") echo "class='active'"?> > <?=_("Find VOD Category")?></a></li>
 			<?
 		}
@@ -91,8 +91,8 @@
 			else
 			{
 				?>
+				<li><a href="viewVodCategories.php" <?php if($currentPage == "viewVodCategories.php") echo "class='active'"?> > <?=_("View VOD Categories")?></a></li>				
 				<li><a href="createVodCategory.php" <?php if($currentPage == "createVodCategory.php") echo "class='active'"?> > <?=_("Create VOD Category")?></a></li>
-				<li><a href="viewVodCategories.php" <?php if($currentPage == "viewVodCategories.php") echo "class='active'"?> > <?=_("View VOD Categories")?></a></li>
 				<li><a href="searchVodCategory.php" <?php if($currentPage == "searchVodCategory.php") echo "class='active'"?> > <?=_("Find VOD Category")?></a></li>				
 				<?
 			}
@@ -103,8 +103,8 @@
 					 $currentPage == "searchPackage.php") 
 		{
 			?>
-			<li><a href="createPackage.php" <?php if($currentPage == "createPackage.php") echo "class='active'"?> > <?=_("Create new package")?></a></li>
 			<li><a href="viewPackages.php" <?php if($currentPage == "viewPackages.php") echo "class='active'"?> > <?=_("View packages")?></a></li>
+			<li><a href="createPackage.php" <?php if($currentPage == "createPackage.php") echo "class='active'"?> > <?=_("Create new package")?></a></li>
 			<li><a href="searchPackage.php" <?php if($currentPage == "searchPackage.php") echo "class='active'"?>> <?=_("Find packages")?></a></li>
 			<?
 		}		
@@ -139,8 +139,8 @@
 			else
 			{
 				?>
-				<li><a href="createPackage.php" <?php if($currentPage == "createPackage.php") echo "class='active'"?> > <?=_("Create new package")?></a></li>
 				<li><a href="viewPackages.php" <?php if($currentPage == "viewPackages.php") echo "class='active'"?> > <?=_("View packages")?></a></li>
+				<li><a href="createPackage.php" <?php if($currentPage == "createPackage.php") echo "class='active'"?> > <?=_("Create new package")?></a></li>
 				<li><a href="searchPackage.php" <?php if($currentPage == "searchPackage.php") echo "class='active'"?>> <?=_("Find packages")?></a></li>
 				<?	
 			}
@@ -174,8 +174,8 @@
 					 )
 		{
 		?>
+			<li><a href="viewSubscribers.php" <?php if($currentPage == "viewSubscribers.php") echo "class='active'"?> > <?=_("View Subscribers")?></a></li>					
 			<li><a href="createSubscriber.php" <?php if($currentPage == "createSubscriber.php") echo "class='active'"?> > <?=_("Create New Subscriber")?></a></li>
-			<li><a href="viewSubscribers.php" <?php if($currentPage == "viewSubscribers.php") echo "class='active'"?> > <?=_("View Subscribers")?></a></li>		
 			<li><a href="searchSubscriber.php" <?php if($currentPage == "searchSubscriber.php") echo "class='active'"?> > <?=_("Search Subscribers")?></a></li>
 		<?	
 		}
@@ -209,8 +209,8 @@
 			else
 			{
 				?>
-				<li><a href="createSubscriber.php" <?php if($currentPage == "createSubscriber.php") echo "class='active'"?> > <?=_("Create New Subscriber")?></a></li>
 				<li><a href="viewSubscribers.php" <?php if($currentPage == "viewSubscribers.php") echo "class='active'"?> > <?=_("View Subscribers")?></a></li>		
+				<li><a href="createSubscriber.php" <?php if($currentPage == "createSubscriber.php") echo "class='active'"?> > <?=_("Create New Subscriber")?></a></li>
 				<li><a href="searchSubscriber.php" <?php if($currentPage == "searchSubscriber.php") echo "class='active'"?> > <?=_("Search Subscribers")?></a></li>
 				<?	
 			}
@@ -221,8 +221,8 @@
 					 $currentPage == "searchTrainer.php")
 		{
 			?>
-			<li><a href="addTrainer.php" <?php if($currentPage == "addTrainer.php") echo "class='active'"?> > <?=_("Create new Trainer")?></a></li>		
 			<li><a href="viewTrainers.php" <?php if($currentPage == "viewTrainers.php") echo "class='active'"?> > <?=_("View Trainers")?></a></li>
+			<li><a href="addTrainer.php" <?php if($currentPage == "addTrainer.php") echo "class='active'"?> > <?=_("Create new Trainer")?></a></li>		
 			<li><a href="searchTrainer.php" <?php if($currentPage == "searchTrainer.php") echo "class='active'"?> > <?=_("Search Trainers")?></a></li>
 			<?	
 		}
@@ -257,8 +257,8 @@
 					 $currentPage == "searchRestriction.php")
 		{
 			?>
-			<li><a href="createRestriction.php" <?php if($currentPage == "createRestriction.php") echo "class='active'"?> > <?=_("Create new Restriction")?></a></li>		
 			<li><a href="viewRestrictions.php" <?php if($currentPage == "viewRestrictions.php") echo "class='active'"?> > <?=_("View Restrictions")?></a></li>
+			<li><a href="createRestriction.php" <?php if($currentPage == "createRestriction.php") echo "class='active'"?> > <?=_("Create new Restriction")?></a></li>		
 			<li><a href="searchRestriction.php" <?php if($currentPage == "searchRestriction.php") echo "class='active'"?> > <?=_("Search Restrictions")?></a></li>
 			<?	
 		}

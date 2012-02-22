@@ -8,7 +8,7 @@
 					 $currentPage == "searchLive.php") echo "class='active'";
 	?>		
 	><?=_("Live TV")?></a></li>
-	<li><a href="epg.php"
+	<li><a href="viewEpg.php"
 	<?php 
 	if($currentPage == "epg.php" or
 		 $currentPage == "viewEpgDetails.php" or
@@ -16,7 +16,7 @@
 		 ) echo "class='active'";
 	?>
 	><?=_("EPG")?></a></li>
-	<li><a href="addVod.php"
+	<li><a href="viewVod.php"
 	<?php 
 	if($currentPage == "addVod.php" or
 					 $currentPage == "viewVod.php" or 	
@@ -25,7 +25,7 @@
 					 $currentPage == "viewVodMovieDetail.php") echo "class='active'";
 	?>
 	><?=_("VOD")?></a></li>
-	<li><a href="createVodCategory.php"
+	<li><a href="viewVodCategories.php"
 	<?php if($currentPage == "viewVodCategories.php" or
 					 $currentPage == "searchVodCategory.php" or 	
 					 $currentPage == "viewVodDetail.php" or 	
@@ -34,7 +34,7 @@
 					 ) echo "class='active'";
 	?>		
 	><?=_("Categories")?></a></li>
-	<li><a href="createPackage.php"
+	<li><a href="viewPackages.php"
 	<?php if($currentPage == "viewPackages.php" or
 					 $currentPage == "viewPackageDetail.php" or 	
 					 $currentPage == "addPackageContentLive.php" or 	
@@ -44,7 +44,7 @@
 					 ) echo "class='active'";
 	?>
 	><?=_("Packages")?></a></li>
-	<li><a href="addTrainer.php"
+	<li><a href="viewTrainers.php"
 	<?php if($currentPage == "addTrainer.php" or
 					 $currentPage == "viewTrainers.php" or 	
 					 $currentPage == "viewTrainerDetail.php" or
@@ -53,7 +53,7 @@
 					 ) echo "class='active'";
 	?>
 	><?=_("Trainers")?></a></li>
-	<li><a href="createSubscriber.php"
+	<li><a href="viewSubscribers.php"
 	<?php if($currentPage == "createSubscriber.php" or
 					 $currentPage == "addSubscriberPackage.php" or 	
 					 $currentPage == "viewSubscribers.php" or
@@ -62,7 +62,7 @@
 					 ) echo "class='active'";
 	?>
 	><?=_("Subscribers")?></a></li>
-	<li><a href="createRestriction.php"
+	<li><a href="viewRestrictions.php"
 	<?php if($currentPage == "createRestriction.php" or
 					 $currentPage == "viewRestrictions.php" or
 					 $currentPage == "viewRestrictionDetail.php" or
