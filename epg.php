@@ -94,7 +94,7 @@ if($_POST['setCsv'] == 1)
 			{
         if (($handle = fopen($filepath, "r")) !== FALSE)
         {
-          $columns = fgetcsv($handle, $max_line_length, ",");
+          $columns = fgetcsv($handle, $max_line_length, ";");
           foreach ($columns as &$column)
           {
             $column = strtolower(str_replace(".","",$column));
@@ -104,7 +104,7 @@ if($_POST['setCsv'] == 1)
           
           $insert_query_prefix = "INSERT IGNORE INTO grid_live (".join(",",$columns).")\nVALUES";
         
-          while (($data = fgetcsv($handle, $max_line_length, ",")) !== FALSE)
+          while (($data = fgetcsv($handle, $max_line_length, ";")) !== FALSE)
           {
             while (count($data)<count($columns)) array_push($data, NULL);
             $query = "$insert_query_prefix ('".join("','",$data)."');";
