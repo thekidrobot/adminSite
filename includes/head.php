@@ -1,6 +1,6 @@
 <head>
 <meta http-equiv="pragma" content="no-cache" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title><?=_("Welcome to RAMP")?></title>
 
 <script type="text/javascript">
