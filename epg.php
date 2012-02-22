@@ -14,16 +14,18 @@ $sql = "select
 				DATE(NOW()) as start_date,
 				TIME(NOW()) as start_time,
 				DATE(NOW()) as end_date,
-				TIME(NOW()) as end_time
+				TIME(NOW()+1) as end_time
 				from livechannels";
 	
 $rsSetCsv = $DB->Execute($sql);
 $fp = fopen($csvName, "w");
 if ($fp){
-	rs2csvfile($rsSetCsv, $fp); // write to file (there is also an rs2tabfile function)
-	fclose($fp);
-	$rsSetCsv->movenext();
+	$arrCsv = $rsSetCsv->GetArray();
+	foreach ($arrCsv as $fields) {
+		fputcsv($fp,$fields,";","'");
+	}	
 }
+fclose($fp);
 
 $msg = "";
 
@@ -94,7 +96,7 @@ if($_POST['setCsv'] == 1)
 			{
         if (($handle = fopen($filepath, "r")) !== FALSE)
         {
-          $columns = fgetcsv($handle, $max_line_length, ";");
+          $columns = fgetcsv($handle, $max_line_length, ";","'");
           foreach ($columns as &$column)
           {
             $column = strtolower(str_replace(".","",$column));
@@ -102,9 +104,11 @@ if($_POST['setCsv'] == 1)
         
           mysql_query("delete from grid_live");
           
-          $insert_query_prefix = "INSERT IGNORE INTO grid_live (".join(",",$columns).")\nVALUES";
+          $insert_query_prefix = "INSERT IGNORE INTO grid_live
+																	(channel_id,channel_name,grid_name,grid_description,
+																	 rating,start_date,start_time,end_date,end_time)\nVALUES";
         
-          while (($data = fgetcsv($handle, $max_line_length, ";")) !== FALSE)
+          while (($data = fgetcsv($handle, $max_line_length, ";","'")) !== FALSE)
           {
             while (count($data)<count($columns)) array_push($data, NULL);
             $query = "$insert_query_prefix ('".join("','",$data)."');";
