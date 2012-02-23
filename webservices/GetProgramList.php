@@ -1,8 +1,9 @@
 <?php
 session_start();
-header('Content-type: application/json');
+header('Content-type: application/json; charset=UTF-8' );
 // libraries
 require_once('conexion.inc.php');
+require_once('functions.php');
 require_once('lib/nusoap.php');
 
 $userid = escape_value($_GET['userid']);
@@ -33,34 +34,13 @@ else
         
         if ($error)
         {
-            echo '<pre>'.$error.'</pre>';
+            echo $error;
         }
         else
         {
             echo $res;
         }
     }
-}
-
-//Safely escape values. Please use in your SQL queries. 
-function escape_value($value)
-{
-  if(function_exists('mysql_real_escape_string'))
-  {
-    if(get_magic_quotes_gpc())
-    { 
-      $value = stripslashes($value); 
-		}
-		$value = mysql_real_escape_string($value);
-	}
-  else
-  {
-    if(!get_magic_quotes_gpc())
-    { 
-      $value = addslashes($value); 
-    }
-  }
-  return $value;
 }
 
 ?>
