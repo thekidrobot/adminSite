@@ -2,18 +2,16 @@
 
 //Custom JSON encoder, for displaying the special chars.
 //Taken from : http://www.php.net/manual/en/function.json-encode.php#104278
+//Modified by me. 
 
 function my_json_encode($in) {
-  $_escape = function ($str) {
-    //return addcslashes($str, "\v\t\n\r\f\"\\/");
-		return $str;
-  };
+  
   $out = "";
   if (is_object($in)) {
     $class_vars = get_object_vars(($in));
     $arr = array();
     foreach ($class_vars as $key => $val) {
-      $arr[$key] = "\"{$_escape($key)}\":\"{$val}\"";
+      $arr[$key] = "\"{$key}\":\"{$val}\"";
     }
     $val = implode(',', $arr);
     $out .= "{{$val}}";
@@ -28,7 +26,7 @@ function my_json_encode($in) {
     }
     if($obj) {
       foreach($arr AS $key => $val) {
-        $arr[$key] = "\"{$_escape($key)}\":{$val}";
+        $arr[$key] = "\"{$key}\":{$val}";
       }
       $val = implode(',', $arr);
       $out .= "{{$val}}";
@@ -41,7 +39,7 @@ function my_json_encode($in) {
   }elseif (is_null($in)) {
     $out .= 'null';
   }elseif (is_string($in)) {
-    $out .= "\"{$_escape($in)}\"";
+    $out .= "\"{$in}\"";
   }else {
     $out .= $in;
   }
@@ -69,3 +67,5 @@ function escape_value($value)
   }
   return $value;
 }
+
+?>

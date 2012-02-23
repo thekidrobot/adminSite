@@ -1,7 +1,9 @@
 <?php
 session_start();
 // incluir libreria nusoap
+
 require_once('conexion.inc.php');
+require_once('functions.php');
 require_once('lib/nusoap.php');
 
 // Crear server
@@ -29,11 +31,15 @@ $soap_server->register
 
 function receiveUserData($userid='',$id='')
 {
-		$arr_msg = array('status'=> '');
-		$user = array();
-		$channels = array();
+		$programs = array();
+		$status = array();
 		
-		$sql = "SELECT distinct gl.*
+		$sql = "SELECT distinct
+						 gl.id as id,
+						 gl.grid_name as grid_name,
+						 gl.grid_description as grid_description,
+						 UNIX_TIMESTAMP(CONCAT_WS(' ',start_date,start_time)) as start_time,
+						 UNIX_TIMESTAMP(CONCAT_WS(' ',end_date,end_time)) as end_time
 					  FROM
 						 grid_live gl,
 						 livechannels lc,
@@ -51,29 +57,27 @@ function receiveUserData($userid='',$id='')
 		$result = mysql_query($sql);  
 		if(mysql_num_rows($result) == 0)
 		{
-				$arr_msg['status'] = 'success';
-				$arr_msg['programs'] = '';				
+				$status['status'] = 'success';
+				$status['programs'] = '';				
 		}
 		else
 		{
 				while($row = mysql_fetch_object($result))
 				{
-						array_push
-						($channels,$user['cgId'] = trim($row->id),$user['title'] = trim($row->grid_name),
-						 $user['description'] = trim($row->grid_description),
-						 $user['beginDate']=$row->start_date." ".$row->start_time,$user['endDate']=strtotime($row->end_date." ".$row->end_time));
-						
-						$usuario.=json_encode($user).',';
-				}
-				$usuario = "[".substr($usuario,0,strlen($usuario)-1)."]";
+						$programs['cgId'] = trim($row->id);
+						$programs['title'] = trim($row->grid_name);
+						$programs['description'] = (trim($row->grid_description));
+						$programs['beginDate'] = $row->start_time;
+						$programs['endDate'] = $row->end_time;
+				}				$status['status'] = 'success';
 
-				$arr_msg['status'] = 'success';
-				$arr_msg['programs'] = $usuario;		
+				$status['programs'] = "[".my_json_encode($programs)."]";		
 		}
-		$usuario = str_replace('\\','',json_encode($arr_msg));
-		$usuario = str_replace('"[','[',$usuario);
-		$usuario = str_replace(']"',']',$usuario);
-		return $usuario;
+
+		$status = my_json_encode($status);
+		$status = str_replace('"[','[',$status);
+		$status = str_replace(']"',']',$status);
+		return $status;
 }
 
 $HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : '';
