@@ -239,7 +239,6 @@
 <!--  end content-outer........................................................END -->
 
 <div class="clear">&nbsp;</div>
-    
 <!-- start footer -->         
 <?php include('includes/footer.php'); ?>
 <!-- end footer -->

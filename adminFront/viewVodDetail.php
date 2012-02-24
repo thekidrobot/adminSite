@@ -93,26 +93,6 @@ $rsGet = $DB->execute($sql);
 						<th><?=_("Movie Description")?> : </th>
 						<td><?=$rsGet->fields['description']?></td>
 					</tr>
-
-					<tr>
-						<th><?=_("Movie STB URL")?> : </th>
-						<td><?=$rsGet->fields['stb_url']?></td>
-					</tr>
-					
-					<tr>
-						<th><?=_("Movie Download URL")?> : </th>
-						<td><?=$rsGet->fields['download_url']?></td>
-					</tr>
-										
-					<tr>
-						<th><?=_("Movie PC URL")?> : </th>
-						<td><?=$rsGet->fields['pc_url']?></td>
-					</tr>
-					
-					<tr>
-						<th><?=_("Movie Local URL")?> : </th>
-						<td><?=$rsGet->fields['local_url']?></td>
-					</p>	
 				 
 					<tr>
 						<th><?=_("Movie Director / Trainer")?> : </th>

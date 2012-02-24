@@ -105,13 +105,6 @@
 				<td><?=$getData->fields['description']?></td>
 			</tr>			
 			
-
-			<tr>
-				<th valign="top"><?=_("Channel URL")?> : </th>
-				<td><?=$getData->fields['url']?></td>
-			</tr>
-			
-			
 			<tr>
 				<th valign="top"><?=_("Price")?></th>
 				<td><?=$getData->fields['price']?></td>
