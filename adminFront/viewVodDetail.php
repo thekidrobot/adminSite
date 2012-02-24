@@ -15,32 +15,32 @@ $rsGet = $DB->execute($sql);
 
 <body> 
 <!-- Start: page-top-outer -->
-<div id="page-top-outer">    
-	<!-- Start: page-top -->
-	<?php include('includes/page_top.php'); ?>
-	<!-- End: page-top -->
-</div>
-<!-- End: page-top-outer -->
-<div class="clear">&nbsp;</div>
- 
-<!--  start nav-outer-repeat................................................................................................. START -->
-<div class="nav-outer-repeat"> 
-	<!--  start nav-outer -->
-	<div class="nav-outer"> 
-		<!-- start nav-right -->
-		<?php include('includes/nav_right.php');?>
-		<!-- end nav-right -->
-
-		<!--  start nav -->
-		<?php include('includes/nav.php'); ?>
-		<!--  start nav -->
-		
-	</div>
-	<div class="clear"></div>
-<!--  start nav-outer -->
-</div>
-<!--  start nav-outer-repeat................................................... END -->
-<div class="clear"></div>
+<!--<div id="page-top-outer">    -->
+<!--	<!-- Start: page-top -->-->
+<!--	<?php //include('includes/page_top.php'); ?>-->
+<!--	<!-- End: page-top -->-->
+<!--</div>-->
+<!--<!-- End: page-top-outer -->-->
+<!--<div class="clear">&nbsp;</div>-->
+<!-- -->
+<!--<!--  start nav-outer-repeat................................................................................................. START -->-->
+<!--<div class="nav-outer-repeat"> -->
+<!--	<!--  start nav-outer -->-->
+<!--	<div class="nav-outer"> -->
+<!--		<!-- start nav-right -->-->
+<!--		<?php //include('includes/nav_right.php');?>-->
+<!--		<!-- end nav-right -->-->
+<!---->
+<!--		<!--  start nav -->-->
+<!--		<?php //include('includes/nav.php'); ?>-->
+<!--		<!--  start nav -->-->
+<!--		-->
+<!--	</div>-->
+<!--	<div class="clear"></div>-->
+<!--<!--  start nav-outer -->-->
+<!--</div>-->
+<!--<!--  start nav-outer-repeat................................................... END -->-->
+<!--<div class="clear"></div>-->
  
 <!-- start content-outer ........................................................................................................................START -->
 <div id="content-outer">
@@ -196,7 +196,7 @@ $rsGet = $DB->execute($sql);
 <div class="clear">&nbsp;</div>
     
 <!-- start footer -->         
-<?php include('includes/footer.php'); ?>
+<?php //include('includes/footer.php'); ?>
 <!-- end footer -->
  
 </body>

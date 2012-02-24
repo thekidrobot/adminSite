@@ -64,7 +64,7 @@
 			 <table class="gallery paginate-1 max-pages-6">
 			 <tr>
 			 <?php
-			 $sql_getData = "SELECT lc.*
+			 $sql_getData = "SELECT DISTINCT lc.*
 											 FROM
 											  livechannels lc,
 												packages_livechannels pl,

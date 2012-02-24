@@ -437,12 +437,22 @@ p.paginationText
 	border:none;
 	border-collapse:collapse;
 	text-align:left;
-	width:50%;
+	width:auto;
 }
 
 #custom_form td{
 	border:none;
 	border-collapse:collapse;
-	padding:5px 0px 5px 0px;
+	padding:5px;
 	text-align:left;
+	width:55%;
+}
+
+#custom_form td.form{
+	float:right;
+	width:45%;
+}
+
+#custom_form td.btn{
+	width:5%;
 }

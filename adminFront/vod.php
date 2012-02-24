@@ -57,7 +57,6 @@
 		
 			<!--  start table-content  -->
 			<div id="table-content">
-			<h2><?=_("Available Videos")?></h2>
 			<!--<h3><?=_("Available Videos")?></h3>-->
 
 			<?php
@@ -67,9 +66,12 @@
 			
 			<div id="custom_form">
 			<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-				<table align="left" style="width:300px;">
+				<table align="left">
 					<tr>
-						<td align="left" width="150px">
+						<td>
+							<h2><?=_("Available Videos")?></h2>							
+						</td>
+						<td align="right" class="form">
 							<select name="category" class="styledselect_form_1">
 								<option value="0"><?=_("All Categories")?></option>
 								<?php
@@ -107,7 +109,7 @@
 								?>
 							</select>
 						</td>
-						<td align="left" width="50px">
+						<td class="btn">
 							<input type="submit" value="<?=_("Submit")?>" name="submit" class="form-submit" />
 						</td>
 					</tr>
