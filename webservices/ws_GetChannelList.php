@@ -49,7 +49,8 @@ function receiveUserData($pin='')
 						pl.resource_id = lc.id AND
 						pl.package_id = sp.package_id AND
 						sp.subscriber_id = sc.id AND
-						sc.pin = '$pin'";
+						sc.pin = '$pin' 
+						ORDER BY lc.number asc";
 		
 		$result = mysql_query($sql);  
 		if(mysql_num_rows($result) == 0)

@@ -1,0 +1,110 @@
+	#dhtmlgoodies_scrolldiv{
+		/* The total width of the scrolling div including scrollbar */
+		width:700px;
+		height:400px;
+		margin-left:36px;
+		/* The height of the scrolling div */
+	}
+	#scrolldiv_parentContainer{
+		width:700px;	/* Width of the scrolling text */
+		height:100%;
+		overflow:hidden;
+		/*border:1px dashed #f0f0f0;*/
+		border:none;
+		float:left;
+		position:relative;
+	}
+	
+	/*
+	CSS for the scrolling content 
+	*/
+	#scrolldiv_content{
+		padding: 5px;
+		position:relative;
+		/*font-family: Trebuchet MS, Lucida Sans Unicode, Arial, sans-serif;*/
+		font-size: 0.9em;
+		/*line-height:130%;*/
+		/*color: #333;*/
+	}
+	
+	/*
+	The scrollbar slider 
+	*/
+	#scrolldiv_slider{
+		width:25px;
+		margin-left:2px;
+		height:500px;
+		float:left;
+	}
+	
+	/*
+	The scrollbar (The bar between the up and down arrow )
+	*/
+	#scrolldiv_scrollbar{
+		width:25px;
+		height:460px;	/* Total height - 40 pixels */
+		/*border:1px dashed #f0f0f0;*/
+		border:none;
+		position:relative;
+		
+	}
+	/*
+	The scrollbar handle
+	*/
+	#scrolldiv_theScroll{
+		margin:1px;
+		width:26px;
+		height:10px;
+		background-color:#adadad;
+		position:absolute;	
+		top:0px;
+		left:0px;
+		cursor:s-resize;
+	}
+	/*
+	Scroll buttons(The up and down arrows)
+	*/
+	#scrolldiv_scrollUp,#scrolldiv_scrollDown{
+		width:25px;
+		height:16px;
+		border:1px solid #808080;
+		color: #c0c0c0;
+		text-align:center;
+		font-size:16px;
+		line-height:16px;
+		cursor:pointer;
+	}
+	#scrolldiv_scrollUp{
+		margin-bottom:2px;
+	}
+	#scrolldiv_scrollDown{
+		margin-top:2px;
+	}
+	#scrolldiv_scrollDown span,#scrolldiv_scrollUp span{
+		font-family: Symbol;
+	}
+	
+	#dhtmlgoodies_scrolldiv .buttons_left{
+		width:680px;
+		position:absolute;
+		text-align:center;
+		padding-top:100px;
+		margin:0;
+		z-index:1 !important; 
+	}
+	
+	#dhtmlgoodies_scrolldiv .buttons_right{
+		width:680px;
+		position:absolute;
+		text-align:center;
+		padding-top:180px;
+		margin:0;
+		z-index:0 !important;
+	}
+	
+	#dhtmlgoodies_scrolldiv .button-submit{
+		border: 1px dotted #804000;
+		width:50px;
+		font-size:14px;
+		font-weight:bold;
+	}

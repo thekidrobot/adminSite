@@ -9,9 +9,10 @@ date_default_timezone_set('UTC');
 $file = $_SERVER["SCRIPT_NAME"];
 $break = Explode('/', $file);
 $curr_page = $break[count($break) - 1];
+$currentPage = $curr_page;
 
 //Sets name of the website, used for page titles.
-$website_name = "Welcome to Ramp";
+$website_name = "Welcome to RAMP";
 
 
 //Safely escape values. Please use in your SQL queries. 

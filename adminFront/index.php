@@ -4,181 +4,159 @@
 	include('includes/general_functions.php');
 	include('includes/formvalidator.php');
 
-	foreach($_POST as $key=>$value)
-	{
-	 $$key=$value;
-	}
+	foreach($_POST as $key=>$value) $$key=$value;
 	
-	if(trim(escape_value($username))!="" and trim(escape_value($password))!="")
-	{
-		$error = auth_user($username,$password);
-	}
-	elseif(isset($_POST['forgotbox']) and escape_value($email) != '')
-	{// The form is submitted
-		
-		$email = escape_value($email);
-		
-		//Setup Validations
-		$validator = new FormValidator();
-		$validator->addValidation("email","email",_("Invalid Email"));
-            
-    //Now, validate the form
-    if($validator->ValidateForm())
-    { 
-			$password = genRandomString();
-      
-			$password_enc = md5($password);
-              
-      $query="UPDATE subscribers set password = '$password_enc' where email = '$email'";
-      $r= mysql_query($query)or die("Error : ".mysql_error());
-              
-      if (mysql_affected_rows() > 0)
-			{
-				$id =mysql_insert_id();
-				
-				$msg = _("Password sent to $email");
-									 
-				$query = mysql_query("SELECT name from subscribers where email = '$email'"); 
-									
-				while ($row = mysql_fetch_object($query))
-				{
-					$fname = $row->name;
-				}
-				
-				//For the mail
-				$subject = _("Change Password Request");
-		
-				$body="<p>Dear ".$fname.",<br />
-							<br />
-							<p><h2>Password change request.</h2>
-							As per your password reset request, your new pasword is:
-							$password. <br /><br />Note that the letters in the password are case sensitive. <br /> <br />
-							-- <br/> Thanks,<br />
-							The RAMP Team</p>";
-  
-        sendemail($email,$subject,$body);
-      }
-      else
-			{
-				$msg = _("Nonexistent Email.");
-      }
-		}
-    else
-    {
-			$error_hash = $validator->GetErrors();
-			foreach($error_hash as $inpname => $inp_err)
-			{
-				$msg.=$inp_err;
-			}
-    }//else
-  }//if(isset($_POST['forgotbox']))	
-
+	if(trim(escape_value($username))!="" and trim(escape_value($password))!="") $error = auth_user($username,$password);
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Welcome to RAMP</title>
-<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen" title="default" />
-<!--  jquery core -->
-<script src="js/jquery/jquery-1.4.1.min.js" type="text/javascript"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>:::::RAMP:::::</title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="css/index.css">
 
-<!-- Custom jquery scripts -->
-<script src="js/jquery/custom_jquery.js" type="text/javascript"></script>
-
-<!-- MUST BE THE LAST SCRIPT IN <HEAD></HEAD></HEAD> png fix -->
-<script src="js/jquery/jquery.pngFix.pack.js" type="text/javascript"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-$(document).pngFix( );
-});
-</script>
-</head>
-<body id="login-bg"> 
- 
-<!-- Start: login-holder -->
-<div id="login-holder">
-
-	<!-- start logo -->
-	<div id="logo-login">
-		<a href="index.php"><img src="images/shared/logo.png" width="156" height="40" alt="" /></a>
-	</div>
-	<!-- end logo -->
-	
-	<div class="clear"></div>
-	
-	<!--  start loginbox ................................................................................. -->
-	<div id="loginbox">
-	
-	<!--  start login-inner -->
-	<form action="<?=$_SERVER['PHP_SELF'] ?>" method="post">
-		<div id="login-inner">
-			<table border="0" cellpadding="0" cellspacing="0">
-			<tr>
-				<th><?=_("Username")?></th>
-				<td><input type="text" class="login-inp" name="username" /></td>
-			</tr>
-			<tr>
-				<th><?=_("Password")?></th>
-				<td><input type="password" onfocus="this.value=''" class="login-inp" name="password" /></td>
-			</tr>
-				
-			<tr>
-				<th></th>
-				<td><input type="submit" class="submit-login" name="loginbox" /></td>
-			</tr>
-			
-			</table>
-
-			<div align="center">
-				<?php
-				if($error)
-				{
-					?>
-					<div id="forgotbox-text"><?=_("Username/Password error")?></div>
-				  <?php
-				}
-				elseif($msg)
-				{
-					?>	
-				  <div id="forgotbox-text"><?=$msg?></div>
-				  <?php
-				}
-				?>
-			</div>
-			
-		</div>
-	</form>
- 	<!--  end login-inner -->
-	<div class="clear"></div>
-	<a href="" class="forgot-pwd"><?=_("Forgot Password?")?></a>
- </div>
- <!--  end loginbox -->
- 
-	<!--  start forgotbox ................................................................................... -->
-	<div id="forgotbox">
-		<form action="<?=$_SERVER['PHP_SELF'] ?>" method="post">
-			<div id="forgotbox-text"><?=_("Please send us your email and we'll reset your password.")?></div>
-			<!--  start forgot-inner -->
-			<div id="forgot-inner">
-				<table border="0" cellpadding="0" cellspacing="0">
-				<tr>
-					<th><?=_("Email address:")?></th>
-					<td><input type="text" name="email" value="" class="login-inp" /></td>
-				</tr>
-				<tr>
-					<th> </th>
-					<td><input type="submit" class="submit-login" name="forgotbox" /></td>
-				</tr>
-				</table>
-			</div>
-			<!--  end forgot-inner -->
-			<div class="clear"></div>
-			<a href="" class="back-login"><?=_("Back to login")?></a>
-		</form>
-	</div>
-	<!--  end forgotbox -->
-</div>
-<!-- End: login-holder -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFF;
+}
+.trebuchet_15 {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: #930;
+}
+.trebuchet_12 {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #000;
+}
+.tahoma_11 {
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 11px;
+	color: #F00;
+}
+.bodyBackGround {
+	background-image: url(images/login/BackGroundfront.jpg);
+	background-repeat: repeat-x;
+}
+.button_submit{
+	background-image: url(images/login/entrar2.jpg);
+	background-repeat: no-repeat;
+	border:none;
+	background-color:transparent;
+	height:30px;
+	width:100px;
+	cursor:pointer;
+}
+a{
+	text-decoration:none;
+	color:#666666;
+}
+-->
+</style></head>
+<body leftmargin="0" topmargin="0" class="bodyBackGround" >
+<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+  <table width="1024" border="0" align="center" cellpadding="0" cellspacing="0">
+    <!-- fwtable fwsrc="rampMS.png" fwpage="P&aacute;gina 1" fwbase="front.jpg" fwstyle="Dreamweaver" fwdocid = "335304702" fwnested="0" -->
+    <tr>
+      <td><img src="images/login/spacer.gif" width="347" height="1" border="0" alt="" /></td>
+      <td><img src="images/login/spacer.gif" width="330" height="1" border="0" alt="" /></td>
+      <td><img src="images/login/spacer.gif" width="347" height="1" border="0" alt="" /></td>
+      <td><img src="images/login/spacer.gif" width="1" height="1" border="0" alt="" /></td>
+    </tr>
+    <tr>
+      <td colspan="3"><img name="front_r1_c1" src="images/login/front_r1_c1.jpg" width="1024" height="141" border="0" id="front_r1_c1" alt="" /></td>
+      <td><img src="images/login/spacer.gif" width="1" height="141" border="0" alt="" /></td>
+    </tr>
+    <tr>
+      <td colspan="3"><img name="front_r2_c1" src="images/login/front_r2_c1.jpg" width="1024" height="124" border="0" id="front_r2_c1" alt="" /></td>
+      <td><img src="images/login/spacer.gif" width="1" height="124" border="0" alt="" /></td>
+    </tr>
+    <tr>
+      <td><img name="front_r3_c1" src="images/login/front_r3_c1.jpg" width="347" height="266" border="0" id="front_r3_c1" alt="" /></td>
+      <td background="images/login/front_r3_c2.jpg"><table width="307" height="194" border="0" align="center">
+        <tr>
+          <td colspan="3" class="link10"><div align="center" class="trebuchet_15"><strong><?=_("Welcome to RAMP")?></strong></div></td>
+        </tr>
+        <tr>
+          <td class="link10">&nbsp;</td>
+          <td class="text10">&nbsp;</td>
+          <td class="body-text1"><div align="left">
+          </td>
+        </tr>
+        <tr>
+          <td width="15" class="link10">&nbsp;</td>
+          <td width="61" class="tahoma_12"><span class="trebuchet_12"><?=_("User")?></span></td>
+          <td width="175" class="body-text1"><div align="left">
+            <input type="text" name="username" maxlength="50" style="width:150" size="30" />
+          </div></td>
+        </tr>				
+        <tr>
+          <td class="link10">&nbsp;</td>
+          <td class="trebuchet_12"><?=_("Password")?></td>
+          <td class="body-text1"><div align="left">
+            <input type="password" onfocus="this.value=''" name="password" maxlength="50" style="width:150" size="30" />
+          </div></td>
+        </tr>
+        <tr>
+          <td height="30" align="right" class="body-text1">&nbsp;</td>
+          <td align="right" class="body-text1">&nbsp;</td>
+          <td align="right" valign="middle" class="text10"><div align="left">
+          <span class="tahoma_11">
+            <a href="forgotPwd.php">Forgot Password?</a>
+          </span>
+          </div></td>
+        </tr>				
+        <tr>
+          <td height="30" align="right" class="body-text1">&nbsp;</td>
+          <td align="right" class="body-text1">&nbsp;</td>
+          <td align="right" valign="middle" class="text10"><div align="left">
+            <p>
+              <input type="submit" name="submit" value="&nbsp;" class="button_submit" align="left">
+            </p>
+          </div></td>
+        </tr>
+        <tr>
+          <td align="right" class="body-text1"><div align="center"></div></td>
+          <td align="right" class="body-text1">&nbsp;</td>
+          <td align="right" class="body-text1"><div align="left">
+					<span class="tahoma_11">
+					  <?php
+						if($error)
+						{
+							?>
+							<?=_("Username/Password error")?>
+							<?php
+						}
+						elseif($msg)
+						{
+							echo $msg;
+						}
+						?>
+          </span></div></td>
+        </tr>
+        <tr>
+          <td align="right" class="body-text1"><div align="center" class="index-titles"></div></td>
+          <td align="right" class="body-text1">&nbsp;</td>
+          <td align="right" class="body-text1"><div align="left"></div></td>
+        </tr>
+      </table></td>
+      <td><img name="front_r3_c3" src="images/login/front_r3_c3.jpg" width="347" height="266" border="0" id="front_r3_c3" alt="" /></td>
+      <td><img src="images/login/spacer.gif" width="1" height="266" border="0" alt="" /></td>
+    </tr>
+    <tr>
+      <td colspan="3"><img name="front_r4_c1" src="images/login/front_r4_c1.jpg" width="1024" height="197" border="0" id="front_r4_c1" alt="" /></td>
+      <td><img src="images/login/spacer.gif" width="1" height="197" border="0" alt="" /></td>
+    </tr>
+    <tr>
+      <td colspan="3"><img name="front_r5_c1" src="images/login/front_r5_c1.jpg" width="1024" height="40" border="0" id="front_r5_c1" alt="" /></td>
+      <td><img src="images/login/spacer.gif" width="1" height="40" border="0" alt="" /></td>
+    </tr>
+  </table>
+<br>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</form>
 </body>
 </html>
