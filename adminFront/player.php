@@ -63,7 +63,7 @@
 												 rc.max_views,
 												 rc.duration,
 												 vc.stb_url,
-												 vc.local_url
+												 vc.pc_url
 												FROM
 												 vodchannels vc,
 												 tickets tc,
