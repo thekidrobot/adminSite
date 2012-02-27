@@ -422,37 +422,3 @@ p.paginationText
 	width:120px;
 	border-top:solid 1px #f2f2f2; 
 }
-
-#custom_form{
-	width:100%;
-}
-
-#custom_form p{
-	width:100%;
-	padding-top:15px;
-	font-weight:bold;
-}
-
-#custom_form table{
-	border:none;
-	border-collapse:collapse;
-	text-align:left;
-	width:auto;
-}
-
-#custom_form td{
-	border:none;
-	border-collapse:collapse;
-	padding:5px;
-	text-align:left;
-	width:55%;
-}
-
-#custom_form td.form{
-	float:right;
-	width:45%;
-}
-
-#custom_form td.btn{
-	width:5%;
-}

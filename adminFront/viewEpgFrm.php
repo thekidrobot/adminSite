@@ -1,21 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <?php include ("includes/head.php") ?>
-<body>
- <div id="wrapper">
-  <h1><a href="menuadmin.php"></a></h1>
-	<?php include("includes/mainnav.php") ?>
-	<!-- // #end mainNav -->
-	<div id="containerHolder">
-	 <div id="container">
-		<div id="sidebar">
-		 <?php include("includes/sidenav.php") ?>
-		</div>    
-		<!-- // #sidebar -->
-		<div id="main">
-			
-		<h2><a href="#"><?=_("Live Channels")?></a> &raquo; <a href="#" class="active"><?=_("View EPG")?></a></h2>
-			
+<body style="background:none !important">
 			<table class="no-arrow rowstyle-alt colstyle-alt paginate-20 max-pages-3">
 			<thead>
 				<tr>
@@ -81,12 +67,5 @@
 					?>
 			</tbody>
 			</table>
-
-	 </div><!-- // #main -->
-	<div class="clear"></div>
- </div><!-- // #container -->
- </div><!-- // #containerHolder -->
- <p id="footer"></p>
- </div><!-- // #wrapper -->
 </body>
 </html>

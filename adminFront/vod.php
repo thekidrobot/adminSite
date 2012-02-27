@@ -20,28 +20,26 @@
 				$catId = $_POST['category'];
 			?>
 			
-			<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+			<form action="<?=$_SERVER['PHP_SELF']?>" method="post" class="jNice">
 				<select name="category" class="styledselect_form_1">
 				<option value="0"><?=_("All Categories")?></option>
 				<?php
 								
-					//$sql = "SELECT
-					//					vc.*
-					//				FROM
-					//					vodcategories vc,
-					//					vod_channels_categories vcc,
-					//					packages_vodchannels pv,
-					//					subscribers_packages sp
-					//				WHERE
-					//					vc.id = vcc.category_id AND
-					//					vc.id = pv.resource_id AND
-					//					pv.package_id = sp.package_id AND
-					//					sp.subscriber_id = ".$_SESSION['id']." AND
-					//					vc.parent = 0
-					//				ORDER BY
-					//					vc.id";
-					
-					$sql = "SELECT * from vodcategories";
+					$sql = "SELECT DISTINCT 
+										vc.*
+									FROM
+										vodcategories vc,
+										vod_channels_categories vcc,
+										packages_vodchannels pv,
+										subscribers_packages sp
+									WHERE
+										vc.id = vcc.category_id AND
+										vc.id = pv.resource_id AND
+										pv.package_id = sp.package_id AND
+										sp.subscriber_id = ".$_SESSION['id']." AND
+										vc.parent = 0
+									ORDER BY
+										vc.id";
 					
 					$rsGet = $DB->Execute($sql);
 					
@@ -60,33 +58,32 @@
 			</form>
 			
 			<div class="album">
-			 <table class="gallery paginate-1 max-pages-6">
+			 <table class="gallery paginate-2 max-pages-6">
 			 <tr>
 			 <?php
-			 $sql_getData = "SELECT
-												vc.id,
-												vc.name,
-												tc.current_views,
-												rc.max_views,
-												rc.duration,
-												vc.stb_url,
-												vc.local_url
-											 FROM
-												vodchannels vc,
-												tickets tc,
-												restrictions rc
-											 WHERE
-											  vc.id = tc.resource_id AND
-												tc.restriction_id  = rc.id AND
-												tc.subscriber_id = ".$_SESSION['id'].
-												" ORDER BY vc.id DESC";
+				$sql_getData = "SELECT
+												 vc.id,
+												 vc.name,
+												 tc.current_views,
+												 rc.max_views,
+												 rc.duration,
+												 vc.stb_url,
+												 vc.local_url
+												FROM
+												 vodchannels vc,
+												 tickets tc,
+												 restrictions rc
+												WHERE
+												 vc.id = tc.resource_id AND
+												 tc.restriction_id  = rc.id AND
+												 tc.subscriber_id = ".$_SESSION['id'].
+												 " ORDER BY vc.id DESC";
 										
 			 $rs_getData = $DB->Execute($sql_getData);
-			 
-			 $counter = 1;
-			 
+
 				while (!$rs_getData->EOF)
 				{
+					$counter++;
 					$thumb=getThumbnail($rs_getData->fields['small_pic']);
 					
 					$sql = "select resource_path from vodchannels_resources where channel_id = ".$rs_getData->fields['id'];
@@ -105,7 +102,7 @@
 										<b><?=_("Validity (days)")?> : </b><?=$rs_getData->fields['duration']; ?><br />
 										
 										<div class="actions">
-											<a href="viewVodDetail.php?id=<?=$rs_getData->fields['id']?>&iframe=true&width=100%&height=100%"" rel="prettyPhoto[details]" title="View Details for video <?=$rs_getData->fields['name']; ?>">
+											<a href="viewVodDetailFrm.php?id=<?=$rs_getData->fields['id']?>&iframe=true&width=800&height=550" rel="prettyPhoto[details]" title="View Details for video <?=$rs_getData->fields['name']; ?>">
 												<img src="images/icons/more_details.png" alt="<?=_("More Details")?>" class="icon" />
 											</a>
 											
@@ -135,7 +132,7 @@
 										}
 										if($rsGetResources->numrows()== 0){
 										?>
-										<br />No additional resources found
+										<br />No additional resources found.
 										<?
 										}
 									?>
@@ -144,18 +141,29 @@
 
 						</td>
 					<?
-					if ($counter%4 == 0){
+					if ($counter%2 == 0){
 						?>
 						</tr>
 						<tr>
 					<?
 					}
-					$counter++;
 					$rs_getData->MoveNext();
 				}?>
 				</tr>
 			</table>
+			 
+			<?php
+			if($counter == 0)
+			{
+				?>
+					<h3><?=_("No data found")?></h3>
+				<?php
+				}
+			?>
+
+
 		</div>
+		
 		
 		<script type="text/javascript" src="js/pagination.js"></script>
 	 </div><!-- // #main -->

@@ -33,10 +33,9 @@
 											 
 			 $rs_getData = $DB->Execute($sql_getData);
 			 
-			 $counter = 1;
-			 
 				while (!$rs_getData->EOF)
 				{
+					$counter++;
 					$thumb=getThumbnail($rs_getData->fields['small_pic']);
 					
 					$sql = "select code from ratings where id = ".$rs_getData->fields['rating'];
@@ -53,8 +52,8 @@
 										<b># <?=$rs_getData->fields['number']; ?> : </b><?=$rs_getData->fields['name']; ?><br />
 										<?=$rs_getData->fields['description']; ?><br />
 										<div class="actions">
-											<a href="viewEpg.php?id=<?=$rs_getData->fields['id']?>&iframe=true&width=1800&height=1000" rel="prettyPhoto[epg]" title="View EPG for channel <?=$rs_getData->fields['name']; ?>"><img src="images/icons/calendar.png" alt="<?=_("View EPG")?>" class="icon" /></a>
-											<a href="viewLiveDetail.php?id=<?=$rs_getData->fields['id']?>&iframe=true&width=1800&height=1000"" rel="prettyPhoto[details]" title="View Details for channel <?=$rs_getData->fields['name']; ?>"><img src="images/icons/more_details.png" alt="<?=_("More Details")?>" class="icon" /></a>
+											<a href="viewEpgFrm.php?id=<?=$rs_getData->fields['id']?>&iframe=true&width=1200&height=1000" rel="prettyPhoto[epg]" title="View EPG for channel <?=$rs_getData->fields['name']; ?>"><img src="images/icons/calendar.png" alt="<?=_("View EPG")?>" class="icon" /></a>
+											<a href="viewLiveDetailFrm.php?id=<?=$rs_getData->fields['id']?>&iframe=true&width=1000&height=1000"" rel="prettyPhoto[details]" title="View Details for channel <?=$rs_getData->fields['name']; ?>"><img src="images/icons/more_details.png" alt="<?=_("More Details")?>" class="icon" /></a>
 										</div>
 									</div>
 								</div>								
@@ -67,7 +66,6 @@
 						<tr>
 					<?
 					}
-					$counter++;
 					$rs_getData->MoveNext();
 				}?>
 				</tr>
