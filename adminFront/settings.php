@@ -215,7 +215,6 @@
 					</p>
 					</fieldset>	
 				</form>
-			</div>
 			
 	 </div><!-- // #main -->
 	<div class="clear"></div>

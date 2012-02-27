@@ -1,4 +1,5 @@
-<?php 
+<?php
+		error_reporting(0);
     session_start();
     include('includes/connection.php');
     include('includes/general_functions.php');

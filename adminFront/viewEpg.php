@@ -66,9 +66,9 @@
 						$counter++;
 						?>
 						<tr <?php if($counter % 2) echo " class='odd'"?>>
-							<td><b><?=utf8_decode($rsGetChannel->fields['name'])?></b></td>
-							<td><?=utf8_decode($rsGet->fields['grid_name'])?></td>
-							<td><?=utf8_decode($rsGet->fields['grid_description'])?></td>
+							<td><b><?=$rsGetChannel->fields['name']?></b></td>
+							<td><?=$rsGet->fields['grid_name']?></td>
+							<td><?=$rsGet->fields['grid_description']?></td>
 							<td><?=$rsGetRating->fields['code']?></td>
 							<td><?=$rsGet->fields['start_date']?></td>
 							<td><?=$rsGet->fields['start_time']?></td>

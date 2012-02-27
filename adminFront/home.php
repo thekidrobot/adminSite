@@ -45,7 +45,7 @@
 						<td>
 							<div class="imageSingle">
 								<div class="image">
-									<a href="http://youtu.be/2qR_94Jmg4A" rel="prettyPhoto" title="">
+									<a href="player.php?id=<?=$rs_getData->fields['id']; ?>&type=1&iframe=true&width=640&height=480" rel="prettyPhoto[player]" title="Player for channel <?=$rs_getData->fields['name']; ?>">
 										<img src="../data/images/<?=$thumb ?>" />
 									</a>									
 									<div class="caption">

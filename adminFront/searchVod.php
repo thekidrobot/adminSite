@@ -140,13 +140,11 @@
 										 <img src="images/icons/more_details.png" alt="<?=_("More Details")?>" class="icon" />
 										</a>
 										
-										<a href="http://youtu.be/2qR_94Jmg4A" rel="prettyPhoto" title="<?=_("View Local")?>">
-										 <!--<a href="<?=$rs_getData->fields['local_url']?>" title="<?=_("View Local")?>">-->
+										<a href="player.php?id=<?=$rs_getData->fields['id']; ?>&type=2&iframe=true&width=640&height=480" rel="prettyPhoto[player]" title="View Local">
 										 <img src="images/icons/view_local.png" alt="<?=_("View Local")?>" class="icon" />
 										</a>
 															
-										<a href="http://youtu.be/2qR_94Jmg4A" rel="prettyPhoto" title="<?=_("View through Internet")?>">
-										 <!--<a href="<?=$rs_getData->fields['stb_url']?>" title="<?=_("View through Internet")?>">-->
+										<a href="player.php?id=<?=$rs_getData->fields['id']; ?>&type=3&iframe=true&width=640&height=480" rel="prettyPhoto[player]" title="View trough Internet">
 											<img src="images/icons/view_internet.png" alt="<?=_("View trough Internet")?>" class="icon" />
 										</a>
 									 </div>
