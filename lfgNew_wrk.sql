@@ -3,7 +3,7 @@
 # Server version:               5.5.12
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3603
-# Date/time:                    2012-02-16 16:08:03
+# Date/time:                    2012-02-28 17:57:24
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -328,84 +328,83 @@ CREATE TABLE IF NOT EXISTS `grid_live` (
   `end_date` date DEFAULT NULL,
   `end_time` time DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=362 DEFAULT CHARSET=latin1 COMMENT='Programming grid for live channels';
+) ENGINE=MyISAM AUTO_INCREMENT=575 DEFAULT CHARSET=latin1 COMMENT='Programming grid for live channels';
 
-# Dumping data for table lfg.grid_live: 72 rows
+# Dumping data for table lfg.grid_live: 71 rows
 DELETE FROM `grid_live`;
 /*!40000 ALTER TABLE `grid_live` DISABLE KEYS */;
 INSERT INTO `grid_live` (`id`, `channel_id`, `channel_name`, `grid_name`, `grid_description`, `rating`, `start_date`, `start_time`, `end_date`, `end_time`) VALUES
-	(290, 13, 'Canal Caracol', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(291, 11, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(292, 12, 'blah', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(293, 14, 'Canal Caracol', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(294, 15, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(295, 16, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(296, 17, '', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(297, 18, 'blah', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(298, 19, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(299, 20, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(300, 21, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(301, 22, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(302, 26, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(303, 27, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(304, 28, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(305, 29, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(306, 30, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(307, 31, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(308, 32, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(309, 33, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(310, 34, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(311, 35, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(312, 36, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(313, 37, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(314, 38, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(315, 39, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(316, 40, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(317, 41, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(318, 42, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(319, 43, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(320, 44, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(321, 45, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(322, 46, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(323, 47, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(324, 48, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(325, 49, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(326, 50, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(327, 51, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(328, 52, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(329, 53, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(330, 54, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(331, 55, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(332, 56, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(333, 57, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(334, 58, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(335, 59, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(336, 60, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(337, 61, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(338, 62, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(339, 63, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(340, 64, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(341, 65, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(342, 66, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(343, 67, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(344, 68, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(345, 69, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(346, 70, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(347, 71, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(348, 72, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(349, 73, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(350, 74, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(351, 75, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(352, 76, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(353, 77, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(354, 78, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(355, 79, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(356, 80, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(357, 81, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(358, 82, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(359, 84, 'Canal RCN', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(360, 85, 'Andres', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40'),
-	(361, 88, 'Cosme Fulanito', 'Provide a name', 'Provide a description', 1, '2012-02-13', '15:19:40', '2012-02-13', '15:19:40');
+	(504, 1, 'CANAL FMB 1', 'Programa FMB 2', 'Descripción programa FMB 2', 1, '0000-00-00', '13:00:00', '0000-00-00', '17:59:00'),
+	(505, 1, 'CANAL FMB 1', 'Programa FMB 3', 'Descripción programa FMB 3', 1, '0000-00-00', '18:00:00', '0000-00-00', '21:59:00'),
+	(506, 1, 'CANAL FMB 1', 'Programa FMB 4', 'Descripción programa FMB 4', 1, '0000-00-00', '22:00:00', '0000-00-00', '23:59:00'),
+	(507, 1, 'CANAL FMB 1', 'Programa FMB 1', 'Descripción programa FMB 1', 1, '0000-00-00', '00:00:00', '0000-00-00', '12:59:00'),
+	(508, 1, 'CANAL FMB 1', 'Programa FMB 2', 'Descripción programa FMB 2', 1, '0000-00-00', '13:00:00', '0000-00-00', '17:59:00'),
+	(509, 1, 'CANAL FMB 1', 'Programa FMB 3', 'Descripción programa FMB 3', 1, '0000-00-00', '18:00:00', '0000-00-00', '21:59:00'),
+	(510, 1, 'CANAL FMB 1', 'Programa FMB 4', 'Descripción programa FMB 4', 1, '0000-00-00', '22:00:00', '0000-00-00', '23:59:00'),
+	(511, 1, 'CANAL FMB 1', 'Programa FMB 1', 'Descripción programa FMB 1', 1, '0000-00-00', '00:00:00', '0000-00-00', '12:59:00'),
+	(512, 1, 'CANAL FMB 1', 'Programa FMB 2', 'Descripción programa FMB 2', 1, '0000-00-00', '13:00:00', '0000-00-00', '17:59:00'),
+	(513, 1, 'CANAL FMB 1', 'Programa FMB 3', 'Descripción programa FMB 3', 1, '0000-00-00', '18:00:00', '0000-00-00', '21:59:00'),
+	(514, 1, 'CANAL FMB 1', 'Programa FMB 4', 'Descripción programa FMB 4', 1, '0000-00-00', '22:00:00', '0000-00-00', '23:59:00'),
+	(515, 1, 'CANAL FMB 1', 'Programa FMB 1', 'Descripción programa FMB 1', 1, '0000-00-00', '00:00:00', '0000-00-00', '12:59:00'),
+	(516, 1, 'CANAL FMB 1', 'Programa FMB 2', 'Descripción programa FMB 2', 1, '0000-00-00', '13:00:00', '0000-00-00', '17:59:00'),
+	(517, 1, 'CANAL FMB 1', 'Programa FMB 3', 'Descripción programa FMB 3', 1, '0000-00-00', '18:00:00', '0000-00-00', '21:59:00'),
+	(518, 1, 'CANAL FMB 1', 'Programa FMB 4', 'Descripción programa FMB 4', 1, '0000-00-00', '22:00:00', '0000-00-00', '23:59:00'),
+	(519, 1, 'CANAL FMB 1', 'Programa FMB 1', 'Descripción programa FMB 1', 1, '0000-00-00', '00:00:00', '0000-00-00', '12:59:00'),
+	(520, 1, 'CANAL FMB 1', 'Programa FMB 2', 'Descripción programa FMB 2', 1, '0000-00-00', '13:00:00', '0000-00-00', '17:59:00'),
+	(521, 1, 'CANAL FMB 1', 'Programa FMB 3', 'Descripción programa FMB 3', 1, '0000-00-00', '18:00:00', '0000-00-00', '21:59:00'),
+	(522, 1, 'CANAL FMB 1', 'Programa FMB 4', 'Descripción programa FMB 4', 1, '0000-00-00', '22:00:00', '0000-00-00', '23:59:00'),
+	(523, 1, 'CANAL FMB 1', 'Programa FMB 1', 'Descripción programa FMB 1', 1, '0000-00-00', '00:00:00', '0000-00-00', '12:59:00'),
+	(524, 1, 'CANAL FMB 1', 'Programa FMB 2', 'Descripción programa FMB 2', 1, '0000-00-00', '13:00:00', '0000-00-00', '17:59:00'),
+	(525, 1, 'CANAL FMB 1', 'Programa FMB 3', 'Descripción programa FMB 3', 1, '0000-00-00', '18:00:00', '0000-00-00', '21:59:00'),
+	(526, 1, 'CANAL FMB 1', 'Programa FMB 4', 'Descripción programa FMB 4', 1, '0000-00-00', '22:00:00', '0000-00-00', '23:59:00'),
+	(527, 1, 'CANAL FMB 1', 'Programa FMB 1', 'Descripción programa FMB 1', 1, '0000-00-00', '00:00:00', '0000-00-00', '12:59:00'),
+	(528, 1, 'CANAL FMB 1', 'Programa FMB 2', 'Descripción programa FMB 2', 1, '0000-00-00', '13:00:00', '0000-00-00', '17:59:00'),
+	(529, 1, 'CANAL FMB 1', 'Programa FMB 3', 'Descripción programa FMB 3', 1, '0000-00-00', '18:00:00', '0000-00-00', '21:59:00'),
+	(530, 1, 'CANAL FMB 1', 'Programa FMB 4', 'Descripción programa FMB 4', 1, '0000-00-00', '22:00:00', '0000-00-00', '23:59:00'),
+	(531, 1, 'CANAL FMB 1', 'Programa FMB 1', 'Descripción programa FMB 1', 1, '0000-00-00', '00:00:00', '0000-00-00', '12:59:00'),
+	(532, 1, 'CANAL FMB 1', 'Programa FMB 2', 'Descripción programa FMB 2', 1, '0000-00-00', '13:00:00', '0000-00-00', '17:59:00'),
+	(533, 1, 'CANAL FMB 1', 'Programa FMB 3', 'Descripción programa FMB 3', 1, '0000-00-00', '18:00:00', '0000-00-00', '21:59:00'),
+	(534, 1, 'CANAL FMB 1', 'Programa FMB 4', 'Descripción programa FMB 4', 1, '0000-00-00', '22:00:00', '0000-00-00', '23:59:00'),
+	(535, 1, 'CANAL FMB 1', 'Programa FMB 1', 'Descripción programa FMB 1', 1, '0000-00-00', '00:00:00', '0000-00-00', '12:59:00'),
+	(536, 1, 'CANAL FMB 1', 'Programa FMB 2', 'Descripción programa FMB 2', 1, '0000-00-00', '13:00:00', '0000-00-00', '17:59:00'),
+	(537, 1, 'CANAL FMB 1', 'Programa FMB 3', 'Descripción programa FMB 3', 1, '0000-00-00', '18:00:00', '0000-00-00', '21:59:00'),
+	(538, 1, 'CANAL FMB 1', 'Programa FMB 4', 'Descripción programa FMB 4', 1, '0000-00-00', '22:00:00', '0000-00-00', '23:59:00'),
+	(539, 2, 'Canal FMB 2', 'Programa FMB 1', 'Descripción programa FMB 1', 1, '0000-00-00', '00:00:00', '0000-00-00', '12:59:00'),
+	(540, 2, 'Canal FMB 2', 'Programa FMB 2', 'Descripción programa FMB 2', 1, '0000-00-00', '13:00:00', '0000-00-00', '17:59:00'),
+	(541, 2, 'Canal FMB 2', 'Programa FMB 3', 'Descripción programa FMB 3', 1, '0000-00-00', '18:00:00', '0000-00-00', '21:59:00'),
+	(542, 2, 'Canal FMB 2', 'Programa FMB 4', 'Descripción programa FMB 4', 1, '0000-00-00', '22:00:00', '0000-00-00', '23:59:00'),
+	(543, 2, 'Canal FMB 2', 'Programa FMB 1', 'Descripción programa FMB 1', 1, '0000-00-00', '00:00:00', '0000-00-00', '12:59:00'),
+	(544, 2, 'Canal FMB 2', 'Programa FMB 2', 'Descripción programa FMB 2', 1, '0000-00-00', '13:00:00', '0000-00-00', '17:59:00'),
+	(545, 2, 'Canal FMB 2', 'Programa FMB 3', 'Descripción programa FMB 3', 1, '0000-00-00', '18:00:00', '0000-00-00', '21:59:00'),
+	(546, 2, 'Canal FMB 2', 'Programa FMB 4', 'Descripción programa FMB 4', 1, '0000-00-00', '22:00:00', '0000-00-00', '23:59:00'),
+	(547, 2, 'Canal FMB 2', 'Programa FMB 1', 'Descripción programa FMB 1', 1, '0000-00-00', '00:00:00', '0000-00-00', '12:59:00'),
+	(548, 2, 'Canal FMB 2', 'Programa FMB 2', 'Descripción programa FMB 2', 1, '0000-00-00', '13:00:00', '0000-00-00', '17:59:00'),
+	(549, 2, 'Canal FMB 2', 'Programa FMB 3', 'Descripción programa FMB 3', 1, '0000-00-00', '18:00:00', '0000-00-00', '21:59:00'),
+	(550, 2, 'Canal FMB 2', 'Programa FMB 4', 'Descripción programa FMB 4', 1, '0000-00-00', '22:00:00', '0000-00-00', '23:59:00'),
+	(551, 2, 'Canal FMB 2', 'Programa FMB 1', 'Descripción programa FMB 1', 1, '0000-00-00', '00:00:00', '0000-00-00', '12:59:00'),
+	(552, 2, 'Canal FMB 2', 'Programa FMB 2', 'Descripción programa FMB 2', 1, '0000-00-00', '13:00:00', '0000-00-00', '17:59:00'),
+	(553, 2, 'Canal FMB 2', 'Programa FMB 3', 'Descripción programa FMB 3', 1, '0000-00-00', '18:00:00', '0000-00-00', '21:59:00'),
+	(554, 2, 'Canal FMB 2', 'Programa FMB 4', 'Descripción programa FMB 4', 1, '0000-00-00', '22:00:00', '0000-00-00', '23:59:00'),
+	(555, 2, 'Canal FMB 2', 'Programa FMB 1', 'Descripción programa FMB 1', 1, '0000-00-00', '00:00:00', '0000-00-00', '12:59:00'),
+	(556, 2, 'Canal FMB 2', 'Programa FMB 2', 'Descripción programa FMB 2', 1, '0000-00-00', '13:00:00', '0000-00-00', '17:59:00'),
+	(557, 2, 'Canal FMB 2', 'Programa FMB 3', 'Descripción programa FMB 3', 1, '0000-00-00', '18:00:00', '0000-00-00', '21:59:00'),
+	(558, 2, 'Canal FMB 2', 'Programa FMB 4', 'Descripción programa FMB 4', 1, '0000-00-00', '22:00:00', '0000-00-00', '23:59:00'),
+	(559, 2, 'Canal FMB 2', 'Programa FMB 1', 'Descripción programa FMB 1', 1, '0000-00-00', '00:00:00', '0000-00-00', '12:59:00'),
+	(560, 2, 'Canal FMB 2', 'Programa FMB 2', 'Descripción programa FMB 2', 1, '0000-00-00', '13:00:00', '0000-00-00', '17:59:00'),
+	(561, 2, 'Canal FMB 2', 'Programa FMB 3', 'Descripción programa FMB 3', 1, '0000-00-00', '18:00:00', '0000-00-00', '21:59:00'),
+	(562, 2, 'Canal FMB 2', 'Programa FMB 4', 'Descripción programa FMB 4', 1, '0000-00-00', '22:00:00', '0000-00-00', '23:59:00'),
+	(563, 2, 'Canal FMB 2', 'Programa FMB 1', 'Descripción programa FMB 1', 1, '0000-00-00', '00:00:00', '0000-00-00', '12:59:00'),
+	(564, 2, 'Canal FMB 2', 'Programa FMB 2', 'Descripción programa FMB 2', 1, '0000-00-00', '13:00:00', '0000-00-00', '17:59:00'),
+	(565, 2, 'Canal FMB 2', 'Programa FMB 3', 'Descripción programa FMB 3', 1, '0000-00-00', '18:00:00', '0000-00-00', '21:59:00'),
+	(566, 2, 'Canal FMB 2', 'Programa FMB 4', 'Descripción programa FMB 4', 1, '0000-00-00', '22:00:00', '0000-00-00', '23:59:00'),
+	(567, 2, 'Canal FMB 2', 'Programa FMB 1', 'Descripción programa FMB 1', 1, '0000-00-00', '00:00:00', '0000-00-00', '12:59:00'),
+	(568, 2, 'Canal FMB 2', 'Programa FMB 2', 'Descripción programa FMB 2', 1, '0000-00-00', '13:00:00', '0000-00-00', '17:59:00'),
+	(569, 2, 'Canal FMB 2', 'Programa FMB 3', 'Descripción programa FMB 3', 1, '0000-00-00', '18:00:00', '0000-00-00', '21:59:00'),
+	(570, 2, 'Canal FMB 2', 'Programa FMB 4', 'Descripción programa FMB 4', 1, '0000-00-00', '22:00:00', '0000-00-00', '23:59:00'),
+	(571, 2, 'Canal FMB 2', 'Programa FMB 1', 'Descripción programa FMB 1', 1, '0000-00-00', '00:00:00', '0000-00-00', '12:59:00'),
+	(572, 2, 'Canal FMB 2', 'Programa FMB 2', 'Descripción programa FMB 2', 1, '0000-00-00', '13:00:00', '0000-00-00', '17:59:00'),
+	(573, 2, 'Canal FMB 2', 'Programa FMB 3', 'Descripción programa FMB 3', 1, '0000-00-00', '18:00:00', '0000-00-00', '21:59:00'),
+	(574, 2, 'Canal FMB 2', 'Programa FMB 4', 'Descripción programa FMB 4', 1, '0000-00-00', '22:00:00', '0000-00-00', '23:59:00');
 /*!40000 ALTER TABLE `grid_live` ENABLE KEYS */;
 
 
@@ -419,88 +418,22 @@ CREATE TABLE IF NOT EXISTS `livechannels` (
   `number` int(10) DEFAULT NULL COMMENT 'channel number, should be unique.',
   `description` varchar(500) DEFAULT NULL COMMENT 'channel description',
   `url` varchar(200) DEFAULT NULL COMMENT 'channel url',
+  `pc_url` varchar(200) DEFAULT NULL COMMENT 'channel url',
   `price` int(100) DEFAULT '0' COMMENT 'channel price',
   `currency` int(2) DEFAULT NULL COMMENT 'currency code',
   `rating` int(2) DEFAULT NULL COMMENT 'rating code',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=89 DEFAULT CHARSET=latin1 COMMENT='Table for live content';
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COMMENT='Table for live content';
 
-# Dumping data for table lfg.livechannels: 72 rows
+# Dumping data for table lfg.livechannels: 5 rows
 DELETE FROM `livechannels`;
 /*!40000 ALTER TABLE `livechannels` DISABLE KEYS */;
-INSERT INTO `livechannels` (`id`, `big_pic`, `small_pic`, `name`, `number`, `description`, `url`, `price`, `currency`, `rating`) VALUES
-	(13, 'Blue hills274_big.jpg', NULL, 'Canal Caracol', 1, '', '', 0, 1, 1),
-	(11, 'Water lilies739_big.jpg', NULL, 'Canal RCN', 5, 'Canal Caracol', 'www.caracol.com.co', 0, 1, 1),
-	(12, 'Sunset219_big.jpg', NULL, 'blah', 1, 'blah', '', 0, 1, 1),
-	(14, 'Winter_big.jpg', NULL, 'Canal Caracol', 5, '', '', 0, 1, 1),
-	(15, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(16, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 0, '', '', 0, 1, 1),
-	(17, 'Sunset165_big.jpg', NULL, '', 1, '', '', 0, 1, 1),
-	(18, 'Sunset219_big.jpg', NULL, 'blah', 1, 'blah', '', 0, 1, 1),
-	(19, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 0, '', '', 0, 1, 1),
-	(20, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 0, '', '', 0, 1, 1),
-	(21, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 0, '', '', 0, 1, 1),
-	(22, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(26, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(27, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(28, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(29, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(30, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(31, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(32, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(33, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(34, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(35, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(36, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(37, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(38, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(39, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(40, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(41, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(42, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(43, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(44, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(45, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(46, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(47, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(48, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(49, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(50, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(51, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(52, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(53, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(54, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(55, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(56, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(57, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(58, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(59, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(60, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(61, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(62, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(63, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(64, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(65, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(66, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(67, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(68, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(69, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(70, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(71, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(72, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(73, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(74, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(75, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(76, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(77, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(78, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(79, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(80, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(81, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(82, 'Water lilies600_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(84, 'Water lilies444_big.jpg', NULL, 'Canal RCN', 5, '', '', 0, 1, 1),
-	(85, 'wile339_big.jpg', NULL, 'Andres', 11, 'test', 'test', 1500, 3, 1),
-	(88, 'Winter696_big.jpg', 'Winter696_small.jpg', 'Cosme Fulanito', 112, 'Cosme Fulanito', '', 0, 2, 1);
+INSERT INTO `livechannels` (`id`, `big_pic`, `small_pic`, `name`, `number`, `description`, `url`, `pc_url`, `price`, `currency`, `rating`) VALUES
+	(1, '', '', 'Canal FMB 2', 2, 'Canal FMB 2', 'http://fms.rampms.com/fmb.m3u8', NULL, 0, 1, 1),
+	(2, 'canal_big.jpg', 'canal_small.jpg', 'Canal FMB 1', 1, 'Canal FMB 1', 'http://iptv.rampms.com:1935/fmblive/smil:fmb2.smil/playlist.m3u8', NULL, 0, 2, 1),
+	(3, '', '', 'CANAL ADOBE', 3, 'This is a test using Adobe FMS 4.5', 'http://fms.rampms.com/test.m3u8', NULL, 0, 1, 1),
+	(4, '', '', 'CANAL ASHEVILLE', 4, 'TEST FROM WOWZA ASHEVILLE', 'http://oab.rampms.com:1935/live/smil:ramp.smil/playlist.m3u8', NULL, 0, 1, 1),
+	(5, '', '', 'CANAL TEST', 5, 'CANAL 5 ', 'http://fms.rampms.com/hls-live/livepkgr/_definst_/liveevent/alagoas.m3u8', '', 0, 1, 1);
 /*!40000 ALTER TABLE `livechannels` ENABLE KEYS */;
 
 
@@ -514,15 +447,13 @@ CREATE TABLE IF NOT EXISTS `packages` (
   `price` int(20) DEFAULT NULL COMMENT 'package price',
   `currency` int(2) DEFAULT NULL COMMENT 'currency code',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COMMENT='package info';
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='package info';
 
-# Dumping data for table lfg.packages: 3 rows
+# Dumping data for table lfg.packages: 1 rows
 DELETE FROM `packages`;
 /*!40000 ALTER TABLE `packages` DISABLE KEYS */;
 INSERT INTO `packages` (`id`, `name`, `description`, `duration`, `price`, `currency`) VALUES
-	(5, 'Andres', 'andres', '100', 111, 3),
-	(4, 'dummy', 'dummy', 'dummy', 0, 2),
-	(6, 'Canal Caracol', '', '11', 111, 3);
+	(1, 'Live and VOD', 'Live and VOD', '0', 0, 1);
 /*!40000 ALTER TABLE `packages` ENABLE KEYS */;
 
 
@@ -534,16 +465,17 @@ CREATE TABLE IF NOT EXISTS `packages_livechannels` (
   PRIMARY KEY (`package_id`,`resource_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Link table between packages and live videos';
 
-# Dumping data for table lfg.packages_livechannels: 6 rows
+# Dumping data for table lfg.packages_livechannels: 7 rows
 DELETE FROM `packages_livechannels`;
 /*!40000 ALTER TABLE `packages_livechannels` DISABLE KEYS */;
 INSERT INTO `packages_livechannels` (`package_id`, `resource_id`) VALUES
-	(4, 11),
-	(4, 12),
-	(5, 1),
-	(5, 11),
-	(5, 12),
-	(5, 14);
+	(1, 1),
+	(1, 2),
+	(1, 3),
+	(1, 4),
+	(1, 5),
+	(2, 1),
+	(2, 2);
 /*!40000 ALTER TABLE `packages_livechannels` ENABLE KEYS */;
 
 
@@ -555,13 +487,20 @@ CREATE TABLE IF NOT EXISTS `packages_vodchannels` (
   PRIMARY KEY (`package_id`,`resource_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Link table between packages and VOD videos';
 
-# Dumping data for table lfg.packages_vodchannels: 3 rows
+# Dumping data for table lfg.packages_vodchannels: 10 rows
 DELETE FROM `packages_vodchannels`;
 /*!40000 ALTER TABLE `packages_vodchannels` DISABLE KEYS */;
 INSERT INTO `packages_vodchannels` (`package_id`, `resource_id`) VALUES
-	(5, 1),
-	(6, 1),
-	(6, 2);
+	(1, 1),
+	(1, 2),
+	(1, 3),
+	(1, 5),
+	(1, 6),
+	(2, 1),
+	(2, 2),
+	(2, 3),
+	(2, 5),
+	(2, 6);
 /*!40000 ALTER TABLE `packages_vodchannels` ENABLE KEYS */;
 
 
@@ -596,14 +535,11 @@ CREATE TABLE IF NOT EXISTS `restrictions` (
   `duration` int(10) DEFAULT NULL COMMENT 'Rule duration (in days)',
   `max_views` int(10) DEFAULT NULL COMMENT 'Max number of views (zero for infinite)',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COMMENT='Rules table, used for tickets. ';
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Rules table, used for tickets. ';
 
-# Dumping data for table lfg.restrictions: 2 rows
+# Dumping data for table lfg.restrictions: 0 rows
 DELETE FROM `restrictions`;
 /*!40000 ALTER TABLE `restrictions` DISABLE KEYS */;
-INSERT INTO `restrictions` (`id`, `name`, `price`, `currency`, `duration`, `max_views`) VALUES
-	(2, 'Rule 1', 2000, 10, 3, 1),
-	(3, 'Rule 2', 1, 1, 1, 0);
 /*!40000 ALTER TABLE `restrictions` ENABLE KEYS */;
 
 
@@ -627,13 +563,17 @@ CREATE TABLE IF NOT EXISTS `subscribers` (
   `last_login` datetime DEFAULT NULL,
   `pin` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
-# Dumping data for table lfg.subscribers: 1 rows
+# Dumping data for table lfg.subscribers: 5 rows
 DELETE FROM `subscribers`;
 /*!40000 ALTER TABLE `subscribers` DISABLE KEYS */;
 INSERT INTO `subscribers` (`id`, `name`, `username`, `password`, `address`, `email`, `account`, `phone`, `country`, `city`, `zip`, `serial`, `mac`, `license`, `last_login`, `pin`) VALUES
-	(7, 'Cosme Fulanito', 'cosmeFulanito', '16d7a4fca7442dda3ad93c9a726597e4', 'This is my address', 'victor@rampcolombia.com', 'test', 'test', '104', 'Mumbai', '10000', 'S3R1AL', 'MM:AA:CC:AA:DD:RR:EE:SS', '', '2012-02-01 23:49:25', 'r406gfgl2xda2w');
+	(1, 'victor zambrano', 'cosmeFulanito', '16d7a4fca7442dda3ad93c9a726597e4', 'calle 83 22a 18', 'vzdconline@gmail.com', '1234567890', '57-318712982', '49', 'bogota', '0000', '691611237127871', '00:07:67:99:F3:7F', '1234567890', '2012-02-26 16:02:21', '17ec1t1mus5ci0f'),
+	(2, 'Evgeny Kaiko', 'ekaiko', 'cde00107f5abe053a660c703501a5877', 'calle 83 22a 18', 'evgeni@kaikoweb.com', '1234567890', '57-318712982', '49', 'bogota', '0000', '691611237127874', '00:07:67:99:F3:82', '1234567890', '2012-02-24 16:01:39', 'u4kqhps1oflade3'),
+	(3, 'Evgeny Kaiko 2', 'ekaiko', '575a35f556fa6713c2eaacff9e137b89', 'calle 83 22a 18', 'evgeni@kaikoweb.com', '123456', '57-318712982', '40', 'bogota', '0000', '691611020063531', '00:07:67:98:F8:2B', '1234567890', '2012-02-24 11:26:22', 'nsikz0rs1khdbwm'),
+	(4, 'viczambrano', 'viczambrano', 'c5a98d81529199f0470a907081536177', 'calle 83', 'vzdconline@gmail.com', '123456', '12345678', '49', 'bogota', '57', '691611237127873', '00:07:67:99:F3:81', '123456', '2012-02-26 18:19:33', 've9dajqdm70vqdu'),
+	(5, 'Daniel Crepaldi', 'Daniel', '25d55ad283aa400af464c76d713c07ad', '5647 NW 40th Ave', 'daniel@ramprm.com', '32456', '3056060013', '32', 'Boca Raton', '33496', '691611480240953', '00:07:67:9B:AD:39', '098765', '2012-02-26 16:03:23', 'tmp3nwsbwu5iy8e');
 /*!40000 ALTER TABLE `subscribers` ENABLE KEYS */;
 
 
@@ -645,13 +585,19 @@ CREATE TABLE IF NOT EXISTS `subscribers_packages` (
   PRIMARY KEY (`subscriber_id`,`package_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Link table between subscribers and packages';
 
-# Dumping data for table lfg.subscribers_packages: 3 rows
+# Dumping data for table lfg.subscribers_packages: 9 rows
 DELETE FROM `subscribers_packages`;
 /*!40000 ALTER TABLE `subscribers_packages` DISABLE KEYS */;
 INSERT INTO `subscribers_packages` (`subscriber_id`, `package_id`) VALUES
-	(7, 4),
-	(7, 5),
-	(7, 6);
+	(1, 1),
+	(1, 2),
+	(2, 1),
+	(2, 2),
+	(3, 1),
+	(3, 2),
+	(4, 1),
+	(4, 2),
+	(5, 1);
 /*!40000 ALTER TABLE `subscribers_packages` ENABLE KEYS */;
 
 
@@ -688,12 +634,9 @@ CREATE TABLE IF NOT EXISTS `tickets` (
   PRIMARY KEY (`subscriber_id`,`resource_id`,`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Tickets table, define restrictions per user and video. ';
 
-# Dumping data for table lfg.tickets: 2 rows
+# Dumping data for table lfg.tickets: 0 rows
 DELETE FROM `tickets`;
 /*!40000 ALTER TABLE `tickets` DISABLE KEYS */;
-INSERT INTO `tickets` (`id`, `subscriber_id`, `resource_id`, `current_views`, `restriction_id`, `ticket_number`, `creation_date`, `status`) VALUES
-	(1, 7, 2, 0, 2, 'g8uh2im3s3ww', '2012-01-21 11:21:07', 1),
-	(1, 7, 1, 0, 2, 'reltj1u64ve', '2012-01-21 11:20:53', 1);
 /*!40000 ALTER TABLE `tickets` ENABLE KEYS */;
 
 
@@ -706,13 +649,13 @@ CREATE TABLE IF NOT EXISTS `trainers` (
   `big_pic` varchar(100) DEFAULT NULL,
   `small_pic` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 # Dumping data for table lfg.trainers: 1 rows
 DELETE FROM `trainers`;
 /*!40000 ALTER TABLE `trainers` DISABLE KEYS */;
 INSERT INTO `trainers` (`id`, `name`, `description`, `big_pic`, `small_pic`) VALUES
-	(1, 'Michael Jackson', 'The king of pop', 'oh_big.jpg', 'oh_small.jpg');
+	(1, 'Barack Obama', 'He is a very mondation person. Victor is mondation', 'BarackObama_big.jpg', 'BarackObama_small.jpg');
 /*!40000 ALTER TABLE `trainers` ENABLE KEYS */;
 
 
@@ -723,32 +666,15 @@ CREATE TABLE IF NOT EXISTS `vodcategories` (
   `name` varchar(500) DEFAULT NULL COMMENT 'Group name',
   `parent` int(11) NOT NULL COMMENT 'Parent branch ID',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
-# Dumping data for table lfg.vodcategories: 20 rows
+# Dumping data for table lfg.vodcategories: 3 rows
 DELETE FROM `vodcategories`;
 /*!40000 ALTER TABLE `vodcategories` DISABLE KEYS */;
 INSERT INTO `vodcategories` (`id`, `name`, `parent`) VALUES
-	(1, 'LIVE', 0),
-	(2, 'ONDEMAND', 0),
-	(3, 'LOCAL', 0),
-	(6, 'ingles', 2),
-	(15, 'test3', 2),
-	(7, 'frances', 2),
-	(8, 'aleman', 1),
-	(9, 'ingles', 6),
-	(10, 'test', 2),
-	(11, 'este si es ', 2),
-	(13, 'teste', 2),
-	(14, 'test2', 2),
-	(16, 'test4', 2),
-	(17, 'test5', 2),
-	(18, 'test6', 2),
-	(19, 'test7', 2),
-	(21, 'otrop', 2),
-	(22, 'verimatrix', 2),
-	(24, 'adf', 1),
-	(27, 'asdf', 11);
+	(2, 'Animation', 0),
+	(3, 'Action', 0),
+	(4, 'Music, Concerts', 0);
 /*!40000 ALTER TABLE `vodcategories` ENABLE KEYS */;
 
 
@@ -771,16 +697,17 @@ CREATE TABLE IF NOT EXISTS `vodchannels` (
   `price` int(100) DEFAULT NULL,
   `currency` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COMMENT='Channels on demand';
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COMMENT='Channels on demand';
 
-# Dumping data for table lfg.vodchannels: 4 rows
+# Dumping data for table lfg.vodchannels: 5 rows
 DELETE FROM `vodchannels`;
 /*!40000 ALTER TABLE `vodchannels` DISABLE KEYS */;
 INSERT INTO `vodchannels` (`id`, `big_pic`, `small_pic`, `name`, `description`, `stb_url`, `download_url`, `pc_url`, `local_url`, `trainer`, `date_release`, `keywords`, `rating`, `price`, `currency`) VALUES
-	(1, 'Water lilies378_big.jpg', 'Water lilies378_small.jpg', 'Andres', 'andres', 'andres', 'andres', 'andres', NULL, 1, '2012-01-09 17:27:20', 'comics,animation', 1, 0, 1),
-	(2, 'moto_pix_big.jpg', 'moto_pix_small.jpg', 'Moto', 'Moto', 'www.moto.com', 'www.moto.com', 'www.moto.com', NULL, 1, '2012-01-17 14:22:59', 'moto,movie', 1, 0, 1),
-	(3, '515px-Treehouse_of_Horror_XIIIa_big.jpg', '515px-Treehouse_of_Horror_XIIIa_small.jpg', 'simpsons', 'simpsons', 'simpsons', 'simpsons', 'simpsons', NULL, 1, '2012-01-17 22:05:38', 'simpsons', 1, 0, 1),
-	(4, '', '', 'Test', 'Test', 'test', 'test', 'test', 'test', 1, '2012-02-13 14:14:42', 'test', 1, 0, 1);
+	(1, '255px-Big_buck_bunny_poster_big_big.jpg', '255px-Big_buck_bunny_poster_big_small.jpg', 'Big Buck Bunny', 'This is the VOD movie!', 'http://iptv.rampms.com:1935/vod/smil:bigbuckbunny.smil/playlist.m3u8', '--', '--', 'http://localserver/videos/mp4test.mp4', 1, '2012-02-11 23:56:40', 'Movies-Animation', 1, 0, 2),
+	(2, 'poster24__5_big.jpg', 'poster24__5_small.jpg', '24', '24 Jack Powell!', 'http://iptv.rampms.com:1935/vod/smil:24.smil/playlist.m3u8', '--', '--', '--', 1, '2012-02-12 00:06:03', 'Action - Heros', 1, 0, 1),
+	(3, 'bee_big.jpg', 'bee_small.jpg', 'Bee Movie', 'Bee Movie!', 'http://iptv.rampms.com:1935/vod/smil:beemovie.smil/playlist.m3u8', '--', '--', '--', 1, '2012-02-12 00:08:39', 'Tramas chimbas', 1, 0, 1),
+	(5, 'eagles_big.jpg', 'eagles_small.jpg', 'Eagles', 'Eagles concert!', 'http://iptv.rampms.com:1935/vod/smil:eagles.smil/playlist.m3u8', '--', '--', 'http://localserver/videos/evgeny.mp4', 1, '2012-02-12 00:14:48', 'Music, Concerts', 1, 0, 1),
+	(6, 'black_big.jpg', 'black_small.jpg', 'BlackEyedPeas', 'BlackEyedPeas', 'http://iptv.rampms.com:1935/vod/smil:blackeye.smil/playlist.m3u8', '--', '--', 'http://localserver/videos/evgeny.mp4', 1, '2012-02-12 00:18:07', 'Music, Concerts', 1, 0, 1);
 /*!40000 ALTER TABLE `vodchannels` ENABLE KEYS */;
 
 
@@ -791,7 +718,7 @@ CREATE TABLE IF NOT EXISTS `vodchannels_resources` (
   `channel_id` bigint(20) DEFAULT NULL,
   `resource_path` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 # Dumping data for table lfg.vodchannels_resources: 0 rows
 DELETE FROM `vodchannels_resources`;
@@ -807,11 +734,15 @@ CREATE TABLE IF NOT EXISTS `vod_channels_categories` (
   PRIMARY KEY (`channel_id`,`category_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-# Dumping data for table lfg.vod_channels_categories: 1 rows
+# Dumping data for table lfg.vod_channels_categories: 5 rows
 DELETE FROM `vod_channels_categories`;
 /*!40000 ALTER TABLE `vod_channels_categories` DISABLE KEYS */;
 INSERT INTO `vod_channels_categories` (`channel_id`, `category_id`) VALUES
-	(1, 21);
+	(1, 2),
+	(2, 3),
+	(3, 2),
+	(5, 4),
+	(6, 4);
 /*!40000 ALTER TABLE `vod_channels_categories` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
