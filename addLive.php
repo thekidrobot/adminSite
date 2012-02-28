@@ -79,6 +79,7 @@ if ($_POST["MM_insert"] == "true")
 	$number = escape_value($postArray['number']);
 	$description = escape_value($postArray['description']);
 	$url = escape_value($postArray['url']);
+	$pc_url = escape_value($postArray['pc_url']);
 	$price = escape_value($postArray['price']);
 	$currency = escape_value($postArray['currency']);
 	$rating = escape_value($postArray['rating']);
@@ -104,9 +105,9 @@ if ($_POST["MM_insert"] == "true")
 		else
 		{	
 			$insertSql = "INSERT INTO livechannels
-										(big_pic,small_pic,name,number,description,url,price,currency,rating)
+										(big_pic,small_pic,name,number,description,url,pc_url,price,currency,rating)
 										VALUES ('$big_pic','$small_pic','$name',$number,'$description',
-														'$url',$price,$currency,'$rating')";
+														'$url','$pc_url',$price,$currency,'$rating')";
 			
 			$rsInsLive = $DB->Execute($insertSql);
 			
@@ -166,6 +167,10 @@ if ($_POST["MM_insert"] == "true")
 						<label><?=_("Channel URL")?> : </label>
 						<input name="url" type="text" maxlength="350"  class="text-long" />
 					</p>
+					<p>
+						<label><?=_("Channel PC URL")?> : </label>
+						<input name="pc_url" type="text" maxlength="350"  class="text-long" />
+					</p>					
 					<p>
 						<label><?=_("Price")?> : </label>
 						<input name="price" type="text" maxlength="150"  value="0" class="text-small" />

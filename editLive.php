@@ -95,6 +95,7 @@ if($_POST["MM_update"] == "true")
 	$number = escape_value($postArray['number']);
 	$description = escape_value($postArray['description']);
 	$url = escape_value($postArray['url']);
+	$pc_url = escape_value($postArray['pc_url']);
 	$price = escape_value($postArray['price']);
 	$rating = escape_value($postArray['rating']);
 	$currency = escape_value($postArray['currency']);
@@ -124,6 +125,7 @@ if($_POST["MM_update"] == "true")
 										number = $number,
 										description = '$description',
 										url = '$url',
+										pc_url = '$pc_url',
 										price = $price,
 										rating = '$rating',
 										currency = '$currency' 
@@ -197,6 +199,10 @@ if($_POST["MM_update"] == "true")
 					<label><?=_("Channel URL")?> : </label>
 					<input value="<?=$getData->fields['url']?>"  name="url" type="text" maxlength="350"  class="text-long" />
 				</p>
+				<p>
+					<label><?=_("Channel PC URL")?> : </label>
+					<input value="<?=$getData->fields['pc_url']?>" name="pc_url" type="text" maxlength="350"  class="text-long" />
+				</p>					
 				<p>
 					<label><?=_("Price")?> : </label>
 					<input value="<?=$getData->fields['price']?>"  name="price" type="text" maxlength="150"  value="0" class="text-small" />

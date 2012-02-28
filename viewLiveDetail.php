@@ -54,6 +54,10 @@ $getData = $DB->Execute($sql);
 					<input value="<?=$getData->fields['url']?>"  name="url" type="text" maxlength="350"  class="text-long" readonly="readonly" />
 				</p>
 				<p>
+					<label><?=_("Channel PC URL")?> : </label>
+					<input value="<?=$getData->fields['pc_url']?>" name="pc_url" type="text" maxlength="350"  class="text-long" />
+				</p>					
+				<p>
 					<label><?=_("Price")?> : </label>
 					<input value="<?=$getData->fields['price']?>"  name="price" type="text" maxlength="150"  value="0" class="text-small" readonly="readonly" />
 				</p>
