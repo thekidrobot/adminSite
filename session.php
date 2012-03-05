@@ -15,7 +15,7 @@ textdomain("messages");
 
 session_start();
 
-//Check session. Consider to change to the new implementation.
+//Check session. Consider changing to the new implementation.
 if($_SESSION["usuario"]=="")
 {
  if (!headers_sent()) header('Location: index.php');

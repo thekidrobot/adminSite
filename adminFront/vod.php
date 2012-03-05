@@ -61,90 +61,135 @@
 			 <table class="gallery paginate-2 max-pages-6">
 			 <tr>
 			 <?php
-				$sql_getData = "SELECT
+				$sql_getData = "SELECT DISTINCT
 												 vc.id,
 												 vc.name,
 												 tc.current_views,
 												 rc.max_views,
 												 rc.duration,
 												 vc.stb_url,
-												 vc.local_url
+												 vc.local_url,
+												 vc.small_pic,
+												 tc.current_views,
+												 tc.restriction_id,
+												 rc.duration,
+												 DATE_ADD(tc.creation_date, INTERVAL rc.duration DAY) as restriction_date,
+												 NOW() as today
 												FROM
+												
+													packages_vodchannels pv,
+													subscribers sc,
+													subscribers_packages sp,
+													vod_channels_categories vcc,
+												
 												 vodchannels vc,
 												 tickets tc,
 												 restrictions rc
 												WHERE
+																		
+												 tc.restriction_id  = rc.id AND
+												 tc.subscriber_id = sc.id AND 
+											 
+												 vc.id = vcc.channel_id AND
+												 pv.resource_id = vc.id AND
+												 pv.package_id = sp.package_id AND
+												 sp.subscriber_id = sc.id AND 
+																		
 												 vc.id = tc.resource_id AND
 												 tc.restriction_id  = rc.id AND
-												 tc.subscriber_id = ".$_SESSION['id'].
-												 " ORDER BY vc.id DESC";
+												 tc.subscriber_id = ".$_SESSION['id']." 
+												 ORDER BY vc.id DESC";
 										
 			 $rs_getData = $DB->Execute($sql_getData);
 
 				while (!$rs_getData->EOF)
 				{
-					$counter++;
-					$thumb=getThumbnail($rs_getData->fields['small_pic']);
+					$show = true;
 					
-					$sql = "select resource_path from vodchannels_resources where channel_id = ".$rs_getData->fields['id'];
-					$rsGetResources = $DB->execute($sql);
+					//Restriction by max. views
+					if($rs_getData->fields['max_views'] != 0 and ($rs_getData->fields['max_views'] > $rs_getData->fields['current_views']))
+					{
+						$show = false;
+					}
 					
-					?>
-						<td>
-							<div class="imageSingle">
-								<div class="image">
-									<img src="../data/images/<?=$thumb ?>" />
-									
-									<div class="caption">
-										<b><?=_("Name")?> : </b><?=$rs_getData->fields['name']; ?><br />
-										<b><?=_("Current Views")?> : </b><?=$rs_getData->fields['current_views']; ?><br />
-										<b><?=_("Max Views")?> : </b><?=$rs_getData->fields['max_views']; ?><br />
-										<b><?=_("Validity (days)")?> : </b><?=$rs_getData->fields['duration']; ?><br />
-										
-										<div class="actions">
-											<a href="viewVodDetailFrm.php?id=<?=$rs_getData->fields['id']?>&iframe=true&width=800&height=550" rel="prettyPhoto[details]" title="View Details for video <?=$rs_getData->fields['name']; ?>">
-												<img src="images/icons/more_details.png" alt="<?=_("More Details")?>" class="icon" />
-											</a>
+					//Restriction by date
+					
+					if($rs_getData->fields['duration'] != 0)
+					{
+						$restriction_date = strtotime($rs_getData->fields['restriction_date']);
+						$now = strtotime($rs_getData->fields['today']);
+						
+						if ($restriction_date < $now){
+							$show = false;	
+						}
+					}
+					
+					if($show == true){
+					
+						$counter++;
+						$thumb=getThumbnail($rs_getData->fields['small_pic']);
+						
+						$sql = "select resource_path from vodchannels_resources where channel_id = ".$rs_getData->fields['id'];
+						$rsGetResources = $DB->execute($sql);
+						
+						?>
+							<td>
+								<div class="imageSingle">
+									<div class="image">
+										<img src="../data/images/<?=$thumb ?>" />									
+										<div class="caption">
+											<b><?=_("Name")?> : </b><?=$rs_getData->fields['name']; ?><br />
+											<b><?=_("Current Views")?> : </b><?=$rs_getData->fields['current_views']; ?><br />
+											<b><?=_("Max Views")?> : </b><?=$rs_getData->fields['max_views'] != 0 ? $rs_getData->fields['max_views'] : "Unlimited" ?><br />
+											<b><?=_("Days")?> : </b><?=$rs_getData->fields['duration'] != 0 ? $rs_getData->fields['duration'] : "Unlimited" ?><br />
 											
-											<a href="player.php?id=<?=$rs_getData->fields['id']; ?>&type=2&iframe=true&width=640&height=480" rel="prettyPhoto[player]" title="View Local">
-												<img src="images/icons/view_local.png" alt="<?=_("View Local")?>" class="icon" />
-											</a>
-											
-											<a href="player.php?id=<?=$rs_getData->fields['id']; ?>&type=3&iframe=true&width=640&height=480" rel="prettyPhoto[player]" title="View trough Internet">
-												<img src="images/icons/view_internet.png" alt="<?=_("View trough Internet")?>" class="icon" />
-											</a>
+											<div class="actions">
+												<a href="viewVodDetailFrm.php?id=<?=$rs_getData->fields['id']?>&iframe=true&width=800&height=550" rel="prettyPhoto[details]" title="View Details for video <?=$rs_getData->fields['name']; ?>">
+													<img src="images/icons/more_details.png" alt="<?=_("More Details")?>" class="icon" />
+												</a>
+												
+												<a href="player.php?id=<?=$rs_getData->fields['id']; ?>&type=2&iframe=true&width=640&height=480" rel="prettyPhoto[player]" title="View Local">
+													<img src="images/icons/view_local.png" alt="<?=_("View Local")?>" class="icon" />
+												</a>
+												
+												<a href="player.php?id=<?=$rs_getData->fields['id']; ?>&type=3&iframe=true&width=640&height=480" rel="prettyPhoto[player]" title="View trough Internet">
+													<img src="images/icons/view_internet.png" alt="<?=_("View trough Internet")?>" class="icon" />
+												</a>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							
-							<div class="imageSingle">
-								<div class="image">
-									<b><?=_("Additional Resources")?> : </b>
-									<?php
-										while (!$rsGetResources->EOF){
+								
+								<div class="imageSingle">
+									<div class="image">
+										<b><?=_("Additional Resources")?> : </b>
+										<?php
+											while (!$rsGetResources->EOF){
+												?>
+													<a href="<?=$rsGetResources->fields['resource_path']?>"><?=$rsGetResources->fields['resource_path']?></a><br />
+												<?
+												$rsGetResources->movenext();
+											}
+											if($rsGetResources->numrows()== 0){
 											?>
-												<a href="<?=$rsGetResources->fields['resource_path']?>"><?=$rsGetResources->fields['resource_path']?></a><br />
+											<br />No additional resources found.
 											<?
-											$rsGetResources->movenext();
-										}
-										if($rsGetResources->numrows()== 0){
+											}
 										?>
-										<br />No additional resources found.
-										<?
-										}
-									?>
+									</div>
 								</div>
-							</div>
-
-						</td>
-					<?
-					if ($counter%2 == 0){
-						?>
-						</tr>
-						<tr>
-					<?
+	
+							</td>
+						<?
+						if ($counter%2 == 0){
+							?>
+							</tr>
+							<tr>
+						<?
+						}
+						
 					}
+					
 					$rs_getData->MoveNext();
 				}?>
 				</tr>

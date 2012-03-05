@@ -25,7 +25,6 @@
         $rs_getData = $DB->Execute($sql_getData);
         
         $url = $rs_getData->fields['url'];
-        
     }
     //Vod Local
     elseif($type == 2){
@@ -79,6 +78,11 @@
         
         $url = $rs_getData->fields['pc_url'];        
     }
+    
+    //Update the views
+    $sql_setData = "UPDATE tickets SET current_views = current_views + 1 where resource_id = $id";
+    $rs_setData = $DB->Execute($sql_setData);        
+
     
 ?>
  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

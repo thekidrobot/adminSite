@@ -143,7 +143,7 @@
 					<fieldset>
 					<p>
 						<label><?=_("Subscriber Name")?> :</label>
-						<input type="text" name="name" value="<?=$rsGet->fields['name']?>" maxlength="255" class="text-long" />
+						<input type="text" name="name" value="<?=$rsGet->fields['name']?>" maxlength="255" class="text-long" readonly="readonly" />
 					</p>
 					<p>
 						<label><?=_("Subscriber Username")?></label>
@@ -167,7 +167,7 @@
 					</p>
 					<p>
 						<label><?=_("Subscriber Account Number")?></label>
-						<input type="text" name="account" value="<?=$rsGet->fields['account']?>" maxlength="100" class="text-long" />
+						<input type="text" name="account" value="<?=$rsGet->fields['account']?>" maxlength="100" class="text-long" readonly="readonly" />
 					</p>
 					<p>
 						<label><?=_("Subscriber Phone")?></label>
@@ -194,19 +194,19 @@
 					</p>
 					<p>
 						<label><?=_("Subscriber Zip code")?></label>
-						<input type="text" name="zip" value="<?=$rsGet->fields['zip']?>" maxlength="10" class="text-long" />
+						<input type="text" name="zip" value="<?=$rsGet->fields['zip']?>" maxlength="10" class="text-long" readonly="readonly" />
 					</p>
 					<p>
 						<label><?=_("STB Mac Address")?></label>
-						<input type="text" name="mac" value="<?=$rsGet->fields['mac']?>" maxlength="100" class="text-long" />
+						<input type="text" name="mac" value="<?=$rsGet->fields['mac']?>" maxlength="100" class="text-long" readonly="readonly" />
 					</p>
 					<p>
 						<label><?=_("STB Serial number")?></label>
-						<input type="text" name="serial" value="<?=$rsGet->fields['serial']?>" maxlength="100" class="text-long" />
+						<input type="text" name="serial" value="<?=$rsGet->fields['serial']?>" maxlength="100" class="text-long" readonly="readonly" />
 					</p> 	 
 					<p>
 						<label><?=_("Computer License")?></label>
-						<input name="license" type="text" value="<?=$rsGet->fields['license']?>" class="text-long" />
+						<input name="license" type="text" value="<?=$rsGet->fields['license']?>" class="text-long" readonly="readonly" />
 					</p>
 					<p>
 						<label><?=_("Update")?></label>

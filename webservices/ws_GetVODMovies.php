@@ -33,7 +33,7 @@ function receiveUserData($userid='',$id='')
 		$user = array();
 		$channels = array();
 		
-		$sql = "SELECT distinct
+		$sql = "SELECT DISTINCT 
 						vc.id as id,
 						vcc.category_id as categoryId,
 						vc.local_url as local_url,
@@ -43,14 +43,28 @@ function receiveUserData($userid='',$id='')
 						vc.keywords as keywords,
 						vc.date_release as date_release,
 						vc.small_pic as poster,
-						vc.big_pic as posterLarge
+						vc.big_pic as posterLarge,
+						
+						rc.duration,
+						DATE_ADD(tc.creation_date, INTERVAL rc.duration DAY) as restriction_date,
+						NOW() as today
+						
 					 FROM
 						vodchannels vc,
 						packages_vodchannels pv,
 						subscribers sc,
 						subscribers_packages sp,
-						vod_channels_categories vcc
+						vod_channels_categories vcc,
+						
+						tickets tc,
+						restrictions rc
+						
 					 WHERE
+					 
+					 	vc.id = tc.resource_id AND
+						tc.restriction_id  = rc.id AND
+						tc.subscriber_id = sc.id AND 
+					 
 					  vc.id = vcc.channel_id AND
 						pv.resource_id = vc.id AND
 						pv.package_id = sp.package_id AND
@@ -68,13 +82,36 @@ function receiveUserData($userid='',$id='')
 		{
 				while($row = mysql_fetch_object($result))
 				{
-						array_push
-						($channels,$user['vodId'] = trim($row->id),$user['categoryId'] = trim($row->categoryId),
-						 $user['localURL'] = trim($row->local_url),$user['remoteURL'] = trim($row->stb_url),
-						 $user['description'] = trim($row->description),$user['name'] = trim($row->name),
-						 $user['poster']=trim($row->poster),$user['posterLarge']=trim($row->posterLarge));
+						$show = true;
 						
-						$usuario.=json_encode($user).',';
+						//Restriction by max. views
+						if($row->max_views != 0 and ($row->max_views > $row->current_views))
+						{
+							$show = false;
+						}
+						
+						//Restriction by date
+						
+						if($row->duration != 0)
+						{
+							$restriction_date = strtotime($row->restriction_date);
+							$now = strtotime($row->today);
+							
+							if ($restriction_date < $now){
+								$show = false;	
+							}
+						}
+					
+						if($show == true){
+
+								array_push
+								($channels,$user['vodId'] = trim($row->id),$user['categoryId'] = trim($row->categoryId),
+								 $user['localURL'] = trim($row->local_url),$user['remoteURL'] = trim($row->stb_url),
+								 $user['description'] = trim($row->description),$user['name'] = trim($row->name),
+								 $user['poster']=trim($row->poster),$user['posterLarge']=trim($row->posterLarge));
+						
+								$usuario.=json_encode($user).',';
+						}
 				}
 				$usuario = "[".substr($usuario,0,strlen($usuario)-1)."]";
 
