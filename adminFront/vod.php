@@ -72,6 +72,7 @@
 												 vc.small_pic,
 												 tc.current_views,
 												 tc.restriction_id,
+												 tc.creation_date,
 												 rc.duration,
 												 DATE_ADD(tc.creation_date, INTERVAL rc.duration DAY) as restriction_date,
 												 NOW() as today
@@ -121,6 +122,16 @@
 						
 						if ($restriction_date < $now){
 							$show = false;	
+						}
+					}
+					
+					//Shows only the last created ticket
+					
+					$sqlGetMaxDate = "SELECT MAX(creation_date) as maxDate from tickets where resource_id = ".$rs_getData->fields['id'];
+					$rs_getMaxDate = $DB->Execute($sqlGetMaxDate);
+					{
+						if($rs_getMaxDate->fields['maxDate'] != $rs_getData->fields['creation_date']){
+							$show = false;
 						}
 					}
 					

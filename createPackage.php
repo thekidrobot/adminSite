@@ -153,22 +153,22 @@
 				<fieldset>
 					<p>
 					<label><?=_("Package Name")?></label>
-					<input type="text" name="name" value="<?=$rsGet->fields['name']?>" class="text-long" maxlenght="150" />
+					<input type="text" name="name" value="<?=$_POST['name']?>" class="text-long" maxlenght="150" />
 					</p>
 					
 					<p>
 					<label><?=_("Package Description")?></label>
-					<textarea name="description" maxlenght="500"><?=$rsGet->fields['description']?></textarea>
+					<textarea name="description" maxlenght="500"><?=$_POST['description']?></textarea>
 					</p>
 					
 					<p>
 					<label><?=_("Package Duration (In Days)")?></label>
-					<input type="text" name="duration" value="<?=$rsGet->fields['duration']?>" class="text-small" maxlenght="20" />
+					<input type="text" name="duration" value="<?=$_POST['duration']?>" class="text-small" maxlenght="20" />
 					</p>
 					
 					<p>
 					<label><?=_("Package Price")?></label>
-					<input type="text" name="price" value="<?=$rsGet->fields['price']?>" class="text-small" maxlenght="10" />
+					<input type="text" name="price" value="<?=$_POST['price']?>" class="text-small" maxlenght="10" />
 					</p>
 					<p>
 						<label><?=_("Currency")?> : </label>
@@ -177,8 +177,14 @@
 								$sql="select * from currencies";
 								$rsGetCurrencies=$DB->execute($sql);
 								while(!$rsGetCurrencies->EOF){
+									
+									if($rsGet->fields['id'] == $_POST['currency']){
+										$selected = "selected='selected'";
+									}
+									else $selected = '';
+									
 									?>
-										<option value="<?=$rsGetCurrencies->fields['id']?>" <? if($rsGetCurrencies->fields['id'] == $rsGet->fields['currency']) echo "selected='selected'" ?>><?=$rsGetCurrencies->fields['code']."-".$rsGetCurrencies->fields['name']?></option>
+										<option <?=$selected?> value="<?=$rsGetCurrencies->fields['id']?>" <? if($rsGetCurrencies->fields['id'] == $rsGet->fields['currency']) echo "selected='selected'" ?>><?=$rsGetCurrencies->fields['code']."-".$rsGetCurrencies->fields['name']?></option>
 									<?
 									$rsGetCurrencies->movenext();
 								}

@@ -151,31 +151,31 @@ if ($_POST["MM_insert"] == "true")
 					</p>
 					<p>
 						<label><?=_("Movie Name")?> : </label>
-						<input name="name" type="text" maxlength="200" class="text-long" />
+						<input name="name" value="<?=$_POST['name']?>" type="text" maxlength="200" class="text-long" />
 					</p>
 					<p>
 						<label><?=_("Movie Description")?> : </label>
-						<label><textarea name="description" cols="100" /></textarea></label>
+						<label><textarea name="description" cols="100" /><?=$_POST['description']?></textarea></label>
 					</p>
 
 					<p>
 						<label><?=_("Movie STB URL")?> : </label>
-						<input name="stb_url" type="text" maxlength="350"  class="text-long" />
+						<input name="stb_url" value="<?=$_POST['stb_url']?>" type="text" maxlength="350"  class="text-long" />
 					</p>
 					
 					<p>
 						<label><?=_("Movie Download URL")?> : </label>
-						<input name="download_url" type="text" maxlength="350"  class="text-long" />
+						<input name="download_url" value="<?=$_POST['download_url']?>" type="text" maxlength="350"  class="text-long" />
 					</p>
 										
 					<p>
 						<label><?=_("Movie PC URL")?> : </label>
-						<input name="pc_url" type="text" maxlength="350"  class="text-long" />
+						<input name="pc_url" value="<?=$_POST['pc_url']?>" type="text" maxlength="350"  class="text-long" />
 					</p>
 					
 					<p>
 						<label><?=_("Movie Local URL")?> : </label>
-						<input name="local_url" type="text" maxlength="350"  class="text-long" />
+						<input name="local_url" value="<?=$_POST['local_url']?>" type="text" maxlength="350"  class="text-long" />
 					</p>
 					
 					<p>
@@ -185,8 +185,14 @@ if ($_POST["MM_insert"] == "true")
 							$sql="select * from trainers";
 							$rsGet=$DB->execute($sql);
 							while(!$rsGet->EOF){
+								
+									if($rsGet->fields['id'] == $_POST['trainer']){
+										$selected = "selected='selected'";
+									}
+									else $selected = '';
+								
 								?>
-									<option value="<?=$rsGet->fields['id']?>"><?=$rsGet->fields['name']?></option>
+									<option <?=$selected?> value="<?=$rsGet->fields['id']?>"><?=$rsGet->fields['name']?></option>
 								<?
 								$rsGet->movenext();
 							}
@@ -195,7 +201,7 @@ if ($_POST["MM_insert"] == "true")
 					</p>
 					<p>
 						<label><?=_("Release Date")?> : </label>
-						<input type="text" name="date_release" id="date_release" class="text-medium" readonly="readonly" />
+						<input type="text" name="date_release" value="<?=$_POST['date_release']?>" id="date_release" class="text-medium" readonly="readonly" />
 						<img src="images/calendar.png" id="btn_date_release" alt="" />
 						<script type="text/javascript">
 						Calendar.setup({
@@ -208,11 +214,11 @@ if ($_POST["MM_insert"] == "true")
 					</p>
 					<p>
 						<label><?=_("Keywords (Comma Separated)")?> : </label>
-						<input name="keywords" type="text" maxlength="150"  class="text-long" />
+						<input name="keywords" value="<?=$_POST['keywords']?>" type="text" maxlength="150"  class="text-long" />
 					</p>
 					<p>
 						<label><?=_("Price")?> : </label>
-						<input name="price" type="text" maxlength="150"  value="0" class="text-small" />
+						<input name="price" value="<?=$_POST['price']?>" type="text" maxlength="150"  value="0" class="text-small" />
 					</p>
 					<p>
 						<label><?=_("Currency")?> : </label>
@@ -221,8 +227,14 @@ if ($_POST["MM_insert"] == "true")
 								$sql="select * from currencies";
 								$rsGet=$DB->execute($sql);
 								while(!$rsGet->EOF){
+								
+									if($rsGet->fields['id'] == $_POST['currency']){
+										$selected = "selected='selected'";
+									}
+									else $selected = '';
+									
 									?>
-										<option value="<?=$rsGet->fields['id']?>"><?=$rsGet->fields['code']."-".$rsGet->fields['name']?></option>
+										<option <?=$selected?> value="<?=$rsGet->fields['id']?>"><?=$rsGet->fields['code']."-".$rsGet->fields['name']?></option>
 									<?
 									$rsGet->movenext();
 								}
@@ -236,8 +248,14 @@ if ($_POST["MM_insert"] == "true")
 								$sql="select * from ratings";
 								$rsGet=$DB->execute($sql);
 								while(!$rsGet->EOF){
+									
+									if($rsGet->fields['id'] == $_POST['rating']){
+										$selected = "selected='selected'";
+									}
+									else $selected = '';
+									
 									?>
-										<option value="<?=$rsGet->fields['id']?>"><?=$rsGet->fields['code']."-".$rsGet->fields['name']?></option>
+										<option <?=$selected?> value="<?=$rsGet->fields['id']?>"><?=$rsGet->fields['code']."-".$rsGet->fields['name']?></option>
 									<?
 									$rsGet->movenext();
 								}

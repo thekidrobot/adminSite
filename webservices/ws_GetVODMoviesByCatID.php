@@ -33,8 +33,27 @@ function receiveUserData($id='')
 		$user = array();
 		$channels = array();
 		
-		$sql = "SELECT distinct
+		//$sql = "SELECT distinct
+		//				vc.id as id,
+		//				vc.local_url as local_url,
+		//				vc.stb_url as stb_url,
+		//				vc.description as description,
+		//				vc.name as name,
+		//				vc.keywords as keywords,
+		//				vc.date_release as date_release,
+		//				vc.small_pic as poster,
+		//				vc.big_pic as posterLarge,
+		//				vcc.category_id as categoryId
+		//			 FROM
+		//				vodchannels vc,
+		//				vod_channels_categories vcc
+		//			 WHERE
+		//				vc.id = vcc.channel_id AND
+		//				vcc.category_id = '$id'";
+						
+		$sql = "SELECT DISTINCT 
 						vc.id as id,
+						vcc.category_id as categoryId,
 						vc.local_url as local_url,
 						vc.stb_url as stb_url,
 						vc.description as description,
@@ -43,13 +62,33 @@ function receiveUserData($id='')
 						vc.date_release as date_release,
 						vc.small_pic as poster,
 						vc.big_pic as posterLarge,
-						vcc.category_id as categoryId
+						
+						rc.duration,
+						DATE_ADD(tc.creation_date, INTERVAL rc.duration DAY) as restriction_date,
+						NOW() as today
+						
 					 FROM
 						vodchannels vc,
-						vod_channels_categories vcc
+						packages_vodchannels pv,
+						subscribers sc,
+						subscribers_packages sp,
+						vod_channels_categories vcc,
+						
+						tickets tc,
+						restrictions rc
+						
 					 WHERE
-						vc.id = vcc.channel_id AND
-						vcc.category_id = '$id'";
+					 
+					 	vc.id = tc.resource_id AND
+						tc.restriction_id  = rc.id AND
+						tc.subscriber_id = sc.id AND 
+					 
+					  vc.id = vcc.channel_id AND
+						pv.resource_id = vc.id AND
+						pv.package_id = sp.package_id AND
+						sp.subscriber_id = sc.id AND 
+						vcc.category_id = $id";
+						
 		
 		$result = mysql_query($sql);  
 		if(mysql_num_rows($result) == 0)
@@ -61,13 +100,36 @@ function receiveUserData($id='')
 		{
 				while($row = mysql_fetch_object($result))
 				{
-						array_push
-						($channels,$user['vodId'] = trim($row->id),$user['categoryId'] = trim($row->categoryId),
-						 $user['localURL'] = trim($row->local_url),$user['remoteURL'] = trim($row->stb_url),
-						 $user['description'] = trim($row->description),$user['name'] = trim($row->name),
-						 $user['poster']=trim($row->poster),$user['posterLarge']=trim($row->posterLarge));
+						$show = true;
 						
-						$usuario.=json_encode($user).',';
+						//Restriction by max. views
+						if($row->max_views != 0 and ($row->max_views > $row->current_views))
+						{
+							$show = false;
+						}
+						
+						//Restriction by date
+						
+						if($row->duration != 0)
+						{
+							$restriction_date = strtotime($row->restriction_date);
+							$now = strtotime($row->today);
+							
+							if ($restriction_date < $now){
+								$show = false;	
+							}
+						}
+					
+						if($show == true){
+						
+								array_push
+								($channels,$user['vodId'] = trim($row->id),$user['categoryId'] = trim($row->categoryId),
+								 $user['localURL'] = trim($row->local_url),$user['remoteURL'] = trim($row->stb_url),
+								 $user['description'] = trim($row->description),$user['name'] = trim($row->name),
+								 $user['poster']=trim($row->poster),$user['posterLarge']=trim($row->posterLarge));
+								
+								$usuario.=json_encode($user).',';
+						}
 				}
 				$usuario = "[".substr($usuario,0,strlen($usuario)-1)."]";
 

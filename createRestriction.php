@@ -82,26 +82,32 @@
 				<fieldset>
 				<p>
 					<label><?=_("Rule Name")?></label>
-					<input type="text" name="name" value="<?=$rsGet->fields['name']?>" maxlength="255" class="text-long" />
+					<input type="text" name="name" value="<?=$_POST['name']?>" maxlength="255" class="text-long" />
 				</p>
 				<p>
 					<label><?=_("Rule Price")?></label>
-					<input type="text" name="price" value="<?=$rsGet->fields['price']?>" maxlength="100" class="text-small" />
+					<input type="text" name="price" value="<?=$_POST['price']?>" maxlength="100" class="text-small" />
 				</p>
 				<p>
 					<label><?=_("Currency")?> : </label>
 					<select name="currency">
-						<?php
-							$sql="select * from currencies";
-							$rsGet=$DB->execute($sql);
-							while(!$rsGet->EOF){
-								?>
-									<option value="<?=$rsGet->fields['id']?>"><?=$rsGet->fields['code']."-".$rsGet->fields['name']?></option>
-								<?
-								$rsGet->movenext();
+					<?php
+						$sql="select * from currencies";
+						$rsGetCurrencies=$DB->execute($sql);
+						while(!$rsGetCurrencies->EOF){
+							
+							if($rsGet->fields['id'] == $_POST['currency']){
+								$selected = "selected='selected'";
 							}
-						?>
-					</select>
+							else $selected = '';
+							
+							?>
+								<option <?=$selected?> value="<?=$rsGetCurrencies->fields['id']?>" <? if($rsGetCurrencies->fields['id'] == $rsGet->fields['currency']) echo "selected='selected'" ?>><?=$rsGetCurrencies->fields['code']."-".$rsGetCurrencies->fields['name']?></option>
+							<?
+							$rsGetCurrencies->movenext();
+						}
+					?>
+					<select>
 				</p>
 				<p>
 					<label><?=_("Validity (In Days)")?></label>

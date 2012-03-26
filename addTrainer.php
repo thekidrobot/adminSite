@@ -130,11 +130,11 @@ if ($_POST["MM_insert"] == "true")
 					</p>
 					<p>
 						<label><?=_("Trainer Name")?> : </label>
-						<input name="name" type="text" maxlength="200" class="text-long" />
+						<input name="name" value="<?=$_POST['name']?>" type="text" maxlength="200" class="text-long" />
 					</p>
 					<p>
 						<label><?=_("Trainer Description")?> : </label>
-						<label><textarea name="description" cols="100" /></textarea></label>
+						<label><textarea name="description" cols="100" /><?=$_POST['description']?></textarea></label>
 					</p>
 					<p>
 						<label>&nbsp;</label>
