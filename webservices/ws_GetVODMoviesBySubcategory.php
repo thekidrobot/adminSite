@@ -18,7 +18,7 @@ $soap_server->configureWSDL('WDSL Authentication', $ns);
 $soap_server->register
 (
     'receiveUserData',
-    array('userId' => 'xsd:string'),
+    array('userid' => 'xsd:string','id' => 'xsd:string'),
     array('return' => 'xsd:string'),
     $ns,
     $ns.'#receiveUserData',
@@ -27,43 +27,77 @@ $soap_server->register
     'ReceiveUserId'
 );
 
-function receiveUserData($id='')
+function receiveUserData($userid='',$id='')
 {
 		$arr_msg = array('status'=> '');
 		$user = array();
 		$channels = array();
 		
-		$sql = "SELECT DISTINCT 
-								vc.id AS id,
-								vcc.category_id AS categoryId,
-								vc.local_url AS local_url,
-								vc.stb_url AS stb_url,
-								vc.description AS description,
-								vc.name as name,
-								vc.keywords AS keywords,
-								vc.date_release AS date_release,
-								vc.small_pic AS poster,
-								vc.big_pic AS posterLarge,
-								vct.parent AS parentId
+		$sql = "/*SELECT DISTINCT 
+						vc.id AS id,
+						vcc.category_id AS categoryId,
+						vc.local_url AS local_url,
+						vc.stb_url AS stb_url,
+						vc.description AS description,
+						vc.name AS name,
+						vc.keywords AS keywords,
+						vc.date_release AS date_release,
+						vc.small_pic AS poster,
+						vc.big_pic AS posterLarge,
+						vct.parent AS parentId
 						
 						FROM
-								vodchannels vc,
-								packages_vodchannels pv,
-								subscribers sc,
-								subscribers_packages sp,
-								vod_channels_categories vcc,
-								vodcategories vct
+						vodchannels vc,
+						packages_vodchannels pv,
+						subscribers sc,
+						subscribers_packages sp,
+						vod_channels_categories vcc,
+						vodcategories vct
 						
 						WHERE
 						
-								vc.id = vcc.channel_id AND
-								pv.resource_id = vc.id AND
-								pv.package_id = sp.package_id AND
-								sp.subscriber_id = sc.id AND
-								vct.id = vcc.category_id AND
-								
-								vct.id = $id";
+						vc.id = vcc.channel_id AND
+						pv.resource_id = vc.id AND
+						pv.package_id = sp.package_id AND
+						sp.subscriber_id = sc.id AND
+						vct.id = vcc.category_id AND
 						
+						sc.pin = '$userid' AND
+						vct.id = $id
+						
+						UNION */
+						
+						SELECT DISTINCT 
+						vc.id AS id,
+						vcc.category_id AS categoryId,
+						vc.local_url AS local_url,
+						vc.stb_url AS stb_url,
+						vc.description AS description,
+						vc.name as name,
+						vc.keywords AS keywords,
+						vc.date_release AS date_release,
+						vc.small_pic AS poster,
+						vc.big_pic AS posterLarge,
+						vct.parent AS parentId
+						
+						FROM
+						vodchannels vc,
+						packages_vodchannels pv,
+						subscribers sc,
+						subscribers_packages sp,
+						vod_channels_categories vcc,
+						vodcategories vct
+						
+						WHERE
+						
+						vc.id = vcc.channel_id AND
+						pv.resource_id = vc.id AND
+						pv.package_id = sp.package_id AND
+						sp.subscriber_id = sc.id AND
+						vct.id = vcc.category_id AND
+						
+						sc.pin = '$userid' AND
+						vct.parent = $id";
 		
 		$result = mysql_query($sql);  
 		if(mysql_num_rows($result) == 0)
@@ -96,13 +130,13 @@ function receiveUserData($id='')
 						}
 					
 						if($show == true){
-						
+
 								array_push
 								($channels,$user['vodId'] = trim($row->id),$user['categoryId'] = trim($row->categoryId),
 								 $user['localURL'] = trim($row->local_url),$user['remoteURL'] = trim($row->stb_url),
 								 $user['description'] = trim($row->description),$user['name'] = trim($row->name),
-								 $user['poster']=trim($row->poster),$user['posterLarge']=trim($row->posterLarge));
-								
+								 $user['poster']=trim($row->poster),$user['posterLarge']=trim($row->posterLarge),$user['parentId']=trim($row->parentId));
+						
 								$usuario.=json_encode($user).',';
 						}
 				}

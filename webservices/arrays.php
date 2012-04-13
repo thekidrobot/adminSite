@@ -2,36 +2,12 @@
 session_start();
 // incluir libreria nusoap
 require_once('conexion.inc.php');
-require_once('lib/nusoap.php');
 
-// Crear server
-$soap_server = new nusoap_server();
-
-$page = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
-$page = 'http://'.substr($page,0,strrpos($page,"/"));
-
-$ns = $page;
-// configurar WSDL
-$soap_server->configureWSDL('WDSL Authentication', $ns);
-
-// registrar función
-$soap_server->register
-(
-    'receiveUserData',
-    array('id' => 'xsd:string'),
-    array('return' => 'xsd:string'),
-    $ns,
-    $ns.'#receiveUserData',
-    'rpc',
-    'encoded',
-    'ReceiveUserId'
-);
-
-function receiveUserData($id='1')
-{
 		$arr_msg = array('status'=> '');
 		$user = array();
 		$channels = array();
+
+$id = 'h1hr44dvfz5mzx6';
 		
 		$sql = "SELECT DISTINCT vc.*
 								FROM subscribers sc,
@@ -67,20 +43,21 @@ function receiveUserData($id='1')
 								$result_parent = mysql_query($sql_parent);
 								while($row_parent = mysql_fetch_object($result_parent))
 								{
-										if(count(searchSubArray($user,'categoryId',trim($row_parent->id))) === 0){
+										print_r(searchSubArray($user,'categoryId',trim($row_parent->id)));
+										
 												array_push
 												($channels,$user['categoryId'] = trim($row_parent->id),$user['parentId'] = trim($row_parent->parent),
 												 $user['categoryName'] = trim($row_parent->name));
-										}
+										
 								}
 						}
 						else
 						{
-								if(count(searchSubArray($user,'categoryId',trim($row->id))) === 0){
+								print_r(searchSubArray($user,'categoryId',trim($row->id)));
 										array_push
 										($channels,$user['categoryId'] = trim($row->id),$user['parentId'] = trim($row->parent),
 										 $user['categoryName'] = trim($row->name));
-								}
+								
 						}
 						$usuario.=json_encode($user).',';
 						
@@ -95,17 +72,23 @@ function receiveUserData($id='1')
 		$usuario = str_replace('"[','[',$usuario);
 		$usuario = str_replace(']"',']',$usuario);
 		return $usuario;
-}
-
-$HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : '';
-$soap_server->service($HTTP_RAW_POST_DATA);
 
 // search array for specific key = value
-function searchSubArray(Array $array, $key, $value) {   
-    foreach ($array as $subarray){  
-        if (isset($subarray[$key]) && $subarray[$key] == $value)
-          return $subarray;       
-    } 
+function searchSubArray($array, $key, $value)
+{
+    $results = array();
+
+    if (is_array($array))
+    {
+        if (isset($array[$key]) && $array[$key] == $value)
+            $results[] = $array;
+
+        foreach ($array as $subarray)
+            $results = array_merge($results, search($subarray, $key, $value));
+    }
+
+    return $results;
 }
+
 
 ?> 
