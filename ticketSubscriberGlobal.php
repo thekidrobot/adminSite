@@ -27,20 +27,32 @@
 	$rsGetName = $DB->execute($sql);
 
 	
-	if($_POST['save_tkt'] == 1)
-	{
-		$usr_id = escape_value($_POST['usr_id']);
-		$vid_id = escape_value($_POST['vid_id']);
-		$role_id = escape_value($_POST['restriction']);
-		$ticket = genRandomString();
-		
-		$sql = "INSERT into tickets
-							(subscriber_id,resource_id,current_views,restriction_id,ticket_number,creation_date,status)
-					  VALUES
-							($usr_id,$vid_id,0,$role_id,'$ticket',NOW(),1)";
+	//Create multiple
 	
-		$rsSet = $DB->execute($sql);
+	$N = 0;
+	
+	$arrTickets = $_POST['tickets'];
+	$N = count($arrTickets);
+	
+	if($N > 0)
+	{
+		$usr_id = escape_value($_REQUEST['usr_id']);
+		$role_id = escape_value($_POST['globalRestriction']);
+
+		for($i=0; $i < $N; $i++)
+		{
+			$vid_id = escape_value($arrTickets[$i]);
+			$ticket = genRandomString();
+			
+			$sql = "INSERT into tickets
+								(subscriber_id,resource_id,current_views,restriction_id,ticket_number,creation_date,status)
+							VALUES
+								($usr_id,$vid_id,0,$role_id,'$ticket',NOW(),1)";
+		
+			$rsSet = $DB->execute($sql);
+		} 
 	}
+	
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -61,13 +73,15 @@
 		<div id="main">
 			<h2><a href="#"><?=_("Subscribers")?></a> &raquo; <a href="#" class="active"><?=_("Manage tickets of ").$rsGetName->fields['name']; ?></a></h2>
 
+			<form name="frmGlobal" action="<?=$_SERVER['PHP_SELF']?>" method="post" onsubmit="return confirm('<?=_("Are you sure do you want to generate the ticket? This action cannot be undone.")?>')">
+
 			<table class="no-arrow rowstyle-alt colstyle-alt paginate-10 max-pages-5">
 				<thead>
 					<tr>
 						<th class="sortable"><b><?=_("VOD Resource")?></b></th>
 						<th class="sortable"><b><?=_("Restriction")?></b></th>
 						<th ><b><?=_("Ticket Number")?></b></th>
-						<th ><b><?=_("Generate New")?></b></th>
+						<th ><input type='checkbox' name='checkall' onclick='checkedAll(frmGlobal);'></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -143,7 +157,6 @@
 						
 						?>
 						
-						<form name="frmIndividual" action="<?=$_SERVER['PHP_SELF']?>" method="post" onsubmit="return confirm('<?=_("Are you sure do you want to generate the ticket? This action cannot be undone.")?>')">
 						<tr <?php if($counter % 2) echo " class='odd'"?>>
 							<td><?=$rsGet->fields['name']?></a></td>
 							<td>
@@ -163,25 +176,41 @@
 							<td>
 								<input name="usr_id" type="hidden" value="<?=$id?>" />
 								<input name="vid_id" type="hidden" value="<?=$vid_id?>" />
-								<input name="save_tkt" type="hidden" value="1" />								
 								<input name="ticket" type="text" maxlength="10" value="<?=$ticket_number?>" class="text-small" readonly="readonly" onkeypress="return handleEnter(this, event)" />
 							</td>
 							<td align="center">
 							<?php if($all_tickets_expired == 1){
 								?>
-								<input type="submit" value="" class="button-save" />
+								<input name='tickets[]' type='checkbox' value="<?=$vid_id?>" />
 								<?
 							}
 							?>
 							</td>
+
 						</tr>
-						</form>
 						<?php
 						$rsGet->movenext();
 					}  
 					?>
 				</tbody>
 			</table>
+			
+			<div align="center" style="padding-bottom:20px;">
+			<label>For selected, generate a ticket with the restriction : </label>
+			<select name="globalRestriction">
+				<?php
+				$sql="select * from restrictions";
+				$rsGetRestriction=$DB->execute($sql);
+				while(!$rsGetRestriction->EOF){
+					?>
+						<option value="<?=$rsGetRestriction->fields['id']?>"><?=$rsGetRestriction->fields['name']?></option>
+					<?
+					$rsGetRestriction->movenext();
+				}
+				?>
+			</select>
+			<input type="submit" value="" class="button-save" />
+			</div>
 
 			</form>
 

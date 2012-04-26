@@ -27,7 +27,7 @@ $soap_server->register
     'ReceiveUserId'
 );
 
-function receiveUserData($id='1')
+function receiveUserData($id)
 {
 		$arr_msg = array('status'=> '');
 		$user = array();

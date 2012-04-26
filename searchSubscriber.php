@@ -76,7 +76,7 @@ if($N > 0)
 							$counter = 0;
 							?>
 							<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-								<table class="no-arrow rowstyle-alt colstyle-alt paginate-5 max-pages-5">
+								<table class="no-arrow rowstyle-alt colstyle-alt paginate-10 max-pages-5">
 								<thead>
 									<tr>
 										<th class="sortable"><b><?=_("Name")?></b></th>

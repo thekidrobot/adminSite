@@ -47,7 +47,7 @@
 			<h2><a href="#"><?=_("Subscribers")?></a> &raquo; <a href="#" class="active"><?=_("View subscribers")?></a></h2>
 
 			<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-			<table class="no-arrow rowstyle-alt colstyle-alt paginate-5 max-pages-5">
+			<table class="no-arrow rowstyle-alt colstyle-alt paginate-10 max-pages-5">
 			<thead>
 				<tr>
 					<th class="sortable"><b><?=_("Name")?></b></th>

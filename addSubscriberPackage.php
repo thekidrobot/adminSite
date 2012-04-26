@@ -26,6 +26,77 @@
 							(subscriber_id,package_id)
 							VALUES ($usr_id,".$addItems[$i].")";
 			$rsSet = $DB->execute($sql);
+			
+			//Now, we'll query the videos from this package without a ticket
+			$sql = "SELECT DISTINCT
+							vc.id
+						
+							FROM
+							 packages_vodchannels pv,
+							 subscribers sc,
+							 subscribers_packages sp,
+							 vod_channels_categories vcc,												
+							 vodchannels vc
+							
+							WHERE
+							 vc.id = vcc.channel_id AND
+							 pv.resource_id = vc.id AND
+							 pv.package_id = sp.package_id AND
+							 sp.subscriber_id = sc.id AND
+							 sp.package_id = ".$addItems[$i]." AND 
+							 sc.id = $usr_id AND
+								(vc.id,sc.id)
+								 NOT IN
+								(SELECT DISTINCT
+									vc.id, $usr_id 
+									FROM
+									 packages_vodchannels pv,
+									 subscribers sc,
+									 subscribers_packages sp,
+									 vod_channels_categories vcc,
+									
+									 vodchannels vc,
+									 tickets tc,
+									 restrictions rc
+									
+									WHERE
+															
+									 tc.restriction_id  = rc.id AND
+									 tc.subscriber_id = sc.id AND 
+								 
+									 vc.id = vcc.channel_id AND
+									 pv.resource_id = vc.id AND
+									 pv.package_id = sp.package_id AND
+									 sp.subscriber_id = sc.id AND 
+															
+									 vc.id = tc.resource_id AND
+									 tc.restriction_id  = rc.id AND
+									 tc.subscriber_id = $usr_id)";
+	
+			$rsGet = $DB->execute($sql);
+			while (!$rsGet->EOF)
+			{
+	
+				//For this videos, we'll create a ticket under the restriction zero
+				//[The restriction zero is the default for unlimited access]
+				
+				$ticket = genRandomString();
+				$vid_id = $rsGet->fields['id'];
+				
+				$sqlSetRestriction = "INSERT into tickets
+														(subscriber_id,resource_id,
+														 current_views,restriction_id,
+														 ticket_number,creation_date,status)
+														VALUES
+														($usr_id,$vid_id,
+														 0,0,
+														 '$ticket',NOW(),1)";
+														 
+				$rsSetRestriction = $DB->execute($sqlSetRestriction);
+				
+				$rsGet->movenext();	
+			}
+			
 		}
 		$msg = _("Changes done!");		
 	}	
@@ -41,6 +112,53 @@
 			$sql = "delete from subscribers_packages
 							where package_id = ".$remItems[$i]." and subscriber_id =".$usr_id;
 			$rsSet = $DB->execute($sql);
+			
+			//Now, we'll remove all the tickets under the restriction zero for the VOD videos in this package.
+			
+			$sql = "SELECT DISTINCT
+								vc.id
+							 FROM
+								packages_vodchannels pv,
+								subscribers sc,
+								subscribers_packages sp,
+								vod_channels_categories vcc,
+							 
+								vodchannels vc,
+								tickets tc,
+								restrictions rc
+							 
+							 WHERE
+								tc.restriction_id  = rc.id AND
+								tc.subscriber_id = sc.id AND 
+							
+								vc.id = vcc.channel_id AND
+								pv.resource_id = vc.id AND
+								pv.package_id = sp.package_id AND
+								sp.subscriber_id = sc.id AND 
+													 
+								vc.id = tc.resource_id AND
+								tc.restriction_id  = rc.id AND
+								tc.subscriber_id = $usr_id AND 
+								tc.restriction_id = 0 AND 
+								sp.package_id = $remItems[$i]";
+		
+			$rsGet = $DB->execute($sql);
+			while (!$rsGet->EOF)
+			{
+				$vid_id = $rsGet->fields['id'];
+				
+				$sqlSetRestriction = "DELETE FROM
+															 tickets
+															WHERE
+															 subscriber_id = $usr_id AND
+															 resource_id = $vid_id AND 
+															 restriction_id = 0";
+														 
+				$rsSetRestriction = $DB->execute($sqlSetRestriction);
+				
+				$rsGet->movenext();	
+			}
+			
 		}
 		$msg = _("Changes done!");		
 	}
@@ -64,6 +182,77 @@
 							VALUES (".$rsGetPck->fields['id'].",$usr_id)";
 			$rsSetPck = $DB->execute($sql);
 			
+			//Now, we'll query the videos from this package without a ticket
+			$sql = "SELECT DISTINCT
+							vc.id
+						
+							FROM
+							 packages_vodchannels pv,
+							 subscribers sc,
+							 subscribers_packages sp,
+							 vod_channels_categories vcc,												
+							 vodchannels vc
+							
+							WHERE
+							 vc.id = vcc.channel_id AND
+							 pv.resource_id = vc.id AND
+							 pv.package_id = sp.package_id AND
+							 sp.subscriber_id = sc.id AND
+							 sp.package_id = ".$rsGetPck->fields['id']." AND 
+							 sc.id = $usr_id AND
+								(vc.id,sc.id)
+								 NOT IN
+								(SELECT DISTINCT
+									vc.id, $usr_id 
+									FROM
+									 packages_vodchannels pv,
+									 subscribers sc,
+									 subscribers_packages sp,
+									 vod_channels_categories vcc,
+									
+									 vodchannels vc,
+									 tickets tc,
+									 restrictions rc
+									
+									WHERE
+															
+									 tc.restriction_id  = rc.id AND
+									 tc.subscriber_id = sc.id AND 
+								 
+									 vc.id = vcc.channel_id AND
+									 pv.resource_id = vc.id AND
+									 pv.package_id = sp.package_id AND
+									 sp.subscriber_id = sc.id AND 
+															
+									 vc.id = tc.resource_id AND
+									 tc.restriction_id  = rc.id AND
+									 tc.subscriber_id = $usr_id)";
+	
+			$rsGet = $DB->execute($sql);
+			while (!$rsGet->EOF)
+			{
+	
+				//For this videos, we'll create a ticket under the restriction zero
+				//[The restriction zero is the default for unlimited access]
+				
+				$ticket = genRandomString();
+				$vid_id = $rsGet->fields['id'];
+				
+				$sqlSetRestriction = "INSERT into tickets
+														(subscriber_id,resource_id,
+														 current_views,restriction_id,
+														 ticket_number,creation_date,status)
+														VALUES
+														($usr_id,$vid_id,
+														 0,0,
+														 '$ticket',NOW(),1)";
+														 
+				$rsSetRestriction = $DB->execute($sqlSetRestriction);
+				
+				$rsGet->movenext();	
+			}
+			
+			
 			$rsGetPck->movenext();
 		}
 		$msg = _("Changes done!");		
@@ -75,7 +264,52 @@
 		$usr_id = $_POST['usr_id'];
 		$sql = "delete from subscribers_packages where subscriber_id = $usr_id";
 		$rsSet = $DB->execute($sql);
-		$msg = _("Changes done!");		
+		$msg = _("Changes done!");
+		
+		//Now, we'll remove all the tickets under the restriction zero for the VOD videos in this package.
+		
+		$sql = "SELECT DISTINCT
+							vc.id
+						 FROM
+							packages_vodchannels pv,
+							subscribers sc,
+							subscribers_packages sp,
+							vod_channels_categories vcc,
+						 
+							vodchannels vc,
+							tickets tc,
+							restrictions rc
+						 
+						 WHERE
+							tc.restriction_id  = rc.id AND
+							tc.subscriber_id = sc.id AND 
+						
+							vc.id = vcc.channel_id AND
+							pv.resource_id = vc.id AND
+							pv.package_id = sp.package_id AND
+							sp.subscriber_id = sc.id AND 
+												 
+							vc.id = tc.resource_id AND
+							tc.restriction_id  = rc.id AND
+							tc.subscriber_id = $usr_id AND 
+							tc.restriction_id = 0";
+
+		$rsGet = $DB->execute($sql);
+		while (!$rsGet->EOF)
+		{
+			$vid_id = $rsGet->fields['id'];
+			
+			$sqlSetRestriction = "DELETE FROM
+														 tickets
+														WHERE
+														 subscriber_id = $usr_id AND
+														 resource_id = $vid_id AND 
+														 restriction_id = 0";
+													 
+			$rsSetRestriction = $DB->execute($sqlSetRestriction);
+			
+			$rsGet->movenext();	
+		}
 	}
 	
 ?>

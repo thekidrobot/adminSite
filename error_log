@@ -1,0 +1,70 @@
+[11-Jan-2012 11:52:27] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: YES) in /home/rampmood/public_html/adminSiteBeta/includes/adodb/drivers/adodb-mysql.inc.php on line 365
+[11-Jan-2012 11:52:27] PHP Warning:  session_start() [<a href='function.session-start'>function.session-start</a>]: Cannot send session cache limiter - headers already sent (output started at /home/rampmood/public_html/adminSiteBeta/includes/adodb/drivers/adodb-mysql.inc.php:365) in /home/rampmood/public_html/adminSiteBeta/session.php on line 16
+[11-Jan-2012 11:52:27] PHP Fatal error:  Call to a member function MoveNext() on a non-object in /home/rampmood/public_html/adminSiteBeta/viewLive.php on line 111
+[11-Jan-2012 12:38:41] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 157
+[11-Jan-2012 12:38:41] PHP Warning:  unlink(data/images/_small.jpg) [<a href='function.unlink'>function.unlink</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/editVodMovieDetail.php on line 75
+[11-Jan-2012 12:39:27] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 157
+[11-Jan-2012 12:40:23] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 157
+[11-Jan-2012 13:27:02] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 157
+[11-Jan-2012 13:27:02] PHP Warning:  unlink(data/images/logoivy.JPG) [<a href='function.unlink'>function.unlink</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/editVodMovieDetail.php on line 74
+[11-Jan-2012 13:27:02] PHP Warning:  unlink(data/images/_small.JPG) [<a href='function.unlink'>function.unlink</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/editVodMovieDetail.php on line 75
+[12-Jan-2012 13:21:57] PHP Fatal error:  Call to a member function numrows() on a non-object in /home/rampmood/public_html/adminSiteBeta/addSubscriberPackage.php on line 130
+[12-Jan-2012 13:22:09] PHP Fatal error:  Call to a member function numrows() on a non-object in /home/rampmood/public_html/adminSiteBeta/addSubscriberPackage.php on line 130
+[12-Jan-2012 13:24:38] PHP Fatal error:  Call to a member function numrows() on a non-object in /home/rampmood/public_html/adminSiteBeta/addSubscriberPackage.php on line 130
+[12-Jan-2012 13:25:39] PHP Fatal error:  Call to a member function numrows() on a non-object in /home/rampmood/public_html/adminSiteBeta/addSubscriberPackage.php on line 130
+[12-Jan-2012 13:35:03] PHP Fatal error:  Call to a member function numrows() on a non-object in /home/rampmood/public_html/adminSiteBeta/addSubscriberPackage.php on line 130
+[12-Jan-2012 13:35:06] PHP Fatal error:  Call to a member function numrows() on a non-object in /home/rampmood/public_html/adminSiteBeta/addSubscriberPackage.php on line 130
+[12-Jan-2012 22:06:43] PHP Fatal error:  Call to a member function movenext() on a non-object in /home/rampmood/public_html/adminSiteBeta/epg.php on line 23
+[12-Jan-2012 22:06:55] PHP Fatal error:  Call to a member function movenext() on a non-object in /home/rampmood/public_html/adminSiteBeta/epg.php on line 23
+[12-Jan-2012 22:08:24] PHP Fatal error:  Call to a member function movenext() on a non-object in /home/rampmood/public_html/adminSiteBeta/epg.php on line 23
+[12-Jan-2012 22:08:31] PHP Fatal error:  Call to a member function movenext() on a non-object in /home/rampmood/public_html/adminSiteBeta/epg.php on line 23
+[12-Jan-2012 22:09:14] PHP Fatal error:  Call to a member function movenext() on a non-object in /home/rampmood/public_html/adminSiteBeta/epg.php on line 23
+[12-Jan-2012 22:09:27] PHP Fatal error:  Call to a member function movenext() on a non-object in /home/rampmood/public_html/adminSiteBeta/epg.php on line 23
+[12-Jan-2012 22:10:16] PHP Fatal error:  Call to a member function movenext() on a non-object in /home/rampmood/public_html/adminSiteBeta/epg.php on line 23
+[12-Jan-2012 22:10:20] PHP Fatal error:  Call to a member function movenext() on a non-object in /home/rampmood/public_html/adminSiteBeta/epg.php on line 23
+[12-Jan-2012 22:10:45] PHP Fatal error:  Call to a member function movenext() on a non-object in /home/rampmood/public_html/adminSiteBeta/epg.php on line 23
+[12-Jan-2012 22:10:47] PHP Fatal error:  Call to a member function movenext() on a non-object in /home/rampmood/public_html/adminSiteBeta/epg.php on line 23
+[12-Jan-2012 22:11:30] PHP Fatal error:  Call to a member function movenext() on a non-object in /home/rampmood/public_html/adminSiteBeta/epg.php on line 23
+[12-Jan-2012 22:11:32] PHP Fatal error:  Call to a member function movenext() on a non-object in /home/rampmood/public_html/adminSiteBeta/epg.php on line 23
+[12-Jan-2012 22:11:54] PHP Fatal error:  Call to a member function movenext() on a non-object in /home/rampmood/public_html/adminSiteBeta/epg.php on line 23
+[12-Jan-2012 22:13:23] PHP Fatal error:  Call to a member function movenext() on a non-object in /home/rampmood/public_html/adminSiteBeta/epg.php on line 23
+[11-Feb-2012 11:24:18] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[11-Feb-2012 11:24:18] PHP Warning:  unlink(data/images/) [<a href='function.unlink'>function.unlink</a>]: Is a directory in /home/rampmood/public_html/adminSiteBeta/editTrainerDetail.php on line 97
+[11-Feb-2012 11:24:18] PHP Warning:  unlink(data/images/) [<a href='function.unlink'>function.unlink</a>]: Is a directory in /home/rampmood/public_html/adminSiteBeta/editTrainerDetail.php on line 98
+[11-Feb-2012 11:34:38] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[11-Feb-2012 11:36:29] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[11-Feb-2012 11:39:21] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[11-Feb-2012 11:45:27] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[11-Feb-2012 11:45:27] PHP Warning:  unlink(data/images/eagles.jpeg) [<a href='function.unlink'>function.unlink</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/editVodMovieDetail.php on line 75
+[11-Feb-2012 11:45:27] PHP Warning:  unlink(data/images/) [<a href='function.unlink'>function.unlink</a>]: Is a directory in /home/rampmood/public_html/adminSiteBeta/editVodMovieDetail.php on line 76
+[11-Feb-2012 11:46:15] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[11-Feb-2012 11:48:41] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[11-Feb-2012 11:48:41] PHP Warning:  unlink(data/images/black.jpeg) [<a href='function.unlink'>function.unlink</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/editVodMovieDetail.php on line 75
+[11-Feb-2012 11:48:41] PHP Warning:  unlink(data/images/) [<a href='function.unlink'>function.unlink</a>]: Is a directory in /home/rampmood/public_html/adminSiteBeta/editVodMovieDetail.php on line 76
+[23-Feb-2012 20:48:46] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[23-Feb-2012 20:48:46] PHP Warning:  unlink(data/images/) [<a href='function.unlink'>function.unlink</a>]: Is a directory in /home/rampmood/public_html/adminSiteBeta/editLive.php on line 70
+[23-Feb-2012 20:48:46] PHP Warning:  unlink(data/images/) [<a href='function.unlink'>function.unlink</a>]: Is a directory in /home/rampmood/public_html/adminSiteBeta/editLive.php on line 71
+[27-Feb-2012 08:45:23] PHP Fatal error:  Call to a member function movenext() on a non-object in /home/rampmood/public_html/adminSiteBeta/ticketSubscriber.php on line 136
+[03-Mar-2012 10:08:00] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[03-Mar-2012 10:10:23] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[04-Mar-2012 20:33:28] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[05-Mar-2012 14:45:19] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[05-Mar-2012 14:45:19] PHP Warning:  unlink(data/images/) [<a href='function.unlink'>function.unlink</a>]: Is a directory in /home/rampmood/public_html/adminSiteBeta/editVodMovieDetail.php on line 75
+[05-Mar-2012 14:45:19] PHP Warning:  unlink(data/images/) [<a href='function.unlink'>function.unlink</a>]: Is a directory in /home/rampmood/public_html/adminSiteBeta/editVodMovieDetail.php on line 76
+[05-Mar-2012 14:46:10] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[05-Mar-2012 18:21:19] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[07-Mar-2012 13:54:12] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[07-Mar-2012 18:57:53] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[07-Mar-2012 18:58:08] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[07-Mar-2012 18:58:31] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[08-Mar-2012 12:54:54] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[11-Mar-2012 23:48:48] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[11-Mar-2012 23:56:50] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[15-Mar-2012 11:39:17] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[15-Mar-2012 11:41:45] PHP Fatal error:  Call to a member function numrows() on a non-object in /home/rampmood/public_html/adminSiteBeta/addSubscriberPackage.php on line 135
+[15-Mar-2012 12:04:26] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[15-Mar-2012 12:07:10] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[15-Mar-2012 17:46:43] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[15-Mar-2012 18:02:44] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[18-Mar-2012 21:19:03] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
+[10-Apr-2012 11:55:50] PHP Fatal error:  Call to a member function numrows() on a non-object in /home/rampmood/public_html/adminSiteBeta/addSubscriberPackage.php on line 135

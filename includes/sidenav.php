@@ -34,14 +34,16 @@
 			<?
 		}
 		
-		/**************** OnDemand *******************************/
+		/**************** VOD *******************************/
 		elseif($currentPage == "viewVod.php"
 			 or $currentPage == "addVod.php"
-			 or $currentPage == "searchVod.php")
+			 or $currentPage == "searchVod.php" 
+			 or $currentPage == "addVodCsv.php")
 		{
 			?>
 			<li><a href="viewVod.php" <?php if($currentPage == "viewVod.php") echo "class='active'"?> ><?=_("View VOD Movies")?></a></li>
 			<li><a href="addVod.php" <?php if($currentPage == "addVod.php") echo "class='active'"?> ><?=_("Add VOD Movie")?></a></li>
+			<li><a href="addVodCsv.php" <?php if($currentPage == "addVodCsv.php") echo "class='active'"?> ><?=_("Add multiple VOD")?></a></li>
 			<li><a href="searchVod.php" <?php if($currentPage == "searchVod.php") echo "class='active'"?> ><?=_("Search VOD Movies")?></a></li>
 			<?
 		}
@@ -181,13 +183,17 @@
 		}
 		elseif($currentPage == "viewSubscriberDetail.php" or
 					 $currentPage == "addSubscriberPackage.php" or
-					 $currentPage == "ticketSubscriber.php"
+					 $currentPage == "ticketSubscriber.php" or
+					 $currentPage == "ticketSubscriberGlobal.php"
 					 )
 		{
+			$usr_id = $_REQUEST['usr_id']
+			
 		?>
 			<li><a href="addSubscriberPackage.php?usr_id=<?=$usr_id?>" <?php if($currentPage == "addSubscriberPackage.php") echo "class='active'"?> > <?=_("View / Add user packages")?></a></li>
 			<li><a href="viewSubscriberDetail.php?usr_id=<?=$usr_id?>" <?php if($currentPage == "viewSubscriberDetail.php") echo "class='active'"?> > <?=_("View Subscriber Detail")?></a></li>
-			<li><a href="ticketSubscriber.php?usr_id=<?=$usr_id?>" <?php if($currentPage == "ticketSubscriber.php") echo "class='active'"?> > <?=_("Manage Tickets")?></a></li>
+			<li><a href="ticketSubscriber.php?usr_id=<?=$usr_id?>" <?php if($currentPage == "ticketSubscriber.php") echo "class='active'"?> > <?=_("Manage Single Tickets")?></a></li>
+			<li><a href="ticketSubscriberGlobal.php?usr_id=<?=$usr_id?>" <?php if($currentPage == "ticketSubscriberGlobal.php") echo "class='active'"?> > <?=_("Manage Multiple Tickets")?></a></li>
 			<li><a href="viewSubscribers.php?del=<?=$usr_id?>" <?php if($currentPage == "viewSubscribers.php") echo "class='active'"?> onclick="return confirm('<?=_("Are you sure do you want to delete?")?>')" > <?=_("Delete this Subscriber")?></a></li>
 			<li><a href="viewSubscribers.php" <?php if($currentPage == "viewSubscribers.php") echo "class='active'"?> > <?=_("Back to subscribers list")?></a></li>
 		<?	

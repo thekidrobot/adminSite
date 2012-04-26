@@ -3,6 +3,29 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title><?=_("Welcome to RAMP")?></title>
 
+<!--        Script by hscripts.com          -->
+<!--        copyright of HIOX INDIA         -->
+<!-- Free javascripts @ http://www.hscripts.com -->
+<script type="text/javascript">
+checked=false;
+function checkedAll (frmGlobal) {
+	var aa= document.forms.namedItem('frmGlobal');
+	 if (checked == false)
+          {
+           checked = true
+          }
+        else
+          {
+          checked = false
+          }
+	for (var i =0; i < aa.elements.length; i++) 
+	{
+	 aa.elements[i].checked = checked;
+	}
+      }
+</script>
+<!-- Script by hscripts.com -->
+
 <script type="text/javascript">
 
 /***********************************************

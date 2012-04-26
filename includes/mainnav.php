@@ -21,6 +21,7 @@
 	if($currentPage == "addVod.php" or
 					 $currentPage == "viewVod.php" or 	
 					 $currentPage == "searchVod.php" or
+					 $currentPage == "addVodCsv.php" or
 					 $currentPage == "editVodMovieDetail.php" or
 					 $currentPage == "viewVodMovieDetail.php") echo "class='active'";
 	?>
@@ -58,6 +59,7 @@
 					 $currentPage == "addSubscriberPackage.php" or 	
 					 $currentPage == "viewSubscribers.php" or
 					 $currentPage == "ticketSubscriber.php" or
+					 $currentPage == "ticketSubscriberGlobal.php" or
 					 $currentPage == "viewSubscriberDetail.php"
 					 ) echo "class='active'";
 	?>

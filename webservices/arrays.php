@@ -36,31 +36,35 @@ $id = 'h1hr44dvfz5mzx6';
 		{
 				while($row = mysql_fetch_object($result))
 				{
-						
 						if(trim($row->parent) != 0)
 						{
 								$sql_parent = "SELECT * from vodchannels where id = ". trim($row->parent);
 								$result_parent = mysql_query($sql_parent);
 								while($row_parent = mysql_fetch_object($result_parent))
 								{
-										print_r(searchSubArray($user,'categoryId',trim($row_parent->id)));
+
+										$arr_search = search($user,'categoryId',trim($row_parent->id));
 										
+										if(count($arr_search == 0)){
 												array_push
 												($channels,$user['categoryId'] = trim($row_parent->id),$user['parentId'] = trim($row_parent->parent),
 												 $user['categoryName'] = trim($row_parent->name));
-										
+												 $usuario.=json_encode($user).',';
+										}
 								}
 						}
 						else
 						{
-								print_r(searchSubArray($user,'categoryId',trim($row->id)));
+								$arr_search = search($user,'categoryId',trim($row->id));
+						
+								if(count($arr_search == 0)){	
 										array_push
 										($channels,$user['categoryId'] = trim($row->id),$user['parentId'] = trim($row->parent),
 										 $user['categoryName'] = trim($row->name));
-								
+										 $usuario.=json_encode($user).',';
+
+								}
 						}
-						$usuario.=json_encode($user).',';
-						
 				}
 				$usuario = "[".substr($usuario,0,strlen($usuario)-1)."]";
 
@@ -71,10 +75,10 @@ $id = 'h1hr44dvfz5mzx6';
 		$usuario = str_replace('\\','',json_encode($arr_msg));
 		$usuario = str_replace('"[','[',$usuario);
 		$usuario = str_replace(']"',']',$usuario);
-		return $usuario;
+		echo $usuario;
 
 // search array for specific key = value
-function searchSubArray($array, $key, $value)
+function search($array, $key, $value)
 {
     $results = array();
 
