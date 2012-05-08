@@ -1,5 +1,9 @@
 <?php
 	include("connection.php");
+	include("general_functions.php");
+  
+	session_start();	
+
 	$usr_id = $_POST['usr_id'];
 	parse_str($_POST['data']);
 	for ($i = 0; $i < count($sortlist); $i++) {
@@ -7,6 +11,26 @@
 						where 	subscriber_id = $usr_id
 						and 		package_id = $sortlist[$i]";
 		$rsSet = $DB->execute($str);
+	
+		$sql_usr = "SELECT * from subscribers where id = ". $usr_id;
+		$rsGet_usr = $DB->execute($sql_usr);
+
+		$sql_pck = "SELECT * from packages where id = $sortlist[$i]";
+		$rsGet_pck = $DB->execute($sql_pck);
+
+		$message = "The user ".$_SESSION['username']." has removed the package '".$rsGet_pck->fields['name']."' with ID ".$sortlist[$i]." from the subscriber '".$rsGet_usr->fields['name']."' with ID ".$usr_id.".";
+		
+		$log = new Logging();
+
+    $logName = '../logs/'.getLogName($_SESSION['username']);
+
+    // set path and name of log file
+    $log->lfile($logName);	
+    // write message to the log file
+    $log->lwrite($message);
+    // close log file
+    $log->lclose();	
+
 		
 		//Now, we'll remove all the tickets under the restriction zero for the VOD videos in this package.
 		

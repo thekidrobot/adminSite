@@ -14,20 +14,24 @@ $rsGet = $DB->Execute($sql);
 
 while(!$rsGet->EOF){
 	
-	$name=$rsGet->fields['name'];
-	$parent=$rsGet->fields['parent'];
-	
-	if ($parent == 0)	$parentName = "No Parent";			 
-	else{
-		$sqlParent= "SELECT id,name FROM vodcategories where id = $parent";
-		$rsGetParent = $DB->Execute($sqlParent);
-	
-		while(!$rsGetParent->EOF){
-			$parentName = $rsGetParent->fields['name'];		
-			$rsGetParent->movenext();	
-		}
-	}
-	$rsGet->movenext();
+ $name=$rsGet->fields['name'];
+ $parent=$rsGet->fields['parent'];
+ 
+ if ($parent == 0)	$parentName = "No Parent";			 
+ else{
+	 $sqlParent= "SELECT id,name FROM vodcategories where id = $parent";
+	 $rsGetParent = $DB->Execute($sqlParent);
+ 
+	 while(!$rsGetParent->EOF){
+		 $parentName = $rsGetParent->fields['name'];		
+		 $rsGetParent->movenext();	
+	 }
+ }
+ $rsGet->movenext();
+
+ $message = "The user ".$_SESSION['username']." has viewed the information for the category '".$name."' With ID $id";
+ writeToLog($message);
+ 	
 }
 
 ?>
@@ -37,7 +41,7 @@ while(!$rsGet->EOF){
 	<?php include ("includes/head.php") ?>
 	<body>
 	 <div id="wrapper">
-	  <h1><a href="menuadmin.php"></a></h1>
+	  <h1><a href="#">&nbsp;</a></h1>
 		<?php include("includes/mainnav.php") ?>
 		<!-- // #end mainNav -->
 		<div id="containerHolder">

@@ -1,6 +1,9 @@
 <?php
 	include("connection.php");
 	include("general_functions.php");
+
+  session_start();	
+	
 	$usr_id = $_POST['usr_id'];
 	parse_str($_POST['data']);
 	for ($i = 0; $i < count($sortlist2); $i++)
@@ -9,6 +12,25 @@
 						INTO 		subscribers_packages(subscriber_id,package_id)
 						VALUES 	($usr_id,$sortlist2[$i])";
 		$rsSet = $DB->execute($str);
+		
+		$sql_usr = "SELECT * from subscribers where id = ". $usr_id;
+		$rsGet_usr = $DB->execute($sql_usr);
+
+		$sql_pck = "SELECT * from packages where id = $sortlist2[$i]";
+		$rsGet_pck = $DB->execute($sql_pck);
+
+		$message = "The user ".$_SESSION['username']." has added the package '".$rsGet_pck->fields['name']."' with ID ".$sortlist2[$i]." to the subscriber '".$rsGet_usr->fields['name']."' with ID ".$usr_id.".";
+		
+		$log = new Logging();
+
+    $logName = '../logs/'.getLogName($_SESSION['username']);
+
+    // set path and name of log file
+    $log->lfile($logName);	
+    // write message to the log file
+    $log->lwrite($message);
+    // close log file
+    $log->lclose();	
 		
 		//Now, we'll query the videos from this package without a ticket
 		$sql = "SELECT DISTINCT
@@ -79,6 +101,7 @@
 			
 			$rsGet->movenext();	
 		}
+		
 	}
 	
 	sleep(1);

@@ -10,6 +10,9 @@ if(trim($id) == "" or !is_numeric($id) or $id == 0)
 $sql = "SELECT * FROM livechannels WHERE id = $id";
 $getData = $DB->Execute($sql);
 
+$message = "The user ".$_SESSION['username']." has viewed the information for the channel '".$getData->fields['name']."' With ID $id";
+writeToLog($message);
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -17,7 +20,7 @@ $getData = $DB->Execute($sql);
 <?php include ("includes/head.php") ?>
 <body>
  <div id="wrapper">
-  <h1><a href="menuadmin.php"></a></h1>
+  <h1><a href="#">&nbsp;</a></h1>
 	<?php include("includes/mainnav.php") ?>
 	<!-- // #end mainNav -->
 	<div id="containerHolder">

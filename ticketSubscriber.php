@@ -39,6 +39,9 @@
 					  VALUES
 							($usr_id,$vid_id,0,$role_id,'$ticket',NOW(),1)";
 	
+		$message = "The user ".$_SESSION['username']." has created the ticket '$ticket' for the user '".$rsGetName->fields['name']."'";
+		writeToLog($message);	
+	
 		$rsSet = $DB->execute($sql);
 	}
 ?>
@@ -48,7 +51,7 @@
 <?php include ("includes/head.php") ?>
 <body>
  <div id="wrapper">
-  <h1><a href="menuadmin.php"></a></h1>
+  <h1><a href="#">&nbsp;</a></h1>
 	<?php include("includes/mainnav.php") ?>
 	<!-- // #end mainNav -->
 	<div id="containerHolder">

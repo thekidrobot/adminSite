@@ -31,6 +31,9 @@ if (trim($_POST['name']) != "")
 										parent 	= ".$_POST['parent']."
 						where 	id 			= ".$_POST['cat_id'];							
 	
+		$message = "The user ".$_SESSION['username']." has edited the information for the category '".$_POST['name']."' With ID ".$_POST['cat_id'].".";
+		writeToLog($message);	
+	
 		$rsSet = $DB->Execute($str);
 		redirect("viewVodCategories.php?cat_id=$id");
 	}
@@ -40,6 +43,10 @@ if (trim($_POST['name']) != "")
 						values('".$_POST['name']."',".$_POST['parent'].")";	
 
 		$rsSet = $DB->Execute($str);
+		
+		$message = "The user ".$_SESSION['username']." has created the category '".$_POST['name']."' With ID ".$DB->Insert_ID();
+		writeToLog($message);
+		
 		redirect("viewVodCategories.php?cat_id=$id");
 	}
 }
@@ -51,7 +58,7 @@ if (trim($_POST['name']) != "")
 	<?php include ("includes/head.php") ?>
 	<body>
 	 <div id="wrapper">
-	  <h1><a href="menuadmin.php"></a></h1>
+	  <h1><a href="#">&nbsp;</a></h1>
 		<?php include("includes/mainnav.php") ?>
 		<!-- // #end mainNav -->
 		<div id="containerHolder">

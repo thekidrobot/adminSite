@@ -56,7 +56,7 @@ $calendar->load_files();
 <h1>Calendar.php test</h1>
 
      <form action="test.php" method="get">
-     Select language: <select name="lang" onchange="this.form.submit()">
+     Select language: <select name="lang" onchange="this.document.form.submit()">
      <?php
 $cwd = getcwd();
 chdir('lang');

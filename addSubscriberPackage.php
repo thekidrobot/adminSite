@@ -27,6 +27,14 @@
 							VALUES ($usr_id,".$addItems[$i].")";
 			$rsSet = $DB->execute($sql);
 			
+			$sql_res = "SELECT * from subscribers where id = ".$usr_id;
+			$rsGet_res = $DB->execute($sql_res);
+
+			$sql_pck = "SELECT * from packages where id = $addItems[$i]";
+			$rsGet_pck = $DB->execute($sql_pck);
+
+			$message = "The user ".$_SESSION['username']." has added the package '".$rsGet_pck->fields['name']."' with ID ".$addItems[$i]." to the subscriber '".$rsGet_res->fields['name']."' with ID ".$usr_id.".";
+			
 			//Now, we'll query the videos from this package without a ticket
 			$sql = "SELECT DISTINCT
 							vc.id
@@ -96,8 +104,9 @@
 				
 				$rsGet->movenext();	
 			}
-			
+			writeToLog($message);
 		}
+		
 		$msg = _("Changes done!");		
 	}	
 	
@@ -112,6 +121,14 @@
 			$sql = "delete from subscribers_packages
 							where package_id = ".$remItems[$i]." and subscriber_id =".$usr_id;
 			$rsSet = $DB->execute($sql);
+
+			$sql_res = "SELECT * from subscribers where id = ".$usr_id;
+			$rsGet_res = $DB->execute($sql_res);
+
+			$sql_pck = "SELECT * from packages where id = $remItems[$i]";
+			$rsGet_pck = $DB->execute($sql_pck);
+
+			$message = "The user ".$_SESSION['username']." has removed the package '".$rsGet_pck->fields['name']."' with ID ".$addItems[$i]." to the subscriber '".$rsGet_res->fields['name']."' with ID ".$usr_id.".";
 			
 			//Now, we'll remove all the tickets under the restriction zero for the VOD videos in this package.
 			
@@ -155,10 +172,10 @@
 															 restriction_id = 0";
 														 
 				$rsSetRestriction = $DB->execute($sqlSetRestriction);
-				
+
 				$rsGet->movenext();	
 			}
-			
+			writeToLog($message);
 		}
 		$msg = _("Changes done!");		
 	}
@@ -178,6 +195,14 @@
 		
 		while (!$rsGetPck->EOF)
 		{
+			$sql_res = "SELECT * from subscribers where id = ".$usr_id;
+			$rsGet_res = $DB->execute($sql_res);
+
+			$sql_pck = "SELECT * from packages where id = ". $rsGetPck->fields['id'];
+			$rsGet_pck = $DB->execute($sql_pck);
+
+			$message = "The user ".$_SESSION['username']." has added the package '".$rsGet_pck->fields['name']."' with ID ".$addItems[$i]." to the subscriber '".$rsGet_res->fields['name']."' with ID ".$usr_id.".";
+			
 			$sql = "INSERT INTO subscribers_packages (package_id,subscriber_id)
 							VALUES (".$rsGetPck->fields['id'].",$usr_id)";
 			$rsSetPck = $DB->execute($sql);
@@ -251,7 +276,7 @@
 				
 				$rsGet->movenext();	
 			}
-			
+			writeToLog($message);
 			
 			$rsGetPck->movenext();
 		}
@@ -265,6 +290,11 @@
 		$sql = "delete from subscribers_packages where subscriber_id = $usr_id";
 		$rsSet = $DB->execute($sql);
 		$msg = _("Changes done!");
+
+		$sql_res = "SELECT * from subscribers where id = ".$usr_id;
+		$rsGet_res = $DB->execute($sql_res);
+		
+		$message = "The user ".$_SESSION['username']." has removed all the packages from the subscriber '".$rsGet_res->fields['name']."' with ID ".$usr_id.".";
 		
 		//Now, we'll remove all the tickets under the restriction zero for the VOD videos in this package.
 		
@@ -310,6 +340,7 @@
 			
 			$rsGet->movenext();	
 		}
+		writeToLog($message);
 	}
 	
 ?>
@@ -319,7 +350,7 @@
 <?php include ("includes/head.php") ?>
 <body>
  <div id="wrapper">
-  <h1><a href="menuadmin.php"></a></h1>
+  <h1><a href="#">&nbsp;</a></h1>
 	<?php include("includes/mainnav.php") ?>
 	<!-- // #end mainNav -->
 	<div id="containerHolder">

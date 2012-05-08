@@ -6,12 +6,20 @@
 	if($_GET['del']!="")
 	{
 		$id = escape_value($_GET['del']);
+		
+		$sql = "SELECT * from packages where id = $id";
+		$rsGet = $DB->Execute($sql);
+		
+		$message = "The user ".$_SESSION['username']." has deleted the package '".$rsGet->fields['name']."' With ID ".$id;
+		
 		$sql = "delete from packages where id = ".$id;
 		$rsSet = $DB->Execute($sql);
 		$sql = "delete from packages_livechannels where package_id = ".$id;
 		$rsSet = $DB->Execute($sql);
 		$sql = "delete from packages_vodchannels where package_id = ".$id;
 		$rsSet = $DB->Execute($sql);
+		
+		writeToLog($message);
 	}
 	
 	//delete selected multiple
@@ -21,12 +29,19 @@
 	{
 		for($i=0; $i < $N; $i++)
 		{
+			$sql = "SELECT * from packages where id = ".$arrPackages[$i];
+			$rsGet = $DB->Execute($sql);
+			
+			$message = "The user ".$_SESSION['username']." has deleted the package '".$rsGet->fields['name']."' With ID ".$arrPackages[$i];
+			
 			$sql = "delete from packages where id = ".$arrPackages[$i];
 			$rsSet = $DB->Execute($sql);
 			$sql = "delete from packages_livechannels where package_id = ".$arrPackages[$i];
 			$rsSet = $DB->Execute($sql);
 			$sql = "delete from packages_vodchannels where package_id = ".$arrPackages[$i];
 			$rsSet = $DB->Execute($sql);
+			
+			writeToLog($message);
 		} 
 	}	
 	
@@ -37,7 +52,7 @@
 <?php include ("includes/head.php") ?>
 <body>
  <div id="wrapper">
-  <h1><a href="menuadmin.php"></a></h1>
+  <h1><a href="#">&nbsp;</a></h1>
 	<?php include("includes/mainnav.php") ?>
 	<!-- // #end mainNav -->
 	<div id="containerHolder">

@@ -1,0 +1,90 @@
+19:10:32 (index) The user admin has arrived via ::1
+19:10:33 (viewLive) The user admin has opened the page.
+19:10:45 (viewLive) The user admin has opened the page.
+20:34:32 (index) The user admin has arrived via ::1
+20:34:32 (viewLive) The user admin has opened the page.
+20:35:34 (viewLive) The user admin has opened the page.
+20:36:50 (viewVodCategories) The user admin has opened the page.
+20:36:53 (viewVod) The user admin has opened the page.
+20:36:55 (viewVodCategories) The user admin has opened the page.
+20:43:58 (menuadmin) The user admin has opened the page.
+20:43:58 (viewLive) The user admin has opened the page.
+20:43:59 (viewVodCategories) The user admin has opened the page.
+20:46:01 (viewVodDetail) The user admin has opened the page.
+20:46:04 (viewVodCategories) The user admin has opened the page.
+20:46:05 (viewVodCategories) The user admin has opened the page.
+20:46:08 (viewVodDetail) The user admin has opened the page.
+20:48:04 (viewVodDetail) The user admin has opened the page.
+20:48:04 (viewVodDetail) The user admin has viewed the information for the category '' With ID 3
+20:48:28 (viewVodDetail) The user admin has opened the page.
+20:48:28 (viewVodDetail) The user admin has viewed the information for the category 'Subcategorie 2' With ID 3
+21:40:03 (index) The user admin has arrived via ::1
+21:40:03 (viewLive) The user admin has opened the page.
+21:40:06 (viewVodCategories) The user admin has opened the page.
+22:03:57 (viewVodDetail) The user admin has opened the page.
+22:03:57 (viewVodDetail) The user admin has viewed the information for the category 'Subcategorie 2' With ID 3
+22:04:01 (createVodCategory) The user admin has opened the page.
+22:04:07 (viewVodCategories) The user admin has opened the page.
+22:04:10 (viewVodDetail) The user admin has opened the page.
+22:04:10 (viewVodDetail) The user admin has viewed the information for the category 'Subcategorie 2' With ID 3
+22:04:12 (createVodCategory) The user admin has opened the page.
+22:16:25 (createVodCategory) The user admin has opened the page.
+22:16:27 (viewVodDetail) The user admin has opened the page.
+22:16:27 (viewVodDetail) The user admin has viewed the information for the category 'Subcategorie 2' With ID 3
+22:16:28 (createVodCategory) The user admin has opened the page.
+22:16:33 (viewVodCategories) The user admin has opened the page.
+22:16:37 (viewVodDetail) The user admin has opened the page.
+22:16:37 (viewVodDetail) The user admin has viewed the information for the category 'Subcategorie 2' With ID 3
+22:16:47 (createVodCategory) The user admin has opened the page.
+22:16:50 (createVodCategory) The user admin has opened the page.
+22:16:50 (createVodCategory) The user admin has edited the information for the category 'Subcategorie 2' With ID 3.
+22:16:50 (viewVodCategories) The user admin has opened the page.
+22:17:05 (viewVodDetail) The user admin has opened the page.
+22:17:05 (viewVodDetail) The user admin has viewed the information for the category 'Subcategorie 2' With ID 3
+22:17:08 (viewVodCategories) The user admin has opened the page.
+22:17:09 (addVodContent) The user admin has opened the page.
+22:17:30 (viewVodCategories) The user admin has opened the page.
+22:17:32 (searchVodCategory) The user admin has opened the page.
+22:17:39 (searchVodCategory) The user admin has opened the page.
+22:19:10 (createVodCategory) The user admin has opened the page.
+22:19:12 (viewVodCategories) The user admin has opened the page.
+22:19:14 (addVodContent) The user admin has opened the page.
+22:21:11 (viewVodCategories) The user admin has opened the page.
+22:21:12 (addVodContent) The user admin has opened the page.
+22:24:24 (viewVodCategories) The user admin has opened the page.
+22:24:26 (addVodContent) The user admin has opened the page.
+22:24:28 (viewVodCategories) The user admin has opened the page.
+22:24:49 (createVodCategory) The user admin has opened the page.
+22:24:58 (searchVodCategory) The user admin has opened the page.
+22:25:00 (viewVodCategories) The user admin has opened the page.
+22:25:01 (createVodCategory) The user admin has opened the page.
+22:25:02 (viewVodCategories) The user admin has opened the page.
+22:25:04 (addVodContent) The user admin has opened the page.
+22:56:53 (addVodContent) The user admin has opened the page.
+22:56:59 (addVodContent) The user admin has opened the page.
+22:59:28 (addVodContent) The user admin has opened the page.
+22:59:35 (addVodContent) The user admin has opened the page.
+23:10:04 (addVodContent) The user admin has opened the page.
+23:10:09 (addVideo) The user admin has added the channel with ID 2 to the category ID 3
+23:10:09 (addVideo) The user admin has added the channel with ID 3 to the category ID 3
+23:10:09 (addVideo) The user admin has added the channel with ID 5 to the category ID 3
+23:10:09 (addVideo) The user admin has added the channel with ID 18 to the category ID 3
+23:10:09 (addVideo) The user admin has added the channel with ID 10 to the category ID 3
+23:10:10 (removeVideo) The user admin has removed the channel with ID 6 from the category ID 3
+23:10:10 (removeVideo) The user admin has removed the channel with ID 12 from the category ID 3
+23:10:10 (removeVideo) The user admin has removed the channel with ID 13 from the category ID 3
+23:10:10 (removeVideo) The user admin has removed the channel with ID 14 from the category ID 3
+23:10:10 (removeVideo) The user admin has removed the channel with ID 15 from the category ID 3
+23:10:15 (addVodContent) The user admin has opened the page.
+23:10:31 (addVideo) The user admin has added the channel with ID 2 to the category ID 3
+23:10:31 (addVideo) The user admin has added the channel with ID 3 to the category ID 3
+23:10:31 (addVideo) The user admin has added the channel with ID 5 to the category ID 3
+23:10:31 (addVideo) The user admin has added the channel with ID 10 to the category ID 3
+23:10:32 (removeVideo) The user admin has removed the channel with ID 6 from the category ID 3
+23:10:32 (removeVideo) The user admin has removed the channel with ID 18 from the category ID 3
+23:10:32 (removeVideo) The user admin has removed the channel with ID 12 from the category ID 3
+23:10:32 (removeVideo) The user admin has removed the channel with ID 13 from the category ID 3
+23:10:32 (removeVideo) The user admin has removed the channel with ID 14 from the category ID 3
+23:10:32 (removeVideo) The user admin has removed the channel with ID 15 from the category ID 3
+23:12:18 (menuadmin) The user admin has opened the page.
+23:12:18 (viewLive) The user admin has opened the page.

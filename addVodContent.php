@@ -22,8 +22,19 @@
 	{		
 		for($i=0; $i < $N; $i++)
 		{
+			$sql = "SELECT * from vodchannels where id = ". $addItems[$i];
+			$rsGet = $DB->execute($sql);
+			
+			$sql_1 = "SELECT * from vodcategories where id = $cat_id";
+			$rsGet_1 = $DB->execute($sql_1);
+			
 			$sql = "INSERT INTO vod_channels_categories (channel_id,category_id) VALUES (".$addItems[$i].",$cat_id)";
 			$rsSet = $DB->execute($sql);
+			
+			$message = "The user ".$_SESSION['username']." has added the channel '".$rsGet->fields['name']."' with ID ".$addItems[$i]." to the category '".$rsGet_1->fields['name']."' with ID ".$cat_id;
+									
+			writeToLog($message);
+			
 			$msg = _("Changes done!");
 		} 
 	}	
@@ -36,8 +47,18 @@
 		$cat_id = $_POST['cat_id'];
 		for($i=0; $i < $N; $i++)
 		{
+			$sql = "SELECT * from vodchannels where id = ". $remItems[$i];
+			$rsGet = $DB->execute($sql);
+			
+			$sql_1 = "SELECT * from vodcategories where id = $cat_id";
+			$rsGet_1 = $DB->execute($sql_1);
+			
 			$sql = "delete from vod_channels_categories where channel_id = ".$remItems[$i]." and category_id =".$cat_id;
 			$rsSet = $DB->execute($sql);
+			
+			$message = "The user ".$_SESSION['username']." has removed the channel '".$rsGet->fields['name']."' with ID ".$addItems[$i]." from the category '".$rsGet_1->fields['name']."' with ID ".$cat_id;
+			writeToLog($message);
+			
 		}
 		$msg = _("Changes done!");
 	}
@@ -60,6 +81,12 @@
 			$sql = "INSERT INTO vod_channels_categories (channel_id,category_id)
 							VALUES (".$rsGet->fields['id'].",$cat_id)";
 			$rsSet = $DB->execute($sql);
+
+			$sql_1 = "SELECT * from vodcategories where id = $cat_id";
+			$rsGet_1 = $DB->execute($sql_1);
+			
+			$message = "The user ".$_SESSION['username']." has added the channel '".$rsGet->fields['name']."' with ID ".$rsGet->fields['id']." to the category '".$rsGet_1->fields['name']."' with ID ".$cat_id;
+			writeToLog($message);
 			
 			$rsGet->movenext();
 		}
@@ -72,6 +99,10 @@
 		$cat_id = $_POST['cat_id'];
 		$sql = "delete from vod_channels_categories where category_id = $cat_id";
 		$rsSet = $DB->execute($sql);
+		
+		$message = "The user ".$_SESSION['username']." has removed all the channels from the category ID ".$cat_id;
+		writeToLog($message);		
+		
 		$msg = _("Changes done!");
 	}
 	
@@ -82,7 +113,7 @@
 <?php include ("includes/head.php") ?>
 <body>
  <div id="wrapper">
-  <h1><a href="menuadmin.php"></a></h1>
+  <h1><a href="#">&nbsp;</a></h1>
 	<?php include("includes/mainnav.php") ?>
 	<!-- // #end mainNav -->
 	<div id="containerHolder">

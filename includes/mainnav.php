@@ -73,6 +73,23 @@
 					 ) echo "class='active'";
 	?>	
 	><?=_("Restrictions")?></a></li>
-	<li><a href="#"><?=_("FAQ")?></a></li>
-	<li class="logout"><a href="index.php"><?=_("Logout")?></a></li>
+	
+	<?
+	if($_SESSION['role'] == 1)
+	{
+		?>	
+		<li><a href="logs.php"
+		<?php if($currentPage == "logs.php" or
+							$currentPage == "reportsLive.php" or
+							$currentPage == "reportsVod.php" or 
+							$currentPage == "reportsVodTop.php" or 
+							$currentPage == "reportsLiveTop.php"
+							) echo "class='active'"; ?>
+		><?=_("Reports")?></a></li>
+		<?
+	}
+	?>
+	
+	<li><a href="#"><?=_("FAQ")?></a></li>	
+	<li class="logout"><a href="logout.php"><?=_("Logout")?></a></li>
 </ul>

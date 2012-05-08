@@ -7,6 +7,8 @@ if($_GET['del']!="" and is_numeric($_GET['del']))
 {
 	$query_rsDel = "SELECT * FROM livechannels WHERE id = ".$_GET["del"];
 	$rsDel = $DB->Execute($query_rsDel);
+
+	$message = "The user ".$_SESSION['username']." has deleted the channel '".$rsDel->fields['name']."' With ID ".$rsDel->fields['id'];
   
   //Borrar archivos existentes
 	$gallery_upload_path = "data/images/";
@@ -16,6 +18,8 @@ if($_GET['del']!="" and is_numeric($_GET['del']))
   
 	$query_rsDel = "DELETE FROM livechannels where id=".$_GET["del"];
 	$rsDel = $DB->Execute($query_rsDel);
+
+	writeToLog($message);
   
   redirect($currentPage);
 }
@@ -31,6 +35,8 @@ if($U > 0)
   $query_rsDel = "SELECT * FROM livechannels WHERE id = $id";
 	$rsDel = $DB->Execute($query_rsDel);
   
+	$message = "The user ".$_SESSION['username']." has deleted the channel '".$rsDel->fields['name']."' With ID ".$rsDel->fields['id'];
+		
   //Borrar archivos existentes
   $gallery_upload_path = "data/images/";
 	
@@ -39,6 +45,8 @@ if($U > 0)
   
   $query_rsDel = "DELETE FROM livechannels WHERE id = $id";
 	$rsDel = $DB->Execute($query_rsDel);
+
+	writeToLog($message);
 	
   redirect($currentPage);
  }
@@ -51,7 +59,7 @@ if($U > 0)
 <?php include ("includes/head.php") ?>
 <body>
  <div id="wrapper">
-  <h1><a href="menuadmin.php"></a></h1>
+  <h1><a href="#">&nbsp;</a></h1>
 	<?php include("includes/mainnav.php") ?>
 	<!-- // #end mainNav -->
 	<div id="containerHolder">

@@ -8,6 +8,8 @@ if($_GET['del']!="" and is_numeric($_GET['del']))
 	$query_rsDel = "SELECT * FROM trainers WHERE id = ".$_GET["del"];
 	$rsDel = $DB->Execute($query_rsDel);
 
+	$message = "The user ".$_SESSION['username']." has deleted the trainer '".$rsDel->fields['name']."' With ID ".$rsDel->fields['id'];	
+
 	//I'm not deleting trainees assigned into packages.   
 	$query_rsDel = "DELETE FROM trainers where id=".$_GET["del"]." and id not in(select trainer from vodchannels)";
 	$rsDel = $DB->Execute($query_rsDel);
@@ -16,7 +18,9 @@ if($_GET['del']!="" and is_numeric($_GET['del']))
 		//Delete current files
 		$gallery_upload_path = "data/images/";
 		@unlink($gallery_upload_path.$rsDel->fields['big_pic']);
-		@unlink($gallery_upload_path.$rsDel->fields['small_pic']);		
+		@unlink($gallery_upload_path.$rsDel->fields['small_pic']);
+
+		writeToLog($message);
 	}
   redirect($currentPage);
 }
@@ -32,6 +36,8 @@ if($U > 0)
   $query_rsDel = "SELECT * FROM trainers WHERE id = $id";
 	$rsDel = $DB->Execute($query_rsDel);
   
+	$message = "The user ".$_SESSION['username']." has deleted the trainer '".$rsDel->fields['name']."' With ID ".$rsDel->fields['id'];	
+	
   //delete current files
   $gallery_upload_path = "data/images/";
 
@@ -41,6 +47,8 @@ if($U > 0)
 	//I'm not deleting trainees assigned into packages. 
   $query_rsDel = "DELETE FROM trainers WHERE id = $id and id not in(select trainer from vodchannels)";
 	$rsDel = $DB->Execute($query_rsDel);
+	
+	writeToLog($message);
 	
   redirect($currentPage);
  }
@@ -53,7 +61,7 @@ if($U > 0)
 <?php include ("includes/head.php") ?>
 <body>
  <div id="wrapper">
-  <h1><a href="menuadmin.php"></a></h1>
+  <h1><a href="#">&nbsp;</a></h1>
 	<?php include("includes/mainnav.php") ?>
 	<!-- // #end mainNav -->
 	<div id="containerHolder">

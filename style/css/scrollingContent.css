@@ -87,18 +87,18 @@
 	#dhtmlgoodies_scrolldiv .buttons_left{
 		width:680px;
 		position:fixed;
-		top:340px;
-		right:225px;
+		top:240px;
+		right:225px;		
 		text-align:center;
 		padding-top:130px;
 		margin:0;
-		z-index:0 !important; 
+		z-index:1 !important; 
 	}
 	
 	#dhtmlgoodies_scrolldiv .buttons_right{
 		width:680px;
 		position:fixed;
-		top:200px;
+		top:280px;
 		right:225px;
 		text-align:center;
 		padding-top:180px;

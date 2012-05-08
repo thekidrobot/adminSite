@@ -294,6 +294,25 @@
 				<li><a href="viewRestrictions.php" <?php if($currentPage == "viewRestrictions.php") echo "class='active'"?> > <?=_("Back to restrictions list")?></a></li>
 			<?
 		}		
-	?>
+		/************************ Logs **********************************/
+		
+		if($_SESSION['role'] == 1)
+		{
+			if($currentPage == "logs.php" or
+				 $currentPage == "reportsLive.php" or
+				 $currentPage == "reportsVod.php" or
+				 $currentPage == "reportsVodTop.php" or
+				 $currentPage == "reportsLiveTop.php"
+				 ) {
+			?>
+			<li><a href="logs.php" <?php if($currentPage == "logs.php") echo "class='active'"?> > <?=_("Log Viewer")?></a></li>
+			<li><a href="reportsLive.php" <?php if($currentPage == "reportsLive.php") echo "class='active'"?> > <?=_("Reports - Live")?></a></li>
+			<li><a href="reportsVod.php" <?php if($currentPage == "reportsVod.php") echo "class='active'"?> > <?=_("Reports - Vod")?></a></li>
+			<li><a href="reportsLiveTop.php" <?php if($currentPage == "reportsLiveTop.php") echo "class='active'"?> > <?=_("Most Viewed - Live")?></a></li>
+			<li><a href="reportsVodTop.php" <?php if($currentPage == "reportsVodTop.php") echo "class='active'"?> > <?=_("Most Viewed - VOD")?></a></li>
+			<?	
+			}
+		}
+		?>
 </ul>
 <!-- // .sideNav -->

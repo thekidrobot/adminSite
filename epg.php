@@ -116,6 +116,10 @@ if($_POST['setCsv'] == 1)
             
             $msg = "File processed sucessfully";
           }
+					
+					$message = "The user ".$_SESSION['username']." has uploaded a new .csv EPG file.";
+					writeToLog($message);
+					
           fclose($handle);
         }
   		}
@@ -130,7 +134,7 @@ if($_POST['setCsv'] == 1)
 <?php include ("includes/head.php") ?>
 	<body>
 		<div id="wrapper">
-		<h1><a href="menuadmin.php"></a></h1>
+		<h1><a href="#">&nbsp;</a></h1>
 		<?php include("includes/mainnav.php") ?>
 		<!-- // #end mainNav -->
 		<div id="containerHolder">

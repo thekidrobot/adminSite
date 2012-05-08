@@ -17,7 +17,6 @@ if($_POST['strFind']!= "")
 	$sqlGet = "SELECT * FROM subscribers "  . $strWhere;
 }
 
-
 //delete selected multiple
 $arrSubscribers = $_POST['subscribers'];
 $N = count($arrSubscribers);
@@ -25,10 +24,17 @@ if($N > 0)
 {
 	for($i=0; $i < $N; $i++)
 	{
+		$query_rsDel = "SELECT * FROM subscribers WHERE id = ".$arrSubscribers[$i];
+		$rsDel = $DB->Execute($query_rsDel);
+  
+		$message = "The user ".$_SESSION['username']." has deleted the subscriber '".$rsDel->fields['name']."' With ID ".$rsDel->fields['id'];	
+		
 		$sql = "delete from subscribers where id = ".$arrSubscribers[$i];
 		$rsSet = $DB->Execute($sql);
 		$sql = "delete from subscribers_packages where subscriber_id = ".$arrSubscribers[$i];
 		$rsSet = $DB->Execute($sql);
+		
+		writeToLog($message);
 	} 
 }	
 
@@ -39,7 +45,7 @@ if($N > 0)
 <?php include ("includes/head.php") ?>
 	<body>
 		<div id="wrapper">
-		<h1><a href="menuadmin.php"></a></h1>
+		<h1><a href="#">&nbsp;</a></h1>
 		<?php include("includes/mainnav.php") ?>
 		<!-- // #end mainNav -->
 		<div id="containerHolder">

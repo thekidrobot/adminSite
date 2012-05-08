@@ -14,17 +14,19 @@ textdomain("messages");
 //  <a href=\"".$_SERVER['PHP_SELF']."?language=es_ES\">Español</a></p>\n";
 
 session_start();
-
-//Check session. Consider changing to the new implementation.
-if($_SESSION["usuario"]=="")
-{
- if (!headers_sent()) header('Location: index.php');
- else echo '<meta http-equiv="refresh" content="0;url="index.php" />';
-}
  
 include("includes/general_functions.php");
 include("includes/formvalidator.php");
 
 $currentPage = getCurrentPage();
+
+$logged = isLoggedIn();
+if ($logged == false or $_SESSION['username'] == "") redirect('index.php');
+
+$dbPin = getAdminPin($_SESSION['id']);
+if($dbPin !== $_SESSION['pin']) redirect('index.php');
+
+$message = "The user ".$_SESSION['username']." has opened the page.";
+writeToLog($message);
 
 ?>

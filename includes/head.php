@@ -22,7 +22,7 @@ function checkedAll (frmGlobal) {
 	{
 	 aa.elements[i].checked = checked;
 	}
-      }
+}
 </script>
 <!-- Script by hscripts.com -->
 
@@ -51,7 +51,12 @@ function handleEnter (field, event) {
 
 </script>
 
-<script type="text/javascript" src="style/js/jQuery.js"></script>
+<!-- Lightbox -->
+<script src="js/jQuery.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" charset="utf-8" />
+<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+
+<!--<script type="text/javascript" src="style/js/jQuery.js"></script>-->
 <script type="text/javascript" src="style/js/jNice.js"></script>
 
 <link href="style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
@@ -289,7 +294,7 @@ function handleEnter (field, event) {
       </script>
   <?
   }
-  ?>
+	?>
   <!--[if IE]>
   <style type="text/css">
   ul.fdtablePaginater {display:inline-block;}
@@ -300,4 +305,11 @@ function handleEnter (field, event) {
 	
   </style>
   <![endif]-->	
+
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			$("a[rel^='prettyPhoto']").prettyPhoto();
+		});
+	</script>
+
 </head>

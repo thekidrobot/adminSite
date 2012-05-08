@@ -10,13 +10,20 @@
  {
 	foreach($arrArchivos as $id)
 	{
+		 $sql = "SELECT * from vodcategories where id = $id";
+		 $rsGet = $DB->execute($sql);
+
+		 $message = "The user ".$_SESSION['username']." has deleted the category '".$rsGet->fields['name']."' With ID ".$id;
+	 
 		 //Borra de tabla hija
 		 $str = "delete from vod_channels_categories where category_id = $id";
 		 $strSet = $DB->execute($str);
 		 //Borra de tabla padre
 		 $str = "delete from vodcategories where id = $id";
 		 $strSet = $DB->execute($str);
-	 
+
+		 writeToLog($message);
+		 
 		 redirect($currentPage);
 	}
  } 
@@ -25,12 +32,19 @@
  {
 	$id = $_GET['del'];
 	
+	$sql = "SELECT * from vodcategories where id = $id";
+	$rsGet = $DB->execute($sql);
+
+	$message = "The user ".$_SESSION['username']." has deleted the category '".$rsGet->fields['name']."' With ID ".$id;
+	
 	//Borra de tabla hija
 	$str = "delete from vod_channels_categories where category_id = $id";
 	$strSet = $DB->execute($str);
 	//Borra de tabla padre
 	$str = "delete from vodcategories where id = $id";
 	$strSet = $DB->execute($str);
+
+	writeToLog($message);
 	
 	redirect($currentPage);
  }
@@ -42,7 +56,7 @@
 <?php include ("includes/head.php") ?>
 <body>
  <div id="wrapper">
-  <h1><a href="menuadmin.php"></a></h1>
+  <h1><a href="#">&nbsp;</a></h1>
 	<?php include("includes/mainnav.php") ?>
 	<!-- // #end mainNav -->
 	<div id="containerHolder">
@@ -68,7 +82,7 @@
 			<tbody>	
 				<?php
 				$counter = 0;
-				$sql = "SELECT * FROM vodcategories order by id desc";
+				$sql = "SELECT * FROM vodcategories order by id";
 				$rsGet = $DB->execute($sql);
 				
 				while (!$rsGet->EOF)

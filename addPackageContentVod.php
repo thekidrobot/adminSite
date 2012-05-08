@@ -22,8 +22,18 @@
 	{		
 		for($i=0; $i < $N; $i++)
 		{
+			$sql = "SELECT * from vodchannels where id = $addItems[$i]";
+			$rsGet = $DB->execute($sql);
+
+			$sql_1 = "SELECT * from packages where id = $pck_id";
+			$rsGet_1 = $DB->execute($sql_1);
+
+			$message = "The user ".$_SESSION['username']." has added the VOD channel '".$rsGet->fields['name']."' with ID ".$addItems[$i]." to the package '".$rsGet_1->fields['name']."' with ID ".$pck_id.".";
+
 			$sql = "INSERT INTO packages_vodchannels (resource_id,package_id) VALUES (".$addItems[$i].",$pck_id)";
 			$rsSet = $DB->execute($sql);
+			
+			writeToLog($message);
 		}
 		$msg = _("Changes done!");
 	}	
@@ -36,8 +46,18 @@
 		$pck_id = $_POST['pck_id'];
 		for($i=0; $i < $N; $i++)
 		{
+			$sql = "SELECT * from vodchannels where id = $remItems[$i]";
+			$rsGet = $DB->execute($sql);
+
+			$sql_1 = "SELECT * from packages where id = $pck_id";
+			$rsGet_1 = $DB->execute($sql_1);
+
+			$message = "The user ".$_SESSION['username']." has removed the VOD channel '".$rsGet->fields['name']."' with ID ".$addItems[$i]." from the package '".$rsGet_1->fields['name']."' with ID ".$pck_id.".";
+						
 			$sql = "delete from packages_vodchannels where resource_id = ".$remItems[$i]." and package_id =".$pck_id;
 			$rsSet = $DB->execute($sql);
+			
+			writeToLog($message);
 		}
 		$msg = _("Changes done!");		
 	}
@@ -57,9 +77,20 @@
 		
 		while (!$rsGet->EOF)
 		{
+
+			$sql_res = "SELECT * from vodchannels where id = ".$rsGet->fields['id'];
+			$rsGet_res = $DB->execute($sql_res);
+
+			$sql_pck = "SELECT * from packages where id = $pck_id";
+			$rsGet_pck = $DB->execute($sql_pck);
+
+			$message = "The user ".$_SESSION['username']." has added the VOD channel '".$rsGet_res->fields['name']."' with ID ".$addItems[$i]." to the package '".$rsGet_pck->fields['name']."' with ID ".$pck_id.".";
+						
 			$sql = "INSERT INTO packages_vodchannels (resource_id,package_id)
 							VALUES (".$rsGet->fields['id'].",$pck_id)";
 			$rsSet = $DB->execute($sql);
+			
+			writeToLog($message);
 			
 			$rsGet->movenext();
 		}
@@ -70,8 +101,17 @@
 	if (trim($_POST['r_all']) != "")
 	{
 		$pck_id = $_POST['pck_id'];
+		
+		$sql_1 = "SELECT * from packages where id = $pck_id";
+		$rsGet_1 = $DB->execute($sql_1);
+		
+		$message = "The user ".$_SESSION['username']." has removed all the VOD channels from the package '".$rsGet_1->fields['name']."' with ID ".$pck_id.".";
+		
 		$sql = "delete from packages_vodchannels where package_id = $pck_id";
 		$rsSet = $DB->execute($sql);
+		
+		writeToLog($message);
+		
 		$msg = _("Changes done!");
 	}
 	
@@ -82,7 +122,7 @@
 <?php include ("includes/head.php") ?>
 <body>
  <div id="wrapper">
-  <h1><a href="menuadmin.php"></a></h1>
+  <h1><a href="#">&nbsp;</a></h1>
 	<?php include("includes/mainnav.php") ?>
 	<!-- // #end mainNav -->
 	<div id="containerHolder">

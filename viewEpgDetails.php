@@ -16,7 +16,7 @@
 <?php include ("includes/head.php") ?>
 <body>
  <div id="wrapper">
-  <h1><a href="menuadmin.php"></a></h1>
+  <h1><a href="#">&nbsp;</a></h1>
 	<?php include("includes/mainnav.php") ?>
 	<!-- // #end mainNav -->
 	<div id="containerHolder">
@@ -52,6 +52,8 @@
 					
 					while (!$rsGet->EOF)
 					{
+						$message = "The user ".$_SESSION['username']." has viewed the EPG information for the channel '".$rsGetChannel->fields['name']."' With ID ". $rsGet->fields['channel_id'];
+						
 						$sql = "select name from livechannels where id = ".$rsGet->fields['channel_id'];
 						$rsGetChannel = $DB->execute($sql);
 
@@ -72,7 +74,9 @@
 						</tr>
 						<?php
 						$rsGet->movenext();
-					}  
+					}
+					writeToLog($message);					
+					
 					?>
 			</tbody>
 			</table>

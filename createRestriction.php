@@ -33,16 +33,18 @@
 		}
 		else
 		{
-			$password = md5($password);
 			
 			$sql = "INSERT INTO
 							restrictions
 							(name,price,duration,currency,max_views)
 							VALUES
-							('$name','$price','$currency','$duration','$views')";
+							('$name','$price','$duration','$currency','$views')";
 		
 			$rsSet = $DB->Execute($sql);
 			$usr_id = $DB->Insert_ID();
+
+			$message = "The user ".$_SESSION['username']." has created the restriction '".$name."' With ID ".$usr_id;
+			writeToLog($message);
 	
 			redirect("viewRestrictions.php");				
 		}
@@ -55,7 +57,7 @@
 <?php include ("includes/head.php") ?>
 <body>
  <div id="wrapper">
-  <h1><a href="menuadmin.php"></a></h1>
+  <h1><a href="#">&nbsp;</a></h1>
 	<?php include("includes/mainnav.php") ?>
 	<!-- // #end mainNav -->
 	<div id="containerHolder">
@@ -86,7 +88,7 @@
 				</p>
 				<p>
 					<label><?=_("Rule Price")?></label>
-					<input type="text" name="price" value="<?=$_POST['price']?>" maxlength="100" class="text-small" />
+					<input type="text" name="price" value="<?=$_POST['price']?>" maxlength="10" class="text-small" />
 				</p>
 				<p>
 					<label><?=_("Currency")?> : </label>
@@ -111,12 +113,12 @@
 				</p>
 				<p>
 					<label><?=_("Validity (In Days)")?></label>
-					<input type="text" name="duration" value="<?=$rsGet->fields['duration']?>" maxlength="200" class="text-small" />
+					<input type="text" name="duration" value="0" maxlength="10" class="text-small" />
 				</p>
 				<p>
 					<label><?=_("Number of views")?><br/>
 					<?=_("(Zero means unlimited)")?></label>
-					<input type="text" name="max_views" value="0" maxlength="100" class="text-small" />
+					<input type="text" name="max_views" value="0" maxlength="10" class="text-small" />
 				</p>
 				<p>
 					<label><?=_("Save Rule")?></label>

@@ -68,6 +68,9 @@
 			$rsSet = $DB->Execute($sql);
 			$usr_id = $DB->Insert_ID();
 	
+			$message = "The user ".$_SESSION['username']." has created the subscriber '".$name."' With ID ".$usr_id;
+			writeToLog($message);
+	
 			redirect("viewSubscribers.php");				
 		}
 	}
@@ -79,7 +82,7 @@
 <?php include ("includes/head.php") ?>
 <body>
  <div id="wrapper">
-  <h1><a href="menuadmin.php"></a></h1>
+  <h1><a href="#">&nbsp;</a></h1>
 	<?php include("includes/mainnav.php") ?>
 	<!-- // #end mainNav -->
 	<div id="containerHolder">
@@ -149,7 +152,7 @@
 								$rsGetCountries->movenext();
 							}
 						?>
-					<select>
+					</select>
 				</p>
 				<p>
 					<label><?=_("Subscriber city")?></label>

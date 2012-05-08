@@ -42,7 +42,7 @@ if($N > 0)
 <?php include ("includes/head.php") ?>
 	<body>
 		<div id="wrapper">
-		<h1><a href="menuadmin.php"></a></h1>
+		<h1><a href="#">&nbsp;</a></h1>
 		<?php include("includes/mainnav.php") ?>
 		<!-- // #end mainNav -->
 		<div id="containerHolder">

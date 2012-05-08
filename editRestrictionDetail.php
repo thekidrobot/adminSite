@@ -43,16 +43,20 @@
 		}
 		else
 		{
-		 $sql = "update restrictions set
-						 name = '$name',
-						 price = '$price',
-						 currency = '$currency',
-						 duration = '$duration',
-						 max_views = '$max_views'
-						 where id = $id";
+			$sql = "update restrictions set
+							name = '$name',
+							price = '$price',
+							currency = '$currency',
+							duration = '$duration',
+							max_views = '$max_views'
+							where id = $id";
 						 
-		 $rsSet=$DB->execute($sql);
-		 redirect("viewRestrictionDetail.php?id=$id");
+			$rsSet=$DB->execute($sql);
+		 
+			$message = "The user ".$_SESSION['username']." has edited the information for the restriction '".$rsGet->fields['name']."' With ID $id.";
+			writeToLog($message);
+		 
+			redirect("viewRestrictionDetail.php?id=$id");
 		}
 	}	
 ?>
@@ -62,7 +66,7 @@
 <?php include ("includes/head.php") ?>
 <body>
  <div id="wrapper">
-  <h1><a href="menuadmin.php"></a></h1>
+  <h1><a href="#">&nbsp;</a></h1>
 	<?php include("includes/mainnav.php") ?>
 	<!-- // #end mainNav -->
 	<div id="containerHolder">

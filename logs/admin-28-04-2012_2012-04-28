@@ -1,0 +1,908 @@
+10:01:57 (index) The user admin has arrived via 127.0.0.1
+10:01:57 (viewLive) The user admin has opened the page.
+10:17:06 (index) The user admin has arrived via 127.0.0.1
+10:17:06 (viewLive) The user admin has opened the page.
+10:17:12 (viewVodCategories) The user admin has opened the page.
+10:17:16 (createVodCategory) The user admin has opened the page.
+10:17:18 (searchVodCategory) The user admin has opened the page.
+10:18:27 (createVodCategory) The user admin has opened the page.
+10:18:37 (createVodCategory) The user admin has opened the page.
+10:18:37 (createVodCategory) The user admin has created the category 'Test Category' With ID 5
+10:18:37 (viewVodCategories) The user admin has opened the page.
+10:18:52 (viewVodCategories) The user admin has opened the page.
+10:18:52 (viewVodCategories) The user admin has deleted the category With ID 5
+10:18:52 (viewVodCategories) The user admin has opened the page.
+10:18:59 (createVodCategory) The user admin has opened the page.
+10:19:08 (createVodCategory) The user admin has opened the page.
+10:19:08 (createVodCategory) The user admin has created the category 'Test Category' With ID 6
+10:19:08 (viewVodCategories) The user admin has opened the page.
+10:19:10 (addVodContent) The user admin has opened the page.
+10:19:12 (addVodContent) The user admin has opened the page.
+10:19:12 (addVodContent) The user admin has added the channel with ID 2 to the category ID 6
+10:19:12 (addVodContent) The user admin has added the channel with ID 3 to the category ID 6
+10:19:12 (addVodContent) The user admin has added the channel with ID 5 to the category ID 6
+10:19:12 (addVodContent) The user admin has added the channel with ID 6 to the category ID 6
+10:19:12 (addVodContent) The user admin has added the channel with ID 10 to the category ID 6
+10:19:12 (addVodContent) The user admin has added the channel with ID 12 to the category ID 6
+10:19:12 (addVodContent) The user admin has added the channel with ID 13 to the category ID 6
+10:19:12 (addVodContent) The user admin has added the channel with ID 14 to the category ID 6
+10:19:12 (addVodContent) The user admin has added the channel with ID 15 to the category ID 6
+10:19:12 (addVodContent) The user admin has added the channel with ID 18 to the category ID 6
+10:19:36 (addVodContent) The user admin has opened the page.
+10:19:36 (addVodContent) The user admin has removed the channel with ID  from the category ID 6
+10:19:36 (addVodContent) The user admin has removed the channel with ID  from the category ID 6
+10:19:36 (addVodContent) The user admin has removed the channel with ID  from the category ID 6
+10:19:36 (addVodContent) The user admin has removed the channel with ID  from the category ID 6
+10:19:47 (addVideo) The user admin has added the channel with ID 3 to the category ID 6
+10:19:47 (addVideo) The user admin has added the channel with ID 6 to the category ID 6
+10:19:47 (addVideo) The user admin has added the channel with ID 12 to the category ID 6
+10:19:47 (addVideo) The user admin has added the channel with ID 13 to the category ID 6
+10:19:47 (addVideo) The user admin has added the channel with ID 14 to the category ID 6
+10:19:48 (removeVideo) The user admin has removed the channel with ID 2 from the category ID 6
+10:19:48 (removeVideo) The user admin has removed the channel with ID 18 from the category ID 6
+10:19:48 (removeVideo) The user admin has removed the channel with ID 5 from the category ID 6
+10:19:48 (removeVideo) The user admin has removed the channel with ID 10 from the category ID 6
+10:19:48 (removeVideo) The user admin has removed the channel with ID 15 from the category ID 6
+10:19:59 (searchVodCategory) The user admin has opened the page.
+10:20:04 (viewVodCategories) The user admin has opened the page.
+10:20:06 (viewVodDetail) The user admin has opened the page.
+10:20:06 (viewVodDetail) The user admin has viewed the information for the category 'Test Category' With ID 6
+10:20:09 (viewVodCategories) The user admin has opened the page.
+10:20:09 (viewVodCategories) The user admin has deleted the category With ID 6
+10:20:09 (viewVodCategories) The user admin has opened the page.
+10:20:16 (viewPackages) The user admin has opened the page.
+10:20:32 (viewPackageDetail) The user admin has opened the page.
+10:20:59 (viewPackages) The user admin has opened the page.
+10:21:00 (viewPackageDetail) The user admin has opened the page.
+10:21:25 (viewPackages) The user admin has opened the page.
+10:21:28 (viewPackageDetail) The user admin has opened the page.
+10:22:54 (addPackageContentVod) The user admin has opened the page.
+10:22:55 (addPackageContentLive) The user admin has opened the page.
+10:22:57 (viewPackages) The user admin has opened the page.
+10:22:58 (addPackageContentLive) The user admin has opened the page.
+10:23:00 (addPackageContentVod) The user admin has opened the page.
+10:23:02 (viewPackages) The user admin has opened the page.
+10:23:04 (viewPackageDetail) The user admin has opened the page.
+10:23:04 (viewPackageDetail) The user admin has viewed the information for the channel 'Live and Vod' With ID 1
+10:23:05 (addPackageContentVod) The user admin has opened the page.
+10:23:08 (viewPackageDetail) The user admin has opened the page.
+10:23:08 (viewPackageDetail) The user admin has viewed the information for the channel 'Live and Vod' With ID 1
+10:23:12 (createPackage) The user admin has opened the page.
+10:23:20 (viewPackageDetail) The user admin has opened the page.
+10:23:20 (viewPackageDetail) The user admin has viewed the information for the channel 'Live and Vod' With ID 1
+10:23:25 (createPackage) The user admin has opened the page.
+10:30:55 (createPackage) The user admin has opened the page.
+10:30:57 (viewPackageDetail) The user admin has opened the page.
+10:30:57 (viewPackageDetail) The user admin has viewed the information for the package 'Live and Vod' With ID 1
+10:30:58 (createPackage) The user admin has opened the page.
+10:31:01 (viewPackageDetail) The user admin has opened the page.
+10:31:01 (viewPackageDetail) The user admin has viewed the information for the package 'Live and Vod' With ID 1
+10:31:10 (createPackage) The user admin has opened the page.
+10:31:31 (viewPackageDetail) The user admin has opened the page.
+10:31:31 (viewPackageDetail) The user admin has viewed the information for the package 'Live and Vod' With ID 1
+10:31:32 (createPackage) The user admin has opened the page.
+10:31:35 (createPackage) The user admin has opened the page.
+10:31:37 (viewPackageDetail) The user admin has opened the page.
+10:31:37 (viewPackageDetail) The user admin has viewed the information for the package 'Live and Vod' With ID 1
+10:31:39 (createPackage) The user admin has opened the page.
+10:32:55 (viewPackageDetail) The user admin has opened the page.
+10:32:55 (viewPackageDetail) The user admin has viewed the information for the package 'Live and Vod' With ID 1
+10:32:57 (createPackage) The user admin has opened the page.
+10:33:16 (createPackage) The user admin has opened the page.
+10:33:16 (createPackage) The user admin has edited the information for the package 'Live and Vod' With ID .
+10:33:16 (viewPackages) The user admin has opened the page.
+10:33:18 (viewPackageDetail) The user admin has opened the page.
+10:33:18 (viewPackageDetail) The user admin has viewed the information for the package 'Live and Vod' With ID 1
+10:33:31 (createPackage) The user admin has opened the page.
+10:34:12 (createPackage) The user admin has opened the page.
+10:34:12 (createPackage) The user admin has edited the information for the package 'Live and Vod' With ID 1.
+10:34:12 (viewPackages) The user admin has opened the page.
+10:34:33 (createPackage) The user admin has opened the page.
+10:34:40 (createPackage) The user admin has opened the page.
+10:34:48 (createPackage) The user admin has opened the page.
+10:34:48 (createPackage) The user admin has created the package 'Test Package' With ID 2
+10:34:48 (viewPackages) The user admin has opened the page.
+10:54:52 (viewPackages) The user admin has opened the page.
+10:54:52 (viewPackages) The user admin has deleted the package With ID 2
+10:55:10 (createPackage) The user admin has opened the page.
+10:55:22 (createPackage) The user admin has opened the page.
+10:55:22 (createPackage) The user admin has created the package 'A papaya dada....' With ID 3
+10:55:22 (viewPackages) The user admin has opened the page.
+10:55:25 (viewPackageDetail) The user admin has opened the page.
+10:55:25 (viewPackageDetail) The user admin has viewed the information for the package 'A papaya dada....' With ID 3
+10:55:29 (viewPackages) The user admin has opened the page.
+10:55:29 (viewPackages) The user admin has deleted the package '' With ID 
+10:58:40 (viewVodCategories) The user admin has opened the page.
+10:58:41 (viewVod) The user admin has opened the page.
+10:59:48 (viewVod) The user admin has opened the page.
+10:59:51 (viewVodMovieDetail) The user admin has opened the page.
+10:59:51 (viewVodMovieDetail) The user admin has viewed the information for the channel 'NEW MP4' With ID 18
+10:59:53 (editVodMovieDetail) The user admin has opened the page.
+11:00:04 (viewVodCategories) The user admin has opened the page.
+11:00:06 (viewVodDetail) The user admin has opened the page.
+11:00:06 (viewVodDetail) The user admin has viewed the information for the category 'Subcategorie 2' With ID 3
+11:00:07 (createVodCategory) The user admin has opened the page.
+11:00:08 (createVodCategory) The user admin has opened the page.
+11:00:08 (createVodCategory) The user admin has edited the information for the category 'Subcategorie 2' With ID 3.
+11:00:08 (viewVodCategories) The user admin has opened the page.
+11:00:23 (addVodContent) The user admin has opened the page.
+11:00:34 (viewVodCategories) The user admin has opened the page.
+11:00:35 (createVodCategory) The user admin has opened the page.
+11:00:38 (createVodCategory) The user admin has opened the page.
+11:00:40 (createVodCategory) The user admin has opened the page.
+11:00:43 (createVodCategory) The user admin has opened the page.
+11:00:43 (createVodCategory) The user admin has created the category 'Andres' With ID 7
+11:00:43 (viewVodCategories) The user admin has opened the page.
+11:00:55 (viewVodCategories) The user admin has opened the page.
+11:00:55 (viewVodCategories) The user admin has deleted the category With ID 7
+11:00:55 (viewVodCategories) The user admin has opened the page.
+11:01:09 (viewVodCategories) The user admin has opened the page.
+11:04:05 (viewVodDetail) The user admin has opened the page.
+11:04:05 (viewVodDetail) The user admin has viewed the information for the category 'Categoría Pädre Ññ' With ID 1
+11:04:08 (createVodCategory) The user admin has opened the page.
+11:04:13 (createVodCategory) The user admin has opened the page.
+11:04:13 (createVodCategory) The user admin has edited the information for the category 'Categoría Padre' With ID 1.
+11:04:13 (viewVodCategories) The user admin has opened the page.
+11:05:04 (createVodCategory) The user admin has opened the page.
+11:05:10 (viewVod) The user admin has opened the page.
+11:05:15 (addVod) The user admin has opened the page.
+11:05:16 (addVodCsv) The user admin has opened the page.
+11:05:16 (searchVod) The user admin has opened the page.
+11:05:17 (viewVodCategories) The user admin has opened the page.
+11:05:19 (viewVodCategories) The user admin has opened the page.
+11:05:34 (viewVodCategories) The user admin has opened the page.
+11:05:59 (createVodCategory) The user admin has opened the page.
+11:06:04 (searchVodCategory) The user admin has opened the page.
+11:06:07 (viewVodCategories) The user admin has opened the page.
+11:06:08 (viewVodCategories) The user admin has opened the page.
+11:06:10 (createVodCategory) The user admin has opened the page.
+11:06:14 (createVodCategory) The user admin has opened the page.
+11:06:14 (createVodCategory) The user admin has created the category 'Test Category' With ID 8
+11:06:14 (viewVodCategories) The user admin has opened the page.
+11:06:15 (searchVodCategory) The user admin has opened the page.
+11:06:20 (searchVodCategory) The user admin has opened the page.
+11:08:35 (searchVodCategory) The user admin has opened the page.
+11:08:35 (searchVodCategory) The user admin has deleted the category '' With ID 8
+11:08:35 (searchVodCategory) The user admin has opened the page.
+11:09:19 (createVodCategory) The user admin has opened the page.
+11:09:23 (createVodCategory) The user admin has opened the page.
+11:09:23 (createVodCategory) The user admin has created the category 'Live and Vod' With ID 9
+11:09:23 (viewVodCategories) The user admin has opened the page.
+11:09:25 (searchVodCategory) The user admin has opened the page.
+11:09:29 (searchVodCategory) The user admin has opened the page.
+11:09:34 (searchVodCategory) The user admin has opened the page.
+11:09:34 (searchVodCategory) The user admin has deleted the category '' With ID 9
+11:09:34 (searchVodCategory) The user admin has opened the page.
+11:11:10 (viewVodCategories) The user admin has opened the page.
+11:11:12 (searchVodCategory) The user admin has opened the page.
+11:11:16 (searchVodCategory) The user admin has opened the page.
+11:11:18 (viewVodCategories) The user admin has opened the page.
+11:11:21 (createVodCategory) The user admin has opened the page.
+11:11:25 (createVodCategory) The user admin has opened the page.
+11:11:25 (createVodCategory) The user admin has created the category 'Live and Vod' With ID 10
+11:11:25 (viewVodCategories) The user admin has opened the page.
+11:11:34 (searchVodCategory) The user admin has opened the page.
+11:11:39 (searchVodCategory) The user admin has opened the page.
+11:13:53 (searchVodCategory) The user admin has opened the page.
+11:13:53 (searchVodCategory) The user admin has deleted the category '' With ID 10
+11:13:53 (searchVodCategory) The user admin has opened the page.
+11:14:07 (viewVodCategories) The user admin has opened the page.
+11:14:16 (createVodCategory) The user admin has opened the page.
+11:14:20 (createVodCategory) The user admin has opened the page.
+11:14:20 (createVodCategory) The user admin has created the category 'Test' With ID 11
+11:14:20 (viewVodCategories) The user admin has opened the page.
+11:14:28 (viewVodCategories) The user admin has opened the page.
+11:14:28 (viewVodCategories) The user admin has deleted the category '' With ID 11
+11:14:28 (viewVodCategories) The user admin has opened the page.
+11:15:21 (createVodCategory) The user admin has opened the page.
+11:15:24 (createVodCategory) The user admin has opened the page.
+11:15:24 (createVodCategory) The user admin has created the category 'dummy' With ID 12
+11:15:24 (viewVodCategories) The user admin has opened the page.
+11:15:30 (viewVodCategories) The user admin has opened the page.
+11:15:30 (viewVodCategories) The user admin has deleted the category '' With ID 12
+11:15:30 (viewVodCategories) The user admin has opened the page.
+11:16:38 (createVodCategory) The user admin has opened the page.
+11:16:41 (createVodCategory) The user admin has opened the page.
+11:16:41 (createVodCategory) The user admin has created the category 'dummy' With ID 13
+11:16:41 (viewVodCategories) The user admin has opened the page.
+11:16:46 (viewVodCategories) The user admin has opened the page.
+11:16:46 (viewVodCategories) The user admin has deleted the category 'dummy' With ID 13
+11:16:46 (viewVodCategories) The user admin has opened the page.
+11:17:00 (createVodCategory) The user admin has opened the page.
+11:17:03 (createVodCategory) The user admin has opened the page.
+11:17:03 (createVodCategory) The user admin has created the category 'd1' With ID 14
+11:17:03 (viewVodCategories) The user admin has opened the page.
+11:17:05 (createVodCategory) The user admin has opened the page.
+11:17:08 (createVodCategory) The user admin has opened the page.
+11:17:08 (createVodCategory) The user admin has created the category 'd2' With ID 15
+11:17:08 (viewVodCategories) The user admin has opened the page.
+11:17:10 (searchVodCategory) The user admin has opened the page.
+11:17:11 (searchVodCategory) The user admin has opened the page.
+11:17:29 (searchVodCategory) The user admin has opened the page.
+11:17:29 (searchVodCategory) The user admin has deleted the category 'd1' With ID 14
+11:17:29 (searchVodCategory) The user admin has deleted the category 'd2' With ID 15
+11:17:29 (searchVodCategory) The user admin has opened the page.
+11:17:39 (viewVodCategories) The user admin has opened the page.
+11:17:42 (addVodContent) The user admin has opened the page.
+11:20:58 (viewVodCategories) The user admin has opened the page.
+11:21:00 (addVodContent) The user admin has opened the page.
+11:21:04 (addVodContent) The user admin has opened the page.
+11:21:04 (addVodContent) The user admin has removed all the channels from the category ID 1
+11:21:12 (addVodContent) The user admin has opened the page.
+11:21:12 (addVodContent) The user admin has added the channel '24' with ID 2 to the category ID 1
+11:21:12 (addVodContent) The user admin has added the channel 'Béé Movie Ñ' with ID 3 to the category ID 1
+11:21:12 (addVodContent) The user admin has added the channel 'Eagles' with ID 5 to the category ID 1
+11:21:21 (addVodContent) The user admin has opened the page.
+11:21:21 (addVodContent) The user admin has removed the channel 'Béé Movie Ñ' with ID  from the category ID 1
+11:24:04 (addVideo) The user admin has added the channel with ID 2 to the category ID 1
+11:24:04 (addVideo) The user admin has added the channel with ID 3 to the category ID 1
+11:24:04 (addVideo) The user admin has added the channel with ID 5 to the category ID 1
+11:24:05 (removeVideo) The user admin has removed the channel with ID 6 from the category ID 1
+11:24:05 (removeVideo) The user admin has removed the channel with ID 10 from the category ID 1
+11:24:05 (removeVideo) The user admin has removed the channel with ID 12 from the category ID 1
+11:24:05 (removeVideo) The user admin has removed the channel with ID 13 from the category ID 1
+11:24:05 (removeVideo) The user admin has removed the channel with ID 14 from the category ID 1
+11:24:05 (removeVideo) The user admin has removed the channel with ID 15 from the category ID 1
+11:24:05 (removeVideo) The user admin has removed the channel with ID 18 from the category ID 1
+11:24:17 (addVodContent) The user admin has opened the page.
+11:24:17 (addVodContent) The user admin has added the channel
+									'BlackEyedPeas' with ID 6
+									to the category 'Categoría Padre' with ID 1
+11:24:55 (addVodContent) The user admin has opened the page.
+11:24:55 (addVodContent) The user admin has added the channel '12345-USA' with ID 12 to the category 'Categoría Padre' with ID 1
+11:24:55 (addVodContent) The user admin has added the channel '123456-USA' with ID 13 to the category 'Categoría Padre' with ID 1
+11:27:51 (addVodContent) The user admin has opened the page.
+11:27:51 (addVodContent) The user admin has added the channel 'big buck bunny' with ID 10 to the category 'Categoría Padre' with ID 1
+11:27:51 (addVodContent) The user admin has added the channel '12345-SP' with ID 14 to the category 'Categoría Padre' with ID 1
+11:27:51 (addVodContent) The user admin has added the channel '123456-SP' with ID 15 to the category 'Categoría Padre' with ID 1
+11:27:51 (addVodContent) The user admin has added the channel 'NEW MP4' with ID 18 to the category 'Categoría Padre' with ID 1
+11:28:03 (addVodContent) The user admin has opened the page.
+11:28:03 (addVodContent) The user admin has removed all the channels from the category ID 1
+11:28:18 (addVodContent) The user admin has opened the page.
+11:28:18 (addVodContent) The user admin has added the channel '24' with ID 2 to the category 'Categoría Padre' with ID 1
+11:28:18 (addVodContent) The user admin has added the channel 'Béé Movie Ñ' with ID 3 to the category 'Categoría Padre' with ID 1
+11:28:18 (addVodContent) The user admin has added the channel 'Eagles' with ID 5 to the category 'Categoría Padre' with ID 1
+11:28:18 (addVodContent) The user admin has added the channel 'BlackEyedPeas' with ID 6 to the category 'Categoría Padre' with ID 1
+11:28:42 (addVodContent) The user admin has opened the page.
+11:28:42 (addVodContent) The user admin has added the channel '24' with ID 2 to the category 'Categoría Padre' with ID 1
+11:28:42 (addVodContent) The user admin has added the channel 'Béé Movie Ñ' with ID 3 to the category 'Categoría Padre' with ID 1
+11:28:42 (addVodContent) The user admin has added the channel 'Eagles' with ID 5 to the category 'Categoría Padre' with ID 1
+11:28:42 (addVodContent) The user admin has added the channel 'BlackEyedPeas' with ID 6 to the category 'Categoría Padre' with ID 1
+11:28:56 (addVodContent) The user admin has opened the page.
+11:28:56 (addVodContent) The user admin has added the channel '24' with ID 2 to the category 'Categoría Padre' with ID 1
+11:28:56 (addVodContent) The user admin has added the channel 'Béé Movie Ñ' with ID 3 to the category 'Categoría Padre' with ID 1
+11:28:56 (addVodContent) The user admin has added the channel 'Eagles' with ID 5 to the category 'Categoría Padre' with ID 1
+11:28:56 (addVodContent) The user admin has added the channel 'BlackEyedPeas' with ID 6 to the category 'Categoría Padre' with ID 1
+11:29:40 (addVodContent) The user admin has opened the page.
+11:29:40 (addVodContent) The user admin has added the channel '24' with ID 2 to the category 'Categoría Padre' with ID 1
+11:29:40 (addVodContent) The user admin has added the channel 'Béé Movie Ñ' with ID 3 to the category 'Categoría Padre' with ID 1
+11:29:40 (addVodContent) The user admin has added the channel 'Eagles' with ID 5 to the category 'Categoría Padre' with ID 1
+11:29:40 (addVodContent) The user admin has added the channel 'BlackEyedPeas' with ID 6 to the category 'Categoría Padre' with ID 1
+11:30:34 (addVodContent) The user admin has opened the page.
+11:30:34 (addVodContent) The user admin has added the channel '24' with ID 2 to the category 'Categoría Padre' with ID 1
+11:30:34 (addVodContent) The user admin has added the channel 'Béé Movie Ñ' with ID 3 to the category 'Categoría Padre' with ID 1
+11:30:34 (addVodContent) The user admin has added the channel 'Eagles' with ID 5 to the category 'Categoría Padre' with ID 1
+11:30:34 (addVodContent) The user admin has added the channel 'BlackEyedPeas' with ID 6 to the category 'Categoría Padre' with ID 1
+11:31:18 (addVodContent) The user admin has opened the page.
+11:31:18 (addVodContent) The user admin has added the channel '24' with ID 2 to the category 'Categoría Padre' with ID 1
+11:31:18 (addVodContent) The user admin has added the channel 'Béé Movie Ñ' with ID 3 to the category 'Categoría Padre' with ID 1
+11:31:18 (addVodContent) The user admin has added the channel 'Eagles' with ID 5 to the category 'Categoría Padre' with ID 1
+11:31:18 (addVodContent) The user admin has added the channel 'BlackEyedPeas' with ID 6 to the category 'Categoría Padre' with ID 1
+11:31:38 (addVodContent) The user admin has opened the page.
+11:31:38 (addVodContent) The user admin has added the channel '24' with ID 2 to the category 'Categoría Padre' with ID 1
+11:31:38 (addVodContent) The user admin has added the channel 'Béé Movie Ñ' with ID 3 to the category 'Categoría Padre' with ID 1
+11:31:38 (addVodContent) The user admin has added the channel 'Eagles' with ID 5 to the category 'Categoría Padre' with ID 1
+11:31:38 (addVodContent) The user admin has added the channel 'BlackEyedPeas' with ID 6 to the category 'Categoría Padre' with ID 1
+11:31:52 (addVodContent) The user admin has opened the page.
+11:31:52 (addVodContent) The user admin has added the channel '24' with ID 2 to the category 'Categoría Padre' with ID 1
+11:31:52 (addVodContent) The user admin has added the channel 'Béé Movie Ñ' with ID 3 to the category 'Categoría Padre' with ID 1
+11:31:52 (addVodContent) The user admin has added the channel 'Eagles' with ID 5 to the category 'Categoría Padre' with ID 1
+11:31:52 (addVodContent) The user admin has added the channel 'BlackEyedPeas' with ID 6 to the category 'Categoría Padre' with ID 1
+11:32:03 (addVodContent) The user admin has opened the page.
+11:32:03 (addVodContent) The user admin has added the channel '24' with ID 2 to the category 'Categoría Padre' with ID 1
+11:32:03 (addVodContent) The user admin has added the channel 'Béé Movie Ñ' with ID 3 to the category 'Categoría Padre' with ID 1
+11:32:03 (addVodContent) The user admin has added the channel 'Eagles' with ID 5 to the category 'Categoría Padre' with ID 1
+11:32:03 (addVodContent) The user admin has added the channel 'BlackEyedPeas' with ID 6 to the category 'Categoría Padre' with ID 1
+11:32:12 (addVodContent) The user admin has opened the page.
+11:32:12 (addVodContent) The user admin has added the channel '24' with ID 2 to the category 'Categoría Padre' with ID 1
+11:32:12 (addVodContent) The user admin has added the channel 'Béé Movie Ñ' with ID 3 to the category 'Categoría Padre' with ID 1
+11:32:12 (addVodContent) The user admin has added the channel 'Eagles' with ID 5 to the category 'Categoría Padre' with ID 1
+11:32:12 (addVodContent) The user admin has added the channel 'BlackEyedPeas' with ID 6 to the category 'Categoría Padre' with ID 1
+11:32:28 (addVodContent) The user admin has opened the page.
+11:32:28 (addVodContent) The user admin has added the channel '24' with ID 2 to the category 'Categoría Padre' with ID 1
+11:32:28 (addVodContent) The user admin has added the channel 'Béé Movie Ñ' with ID 3 to the category 'Categoría Padre' with ID 1
+11:32:28 (addVodContent) The user admin has added the channel 'Eagles' with ID 5 to the category 'Categoría Padre' with ID 1
+11:32:28 (addVodContent) The user admin has added the channel 'BlackEyedPeas' with ID 6 to the category 'Categoría Padre' with ID 1
+11:32:33 (addVodContent) The user admin has opened the page.
+11:32:33 (addVodContent) The user admin has added the channel '24' with ID 2 to the category 'Categoría Padre' with ID 1
+11:32:33 (addVodContent) The user admin has added the channel 'Béé Movie Ñ' with ID 3 to the category 'Categoría Padre' with ID 1
+11:32:33 (addVodContent) The user admin has added the channel 'Eagles' with ID 5 to the category 'Categoría Padre' with ID 1
+11:32:33 (addVodContent) The user admin has added the channel 'BlackEyedPeas' with ID 6 to the category 'Categoría Padre' with ID 1
+11:33:10 (addVodContent) The user admin has opened the page.
+11:33:10 (addVodContent) The user admin has removed the channel 'Béé Movie Ñ' with ID  from the category 'Categoría Padre' with ID 1
+11:33:10 (addVodContent) The user admin has removed the channel 'Eagles' with ID  from the category 'Categoría Padre' with ID 1
+11:38:43 (addVideo) The user admin has added the channel '24' with ID 2 to the category 'Categoría Padre' with ID 1
+11:38:43 (addVideo) The user admin has added the channel 'Eagles' with ID 5 to the category 'Categoría Padre' with ID 1
+11:38:43 (addVideo) The user admin has added the channel 'BlackEyedPeas' with ID 6 to the category 'Categoría Padre' with ID 1
+11:38:44 (removeVideo) The user admin has removed the channel '' with ID 3 from the category 'Categoría Padre' with ID 1
+11:38:44 (removeVideo) The user admin has removed the channel '' with ID 10 from the category 'Categoría Padre' with ID 1
+11:38:44 (removeVideo) The user admin has removed the channel '' with ID 12 from the category 'Categoría Padre' with ID 1
+11:38:44 (removeVideo) The user admin has removed the channel '' with ID 13 from the category 'Categoría Padre' with ID 1
+11:38:44 (removeVideo) The user admin has removed the channel '' with ID 14 from the category 'Categoría Padre' with ID 1
+11:38:44 (removeVideo) The user admin has removed the channel '' with ID 15 from the category 'Categoría Padre' with ID 1
+11:38:44 (removeVideo) The user admin has removed the channel '' with ID 18 from the category 'Categoría Padre' with ID 1
+11:39:27 (removeVideo) The user admin has removed the channel 'big buck bunny' with ID 10 from the category 'Categoría Padre' with ID 1
+11:39:27 (removeVideo) The user admin has removed the channel '12345-USA' with ID 12 from the category 'Categoría Padre' with ID 1
+11:39:27 (removeVideo) The user admin has removed the channel '123456-USA' with ID 13 from the category 'Categoría Padre' with ID 1
+11:39:27 (removeVideo) The user admin has removed the channel '12345-SP' with ID 14 from the category 'Categoría Padre' with ID 1
+11:39:27 (removeVideo) The user admin has removed the channel '123456-SP' with ID 15 from the category 'Categoría Padre' with ID 1
+11:39:27 (removeVideo) The user admin has removed the channel 'NEW MP4' with ID 18 from the category 'Categoría Padre' with ID 1
+11:39:28 (addVideo) The user admin has added the channel '24' with ID 2 to the category 'Categoría Padre' with ID 1
+11:39:28 (addVideo) The user admin has added the channel 'Béé Movie Ñ' with ID 3 to the category 'Categoría Padre' with ID 1
+11:39:28 (addVideo) The user admin has added the channel 'Eagles' with ID 5 to the category 'Categoría Padre' with ID 1
+11:39:28 (addVideo) The user admin has added the channel 'BlackEyedPeas' with ID 6 to the category 'Categoría Padre' with ID 1
+11:45:48 (viewVodCategories) The user admin has opened the page.
+11:45:51 (createVodCategory) The user admin has opened the page.
+11:45:53 (searchVodCategory) The user admin has opened the page.
+11:45:55 (viewVodCategories) The user admin has opened the page.
+11:45:57 (addVodContent) The user admin has opened the page.
+11:46:04 (addVideo) The user admin has added the channel 'big buck bunny' with ID 10 to the category 'Categoría Padre' with ID 1
+11:46:04 (addVideo) The user admin has added the channel '24' with ID 2 to the category 'Categoría Padre' with ID 1
+11:46:04 (addVideo) The user admin has added the channel 'Béé Movie Ñ' with ID 3 to the category 'Categoría Padre' with ID 1
+11:46:04 (addVideo) The user admin has added the channel 'Eagles' with ID 5 to the category 'Categoría Padre' with ID 1
+11:46:04 (addVideo) The user admin has added the channel 'BlackEyedPeas' with ID 6 to the category 'Categoría Padre' with ID 1
+11:46:05 (removeVideo) The user admin has removed the channel '12345-USA' with ID 12 from the category 'Categoría Padre' with ID 1
+11:46:05 (removeVideo) The user admin has removed the channel '123456-USA' with ID 13 from the category 'Categoría Padre' with ID 1
+11:46:05 (removeVideo) The user admin has removed the channel '12345-SP' with ID 14 from the category 'Categoría Padre' with ID 1
+11:46:05 (removeVideo) The user admin has removed the channel '123456-SP' with ID 15 from the category 'Categoría Padre' with ID 1
+11:46:05 (removeVideo) The user admin has removed the channel 'NEW MP4' with ID 18 from the category 'Categoría Padre' with ID 1
+11:46:18 (addVideo) The user admin has added the channel 'big buck bunny' with ID 10 to the category 'Categoría Padre' with ID 1
+11:46:18 (addVideo) The user admin has added the channel '24' with ID 2 to the category 'Categoría Padre' with ID 1
+11:46:18 (addVideo) The user admin has added the channel 'Béé Movie Ñ' with ID 3 to the category 'Categoría Padre' with ID 1
+11:46:18 (addVideo) The user admin has added the channel 'BlackEyedPeas' with ID 6 to the category 'Categoría Padre' with ID 1
+11:46:19 (removeVideo) The user admin has removed the channel '12345-USA' with ID 12 from the category 'Categoría Padre' with ID 1
+11:46:19 (removeVideo) The user admin has removed the channel '123456-USA' with ID 13 from the category 'Categoría Padre' with ID 1
+11:46:19 (removeVideo) The user admin has removed the channel 'Eagles' with ID 5 from the category 'Categoría Padre' with ID 1
+11:46:19 (removeVideo) The user admin has removed the channel '12345-SP' with ID 14 from the category 'Categoría Padre' with ID 1
+11:46:19 (removeVideo) The user admin has removed the channel '123456-SP' with ID 15 from the category 'Categoría Padre' with ID 1
+11:46:19 (removeVideo) The user admin has removed the channel 'NEW MP4' with ID 18 from the category 'Categoría Padre' with ID 1
+11:46:46 (viewPackages) The user admin has opened the page.
+11:49:06 (viewPackages) The user admin has opened the page.
+11:49:07 (createPackage) The user admin has opened the page.
+11:49:15 (createPackage) The user admin has opened the page.
+11:49:15 (createPackage) The user admin has created the package 'A papaya dada....' With ID 4
+11:49:15 (viewPackages) The user admin has opened the page.
+11:49:40 (createPackage) The user admin has opened the page.
+11:50:53 (createPackage) The user admin has opened the page.
+11:51:01 (createPackage) The user admin has opened the page.
+11:51:01 (createPackage) The user admin has created the package 'LIVE' With ID 5
+11:51:01 (viewPackages) The user admin has opened the page.
+11:51:07 (viewPackages) The user admin has opened the page.
+11:51:07 (viewPackages) The user admin has deleted the package 'LIVE' With ID 
+11:51:07 (viewPackages) The user admin has deleted the package 'A papaya dada....' With ID 
+11:52:09 (createPackage) The user admin has opened the page.
+11:52:13 (createPackage) The user admin has opened the page.
+11:52:17 (createPackage) The user admin has opened the page.
+11:52:17 (createPackage) The user admin has created the package 'dummy' With ID 6
+11:52:17 (viewPackages) The user admin has opened the page.
+11:52:23 (viewPackageDetail) The user admin has opened the page.
+11:52:23 (viewPackageDetail) The user admin has viewed the information for the package 'dummy' With ID 6
+11:52:30 (createPackage) The user admin has opened the page.
+11:52:32 (viewPackageDetail) The user admin has opened the page.
+11:52:32 (viewPackageDetail) The user admin has viewed the information for the package 'dummy' With ID 6
+11:52:39 (createPackage) The user admin has opened the page.
+11:52:43 (createPackage) The user admin has opened the page.
+11:52:43 (createPackage) The user admin has edited the information for the package 'dummy' With ID 6.
+11:52:43 (viewPackages) The user admin has opened the page.
+11:53:13 (viewPackageDetail) The user admin has opened the page.
+11:53:13 (viewPackageDetail) The user admin has viewed the information for the package 'dummy' With ID 6
+11:53:18 (viewPackages) The user admin has opened the page.
+11:53:18 (viewPackages) The user admin has deleted the package 'dummy' With ID 6
+11:53:29 (createPackage) The user admin has opened the page.
+11:53:36 (createPackage) The user admin has opened the page.
+11:53:36 (createPackage) The user admin has created the package 'Andres' With ID 7
+11:53:36 (viewPackages) The user admin has opened the page.
+11:53:39 (searchPackage) The user admin has opened the page.
+11:53:43 (searchPackage) The user admin has opened the page.
+11:53:47 (searchPackage) The user admin has opened the page.
+11:53:47 (searchPackage) The user admin has opened the page.
+11:53:59 (createPackage) The user admin has opened the page.
+11:54:00 (viewPackages) The user admin has opened the page.
+11:54:02 (addPackageContentLive) The user admin has opened the page.
+11:54:07 (createPackage) The user admin has opened the page.
+11:54:08 (addPackageContentLive) The user admin has opened the page.
+11:55:00 (addPackageContentLive) The user admin has opened the page.
+11:55:31 (createPackage) The user admin has opened the page.
+11:56:14 (createPackage) The user admin has opened the page.
+11:56:16 (viewPackageDetail) The user admin has opened the page.
+11:56:16 (viewPackageDetail) The user admin has viewed the information for the package 'Live and Vod' With ID 1
+11:56:18 (addPackageContentVod) The user admin has opened the page.
+11:56:19 (addPackageContentLive) The user admin has opened the page.
+11:56:21 (viewPackageDetail) The user admin has opened the page.
+11:56:21 (viewPackageDetail) The user admin has viewed the information for the package 'Live and Vod' With ID 1
+11:56:22 (createPackage) The user admin has opened the page.
+11:56:40 (viewPackages) The user admin has opened the page.
+11:58:04 (addPackageContentLive) The user admin has opened the page.
+12:38:29 (addPackageContentLive) The user admin has opened the page.
+12:38:54 (viewVodCategories) The user admin has opened the page.
+12:38:56 (addVodContent) The user admin has opened the page.
+12:39:44 (addVodContent) The user admin has opened the page.
+12:39:57 (addVodContent) The user admin has opened the page.
+12:40:20 (addVodContent) The user admin has opened the page.
+12:40:29 (viewPackages) The user admin has opened the page.
+12:40:32 (addPackageContentLive) The user admin has opened the page.
+12:40:49 (addPackageContentLive) The user admin has opened the page.
+12:40:49 (addPackageContentLive) The user admin has added the live channel 'Canal FMB 2' with ID 1 to the package 'Live and Vod' with ID 1.
+12:41:02 (addPackageContentLive) The user admin has opened the page.
+12:41:02 (addPackageContentLive) The user admin has removed the live channel 'Canal FMB 1' with ID  from the package 'Live and Vod' with ID 1.
+12:41:12 (addPackageContentLive) The user admin has opened the page.
+12:41:12 (addPackageContentLive) The user admin has added the live channel '' with ID  to the package 'Live and Vod' with ID 1.
+12:41:43 (addPackageContentLive) The user admin has opened the page.
+12:41:43 (addPackageContentLive) The user admin has added the live channel 'Canal FMB 1' with ID  to the package 'Live and Vod' with ID 1.
+12:41:57 (addPackageContentLive) The user admin has opened the page.
+12:41:57 (addPackageContentLive) The user admin has added the live channel 'CAÑAL FMB3 CDN' with ID  to the package 'Live and Vod' with ID 1.
+12:41:59 (addPackageContentLive) The user admin has opened the page.
+12:42:15 (addPackageContentLive) The user admin has opened the page.
+12:42:15 (addPackageContentLive) The user admin has added the live channel 'Canal FMB 2' with ID  to the package 'Live and Vod' with ID 1.
+12:42:17 (addPackageContentLive) The user admin has opened the page.
+12:42:17 (addPackageContentLive) The user admin has added the live channel 'Canal FMB 1' with ID  to the package 'Live and Vod' with ID 1.
+12:42:19 (addPackageContentLive) The user admin has opened the page.
+12:42:19 (addPackageContentLive) The user admin has added the live channel 'CAÑAL FMB3 CDN' with ID  to the package 'Live and Vod' with ID 1.
+12:42:23 (addPackageContentLive) The user admin has opened the page.
+12:42:25 (addPackageContentLive) The user admin has opened the page.
+12:42:25 (addPackageContentLive) The user admin has added the live channel 'Canal FMB 2' with ID  to the package 'Live and Vod' with ID 1.
+12:42:27 (addPackageContentLive) The user admin has opened the page.
+12:42:27 (addPackageContentLive) The user admin has added the live channel 'Canal FMB 1' with ID  to the package 'Live and Vod' with ID 1.
+12:42:28 (addPackageContentLive) The user admin has opened the page.
+12:42:28 (addPackageContentLive) The user admin has added the live channel 'CAÑAL FMB3 CDN' with ID  to the package 'Live and Vod' with ID 1.
+12:46:07 (addPackageContentLive) The user admin has opened the page.
+12:47:06 (addPackageContentLive) The user admin has opened the page.
+12:47:06 (addPackageContentLive) The user admin has removed all the live channels from the package 'Live and Vod' with ID 1.
+12:47:19 (addPackageContentLive) The user admin has opened the page.
+12:47:19 (addPackageContentLive) The user admin has added the live channel 'Canal FMB 2' with ID  to the package '' with ID 1.
+12:47:19 (addPackageContentLive) The user admin has added the live channel '' with ID  to the package '' with ID 1.
+12:47:19 (addPackageContentLive) The user admin has added the live channel '' with ID  to the package '' with ID 1.
+12:47:51 (addPackageContentLive) The user admin has opened the page.
+12:47:51 (addPackageContentLive) The user admin has removed the live channel 'Canal FMB 2' with ID  from the package 'Live and Vod' with ID 1.
+12:48:47 (addPackageContentLive) The user admin has opened the page.
+12:48:47 (addPackageContentLive) The user admin has removed all the live channels from the package 'Live and Vod' with ID 1.
+12:48:51 (addPackageContentLive) The user admin has opened the page.
+12:48:51 (addPackageContentLive) The user admin has added the live channel 'Canal FMB 2' with ID 1 to the package 'Live and Vod' with ID 1.
+12:48:51 (addPackageContentLive) The user admin has added the live channel 'Canal FMB 1' with ID 2 to the package 'Live and Vod' with ID 1.
+12:49:10 (addPackageContentLive) The user admin has opened the page.
+12:49:10 (addPackageContentLive) The user admin has removed the live channel 'Canal FMB 2' with ID  from the package 'Live and Vod' with ID 1.
+12:49:10 (addPackageContentLive) The user admin has removed the live channel 'Canal FMB 1' with ID  from the package 'Live and Vod' with ID 1.
+12:49:26 (addPackageContentLive) The user admin has opened the page.
+12:49:26 (addPackageContentLive) The user admin has added the live channel 'Canal FMB 2' with ID  to the package '' with ID 1.
+12:49:26 (addPackageContentLive) The user admin has added the live channel '' with ID  to the package '' with ID 1.
+12:49:26 (addPackageContentLive) The user admin has added the live channel '' with ID  to the package '' with ID 1.
+12:50:28 (addPackageContentLive) The user admin has opened the page.
+12:50:28 (addPackageContentLive) The user admin has removed all the live channels from the package 'Live and Vod' with ID 1.
+12:50:30 (addPackageContentLive) The user admin has opened the page.
+12:50:30 (addPackageContentLive) The user admin has added the live channel 'Canal FMB 2' with ID  to the package 'Live and Vod' with ID 1.
+12:50:30 (addPackageContentLive) The user admin has added the live channel 'Canal FMB 1' with ID  to the package 'Live and Vod' with ID 1.
+12:50:30 (addPackageContentLive) The user admin has added the live channel 'CAÑAL FMB3 CDN' with ID  to the package 'Live and Vod' with ID 1.
+12:50:42 (addPackageContentLive) The user admin has opened the page.
+12:50:42 (addPackageContentLive) The user admin has removed all the live channels from the package 'Live and Vod' with ID 1.
+12:50:46 (addPackageContentLive) The user admin has opened the page.
+12:50:46 (addPackageContentLive) The user admin has added the live channel 'Canal FMB 2' with ID 1 to the package 'Live and Vod' with ID 1.
+12:50:53 (addPckLiveRes) The user admin has added the live channel 'Canal FMB 1' with ID 2 to the package 'Live and Vod' with ID 1.
+12:50:53 (addPckLiveRes) The user admin has added the live channel 'Canal FMB 2' with ID 1 to the package 'Live and Vod' with ID 1.
+12:50:54 (remPckLiveRes) The user admin has removed the live channel 'CAÑAL FMB3 CDN' with ID 3 from the package 'Live and Vod' with ID 1.
+12:51:06 (remPckLiveRes) The user admin has removed the live channel 'CAÑAL FMB3 CDN' with ID 3 from the package 'Live and Vod' with ID 1.
+12:51:06 (remPckLiveRes) The user admin has removed the live channel 'Canal FMB 1' with ID 2 from the package 'Live and Vod' with ID 1.
+12:51:07 (addPckLiveRes) The user admin has added the live channel 'Canal FMB 2' with ID 1 to the package 'Live and Vod' with ID 1.
+12:51:35 (addPckLiveRes) The user admin has added the live channel 'CAÑAL FMB3 CDN' with ID 3 to the package 'Live and Vod' with ID 1.
+12:51:35 (addPckLiveRes) The user admin has added the live channel 'Canal FMB 2' with ID 1 to the package 'Live and Vod' with ID 1.
+12:51:36 (remPckLiveRes) The user admin has removed the live channel 'Canal FMB 1' with ID 2 from the package 'Live and Vod' with ID 1.
+12:52:02 (viewPackages) The user admin has opened the page.
+12:52:03 (addPackageContentLive) The user admin has opened the page.
+12:52:12 (addPckLiveRes) The user admin has added the live channel 'Canal FMB 1' with ID 2 to the package 'Live and Vod' with ID 1.
+12:52:12 (addPckLiveRes) The user admin has added the live channel 'Canal FMB 2' with ID 1 to the package 'Live and Vod' with ID 1.
+12:52:12 (addPckLiveRes) The user admin has added the live channel 'CAÑAL FMB3 CDN' with ID 3 to the package 'Live and Vod' with ID 1.
+12:52:22 (remPckLiveRes) The user admin has removed the live channel 'Canal FMB 2' with ID 1 from the package 'Live and Vod' with ID 1.
+12:52:23 (addPckLiveRes) The user admin has added the live channel 'Canal FMB 1' with ID 2 to the package 'Live and Vod' with ID 1.
+12:52:23 (addPckLiveRes) The user admin has added the live channel 'CAÑAL FMB3 CDN' with ID 3 to the package 'Live and Vod' with ID 1.
+13:00:41 (addPckLiveRes) The user admin has added the live channel 'CAÑAL FMB3 CDN' with ID 3 to the package 'Live and Vod' with ID 1.
+13:00:42 (remPckLiveRes) The user admin has removed the live channel 'Canal FMB 2' with ID 1 from the package 'Live and Vod' with ID 1.
+13:00:42 (remPckLiveRes) The user admin has removed the live channel 'Canal FMB 1' with ID 2 from the package 'Live and Vod' with ID 1.
+13:01:47 (addPackageContentVod) The user admin has opened the page.
+13:08:58 (addPackageContentVod) The user admin has opened the page.
+13:54:18 (index) The user admin has arrived via 127.0.0.1
+13:54:18 (viewLive) The user admin has opened the page.
+13:54:29 (viewPackages) The user admin has opened the page.
+13:54:33 (addPackageContentVod) The user admin has opened the page.
+13:54:43 (addPackageContentVod) The user admin has opened the page.
+13:54:43 (addPackageContentVod) The user admin has removed all the VOD channels from the package 'Live and Vod' with ID 1.
+13:55:00 (addPackageContentVod) The user admin has opened the page.
+13:55:00 (addPackageContentVod) The user admin has added the VOD channel '24' with ID  to the package 'Live and Vod' with ID 1.
+13:55:00 (addPackageContentVod) The user admin has added the VOD channel 'Béé Movie Ñ' with ID  to the package 'Live and Vod' with ID 1.
+13:55:00 (addPackageContentVod) The user admin has added the VOD channel 'Eagles' with ID  to the package 'Live and Vod' with ID 1.
+13:55:00 (addPackageContentVod) The user admin has added the VOD channel 'BlackEyedPeas' with ID  to the package 'Live and Vod' with ID 1.
+13:55:00 (addPackageContentVod) The user admin has added the VOD channel 'big buck bunny' with ID  to the package 'Live and Vod' with ID 1.
+13:55:00 (addPackageContentVod) The user admin has added the VOD channel '12345-USA' with ID  to the package 'Live and Vod' with ID 1.
+13:55:00 (addPackageContentVod) The user admin has added the VOD channel '123456-USA' with ID  to the package 'Live and Vod' with ID 1.
+13:55:00 (addPackageContentVod) The user admin has added the VOD channel '12345-SP' with ID  to the package 'Live and Vod' with ID 1.
+13:55:00 (addPackageContentVod) The user admin has added the VOD channel '123456-SP' with ID  to the package 'Live and Vod' with ID 1.
+13:55:00 (addPackageContentVod) The user admin has added the VOD channel 'NEW MP4' with ID  to the package 'Live and Vod' with ID 1.
+13:55:12 (addPackageContentVod) The user admin has opened the page.
+13:55:12 (addPackageContentVod) The user admin has removed the VOD channel '24' with ID  from the package 'Live and Vod' with ID 1.
+13:55:12 (addPackageContentVod) The user admin has removed the VOD channel 'Béé Movie Ñ' with ID  from the package 'Live and Vod' with ID 1.
+13:55:24 (addPackageContentVod) The user admin has opened the page.
+13:55:24 (addPackageContentVod) The user admin has removed the VOD channel 'Eagles' with ID  from the package 'Live and Vod' with ID 1.
+13:55:24 (addPackageContentVod) The user admin has removed the VOD channel 'BlackEyedPeas' with ID  from the package 'Live and Vod' with ID 1.
+13:55:24 (addPackageContentVod) The user admin has removed the VOD channel 'big buck bunny' with ID  from the package 'Live and Vod' with ID 1.
+13:55:35 (addPackageContentVod) The user admin has opened the page.
+13:55:35 (addPackageContentVod) The user admin has added the VOD channel '24' with ID 2 to the package 'Live and Vod' with ID 1.
+13:55:35 (addPackageContentVod) The user admin has added the VOD channel 'Béé Movie Ñ' with ID 3 to the package 'Live and Vod' with ID 1.
+13:58:01 (addPackageContentVod) The user admin has opened the page.
+13:58:01 (addPackageContentVod) The user admin has removed all the VOD channels from the package 'Live and Vod' with ID 1.
+13:58:29 (addPackageContentVod) The user admin has opened the page.
+13:58:29 (addPackageContentVod) The user admin has removed all the VOD channels from the package 'Live and Vod' with ID 1.
+13:59:51 (addPackageContentVod) The user admin has opened the page.
+13:59:51 (addPackageContentVod) The user admin has removed all the VOD channels from the package 'Live and Vod' with ID 1.
+13:59:52 (remPckVodRes) The user admin has removed the VOD channel 'Béé Movie Ñ' with ID 3 from the package 'Live and Vod' with ID 1.
+13:59:52 (remPckVodRes) The user admin has removed the VOD channel 'Eagles' with ID 5 from the package 'Live and Vod' with ID 1.
+13:59:52 (remPckVodRes) The user admin has removed the VOD channel 'BlackEyedPeas' with ID 6 from the package 'Live and Vod' with ID 1.
+13:59:52 (remPckVodRes) The user admin has removed the VOD channel 'big buck bunny' with ID 10 from the package 'Live and Vod' with ID 1.
+13:59:52 (remPckVodRes) The user admin has removed the VOD channel '12345-USA' with ID 12 from the package 'Live and Vod' with ID 1.
+13:59:52 (remPckVodRes) The user admin has removed the VOD channel '123456-USA' with ID 13 from the package 'Live and Vod' with ID 1.
+13:59:52 (remPckVodRes) The user admin has removed the VOD channel '12345-SP' with ID 14 from the package 'Live and Vod' with ID 1.
+13:59:52 (remPckVodRes) The user admin has removed the VOD channel '123456-SP' with ID 15 from the package 'Live and Vod' with ID 1.
+13:59:52 (remPckVodRes) The user admin has removed the VOD channel 'NEW MP4' with ID 18 from the package 'Live and Vod' with ID 1.
+13:59:53 (addPckVodRes) The user admin has added the VOD channel '24' with ID 2 to the package 'Live and Vod' with ID 1.
+14:00:06 (remPckVodRes) The user admin has removed the VOD channel 'Béé Movie Ñ' with ID 3 from the package 'Live and Vod' with ID 1.
+14:00:06 (remPckVodRes) The user admin has removed the VOD channel 'Eagles' with ID 5 from the package 'Live and Vod' with ID 1.
+14:00:06 (remPckVodRes) The user admin has removed the VOD channel 'big buck bunny' with ID 10 from the package 'Live and Vod' with ID 1.
+14:00:06 (remPckVodRes) The user admin has removed the VOD channel '12345-USA' with ID 12 from the package 'Live and Vod' with ID 1.
+14:00:06 (remPckVodRes) The user admin has removed the VOD channel '123456-USA' with ID 13 from the package 'Live and Vod' with ID 1.
+14:00:06 (remPckVodRes) The user admin has removed the VOD channel '12345-SP' with ID 14 from the package 'Live and Vod' with ID 1.
+14:00:06 (remPckVodRes) The user admin has removed the VOD channel '123456-SP' with ID 15 from the package 'Live and Vod' with ID 1.
+14:00:06 (remPckVodRes) The user admin has removed the VOD channel 'NEW MP4' with ID 18 from the package 'Live and Vod' with ID 1.
+14:00:07 (addPckVodRes) The user admin has added the VOD channel 'BlackEyedPeas' with ID 6 to the package 'Live and Vod' with ID 1.
+14:00:07 (addPckVodRes) The user admin has added the VOD channel '24' with ID 2 to the package 'Live and Vod' with ID 1.
+14:00:22 (addPackageContentVod) The user admin has opened the page.
+14:00:22 (addPackageContentVod) The user admin has added the VOD channel 'Béé Movie Ñ' with ID 3 to the package 'Live and Vod' with ID 1.
+14:00:22 (addPackageContentVod) The user admin has added the VOD channel 'Eagles' with ID 5 to the package 'Live and Vod' with ID 1.
+14:00:22 (addPackageContentVod) The user admin has added the VOD channel 'big buck bunny' with ID 10 to the package 'Live and Vod' with ID 1.
+14:00:34 (remPckVodRes) The user admin has removed the VOD channel '12345-USA' with ID 12 from the package 'Live and Vod' with ID 1.
+14:00:34 (remPckVodRes) The user admin has removed the VOD channel 'Eagles' with ID 5 from the package 'Live and Vod' with ID 1.
+14:00:34 (remPckVodRes) The user admin has removed the VOD channel '123456-USA' with ID 13 from the package 'Live and Vod' with ID 1.
+14:00:34 (remPckVodRes) The user admin has removed the VOD channel '12345-SP' with ID 14 from the package 'Live and Vod' with ID 1.
+14:00:34 (remPckVodRes) The user admin has removed the VOD channel '123456-SP' with ID 15 from the package 'Live and Vod' with ID 1.
+14:00:34 (remPckVodRes) The user admin has removed the VOD channel 'NEW MP4' with ID 18 from the package 'Live and Vod' with ID 1.
+14:00:35 (addPckVodRes) The user admin has added the VOD channel '24' with ID 2 to the package 'Live and Vod' with ID 1.
+14:00:35 (addPckVodRes) The user admin has added the VOD channel 'Béé Movie Ñ' with ID 3 to the package 'Live and Vod' with ID 1.
+14:00:35 (addPckVodRes) The user admin has added the VOD channel 'BlackEyedPeas' with ID 6 to the package 'Live and Vod' with ID 1.
+14:00:35 (addPckVodRes) The user admin has added the VOD channel 'big buck bunny' with ID 10 to the package 'Live and Vod' with ID 1.
+14:00:54 (viewPackageDetail) The user admin has opened the page.
+14:00:54 (viewPackageDetail) The user admin has viewed the information for the package 'Live and Vod' With ID 1
+14:00:56 (addPackageContentVod) The user admin has opened the page.
+14:00:57 (addPackageContentLive) The user admin has opened the page.
+14:00:59 (createPackage) The user admin has opened the page.
+14:01:05 (viewPackages) The user admin has opened the page.
+14:01:10 (createPackage) The user admin has opened the page.
+14:01:21 (createPackage) The user admin has opened the page.
+14:01:21 (createPackage) The user admin has created the package 'TestLog' With ID 8
+14:01:21 (viewPackages) The user admin has opened the page.
+14:01:24 (viewPackageDetail) The user admin has opened the page.
+14:01:24 (viewPackageDetail) The user admin has viewed the information for the package 'TestLog' With ID 8
+14:01:27 (addPackageContentVod) The user admin has opened the page.
+14:01:29 (addPckVodRes) The user admin has added the VOD channel '24' with ID 2 to the package 'TestLog' with ID 8.
+14:01:30 (remPckVodRes) The user admin has removed the VOD channel 'Béé Movie Ñ' with ID 3 from the package 'TestLog' with ID 8.
+14:01:30 (remPckVodRes) The user admin has removed the VOD channel 'Eagles' with ID 5 from the package 'TestLog' with ID 8.
+14:01:30 (remPckVodRes) The user admin has removed the VOD channel 'BlackEyedPeas' with ID 6 from the package 'TestLog' with ID 8.
+14:01:30 (remPckVodRes) The user admin has removed the VOD channel 'big buck bunny' with ID 10 from the package 'TestLog' with ID 8.
+14:01:30 (remPckVodRes) The user admin has removed the VOD channel '12345-USA' with ID 12 from the package 'TestLog' with ID 8.
+14:01:30 (remPckVodRes) The user admin has removed the VOD channel '123456-USA' with ID 13 from the package 'TestLog' with ID 8.
+14:01:30 (remPckVodRes) The user admin has removed the VOD channel '12345-SP' with ID 14 from the package 'TestLog' with ID 8.
+14:01:30 (remPckVodRes) The user admin has removed the VOD channel '123456-SP' with ID 15 from the package 'TestLog' with ID 8.
+14:01:30 (remPckVodRes) The user admin has removed the VOD channel 'NEW MP4' with ID 18 from the package 'TestLog' with ID 8.
+14:01:32 (addPckVodRes) The user admin has added the VOD channel 'BlackEyedPeas' with ID 6 to the package 'TestLog' with ID 8.
+14:01:32 (addPckVodRes) The user admin has added the VOD channel '24' with ID 2 to the package 'TestLog' with ID 8.
+14:01:33 (remPckVodRes) The user admin has removed the VOD channel 'Béé Movie Ñ' with ID 3 from the package 'TestLog' with ID 8.
+14:01:33 (remPckVodRes) The user admin has removed the VOD channel 'Eagles' with ID 5 from the package 'TestLog' with ID 8.
+14:01:33 (remPckVodRes) The user admin has removed the VOD channel 'big buck bunny' with ID 10 from the package 'TestLog' with ID 8.
+14:01:33 (remPckVodRes) The user admin has removed the VOD channel '12345-USA' with ID 12 from the package 'TestLog' with ID 8.
+14:01:33 (remPckVodRes) The user admin has removed the VOD channel '123456-USA' with ID 13 from the package 'TestLog' with ID 8.
+14:01:33 (remPckVodRes) The user admin has removed the VOD channel '12345-SP' with ID 14 from the package 'TestLog' with ID 8.
+14:01:33 (remPckVodRes) The user admin has removed the VOD channel '123456-SP' with ID 15 from the package 'TestLog' with ID 8.
+14:01:33 (remPckVodRes) The user admin has removed the VOD channel 'NEW MP4' with ID 18 from the package 'TestLog' with ID 8.
+14:01:34 (addPackageContentLive) The user admin has opened the page.
+14:01:36 (addPckLiveRes) The user admin has added the live channel 'Canal FMB 1' with ID 2 to the package 'TestLog' with ID 8.
+14:01:37 (remPckLiveRes) The user admin has removed the live channel 'Canal FMB 2' with ID 1 from the package 'TestLog' with ID 8.
+14:01:37 (remPckLiveRes) The user admin has removed the live channel 'CAÑAL FMB3 CDN' with ID 3 from the package 'TestLog' with ID 8.
+14:01:38 (createPackage) The user admin has opened the page.
+14:01:43 (viewPackageDetail) The user admin has opened the page.
+14:01:43 (viewPackageDetail) The user admin has viewed the information for the package 'TestLog' With ID 8
+14:01:45 (createPackage) The user admin has opened the page.
+14:01:52 (createPackage) The user admin has opened the page.
+14:01:52 (createPackage) The user admin has edited the information for the package 'TestLog Edit' With ID 8.
+14:01:52 (viewPackages) The user admin has opened the page.
+14:02:39 (viewPackages) The user admin has opened the page.
+14:02:39 (viewPackages) The user admin has deleted the package 'TestLog Edit' With ID 8
+14:03:02 (viewTrainers) The user admin has opened the page.
+14:03:06 (viewSubscribers) The user admin has opened the page.
+14:03:09 (viewRestrictions) The user admin has opened the page.
+14:03:13 (viewTrainers) The user admin has opened the page.
+15:08:40 (index) The user admin has arrived via 127.0.0.1
+15:08:40 (viewLive) The user admin has opened the page.
+15:09:06 (viewVodCategories) The user admin has opened the page.
+15:09:07 (viewPackages) The user admin has opened the page.
+15:09:10 (addPackageContentVod) The user admin has opened the page.
+15:09:13 (addPckVodRes) The user admin has added the VOD channel '24' with ID 2 to the package 'Live and Vod' with ID 1.
+15:09:13 (addPckVodRes) The user admin has added the VOD channel 'Béé Movie Ñ' with ID 3 to the package 'Live and Vod' with ID 1.
+15:09:13 (addPckVodRes) The user admin has added the VOD channel 'BlackEyedPeas' with ID 6 to the package 'Live and Vod' with ID 1.
+15:09:14 (remPckVodRes) The user admin has removed the VOD channel 'Eagles' with ID 5 from the package 'Live and Vod' with ID 1.
+15:09:14 (remPckVodRes) The user admin has removed the VOD channel '12345-USA' with ID 12 from the package 'Live and Vod' with ID 1.
+15:09:14 (remPckVodRes) The user admin has removed the VOD channel 'big buck bunny' with ID 10 from the package 'Live and Vod' with ID 1.
+15:09:14 (remPckVodRes) The user admin has removed the VOD channel '123456-USA' with ID 13 from the package 'Live and Vod' with ID 1.
+15:09:14 (remPckVodRes) The user admin has removed the VOD channel '12345-SP' with ID 14 from the package 'Live and Vod' with ID 1.
+15:09:14 (remPckVodRes) The user admin has removed the VOD channel '123456-SP' with ID 15 from the package 'Live and Vod' with ID 1.
+15:09:14 (remPckVodRes) The user admin has removed the VOD channel 'NEW MP4' with ID 18 from the package 'Live and Vod' with ID 1.
+15:09:24 (viewTrainers) The user admin has opened the page.
+15:10:44 (viewTrainerDetail) The user admin has opened the page.
+15:10:44 (viewTrainerDetail) The user admin has viewed the information for the trainer 'Barack Obama' With ID 1
+15:10:54 (editTrainerDetail) The user admin has opened the page.
+15:10:59 (viewTrainerDetail) The user admin has opened the page.
+15:10:59 (viewTrainerDetail) The user admin has viewed the information for the trainer 'Barack Obama' With ID 1
+15:11:00 (editTrainerDetail) The user admin has opened the page.
+15:12:00 (editTrainerDetail) The user admin has opened the page.
+15:12:00 (editTrainerDetail) The user admin has edited the information for the trainer 'Barack Obama' With ID 1.
+15:12:00 (editTrainerDetail) The user admin has opened the page.
+15:13:16 (viewTrainers) The user admin has opened the page.
+15:13:18 (searchTrainer) The user admin has opened the page.
+15:13:20 (searchTrainer) The user admin has opened the page.
+15:13:27 (viewTrainers) The user admin has opened the page.
+15:13:31 (addTrainer) The user admin has opened the page.
+15:13:53 (addTrainer) The user admin has opened the page.
+15:13:53 (viewTrainers) The user admin has opened the page.
+15:13:59 (addTrainer) The user admin has opened the page.
+15:15:17 (addTrainer) The user admin has opened the page.
+15:15:17 (addTrainer) The user admin has created the trainer 'Andres' With ID 3
+15:15:17 (viewTrainers) The user admin has opened the page.
+15:15:36 (viewTrainerDetail) The user admin has opened the page.
+15:15:36 (viewTrainerDetail) The user admin has viewed the information for the trainer 'Al Bundy' With ID 2
+15:17:43 (editTrainerDetail) The user admin has opened the page.
+15:17:49 (viewTrainerDetail) The user admin has opened the page.
+15:17:49 (viewTrainerDetail) The user admin has viewed the information for the trainer 'Al Bundy' With ID 2
+15:17:57 (editTrainerDetail) The user admin has opened the page.
+15:17:59 (editTrainerDetail) The user admin has opened the page.
+15:17:59 (editTrainerDetail) The user admin has edited the information for the trainer 'Al Bundy' With ID 2.
+15:17:59 (editTrainerDetail) The user admin has opened the page.
+15:18:06 (viewTrainers) The user admin has opened the page.
+15:18:19 (viewTrainers) The user admin has opened the page.
+15:18:22 (viewTrainerDetail) The user admin has opened the page.
+15:18:22 (viewTrainerDetail) The user admin has viewed the information for the trainer 'Andres' With ID 3
+15:18:29 (viewTrainers) The user admin has opened the page.
+15:18:30 (addTrainer) The user admin has opened the page.
+15:19:02 (viewTrainers) The user admin has opened the page.
+15:19:04 (viewTrainerDetail) The user admin has opened the page.
+15:19:04 (viewTrainerDetail) The user admin has viewed the information for the trainer 'Al Bundy' With ID 2
+15:19:08 (viewTrainers) The user admin has opened the page.
+15:19:08 (viewTrainers) The user admin has opened the page.
+15:19:21 (viewTrainerDetail) The user admin has opened the page.
+15:19:21 (viewTrainerDetail) The user admin has viewed the information for the trainer 'Andres' With ID 3
+15:20:24 (viewTrainers) The user admin has opened the page.
+15:20:25 (addTrainer) The user admin has opened the page.
+15:20:39 (addTrainer) The user admin has opened the page.
+15:20:39 (addTrainer) The user admin has created the trainer 'Alex' With ID 4
+15:20:39 (viewTrainers) The user admin has opened the page.
+15:20:43 (searchTrainer) The user admin has opened the page.
+15:20:45 (searchTrainer) The user admin has opened the page.
+15:20:51 (searchTrainer) The user admin has opened the page.
+15:20:51 (searchTrainer) The user admin has opened the page.
+15:22:03 (addTrainer) The user admin has opened the page.
+15:22:04 (viewTrainers) The user admin has opened the page.
+15:22:06 (addTrainer) The user admin has opened the page.
+15:22:12 (addTrainer) The user admin has opened the page.
+15:22:20 (addTrainer) The user admin has opened the page.
+15:22:20 (addTrainer) The user admin has created the trainer 'Andres' With ID 5
+15:22:20 (viewTrainers) The user admin has opened the page.
+15:22:22 (addTrainer) The user admin has opened the page.
+15:22:46 (addTrainer) The user admin has opened the page.
+15:22:46 (addTrainer) The user admin has created the trainer 'Sephiroth' With ID 6
+15:22:46 (viewTrainers) The user admin has opened the page.
+15:22:51 (searchTrainer) The user admin has opened the page.
+15:22:53 (searchTrainer) The user admin has opened the page.
+15:22:58 (searchTrainer) The user admin has opened the page.
+15:22:58 (searchTrainer) The user admin has deleted the trainer 'Sephiroth' With ID 6
+15:22:58 (searchTrainer) The user admin has deleted the trainer 'Andres' With ID 5
+15:22:58 (searchTrainer) The user admin has opened the page.
+15:23:08 (addTrainer) The user admin has opened the page.
+15:23:24 (addTrainer) The user admin has opened the page.
+15:23:24 (addTrainer) The user admin has created the trainer 'El Chinche' With ID 7
+15:23:24 (viewTrainers) The user admin has opened the page.
+15:23:38 (viewTrainerDetail) The user admin has opened the page.
+15:23:38 (viewTrainerDetail) The user admin has viewed the information for the trainer 'El Chinche' With ID 7
+15:23:40 (viewTrainers) The user admin has opened the page.
+15:23:40 (viewTrainers) The user admin has deleted the trainer 'El Chinche' With ID 7
+15:23:40 (viewTrainers) The user admin has opened the page.
+15:23:54 (viewSubscribers) The user admin has opened the page.
+15:23:59 (viewRestrictions) The user admin has opened the page.
+15:24:03 (viewRestrictionDetail) The user admin has opened the page.
+15:24:09 (viewSubscribers) The user admin has opened the page.
+15:24:13 (ticketSubscriber) The user admin has opened the page.
+15:24:18 (viewRestrictions) The user admin has opened the page.
+15:24:21 (viewSubscribers) The user admin has opened the page.
+15:41:00 (viewTrainers) The user admin has opened the page.
+15:41:01 (viewSubscribers) The user admin has opened the page.
+15:57:48 (createSubscriber) The user admin has opened the page.
+15:59:21 (createSubscriber) The user admin has opened the page.
+15:59:24 (searchSubscriber) The user admin has opened the page.
+15:59:28 (searchSubscriber) The user admin has opened the page.
+16:00:44 (viewSubscribers) The user admin has opened the page.
+16:00:48 (createSubscriber) The user admin has opened the page.
+16:01:36 (createSubscriber) The user admin has opened the page.
+16:01:36 (createSubscriber) The user admin has created the subscriber 'Log Test' With ID 13
+16:01:36 (viewSubscribers) The user admin has opened the page.
+16:06:58 (viewSubscriberDetail) The user admin has opened the page.
+16:21:15 (addSubscriberPackage) The user admin has opened the page.
+16:21:26 (viewSubscribers) The user admin has opened the page.
+16:21:29 (viewSubscriberDetail) The user admin has opened the page.
+16:21:29 (viewSubscriberDetail) The user admin has viewed the information for the subscriber 'victor zambrano' With ID 1
+16:21:42 (viewSubscriberDetail) The user admin has opened the page.
+16:21:42 (viewSubscriberDetail) The user admin has viewed the information for the subscriber 'victor zambrano' With ID 1
+16:21:42 (viewSubscriberDetail) The user admin has edited the information for the subscriber 'victor zambrano' With ID 1.
+16:21:42 (viewSubscriberDetail) The user admin has opened the page.
+16:21:42 (viewSubscriberDetail) The user admin has viewed the information for the subscriber 'victor zambrano' With ID 1
+16:23:24 (viewSubscribers) The user admin has opened the page.
+16:23:26 (ticketSubscriber) The user admin has opened the page.
+16:23:29 (viewSubscribers) The user admin has opened the page.
+16:23:30 (viewSubscribers) The user admin has opened the page.
+16:23:51 (viewSubscribers) The user admin has opened the page.
+16:23:51 (viewSubscribers) The user admin has deleted the subscriber '' With ID 
+16:25:22 (createSubscriber) The user admin has opened the page.
+16:25:41 (createSubscriber) The user admin has opened the page.
+16:25:56 (createSubscriber) The user admin has opened the page.
+16:26:06 (createSubscriber) The user admin has opened the page.
+16:26:06 (createSubscriber) The user admin has created the subscriber 'Fabio Vargas' With ID 14
+16:26:06 (viewSubscribers) The user admin has opened the page.
+16:26:19 (viewSubscribers) The user admin has opened the page.
+16:26:24 (createSubscriber) The user admin has opened the page.
+16:26:58 (createSubscriber) The user admin has opened the page.
+16:26:58 (createSubscriber) The user admin has created the subscriber 'Fabio Vargas' With ID 15
+16:26:58 (viewSubscribers) The user admin has opened the page.
+16:31:07 (createSubscriber) The user admin has opened the page.
+16:31:28 (createSubscriber) The user admin has opened the page.
+16:31:28 (createSubscriber) The user admin has created the subscriber 'Fabio Vargas' With ID 16
+16:31:28 (viewSubscribers) The user admin has opened the page.
+16:31:31 (searchSubscriber) The user admin has opened the page.
+16:31:34 (searchSubscriber) The user admin has opened the page.
+16:31:50 (searchSubscriber) The user admin has opened the page.
+16:31:50 (searchSubscriber) The user admin has deleted the subscriber 'Fabio Vargas' With ID 15
+16:31:50 (searchSubscriber) The user admin has deleted the subscriber 'Fabio Vargas' With ID 16
+16:32:01 (viewSubscribers) The user admin has opened the page.
+16:32:06 (viewSubscribers) The user admin has opened the page.
+16:32:06 (viewSubscribers) The user admin has deleted the subscriber 'Fabio Vargas' With ID 14
+16:32:17 (createSubscriber) The user admin has opened the page.
+16:32:17 (createSubscriber) The user admin has opened the page.
+16:32:34 (createSubscriber) The user admin has opened the page.
+16:32:34 (createSubscriber) The user admin has created the subscriber 'Andres Gonzalez Vargas' With ID 17
+16:32:34 (viewSubscribers) The user admin has opened the page.
+16:32:40 (viewSubscriberDetail) The user admin has opened the page.
+16:32:40 (viewSubscriberDetail) The user admin has viewed the information for the subscriber 'Andres Gonzalez Vargas' With ID 17
+16:32:43 (viewSubscribers) The user admin has opened the page.
+16:32:43 (viewSubscribers) The user admin has deleted the subscriber 'Andres Gonzalez Vargas' With ID 17
+16:33:09 (createSubscriber) The user admin has opened the page.
+16:33:28 (createSubscriber) The user admin has opened the page.
+16:33:28 (createSubscriber) The user admin has created the subscriber 'Fabio Vargas' With ID 18
+16:33:28 (viewSubscribers) The user admin has opened the page.
+16:34:09 (viewSubscriberDetail) The user admin has opened the page.
+16:34:09 (viewSubscriberDetail) The user admin has viewed the information for the subscriber 'Fabio Vargas' With ID 18
+16:34:14 (addSubscriberPackage) The user admin has opened the page.
+17:22:06 (index) The user admin has arrived via 127.0.0.1
+17:22:06 (viewLive) The user admin has opened the page.
+17:22:09 (viewSubscribers) The user admin has opened the page.
+17:22:17 (addSubscriberPackage) The user admin has opened the page.
+17:22:31 (addSubscriberPck) The user admin has added the package 'Live and Vod' with ID 1 to the subscriber 'victor zambrano' with ID 1.
+17:24:10 (addSubscriberPck) The user admin has added the package 'Live and Vod' with ID 1 to the subscriber 'victor zambrano' with ID 1.
+17:24:15 (remSubscriberPck) The user admin has removed the package 'Live and Vod' with ID 1 from the subscriber 'victor zambrano' with ID 1.
+17:24:42 (addSubscriberPackage) The user admin has opened the page.
+17:24:47 (addSubscriberPackage) The user admin has opened the page.
+17:25:15 (addSubscriberPackage) The user admin has opened the page.
+17:25:15 (addSubscriberPackage) The user admin has removed all the packages from the subscriber 'victor zambrano' with ID 1.
+17:25:24 (addSubscriberPackage) The user admin has opened the page.
+17:25:24 (addSubscriberPackage) The user admin has added the package 'Live and Vod' with ID  to the subscriber 'victor zambrano' with ID 1.
+17:25:33 (addSubscriberPackage) The user admin has opened the page.
+17:26:27 (addSubscriberPackage) The user admin has opened the page.
+17:26:27 (addSubscriberPackage) The user admin has added the package 'Live and Vod' with ID  to the subscriber 'victor zambrano' with ID 1.
+17:29:21 (addSubscriberPackage) The user admin has opened the page.
+17:29:21 (addSubscriberPackage) The user admin has removed the package 'Live and Vod' with ID  to the subscriber 'victor zambrano' with ID 1.
+17:29:31 (addSubscriberPackage) The user admin has opened the page.
+17:29:31 (addSubscriberPackage) The user admin has added the package 'Live and Vod' with ID 1 to the subscriber 'victor zambrano' with ID 1.
+17:31:10 (viewSubscriberDetail) The user admin has opened the page.
+17:31:10 (viewSubscriberDetail) The user admin has viewed the information for the subscriber 'victor zambrano' With ID 1
+17:31:12 (addSubscriberPackage) The user admin has opened the page.
+17:31:15 (viewSubscriberDetail) The user admin has opened the page.
+17:31:15 (viewSubscriberDetail) The user admin has viewed the information for the subscriber 'victor zambrano' With ID 1
+17:31:16 (ticketSubscriber) The user admin has opened the page.
+17:31:17 (ticketSubscriberGlobal) The user admin has opened the page.
+23:23:18 (index) The user admin has arrived via ::1
+23:23:18 (viewLive) The user admin has opened the page.
+23:24:08 (viewSubscribers) The user admin has opened the page.
+23:24:57 (ticketSubscriber) The user admin has opened the page.
+23:24:59 (viewSubscribers) The user admin has opened the page.
+23:25:01 (addSubscriberPackage) The user admin has opened the page.
+23:25:18 (viewSubscriberDetail) The user admin has opened the page.
+23:25:18 (viewSubscriberDetail) The user admin has viewed the information for the subscriber 'victor zambrano' With ID 1
+23:25:20 (ticketSubscriber) The user admin has opened the page.
+23:30:58 (ticketSubscriberGlobal) The user admin has opened the page.
+23:32:22 (ticketSubscriberGlobal) The user admin has opened the page.
+23:32:22 (ticketSubscriberGlobal) The user admin has created the ticket '71erou9wxi17' for the user 'victor zambrano'
+23:32:22 (ticketSubscriberGlobal) The user admin has created the ticket '88h3yrtp7ip' for the user 'victor zambrano'
+23:32:22 (ticketSubscriberGlobal) The user admin has created the ticket '524658m5nrw' for the user 'victor zambrano'
+23:32:37 (viewRestrictions) The user admin has opened the page.
+23:32:39 (viewSubscribers) The user admin has opened the page.
+23:32:59 (createSubscriber) The user admin has opened the page.
+23:33:11 (viewRestrictions) The user admin has opened the page.
+23:33:14 (viewRestrictions) The user admin has opened the page.
+23:33:16 (viewRestrictionDetail) The user admin has opened the page.
+23:35:28 (viewRestrictionDetail) The user admin has opened the page.
+23:35:28 (viewRestrictionDetail) The user admin has viewed the information for the restriction 'Restriction' With ID 1
+23:35:28 (viewRestrictionDetail) The user admin has edited the information for the restriction 'Restriction' With ID 1.
+23:35:28 (viewRestrictionDetail) The user admin has opened the page.
+23:35:28 (viewRestrictionDetail) The user admin has viewed the information for the restriction 'Restriction' With ID 1
+23:35:33 (editRestrictionDetail) The user admin has opened the page.
+23:35:35 (viewRestrictionDetail) The user admin has opened the page.
+23:35:35 (viewRestrictionDetail) The user admin has viewed the information for the restriction 'Restriction' With ID 1
+23:35:36 (editRestrictionDetail) The user admin has opened the page.
+23:35:38 (viewRestrictionDetail) The user admin has opened the page.
+23:35:38 (viewRestrictionDetail) The user admin has viewed the information for the restriction 'Restriction' With ID 1
+23:35:39 (editRestrictionDetail) The user admin has opened the page.
+23:42:20 (viewRestrictionDetail) The user admin has opened the page.
+23:42:20 (viewRestrictionDetail) The user admin has viewed the information for the restriction 'Restriction' With ID 1
+23:42:28 (editRestrictionDetail) The user admin has opened the page.
+23:42:32 (viewRestrictions) The user admin has opened the page.
+23:45:00 (viewRestrictionDetail) The user admin has opened the page.
+23:45:00 (viewRestrictionDetail) The user admin has viewed the information for the restriction 'Restriction' With ID 1
+23:45:27 (editRestrictionDetail) The user admin has opened the page.
+23:45:30 (viewRestrictions) The user admin has opened the page.
+23:45:31 (createRestriction) The user admin has opened the page.
+23:47:33 (createRestriction) The user admin has opened the page.
+23:47:39 (createRestriction) The user admin has opened the page.
+23:47:39 (createRestriction) The user admin has created the restriction 'Fabio Vargas' With ID 3
+23:47:39 (viewRestrictions) The user admin has opened the page.
+23:48:12 (viewRestrictions) The user admin has opened the page.
+23:48:12 (viewRestrictions) The user admin has deleted the restriction '' With ID 
+23:48:52 (createRestriction) The user admin has opened the page.
+23:48:59 (createRestriction) The user admin has opened the page.
+23:48:59 (createRestriction) The user admin has created the restriction 'LIVE' With ID 4
+23:48:59 (viewRestrictions) The user admin has opened the page.
+23:51:27 (viewRestrictions) The user admin has opened the page.
+23:51:33 (viewRestrictions) The user admin has opened the page.
+23:51:33 (viewRestrictions) The user admin has deleted the restriction 'LIVE' With ID 4
+23:51:42 (createRestriction) The user admin has opened the page.
+23:51:57 (createRestriction) The user admin has opened the page.
+23:51:57 (createRestriction) The user admin has created the restriction 'Fabio Vargas' With ID 5
+23:51:57 (viewRestrictions) The user admin has opened the page.
+23:53:12 (viewRestrictionDetail) The user admin has opened the page.
+23:53:12 (viewRestrictionDetail) The user admin has viewed the information for the restriction 'Fabio Vargas' With ID 5
+23:53:15 (viewRestrictionDetail) The user admin has opened the page.
+23:53:15 (viewRestrictionDetail) The user admin has viewed the information for the restriction 'Fabio Vargas' With ID 5
+23:53:15 (viewRestrictionDetail) The user admin has edited the information for the restriction 'Fabio Vargas' With ID 5.
+23:53:15 (viewRestrictionDetail) The user admin has opened the page.
+23:53:15 (viewRestrictionDetail) The user admin has viewed the information for the restriction 'Fabio Vargas' With ID 5
+23:53:20 (viewRestrictionDetail) The user admin has opened the page.
+23:53:20 (viewRestrictionDetail) The user admin has viewed the information for the restriction 'Fabio Vargas' With ID 5
+23:53:24 (viewRestrictions) The user admin has opened the page.
+23:53:30 (viewRestrictionDetail) The user admin has opened the page.
+23:53:30 (viewRestrictionDetail) The user admin has viewed the information for the restriction 'Fabio Vargas' With ID 5
+23:53:44 (viewRestrictions) The user admin has opened the page.
+23:53:44 (viewRestrictions) The user admin has deleted the restriction 'Fabio Vargas' With ID 5
+23:53:55 (createRestriction) The user admin has opened the page.
+23:54:03 (createRestriction) The user admin has opened the page.
+23:54:03 (createRestriction) The user admin has created the restriction 'Live and Vod' With ID 6
+23:54:03 (viewRestrictions) The user admin has opened the page.
+23:54:38 (viewRestrictions) The user admin has opened the page.
+23:54:38 (viewRestrictions) The user admin has deleted the restriction 'Live and Vod' With ID 6
+23:54:39 (createRestriction) The user admin has opened the page.
+23:54:50 (createRestriction) The user admin has opened the page.
+23:54:50 (createRestriction) The user admin has created the restriction 'Live and Vod' With ID 7
+23:54:50 (viewRestrictions) The user admin has opened the page.
+23:54:55 (viewRestrictions) The user admin has opened the page.
+23:54:55 (viewRestrictions) The user admin has deleted the restriction 'Live and Vod' With ID 7
+23:55:16 (menuadmin) The user admin has opened the page.
+23:55:16 (viewLive) The user admin has opened the page.
+23:58:17 (viewVod) The user admin has opened the page.
+23:58:18 (addVodCsv) The user admin has opened the page.

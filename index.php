@@ -1,58 +1,13 @@
 <?
-include("conexion.php");
-include("clases/clsusuario.php");
-
 session_start();
 
-//variables de acceso
-$_SESSION["usuario"]="";		// almacena el usuario en sesion
-$_SESSION["idusuario"]="";		// almacena el id del usuario en sesion
+include('includes/connection.php');
+include('includes/general_functions.php');
+include('includes/formvalidator.php');
 
-//objetos
-$objUsuario=new clsusuario();
-$msg="";
+foreach($_POST as $key=>$value) $$key=$value;
 
-///ingresar al sistema
-if($_POST["ingresar"]!="")
- {
-   if($_POST["valorModo"]=="1")
-    {
-	   //administrador
-	   $clave=$_POST["valorClave"];
-	   $valido=$objUsuario->validacionAdministrador($_POST["valorLogin"],$clave);
-
-	   if($valido!="0")
-		{
-		  //valido
-		  $_SESSION["usuario"]=$_POST["valorLogin"];
-		  $_SESSION["idusuario"]=$valido;
-		  ?>
-		  <script language="javascript">
-		  document.location="menuadmin.php";
-		  </script>
-		  <?
-		}
-	}
-   else
-    {
-	   //usuario
-	   $valido=$objUsuario->validacionUsuario($_POST["valorLogin"],$_POST["valorClave"]);
-
-	   if($valido!="0")
-		{
-		  //valido
-		  $_SESSION["usuario"]=$_POST["valorLogin"];
-		  $_SESSION["idusuario"]=$valido;
-		  ?>
-		  <script language="javascript">
-		  document.location="galeria/index.php";
-		  </script>
-		  <?
-		}
-	}
-    
-	$msg="O usuário é invalido";
- }
+if(trim(escape_value($username))!="" and trim(escape_value($password))!="") $error = auth_user($username,$password);
 
 ?>
 <html>
@@ -86,6 +41,10 @@ body {
 	background-image: url(newImages/BackGroundfront.jpg);
 	background-repeat: repeat-x;
 }
+a{
+	text-decoration:none;
+	color:#666666;
+}
 -->
 </style></head>
 <body leftmargin="0" topmargin="0" class="bodyBackGround" >
@@ -110,36 +69,23 @@ body {
       <td><img name="front_r3_c1" src="newImages/front_r3_c1.jpg" width="347" height="266" border="0" id="front_r3_c1" alt="" /></td>
       <td background="newImages/front_r3_c2.jpg"><table width="307" height="194" border="0" align="center">
         <tr>
-          <td colspan="3" class="link10"><div align="center" class="trebuchet_15"><strong>            Digite seu nome de usu&aacute;rio e senha</strong></div></td>
+          <td colspan="3" class="link10"><div align="center" class="trebuchet_15"><b><?=_("Welcome to RAMP")?></strong></div></td>
         </tr>
-        <tr>
-          <td class="link10">&nbsp;</td>
-          <td class="text10">&nbsp;</td>
-          <td class="body-text1"><div align="left">
-            <input type="hidden" name="ingresar" value="1">
-          </div></td>
+				<tr>
+          <td colspan="3" class="link10">&nbsp;</td>
         </tr>
         <tr>
           <td width="15" class="link10">&nbsp;</td>
-          <td width="61" class="tahoma_12"><span class="trebuchet_12">Usu&aacute;rio</span></td>
+          <td width="61" class="tahoma_12"><span class="trebuchet_12"><?=_("User")?></span></td>
           <td width="175" class="body-text1"><div align="left">
-            <input name="valorLogin" type="text" class="trebuchet_12" style="width:150" size="30" maxlength="50">
+            <input type="text" name="username" maxlength="50" style="width:150" size="30" />
           </div></td>
         </tr>
         <tr>
           <td class="link10">&nbsp;</td>
-          <td class="trebuchet_12"> Senha</td>
+          <td class="trebuchet_12"><?=_("Password")?></td>
           <td class="body-text1"><div align="left">
-            <input name="valorClave" type="password" class="trebuchet_12" style="width:150" size="30" maxlength="50">
-          </div></td>
-        </tr>
-        <tr>
-          <td class="link10">&nbsp;</td>
-          <td class="trebuchet_12"> Modo </td>
-          <td class="text10"><div align="left">
-            <select name="valorModo" class="trebuchet_12" style="width:150">
-              <option value="1">Administrador</option>
-            </select>
+            <input type="password" onfocus="this.value=''" name="password" maxlength="50" style="width:150" size="30" />
           </div></td>
         </tr>
         <tr>
@@ -147,16 +93,29 @@ body {
           <td align="right" class="body-text1">&nbsp;</td>
           <td align="right" valign="middle" class="text10"><div align="left">
             <p>
-              <input type="image" src="imagenes/entrar2.jpg" align="left">
+              <input type="submit" name="submit" value="Entrar" class="button_submit" align="left">
             </p>
           </div></td>
         </tr>
         <tr>
           <td align="right" class="body-text1"><div align="center"></div></td>
           <td align="right" class="body-text1">&nbsp;</td>
-          <td align="right" class="body-text1"><div align="left"><span class="tahoma_11">
-            <?=$msg?>
-          </span></div></td>
+          <td align="right" class="body-text1">
+						<div align="left"><span class="tahoma_11">
+					  <?php
+						if($error)
+						{
+							?>
+							<?=_("Username/Password error")?>
+							<?php
+						}
+						elseif($msg)
+						{
+							echo $msg;
+						}
+						?>
+          </span></div>
+					</td>
         </tr>
         <tr>
           <td align="right" class="body-text1"><div align="center" class="index-titles"></div></td>

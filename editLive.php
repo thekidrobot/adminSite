@@ -133,6 +133,9 @@ if($_POST["MM_update"] == "true")
 			
 			$rsInsLive = $DB->Execute($insertSql);
 		
+			$message = "The user ".$_SESSION['username']." has edited the information for the channel '".$getData->fields['name']."' With ID $id.";
+			writeToLog($message);
+		
 			redirect($currentPage."?edit=".$id);
 		}
 	}
@@ -146,7 +149,7 @@ if($_POST["MM_update"] == "true")
 <?php include ("includes/head.php") ?>
 <body>
  <div id="wrapper">
-  <h1><a href="menuadmin.php"></a></h1>
+  <h1><a href="#">&nbsp;</a></h1>
 	<?php include("includes/mainnav.php") ?>
 	<!-- // #end mainNav -->
 	<div id="containerHolder">

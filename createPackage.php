@@ -61,7 +61,10 @@
 							where id = $id";
 							
 			$rsSet=$DB->execute($sql);
-			
+
+			$message = "The user ".$_SESSION['username']." has edited the information for the package '".$_POST['name']."' With ID ".$id.".";
+			writeToLog($message);	
+
 			redirect('viewPackages.php');
 		}
 	}	
@@ -81,6 +84,8 @@
 	
 		$validator->addValidation("name","req",_("Name is a mandatory field"));
 		$validator->addValidation("description","maxlen=100",_("Description shouldn't be longer than 100 characters"));
+		$validator->addValidation("duration","num",_("Duration should be a numerical value"));
+		$validator->addValidation("duration","req",_("Duration is a mandatory field"));
 		$validator->addValidation("price","num",_("Price should be a numerical value"));
 		$validator->addValidation("price","req",_("Price is a mandatory field"));
 		$validator->addValidation("Duration","num",_("Duration should be a numerical value"));
@@ -102,6 +107,9 @@
 			$rsSet = $DB->Execute($sql);
 			$pck_id = $DB->Insert_ID();
 	
+			$message = "The user ".$_SESSION['username']." has created the package '".$name."' With ID ".$pck_id;
+			writeToLog($message);
+	
 			redirect("viewPackages.php");
 		
 		}
@@ -114,7 +122,7 @@
 <?php include ("includes/head.php") ?>
 <body>
  <div id="wrapper">
-  <h1><a href="menuadmin.php"></a></h1>
+  <h1><a href="#">&nbsp;</a></h1>
 	<?php include("includes/mainnav.php") ?>
 	<!-- // #end mainNav -->
 	<div id="containerHolder">
