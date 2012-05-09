@@ -68,3 +68,6 @@
 [15-Mar-2012 18:02:44] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
 [18-Mar-2012 21:19:03] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/rampmood/public_html/adminSiteBeta/includes/general_functions.php on line 171
 [10-Apr-2012 11:55:50] PHP Fatal error:  Call to a member function numrows() on a non-object in /home/rampmood/public_html/adminSiteBeta/addSubscriberPackage.php on line 135
+[08-May-2012 15:44:26] PHP Fatal error:  Call to a member function movenext() on a non-object in /home/rampmood/public_html/TestSites/adminSite/reportsVod.php on line 111
+[08-May-2012 15:44:31] PHP Fatal error:  Call to a member function movenext() on a non-object in /home/rampmood/public_html/TestSites/adminSite/reportsLiveTop.php on line 71
+[08-May-2012 15:44:33] PHP Fatal error:  Call to a member function movenext() on a non-object in /home/rampmood/public_html/TestSites/adminSite/reportsVodTop.php on line 71

@@ -3,10 +3,8 @@
 include("includes/connection.php");
 include("session.php");
 
-if($_SESSION['role'] == 0)
-{
-	redirect('index.php');
-}
+//Restricted Page
+if($role == 0) redirect('index.php');
 
 ?>
 

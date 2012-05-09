@@ -8,7 +8,6 @@ function getCurrentPage(){
   return $currentPage;
 }
 
-
 //Build the top menu
 function make_kids($row_id,$dad_name,$parent)
 {
@@ -280,7 +279,7 @@ function writeToLog($message)
 
 //Gets admin pin for unique login purposes
 function getAdminPin($admin_id){
-		$sql_pin = "SELECT pin from administrador where idAdministrador = $admin_id";
+		$sql_pin = "SELECT pin from administrador where IdAdministrador = $admin_id";
 		$result_pin = mysql_query($sql_pin) or die('Error :'.mysql_error());
 		
 		while($row = mysql_fetch_object($result_pin))
@@ -295,6 +294,31 @@ function isLoggedIn()
 {
     if($_SESSION['valid']) return true;
     else return false;
+}
+
+//Verify the user role in the role table
+function getRole($uid,$rid){
+	$sql = "SELECT 	r.id,r.name
+				  from 		administrador a,roles r
+					where 	a.Rol = r.id
+					and			a.Rol = $rid
+					and 		a.IdAdministrador = $uid";
+	
+	$result = mysql_query($sql) or die('Error :'.mysql_error());
+		
+	while($row = mysql_fetch_object($result))
+	{
+	 $rid = $row->id;
+	 $rname = $row->name;
+	}
+		
+	if(trim($rname) == "Superadmin"){
+		$role = 1;
+	}
+	else{
+		$role = 0;
+	}
+	return $role;				
 }
 
 //user authentication

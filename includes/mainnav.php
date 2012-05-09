@@ -74,19 +74,25 @@
 	?>	
 	><?=_("Restrictions")?></a></li>
 	
-	<?
-	if($_SESSION['role'] == 1)
-	{
-		?>	
-		<li><a href="logs.php"
-		<?php if($currentPage == "logs.php" or
-							$currentPage == "reportsLive.php" or
+	<li><a href="reportsLive.php"
+		<?php if( $currentPage == "reportsLive.php" or
 							$currentPage == "reportsVod.php" or 
 							$currentPage == "reportsVodTop.php" or 
 							$currentPage == "reportsLiveTop.php"
 							) echo "class='active'"; ?>
 		><?=_("Reports")?></a></li>
-		<?
+	<?
+	if($role == 1)
+	{
+	?>
+		<li><a href="admins.php"
+		<?php if($currentPage == "admins.php" or 
+						 $currentPage == "createAdmin.php" or
+						 $currentPage == "viewAdminDetail.php" or 
+						 $currentPage == "logs.php") echo "class='active'"; ?>>
+			<?=_("Administrators")?>
+		</a></li>
+	<?
 	}
 	?>
 	

@@ -20,11 +20,17 @@ include("includes/formvalidator.php");
 
 $currentPage = getCurrentPage();
 
+//Not logged in
 $logged = isLoggedIn();
-if ($logged == false or $_SESSION['username'] == "") redirect('index.php');
+if ($logged == false or $_SESSION['username'] == "") redirect('logout.php');
 
+//Double login
 $dbPin = getAdminPin($_SESSION['id']);
-if($dbPin !== $_SESSION['pin']) redirect('index.php');
+if($dbPin !== $_SESSION['pin']) redirect('logout.php');
+
+//Superadmin verification.
+$role = 0;
+$role = getRole($_SESSION['id'],$_SESSION['role']);
 
 $message = "The user ".$_SESSION['username']." has opened the page.";
 writeToLog($message);
